@@ -3,7 +3,6 @@ class CreateUsers < ActiveRecord::Migration
     create_table :users do |t|
         t.string :provider
         t.string :uid
-        t.string :name
         t.string :oauth_token
         t.time :oauth_expires_at
 
@@ -11,7 +10,7 @@ class CreateUsers < ActiveRecord::Migration
     	t.string :last_name
     	t.string :email
     	t.string :phone
-    	t.string :profile_pic
+    	t.string :username
     	t.text :bio
     	t.string :gender
     	t.integer :age
