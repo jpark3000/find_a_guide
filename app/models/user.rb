@@ -18,14 +18,6 @@ class User < ActiveRecord::Base
 	validates :first_name, :last_name, :email, :phone, :profile_pic,
 	 					:bio, :gender, :age, presence: true
 
-
-
-	def edit
-	end
-
-	def update
-	end
-
 	def name
  		"#{first_name} #{last_name}"
 	end
