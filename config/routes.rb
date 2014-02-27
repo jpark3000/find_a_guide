@@ -2,7 +2,7 @@ FindAGuide::Application.routes.draw do
 
   resources :authentications
 
-  resources :user, only: [:edit, :update, :show] do
+  resources :users, only: [:edit, :update, :show] do
     resources :meetups, only: [:index, :show, :edit, :update]
   end
 
