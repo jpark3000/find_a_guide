@@ -1,6 +1,6 @@
 FindAGuide::Application.routes.draw do
 
-  resources :authentications
+  # resources :authentications
 
   resources :users, only: [:edit, :update, :show] do
     resources :meetups, only: [:index, :show, :edit, :update]
@@ -14,8 +14,12 @@ FindAGuide::Application.routes.draw do
 
   match '/search_results', to: 'users#index', via: [:get]
 
-  match 'auth/:provider/callback', to: 'authentications#create', via: [:get, :post]
+  # match 'auth/:provider/callback', to: 'authentications#create', via: [:get, :post]
+  # match 'auth/failure', to: redirect('/'), via: [:get, :post]
+
+  match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
+  match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
 
   get '/be_an_ambassador', to: 'marketing#index'
 
