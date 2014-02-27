@@ -3,10 +3,11 @@
   <div id="refine_search">
     <% @specialties.each do |s| %>
       <% if s.is_available? %>
-        <%= check_box_tag s.name class: 'refine_specialty' %>
+        <%= check_box_tag s.specialty, s.specialty, false, class: 'refine_specialty' %>
       <% else %>
-        <%= check_box_tag s.name class: 'refine_specialty' disabled: true %>
+        <%= check_box_tag s.specialty, class: 'refine_specialty', disabled: true %>
       <% end %>
+      <%= s.specialty %>
     <% end %>
     <% options_for_select(@languages) %>
   </div>

@@ -16,18 +16,14 @@ class User < ActiveRecord::Base
 	has_many :visitor_meetups, class_name: "Meetup", foreign_key: "visitor_id"
 
 	validates :first_name, :last_name, :email, :phone, :profile_pic,
-	 					:bio, :gender, :age, :authentication, presence: true
-
-
-	def edit
-	end
-
-	def update
-	end
-
+	 					:bio, :gender, :age, presence: true
 
 	def name
  		"#{first_name} #{last_name}"
+	end
+
+	def rating
+		"#{rand(5)} stars"
 	end
 
 	# def review_score
