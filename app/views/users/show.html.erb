@@ -2,7 +2,7 @@
   <div id="ambassador_name"><%= @ambassador.first_name %></div>
   <div id="ambassador_tag_line"><%= @ambassador.first_name %></div>
   <div id="ambassador_rating"><%= @ambassador.rating %></div>
-    <%= @ambassador.specialties.each do |s| %>
+    <% @ambassador.specialties.each do |s| %>
       <span class="specialty"><%= s.specialty %></span>
     <% end %>
   </div>
