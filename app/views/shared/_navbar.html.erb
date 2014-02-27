@@ -16,8 +16,8 @@
       </span>
     <% else %>
       <span id="right_hand_navbar">
-        <%= link_to 'Login' new_session_path %>
-        <%= link_to 'Sign Up' new_user_path %>
+        <%= link_to 'Login' create_authentication_path %>
+        <%= link_to 'Sign Up' create_authentication_path %>
         <%= button_to 'Give Tours!' new_ambassador_path %>`
       </span>
     <% end %>
