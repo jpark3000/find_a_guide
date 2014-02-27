@@ -5,6 +5,7 @@ class CreateTours < ActiveRecord::Migration
     	t.float :longitude
     	t.float :latitude
     	t.text :description
+    	t.timestamps
     end
   end
 end

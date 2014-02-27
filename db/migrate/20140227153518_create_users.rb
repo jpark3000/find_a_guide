@@ -14,6 +14,7 @@ class CreateUsers < ActiveRecord::Migration
     	t.string :tagline
         t.string :anonymous_email
     	t.references :authentication
+        t.timestamps
     end
   end
 end
