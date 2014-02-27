@@ -3,4 +3,7 @@ class Tour < ActiveRecord::Base
 	has_many :meetups
 
 	validates :ambassador_id, :longitude, :latitude, :description, presence: true
+
+	def index
+	end
 end

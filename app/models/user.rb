@@ -19,6 +19,12 @@ class User < ActiveRecord::Base
 	 					:bio, :gender, :age, :authentication, presence: true
 
 
+	def edit
+	end
+
+	def update
+	end
+
 
 	def name
  		"#{first_name} #{last_name}"
