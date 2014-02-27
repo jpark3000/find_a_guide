@@ -12,6 +12,7 @@ class CreateUsers < ActiveRecord::Migration
     	t.boolean :is_ambassador
     	t.boolean :ambassador_availability
     	t.string :tagline
+        t.string :anonymous_email
     	t.references :authentication
     end
   end
