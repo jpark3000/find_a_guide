@@ -1,19 +1,23 @@
 <div id="ambassador">
-  <div id="ambassador_name"><%= @tour.ambassador.first_name %></div>
-  <div id="ambassador_tag_line"><%= @tour.ambassador.first_name %></div>
-  <div id="ambassador_rating"><%= @tour.ambassador.rating %></div>
-    <%= @tour.ambassador.specialties.each do |s| %>
+  <div id="ambassador_name"><%= @ambassador.first_name %></div>
+  <div id="ambassador_tag_line"><%= @ambassador.first_name %></div>
+  <div id="ambassador_rating"><%= @ambassador.rating %></div>
+    <%= @ambassador.specialties.each do |s| %>
       <span class="specialty"><%= s.specialty %></span>
     <% end %>
   </div>
 </div>
-<div id="tour_info">
-  <h2 id="tour_info_title">This tour's info:</h2>
-  <div id="tour_description">
-    <%= @tour.description %>
-  </div>
+<div id="ambassador_info">
   <h2 id="ambassador_bio_title">Bio:</h2>
   <div id="ambassador_bio">
-    <%= @tour.ambassador.bio %>
+    <%= @ambassador.bio %>
   </div>
+</div>
+<div id="tour_info">
+  <% @ambassador.tours.each do |t| %>
+    <h2 id="tour_info_title">This tour's info:</h2>
+    <div id="tour_description">
+      <%= t.description %>
+    </div>
+  <% end %>
 </div>

@@ -1,5 +1,5 @@
 <div id="main_search">
-  <%= form_tag search_path do %>
+  <%= form_tag search_results_path do %>
     <%= text_field_tag 'search', nil, :placeholder => 'Where are you going?' %>
     <%= date_select("show", "date", :default => Date.today, 
       :order => [:month, :day, :year], :start_year => Date.today.year, 

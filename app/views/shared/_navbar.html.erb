@@ -2,10 +2,11 @@
   <div id="nav_container">
     <%= link_to 'Find A Guide', root_path, :id => 'logo_nav' %>
 
-    <%= form_tag search_path :id => 'navbar_search' do %>
+    <%= form_tag search_results_path :id => 'navbar_search' do %>
       <%= text_field_tag 'search', nil, :placeholder => 'Search' %>
     <% end %>
 
+    <% puts self %>
     <% if current_user %>
       <span id="right_hand_navbar">
       <% if @user.is_ambassador %>
@@ -16,9 +17,9 @@
       </span>
     <% else %>
       <span id="right_hand_navbar">
-        <%= link_to 'Login' create_authentication_path %>
-        <%= link_to 'Sign Up' create_authentication_path %>
-        <%= button_to 'Give Tours!' new_ambassador_path %>`
+        <%= link_to 'Login', new_authentication_path %>
+        <%= link_to 'Sign Up', new_authentication_path %>
+        <%= button_to 'Give Tours!', be_an_ambassador_path %>
       </span>
     <% end %>
   </div>
