@@ -2,14 +2,32 @@ FindAGuide::Application.routes.draw do
 
   resources :authentications
 
+  resources :user, only: [:edit, :update, :show] do
+    resources :meetups, only: [:index, :show, :edit, :update]
+  end
+
+  resources :reviews, only: [:index, :new, :create]
+
+  resources :tours
+
+  get '/dashboard', to: 'users#dashboard'
+
+  match '/search_results', to: 'users#index', via: [:get]
+
   match 'auth/:provider/callback', to: 'authentications#create', via: [:get, :post]
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
+
+  get '/be_an_ambassador', to: 'marketing#index'
+
+  get '/thanks', to: 'marketing#thanks'
+
+  post '/contact_ambassador' to: 'emails#initial_contact'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'application#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
