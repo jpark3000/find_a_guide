@@ -1,5 +1,6 @@
 class Authentication < ActiveRecord::Base
 
+
   belongs_to :user
 
   def self.from_omniauth(user, auth)
@@ -13,5 +14,6 @@ class Authentication < ActiveRecord::Base
       authentication.save!
     end
   end
+
 
 end
