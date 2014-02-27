@@ -4,11 +4,20 @@ _Description: Make meaningful connections. Be an ambassador to your city. Make n
 
 ## Table of Contents
 
+* [Initial White-Boarding](#initial-whiteboarding)
+* [Schema](#schema)
 * [Project Setup](#project-setup)
 * [Testing](#testing)
 * [Deploying](#deploying)
 * [Troubleshooting](#troubleshooting)
 * [Team Members](#team-members)
+
+## <a name="initial-whiteboarding"></a>Initial White-Boarding
+![Features](http://imgur.com/R0ZpJtc)
+![UserStory](http://imgur.com/DxLaQaz)
+
+## <a name="schema"></a>Schema
+![Schema](http://imgur.com/uQ1Oe2f)
 
 ## <a name="project-setup"></a>Project Setup
 
