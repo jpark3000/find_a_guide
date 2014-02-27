@@ -43,3 +43,7 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+# Oauth Related
+gem 'omniauth'
+gem 'omniauth-facebook', '1.6.0'
