@@ -5,6 +5,7 @@ class CreateReviews < ActiveRecord::Migration
     	t.text :comment
     	t.references :reviewer
     	t.references :reviewee
+    	t.timestamps
     end
   end
 end

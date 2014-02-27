@@ -14,39 +14,51 @@
 ActiveRecord::Schema.define(version: 20140227160748) do
 
   create_table "authentications", force: true do |t|
-    t.string "provider"
-    t.string "uid"
-    t.string "oauth_token"
-    t.time   "oauth_expires_at"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "oauth_token"
+    t.time     "oauth_expires_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "languages", force: true do |t|
-    t.string "language"
+    t.string   "language"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "languages_spokens", force: true do |t|
-    t.integer "user_id"
-    t.integer "language_id"
+    t.integer  "user_id"
+    t.integer  "language_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "meetups", force: true do |t|
-    t.integer  "ambassador_id_id"
-    t.integer  "visitor_id_id"
+    t.integer  "ambassador_id"
+    t.integer  "visitor_id"
     t.datetime "date_time"
     t.string   "address"
     t.integer  "tour_id"
     t.text     "meetup_notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "reviews", force: true do |t|
-    t.integer "star_id"
-    t.text    "comment"
-    t.integer "reviewer_id"
-    t.integer "reviewee_id"
+    t.integer  "star_id"
+    t.text     "comment"
+    t.integer  "reviewer_id"
+    t.integer  "reviewee_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "specialties", force: true do |t|
-    t.string "specialty"
+    t.string   "specialty"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "stars", force: true do |t|
@@ -56,31 +68,37 @@ ActiveRecord::Schema.define(version: 20140227160748) do
   end
 
   create_table "tours", force: true do |t|
-    t.integer "ambassador_id"
-    t.float   "longitude"
-    t.float   "latitude"
-    t.text    "description"
+    t.integer  "ambassador_id"
+    t.float    "longitude"
+    t.float    "latitude"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
-    t.string  "first_name"
-    t.string  "last_name"
-    t.string  "email"
-    t.string  "phone"
-    t.string  "profile_pic"
-    t.text    "bio"
-    t.string  "gender"
-    t.integer "age"
-    t.boolean "is_ambassador"
-    t.boolean "ambassador_availability"
-    t.string  "tagline"
-    t.string  "anonymous_email"
-    t.integer "authentication_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "profile_pic"
+    t.text     "bio"
+    t.string   "gender"
+    t.integer  "age"
+    t.boolean  "is_ambassador"
+    t.boolean  "ambassador_availability"
+    t.string   "tagline"
+    t.string   "anonymous_email"
+    t.integer  "authentication_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users_specialties", force: true do |t|
-    t.integer "user_id"
-    t.integer "specialty_id"
+    t.integer  "user_id"
+    t.integer  "specialty_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
