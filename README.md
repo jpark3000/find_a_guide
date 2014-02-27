@@ -13,11 +13,11 @@ _Description: Make meaningful connections. Be an ambassador to your city. Make n
 * [Team Members](#team-members)
 
 ## <a name="initial-whiteboarding"></a>Initial White-Boarding
-![Features](http://imgur.com/R0ZpJtc)
-![UserStory](http://imgur.com/DxLaQaz)
+![Features](http://i.minus.com/iGABsn7Bg2Hf0.jpg)
+![UserStory](http://i.minus.com/i4dlGntnpFvev.JPG)
 
 ## <a name="schema"></a>Schema
-![Schema](http://imgur.com/uQ1Oe2f)
+![Schema](http://i.minus.com/ibikqHkEtJ9HQb.png)
 
 ## <a name="project-setup"></a>Project Setup
 
