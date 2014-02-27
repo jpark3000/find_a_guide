@@ -1,0 +1,26 @@
+<nav>
+  <div id="nav_container">
+    <%= link_to 'Find A Guide', root_path, :id => 'logo_nav' %>
+
+    <%= form_tag search_results_path :id => 'navbar_search' do %>
+      <%= text_field_tag 'search', nil, :placeholder => 'Search' %>
+    <% end %>
+
+    <% puts self %>
+    <% if current_user %>
+      <span id="right_hand_navbar">
+      <% if @user.is_ambassador %>
+        <%= link_to ambassadors_path do %><span id="user_ambassador_icon"></span><% end %>
+      <% end %>
+      <%= link_to trips_path do %><span id="user_manage_trips_icon"></span><% end %>
+      <%= link_to tours_path do %><span id="user_account_settings_icon"></span><% end %>
+      </span>
+    <% else %>
+      <span id="right_hand_navbar">
+        <%= link_to 'Login', new_authentication_path %>
+        <%= link_to 'Sign Up', new_authentication_path %>
+        <%= button_to 'Give Tours!', be_an_ambassador_path %>
+      </span>
+    <% end %>
+  </div>
+</nav>
