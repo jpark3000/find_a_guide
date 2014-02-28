@@ -1,7 +1,9 @@
 #map-canvas {
-	width: 100%;
-	height: 900px;
+	position: absolute;
+	width: 80%;
+	height: 450px;
 	border: 1px solid black;
+	left: 120px;
 }
 
 #pac-input {

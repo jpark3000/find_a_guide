@@ -1,20 +1,28 @@
 
 $(document).ready(function() {
 	var map;
+
+  var styleOptions = [
+                        {
+                          "featureType": "poi",
+                          "stylers": [
+                            { "visibility": "off" }
+                          ]
+                        },{
+                          "featureType": "poi.park",
+                          "stylers": [
+                            { "visibility": "on" }
+                          ]
+                        }
+                      ]
+  // console.log(mapOptions);
+
 	function initialize() {
 		var mapOptions = {
 		  center: new google.maps.LatLng(0, 0),
-		  zoom: 20,
+		  zoom: 3,
 		  streetViewControl: false,
-		  style: [
-							  {
-							    "featureType": "poi.park",
-							    "stylers": [
-							      { "visibility": "on" }
-							    ]
-							  }
-							]
-
+		  styles: styleOptions
 		};
 
 		map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
@@ -70,7 +78,7 @@ $(document).ready(function() {
         map: map,
         icon: image,
         title: place.name,
-        position: place.geometry.location
+        position: place.geometry.location,
       });
 
       markers.push(marker);
