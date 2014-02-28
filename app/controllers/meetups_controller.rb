@@ -5,7 +5,7 @@ class MeetupsController < ApplicationController
   end
 
   def show
-    @meetup = current_user.ambassador_meetups.find(params[:id])
+    @meetup = Meetup.find(params[:id])
     @ambassador = @meetup.ambassador
     @visitor = @meetup.visitor
     @ambassador_attributes = @ambassador.open_information
@@ -13,7 +13,7 @@ class MeetupsController < ApplicationController
   end
 
   def edit
-    @meetup = current_user.ambassador_meetups.find(params[:id])
+    @meetup = Meetup.find(params[:id])
     @ambassador = @meetup.ambassador
     @visitor = @meetup.visitor
     @ambassador_attributes = @ambassador.open_information

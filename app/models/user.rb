@@ -7,6 +7,9 @@ class User < ActiveRecord::Base
 	has_many :languages_spoken
 	has_many :languages, through: :languages_spoken
 
+  has_many :visitor_reviews, through: :visitor_meetups, source: :reviews
+  has_many :ambassador_reviews, through: :ambassador_meetups, source: :reviews
+
 	has_many :reviews_given, class_name: "Review", foreign_key: "reviewer_id"
 	has_many :reviews_received, class_name: "Review", foreign_key: "reviewee_id", dependent: :destroy
 
@@ -37,13 +40,31 @@ class User < ActiveRecord::Base
     self.specialties.any? {|s| s == specialty}
   end
 
+  def empty_reviews(type)
+    if type == :visitor
+      self.visitor_meetups.all - self.visitor_reviews.map{|r| r.meetup}
+    else
+      self.ambassador_meetups.all - self.ambassador_reviews.map{|r| r.meetup}
+    end
+  end
 
+  def incomplete_information
+    possible_incomplete_attributes = ['tagline','bio','email','phone','gender','age']
+    hash = self.attributes.select{|k,v| v.nil? && possible_incomplete_attributes.include?(k)}.keys
+  end
 
-	# def review_score
-	# 	self.reviews_received
-	# end
+  def rating(type)
+    ratings = all_ratings(type)
+    if ratings.empty?
+      return false
+    else
+      ratings.map{|r| r.rating.to_i}.reduce(:+) / ratings.count
+    end
+  end
 
-
+  def all_ratings(type) #specify ambassador ratings
+    reviews_received.where('reviewee_id = ?', id)
+  end
 
 def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
