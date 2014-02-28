@@ -1,9 +1,10 @@
-var tour_description_template = $("<div id='tour_desc'>\
-                                  <form id='tour_form'>\
-                                    <textarea rows='6' cols='25' id='tour_content'></textarea>\
-                                    <br><button type='button' id='new_tour_button'>Save</button>\
-                                  </form>\
-                                </div>")
+
+var Tour = function() {
+this.template = $("<div class='tour_desc'>\
+                    <div class='tour_text' contenteditable='true'></div>\
+                    <br><button type='button' id='new_tour_button'>Save</button>\
+                  </div>")
+};
 
 var styleOptions = [
                       {
@@ -36,31 +37,75 @@ $(document).ready(function() {
   };
 
   var user_markers = [];
+  var info_windows = [];
 
 	function initialize() {
 		map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 	
 		google.maps.event.addListener(map, 'click', function(e) {
-      if (user_markers.length > 0 ) user_markers[user_markers.length-1].infowindow.close();
+      $.each(info_windows, function(i,v) { info_windows[i].close(); });
 
 			var myLatLng = new google.maps.LatLng(e.latLng['d'], e.latLng['e'])
       var user_marker = new google.maps.Marker({
         position: myLatLng,
-        map: map,
+        map: map
       })
       user_marker.set("id", marker_id++);
       var m_index = user_marker.get("id");
       user_markers.push(user_marker);
-      user_markers[m_index].infowindow = new google.maps.InfoWindow({content : tour_description_template[0]});
-      user_markers[m_index].infowindow.open(map, user_markers[m_index]);
+      
+      var iw = new Tour()
+    
+      var infowindow = new google.maps.InfoWindow({content : iw.template[0] });
+      $(infowindow.content).find('#new_tour_button').on('click', function() {
+        var data = {
+                    description: $($($(this).parent()[0]).find('.tour_text')[0]).html(),
+                    latitude: user_marker.position['d'],
+                    longitude: user_marker.position['e']
+                   }
 
-
-      google.maps.event.addListener(user_marker, 'click', function() {
-        $.each(user_markers, function(i, v) {
-          user_markers[i].infowindow.close();
+        $.post('/tours', data, function() {
+          console.log('yea!')
         });
-        user_markers[user_marker.get("id")].infowindow.open(map, user_markers[user_marker.get("id")]);
+
+
+
+        // console.log($($($(this).parent()[0]).find('.tour_text')[0]).html());
+        // console.log(user_marker.position['d'])
       });
+      info_windows.push(infowindow)
+      info_windows[m_index].open(map, user_markers[m_index]);
+
+      
+      $.each(user_markers, function(i, v) {
+        google.maps.event.addListener(user_markers[i], 'click', function() {
+          $.each(info_windows, function(i,v) { info_windows[i].close(); });
+          info_windows[i].open(map, user_markers[i]);
+        });
+      });
+
+    
+      // $.each(user_markers, function(i, v) {
+      //   bindInfoWindow(user_markers[i], map, info_windows[i], tour_description_template[0]);
+      // });
+
+
+      // function bindInfoWindow(marker, map, infowindow, html) {
+      //   google.maps.event.addListener(marker, 'click', function() {
+      //     // $.each(user_markers, function(i, v) {
+      //     //   user_markers[i].infowindow.close();
+      //     // });
+      //     infowindow.setContent(html);
+      //     infowindow.open(map, marker);
+
+      //       // m_index = user_marker.get("id")
+      //       // $.each(user_markers, function(i, v) {
+      //       //   user_markers[i].infowindow.close();
+      //       // });
+      //       // user_markers[m_index].infowindow.open(map, user_markers[m_index]);
+      //       // console.log(user_markers[m_index].infowindow)
+      //   });
+      // };
       
 
 
@@ -70,17 +115,17 @@ $(document).ready(function() {
       // });
 
 
-      tour_description_template.find('#new_tour_button').on('click', function() {
-        console.log(user_marker.position);
-        var tour_data = { tour_desc : $('#tour_content').val(), coords : user_marker.position  }
+      // tour_description_template.find('#new_tour_button').on('click', function() {
+      //   console.log(user_marker.position);
+      //   var tour_data = { tour_desc : $('#tour_content').val(), coords : user_marker.position  }
         
-        $.post('/tours', tour_data, function() {
-          console.log('yea!')
-        })
-      });
+      //   $.post('/tours', tour_data, function() {
+      //     console.log('yea!')
+      //   })
+      // });
 
     
-		});
+		});// end listener
 
 
   
