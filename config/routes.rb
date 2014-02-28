@@ -4,9 +4,9 @@ FindAGuide::Application.routes.draw do
 
   resources :users, only: [:edit, :update, :show] do
     resources :meetups, only: [:index, :show, :edit, :update]
+    resources :reviews, only: [:index, :new, :create]
   end
 
-  resources :reviews, only: [:index, :new, :create]
 
   resources :tours
 

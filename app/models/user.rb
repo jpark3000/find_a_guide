@@ -17,13 +17,6 @@ class User < ActiveRecord::Base
 
 	validates :first_name, :last_name, :email, presence: true
 
-
-	def edit
-	end
-
-	def update
-	end
-
 	def name
  		"#{first_name} #{last_name}"
 	end
@@ -31,6 +24,12 @@ class User < ActiveRecord::Base
 	def rating
 		"#{rand(5)} stars"
 	end
+
+  def profile_pic(uid = self.uid)
+    return "http://graph.facebook.com/#{uid}/picture"
+  end
+
+
 
 	# def review_score
 	# 	self.reviews_received
@@ -47,8 +46,11 @@ def self.from_omniauth(auth)
 
       user.first_name = auth.info.first_name
       user.last_name = auth.info.last_name
-      user.email = auth.info.email
-      user.username = auth.info.username
+      user.email = auth.extra.raw_info.email
+
+      user.username = auth.extra.raw_info.username
+      user.gender = auth.extra.raw_info.gender
+      # user.birthday = auth.extra.raw_info.birthday
 
       user.save!
     end
