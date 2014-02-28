@@ -1,7 +1,7 @@
 <%= form_for [current_user, @meetup] do |f| %>
   <div id="meetup_header_stretch_map_canvas"></div>
   <div id="meetup_info_edit">
-    <%= select_date(@meetup.date_time) %>
+    <%= f.date_select :date_time %>
     <% s = 'ambassador' %>
     <div id="meetup_participants">
       <div class="meetup_card">
@@ -27,5 +27,6 @@
       <span id="review_meetup_date"><%= @meetup.date_time %></span>
     </div>
     <%= f.text_area :meetup_notes %>
+    <%= f.submit %>
   </div>
 <% end %>
