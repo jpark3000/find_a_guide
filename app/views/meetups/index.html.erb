@@ -3,9 +3,9 @@
     <%= link_to user_meetup_path(t.visitor,t) do %>
       <div class="ambassador_tour_card">
         <%= image_tag(t.visitor.profile_pic(t.visitor.uid)) %>
-        <span class="ambassador_name_card"><%= t.visitor.first_name %></span>
-        <span class="ambassador_tag_line_card"><%= t.visitor.last_name %></span>
-        <span class="tour_description_card"><%= t.meetup_notes %></span>
+        <span class="card_name"><%= t.visitor.first_name %></span>
+        <span class="card_tag"><%= t.visitor.last_name %></span>
+        <span class="card_description"><%= t.meetup_notes %></span>
       </div>
     <% end %>
   <% end %>
