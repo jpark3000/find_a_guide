@@ -1,0 +1,25 @@
+<h2 id="dashboard_title">Dashboard</h2>
+<div id="visitor_profile">
+  <h3 class="profile_title">Visitor Profile</h3>
+  <div class="profile_tours">
+    <h4 class="profile_tours_title">Tours</h4>
+    <% @visitor_tours.each do |t| %>
+      <%= link_to user_meetup_path(@user,t) do %>
+        <div class="ambassador_tour_card">
+          <%= image_tag(t.ambassador.profile_pic(t.ambassador.uid)) %>
+          <span class="ambassador_name_card"><%= t.ambassador.first_name %></span>
+          <span class="ambassador_tag_line_card"><%= t.ambassador.last_name %></span>
+          <span class="tour_description_card"><%= t.meetup_notes %></span>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+
+
+
+
+<div id="ambassador_profile">
+  <h3 class="profile_title">Ambassador Profile</h3>
+</div>

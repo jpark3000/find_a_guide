@@ -1,6 +1,6 @@
-<div id="search_results_list">
+<div id="tours_list">
   <% @tours.each do |t| %>
-    <%= link_to user_meetup_path(@ambassador,t) do %>
+    <%= link_to user_meetup_path(t.visitor,t) do %>
       <div class="ambassador_tour_card">
         <%= image_tag(t.visitor.profile_pic(t.visitor.uid)) %>
         <span class="ambassador_name_card"><%= t.visitor.first_name %></span>

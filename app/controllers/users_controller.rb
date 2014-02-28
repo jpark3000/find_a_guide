@@ -13,4 +13,8 @@ class UsersController < ApplicationController
   def update
   end
 
+  def dashboard
+    @user = current_user
+    @visitor_tours = @user.visitor_meetups
+  end
 end
