@@ -7,6 +7,9 @@ class User < ActiveRecord::Base
 	has_many :languages_spoken
 	has_many :languages, through: :languages_spoken
 
+  has_many :visitor_reviews, through: :visitor_meetups, source: :reviews
+  has_many :ambassador_reviews, through: :ambassador_meetups, source: :reviews
+
 	has_many :reviews_given, class_name: "Review", foreign_key: "reviewer_id"
 	has_many :reviews_received, class_name: "Review", foreign_key: "reviewee_id", dependent: :destroy
 
@@ -35,6 +38,13 @@ class User < ActiveRecord::Base
 
   def has_specialty?(specialty)
     self.specialties.any? {|s| s == specialty}
+  end
+
+  def empty_reviews(type)
+    if type == :visitor
+      self.visitor_meetups.all
+    else
+    end
   end
 
 
