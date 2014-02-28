@@ -5,7 +5,8 @@ describe UsersController, :type => :controller do
 
   describe "#update" do
     it "the user is able to update his profile." do
-      put :update, id: user.id, email: 'new_email@dbc.com'
+      ApplicationController.any_instance.stub(:current_user).and_return(user)
+      put :update, id: user.id, user: {email: 'new_email@dbc.com', phone: '123', gender: 'male', bio: 'blah blah', age: 32}
       expect(User.find(user.id).email).to eq('new_email@dbc.com')
     end
   end
