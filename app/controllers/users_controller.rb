@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to user_path(@user)
     else
-      render template: 'edit'   
+      render 'edit'   
     end
   end
 
@@ -26,9 +26,9 @@ class UsersController < ApplicationController
 
   def dashboard
     @user = current_user
-    @visitor_tours = @user.visitor_meetups
+    @visitor_tours = @user.visitor_meetups.where('date_time > ?', Time.now)
     @visitor_incomplete_reviews = @user.empty_reviews(:visitor)
-    @ambassador_tours = @user.ambassador_meetups
+    @ambassador_tours = @user.ambassador_meetups.where('date_time > ?', Time.now)
     @ambassador_incomplete_reviews = @user.empty_reviews(:ambassador)
     @ambassador_overall_rating = @user.rating(:ambassador)
     @ambassador_ratings = @user.all_ratings(:ambassador) 

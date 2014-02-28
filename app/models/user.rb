@@ -42,9 +42,9 @@ class User < ActiveRecord::Base
 
   def empty_reviews(type)
     if type == :visitor
-      self.visitor_meetups.all - self.visitor_reviews.map{|r| r.meetup}
+      self.visitor_meetups.where('date_time < ?', Time.now) - self.visitor_reviews.map{|r| r.meetup}
     else
-      self.ambassador_meetups.all - self.ambassador_reviews.map{|r| r.meetup}
+      self.ambassador_meetups.where('date_time < ?', Time.now) - self.ambassador_reviews.map{|r| r.meetup}
     end
   end
 
@@ -66,7 +66,12 @@ class User < ActiveRecord::Base
     reviews_received.where('reviewee_id = ?', id)
   end
 
-def self.from_omniauth(auth)
+  def find_meetup(reviewee)
+    @user_meetups = Meetup.where('ambassador_id = ? OR visitor_id = ?', id, id)
+    @meetup = @user_meetups.select{|m| m.reviews.all && (m.ambassador_id == reviewee.id || m.visitor.id == reviewee.id)}.first
+  end  
+
+  def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
       user.provider = auth.provider
       user.uid = auth.uid

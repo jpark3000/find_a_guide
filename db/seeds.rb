@@ -48,14 +48,14 @@ end
 
 user.visitor_meetups.create!(ambassador_id: (2), 
                              tour_id: (rand(200)+1), 
-                             date_time: rand(2.months).ago, 
+                             date_time: [rand(2.months).ago, rand(2.months).from_now].sample, 
                              address: Faker::Address.street_address)
 
 User.all.each do |u|
   10.times do
     u.visitor_meetups.create!(ambassador_id: (rand(50)+1), 
                               tour_id: (rand(200)+1), 
-                              date_time: rand(10.years).ago, 
+                              date_time: [rand(2.months).ago, rand(2.months).from_now].sample,
                               address: Faker::Address.street_address)
   end
 end

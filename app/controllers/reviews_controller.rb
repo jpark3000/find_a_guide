@@ -1,18 +1,24 @@
+require 'pry'
+
 class ReviewsController < ApplicationController
   def create
     @review = Review.new(create_params)
 
     if @review.save
-      redirect_to :root
+      redirect_to dashboard_path
     else
-      redirect_to :root
+      @errors = @review.errors.full_messages
+
+      flash[:message] = @errors
+
+      redirect_to :back
     end
 
   end
 
   def new
     @reviewee = User.find(params["user_id"])
-    @meetup = current_user.visitor_meetups.find_by_ambassador_id(@reviewee.id)
+    @meetup = current_user.find_meetup(@reviewee)
     @rating_options = (1..5).to_a
     @review = Review.new
   end
