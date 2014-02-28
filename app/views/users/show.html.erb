@@ -2,22 +2,34 @@
     <div id="show_user_pic">
       <%= image_tag(@user.profile_pic) %>
     </div>
+
+    <% if @user.id == session[:user_id] %>
+      <div id="show_user_name">
+        Name: <%= @user.name %>
+      </div>
+    <% else %>
     <div id="show_user_name">
-      Name: <%= @user.name %>
+        First Name: <%= @user.first_name %>
     </div>
-    <div id="show_user_email">
-      Email: <%= @user.email %>
-    </div>
-    <div id="show_user_phone">
-      Phone: <%= @user.phone %>
-    </div>
-    <div id="show_user_gender">
-      Gender: <%= @user.gender %>
-    </div>
-    <div id="show_user_age">
-      Age: <%= @user.age %>
-    </div>
+    <% end %>
+
     <div id="show_user_bio">
       Bio: <%= @user.bio %>
     </div>
+
+    <% if @user.id == session[:user_id] %>
+      <h3> Your Private Information </h3>
+      <div id="show_user_email">
+        Email: <%= @user.email %>
+      </div>
+      <div id="show_user_phone">
+        Phone: <%= @user.phone %>
+      </div>
+      <div id="show_user_gender">
+        Gender: <%= @user.gender %>
+      </div>
+      <div id="show_user_age">
+        Age: <%= @user.age %>
+      </div>
+    <% end %>
 </div>
