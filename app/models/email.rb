@@ -11,8 +11,8 @@ class Email
   def self.new_request(visitor, ambassador)
     html = render_to_string "new_request"
     # text = strip_tags(html)    
-    message = {:to => @recipient.email, :html => html, :from => 'postmaster@sandbox57336.mailgun.org', 
-      :subject => 'A New Visitor Needs Your Help!', "h:Reply-To" => @sender.fake_email}
+    message = {:to => ambassador.email, :html => html, :from => 'postmaster@sandbox57336.mailgun.org', 
+      :subject => 'A New Visitor Needs Your Help!', "h:Reply-To" => visitor.fake_email}
     self.send_message(message)
   end
 end
