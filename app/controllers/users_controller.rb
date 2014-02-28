@@ -11,6 +11,17 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user = current_user
+    @user.attributes = user_params
+    if @user.save
+      redirect_to user_path(@user)
+    else
+      render template: 'edit'   
+    end
+  end
+
+  def show
+    @user = User.find(params[:id])
   end
 
   def dashboard
@@ -21,5 +32,11 @@ class UsersController < ApplicationController
     @ambassador_incomplete_reviews = @user.empty_reviews(:ambassador)
     @ambassador_overall_rating = @user.rating(:ambassador)
     @ambassador_ratings = @user.all_ratings(:ambassador) 
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:email, :phone, :gender, :age, :bio)
   end
 end

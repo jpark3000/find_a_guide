@@ -39,7 +39,13 @@ end
 
 group :test do
   gem 'shoulda-matchers'
+  gem 'capybara', '2.0.3'
+  gem 'rack_session_access'
+  gem 'database_cleaner'
 end
+
+gem 'dotenv-rails'
+gem "rest-client", "~> 1.6.7"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'

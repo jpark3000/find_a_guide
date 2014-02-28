@@ -4,6 +4,7 @@ class ToursController < ApplicationController
     @selected_tour = Tour.find(params[:id])
   end
 
+
   def new
     @ambassador = current_user
     @specialties = Specialty.all
@@ -14,4 +15,5 @@ class ToursController < ApplicationController
 
   def index
   end
+
 end
