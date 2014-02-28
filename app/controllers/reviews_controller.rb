@@ -5,7 +5,11 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to :root
     else
-      redirect_to :root
+      @errors = @review.errors.full_messages
+
+      flash[:message] = @errors
+
+      redirect_to :back
     end
 
   end
