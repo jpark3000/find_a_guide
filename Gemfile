@@ -41,6 +41,9 @@ group :test do
   gem 'shoulda-matchers'
 end
 
+gem 'dotenv-rails'
+gem "rest-client", "~> 1.6.7"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
