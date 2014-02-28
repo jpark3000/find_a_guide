@@ -1,38 +1,93 @@
 <h2 id="dashboard_title">Dashboard</h2>
 <div id="visitor_profile">
   <h3 class="profile_title">Visitor Profile</h3>
-  <div class="profile_tours">
+
+  <div class="profile_section_title">
     <h4 class="profile_tours_title">Tours</h4>
     <% @visitor_tours.each do |t| %>
       <%= link_to user_meetup_path(t.ambassador,t) do %>
         <div class="card">
           <%= image_tag(t.ambassador.profile_pic(t.ambassador.uid)) %>
-          <span class="ambassador_name_card"><%= t.ambassador.first_name %></span>
-          <span class="ambassador_tag_line_card"><%= t.ambassador.last_name %></span>
-          <span class="tour_description_card"><%= t.meetup_notes %></span>
+          <span class="card_name"><%= t.ambassador.first_name %></span>
+          <span class="card_tag"><%= t.ambassador.last_name %></span>
+          <span class="care_despcription"><%= t.meetup_notes %></span>
         </div>
       <% end %>
     <% end %>
   </div>
-  <div id="empty_reviews">
-    <h4 class="profile_reviews_title">How was your experience? Review:</h4>
-    <% @incomplete_reviews.each do |r| %>
-      <%= link_to new_user_review_path(r.ambassador,r) do %>
-        <div class="card">
-          <%= image_tag(r.ambassador.profile_pic(r.ambassador.uid)) %>
-          <span class="ambassador_name_card"><%= r.ambassador.first_name %></span>
-          <span class="ambassador_tag_line_card"><%= r.ambassador.last_name %></span>
-          <span class="tour_description_card"><%= r.meetup_notes %></span>
-        </div>
-      <% end %>      
-    <% end %>
-  </div>
+
+  <% if @visitor_incomplete_reviews.size > 0 %>
+    <div class="profile_section_title">
+      <h4 class="profile_reviews_title">How was your experience? Review:</h4>
+      <% @visitor_incomplete_reviews.each do |r| %>
+        <%= link_to new_user_review_path(r.ambassador,r) do %>
+          <div class="card">
+            <%= image_tag(r.ambassador.profile_pic(r.ambassador.uid)) %>
+            <span class="card_name"><%= r.ambassador.first_name %></span>
+            <span class="card_tag"><%= r.ambassador.last_name %></span>
+            <span class="care_despcription"><%= r.meetup_notes %></span>
+          </div>
+        <% end %>      
+      <% end %>
+    </div>
+  <% end %>
+
+  <% if @user.incomplete_information.size > 0 %>
+    <div class="profile_section_title">
+      <h4 class="profile_complete_info_title">Profile</h4>
+      <span class="profile_complete_info_tag">
+        Your profile still needs some information
+      </span>
+      <% @user.incomplete_information.each do |i| %>
+        <%= link_to edit_user_path(@user) do %>
+          Add your <%= i %>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
 </div>
 
-
-
-
-
 <div id="ambassador_profile">
-  <h3 class="profile_title">Ambassador Profile</h3>
+  <h3 class="profile_section_title">Ambassador Profile</h3>
+  <div class="profile_tours">
+    <h4 class="profile_tours_title">Upcoming Tours</h4>
+    <% @ambassador_tours.each do |t| %>
+      <%= link_to user_meetup_path(t.ambassador,t) do %>
+        <div class="card">
+          <%= image_tag(t.visitor.profile_pic(t.visitor.uid)) %>
+          <span class="card_name"><%= t.visitor.first_name %></span>
+          <span class="card_tag"><%= t.visitor.last_name %></span>
+          <span class="care_despcription"><%= t.meetup_notes %></span>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="ambassador_ratings_section"></div>
+    <h3 class="profile_section_title">Your Ratings</h3>
+    <div id="ambassador_overall_rating">
+      Overall rating: <%= @ambassador_overall_rating %>
+    </div>
+    <div id="ambassador_ratings">
+      <%= @user.all_ratings(:ambassador).each do |r| %>
+        <span class="rating"><%= r.rating %></span>
+      <% end %>
+    </div>
+
+  </div>
+
+  <% if @ambassador_incomplete_reviews.size > 0 %>
+    <div class="profile_section_title">
+      <h4 class="profile_reviews_title">How was your experience? Review:</h4>
+      <% @ambassador_incomplete_reviews.each do |r| %>
+        <%= link_to new_user_review_path(r.ambassador,r) do %>
+          <div class="card">
+            <%= image_tag(r.visitor.profile_pic(r.visitor.uid)) %>
+            <span class="card_name"><%= r.visitor.first_name %></span>
+            <span class="card_tag"><%= r.visitor.last_name %></span>
+            <span class="care_despcription"><%= r.meetup_notes %></span>
+          </div>
+        <% end %>      
+      <% end %>
+    </div>
+  <% end %>
 </div>
