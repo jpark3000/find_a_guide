@@ -1,6 +1,6 @@
 class MeetupsController < ApplicationController
   def index
-    @ambassador = current_user
+    @ambassador = User.find(params[:user_id])
     @tours = @ambassador.ambassador_meetups
   end
 
