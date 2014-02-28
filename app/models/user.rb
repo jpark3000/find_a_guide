@@ -29,6 +29,10 @@ class User < ActiveRecord::Base
     return "http://graph.facebook.com/#{uid}/picture"
   end
 
+  def open_information
+    [email,phone,gender,age]
+  end
+
 
 
 	# def review_score
