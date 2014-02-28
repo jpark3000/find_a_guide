@@ -27,6 +27,8 @@ var markers = [];
 var marker_id = 0
 
 $(document).ready(function() {
+  var userId = $('#availablity_title').data('id')
+  console.log(userId);
 	var map;
 
   var mapOptions = {
@@ -66,7 +68,7 @@ $(document).ready(function() {
                     longitude: user_marker.position['e']
                    }
 
-        $.post('/tours', data, function() {
+        $.post('/users/' + userId + '/tours', data, function() {
           console.log('yea!')
         });
       });

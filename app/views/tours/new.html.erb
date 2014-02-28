@@ -1,6 +1,6 @@
 
 <div id="ambassador_avaliablity">
-  <span id="availablity_title">Availability</span>
+  <span id="availablity_title" data-id="<%= @ambassador.id %>">Availability</span>
   <%= form_for(@ambassador) do |f| %>
     <%= f.radio_button :ambassador_avaliablity, "true", checked: @ambassador.is_ambassador, class: 'availablity_button'%>
     <%= f.label :ambassador_avaliablity, "Available" %>

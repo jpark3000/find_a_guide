@@ -11,6 +11,7 @@ class ToursController < ApplicationController
   end
 
   def create
+    puts "THSE ARE THE PARAMS************** #{params}"
   end
 
   def index
