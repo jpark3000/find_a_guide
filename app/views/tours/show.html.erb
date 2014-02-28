@@ -1,0 +1,38 @@
+<div id="ambassador">
+  <div id="ambassador_first_name"><%= @ambassador.first_name %></div>
+  <div id="ambassador_last_name"><%= @ambassador.last_name %></div>
+  <div id="ambassador_tag_line"><%= @ambassador.tagline %></div>
+  <div id="ambassador_rating"><%= @ambassador.rating %></div>
+    <% @ambassador.specialties.each do |s| %>
+      <span class="specialty"><%= s.specialty %></span>
+    <% end %>
+  </div>
+</div>
+
+<div id="ambassador_info">
+  <h2 id="ambassador_bio_title">Bio:</h2>
+  <div id="ambassador_bio">
+    <%= @ambassador.bio %>
+  </div>
+</div>
+
+<div id="seleced_tour_info">
+  <div id="selected_tour"></div>
+  <h3 id="selected_tour"></h3>
+  <h2 id="tour_info_title">This tour's info:</h2>
+  <div id="tour_description">
+    <%= @selected_tour.description %>
+  </div>
+</div>
+
+<% if @ambassador.tours.size > 1 %>
+  <div id="more_tours">
+    <h3 id="more_tours_title">See <%= @ambassador.first_name %>'s other tours:</h3>
+    <% @ambassador.tours.select{|t| t != @selected_tour}.each do |t| %>
+      <h2 id="tour_info_title">This tour's info:</h2>
+      <div id="tour_description">
+        <%= t.description %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

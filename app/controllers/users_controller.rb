@@ -1,4 +1,15 @@
 class UsersController < ApplicationController
-	def edit
-	end
+
+  def index
+    @specialties = Specialty.all
+    @languages = Language.all
+    @tours = Tour.all
+  end
+
+  def edit
+  end
+
+  def update
+  end
+
 end
