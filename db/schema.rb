@@ -77,7 +77,6 @@ ActiveRecord::Schema.define(version: 20140227160602) do
     t.string   "birthday"
     t.boolean  "is_ambassador",           default: false
     t.boolean  "ambassador_availability", default: false
-
     t.string   "tagline"
     t.string   "anonymous_email"
     t.integer  "authentication_id"
