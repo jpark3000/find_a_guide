@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def index
     @specialties = Specialty.all
     @languages = Language.all
@@ -10,4 +11,5 @@ class UsersController < ApplicationController
 
   def update
   end
+
 end
