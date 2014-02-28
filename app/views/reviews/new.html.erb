@@ -1,0 +1,23 @@
+<div id="reviewee_information">
+  <span id="reviewee_pic"><%= image_tag(@reviewee.profile_pic) %></span>
+  <h2 id="reviewee_name_title"><%= @reviewee.name %></h2>
+  <span id="review_meetup_address"><%= @meetup.address %></span>
+  <span id="review_meetup_date"><%= @meetup.date_time %></span>
+</div>
+
+<div id="reviewee_form">
+  <%= form_for [current_user, @review] do |f| %>
+    <div id="reviewee_rating">
+      Rating:
+      <%= f.select :rating, options_for_select(@rating_options) %> 
+    </div>
+
+    <%= f.text_area :comment, cols: 40, rows: 4, 
+                    :class => 'experience', 
+                    :placeholder => 'How was your experience?' %>
+    <%= f.submit %>
+  <% end %>
+</div>
+
+    
+

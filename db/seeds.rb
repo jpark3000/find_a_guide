@@ -18,10 +18,12 @@ l3 = Language.create!(language: "Korean")
 l4 = Language.create!(language: "German")
 
 
-
-user = User.create!(first_name: "user", last_name: 'user', email: 'email@email.com', bio: 'this is my bio', gender: 'male',
-                   phone: '3127592048', age: 25, tagline: "It's gonna be a good time.",
-                   is_ambassador: true)
+user = User.create!(provider: "facebook", uid: "100007876298770", 
+                    oauth_token: "AAFSZAkl6RDMBAPXi7hnqAlUza8MY83HTLJOZBgbtelhwbCO96ZBSnaASNcsX8xuAdrrir5M7FNkyp76twZBKCKu5FueFgQIrHUNloT6508RSh2q5h3Aiclw8KbwkCJzWlnwPBYZBdoWnzVwLRKZBoGoZAAXbDDvC9SHbwicZBCRBAUgunK42VuB", 
+                    oauth_expires_at: "2000-01-01 03:00:01", first_name: "Steven", last_name: "Spiel", 
+                    email: "steven_rvqtnhl_spiel@tfbnw.net", phone: nil, username: nil, bio: nil, 
+                    gender: nil, age: nil, is_ambassador: false, ambassador_availability: false, 
+                    tagline: nil, anonymous_email: nil, authentication_id: nil)
 
 gender = ['male','female']
 boolean = [true,false]
@@ -42,4 +44,18 @@ user.languages_spoken.create(language_id:1)
   user.tours.create!(longitude: Faker::Address.longitude,
                      latitude: Faker::Address.latitude,
                      description: Faker::Lorem.paragraphs.join("\n\n"))
+end
+
+user.visitor_meetups.create!(ambassador_id: (2), 
+                             tour_id: (rand(200)+1), 
+                             date_time: rand(2.months).ago, 
+                             address: Faker::Address.street_address)
+
+User.all.each do |u|
+  10.times do
+    u.visitor_meetups.create!(ambassador_id: (rand(50)+1), 
+                              tour_id: (rand(200)+1), 
+                              date_time: rand(10.years).ago, 
+                              address: Faker::Address.street_address)
+  end
 end

@@ -1,0 +1,10 @@
+<%= form_for [current_user, @meetup] do |f| %>
+  <div id="meetup_header_stretch_map_canvas"></div>
+  <div id="meetup_info_edit">
+    <%= select_date(@meetup.date_time) %>
+    <div id="meetup_participants">
+      
+    </div>
+    <%= f.text_area :meetup_notes %>
+  </div>
+<% end %>

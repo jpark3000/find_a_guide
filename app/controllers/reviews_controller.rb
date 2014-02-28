@@ -3,7 +3,10 @@ class ReviewsController < ApplicationController
   end
 
   def new
-    @user = User.first
+    @reviewee = User.find(params["user_id"])
+    @meetup = current_user.visitor_meetups.find_by_ambassador_id(@reviewee.id)
+    @rating_options = (1..5).to_a
+    @review = Review.new
   end
 
   def update
