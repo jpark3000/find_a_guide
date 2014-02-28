@@ -6,6 +6,9 @@
     <div id="edit_user_name">
       <%= @user.name %>
     </div>
+    <div id="edit_user_bio">
+      <%= f.text_area :bio, :placeholder => 'bio' %>
+    </div>
     <div id="edit_user_email">
       <%= f.text_field :email, :placeholder => 'email' %>
     </div>
@@ -17,9 +20,6 @@
     </div>
     <div id="edit_user_age">
       <%= f.text_field :age, :placeholder => 'age' %>
-    </div>
-    <div id="edit_user_bio">
-      <%= f.text_area :bio, :placeholder => 'bio' %>
     </div>
     <%= f.submit %>
   <% end %>
