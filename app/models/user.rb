@@ -17,13 +17,6 @@ class User < ActiveRecord::Base
 
 	validates :first_name, :last_name, :email, presence: true
 
-
-	def edit
-	end
-
-	def update
-	end
-
 	def name
  		"#{first_name} #{last_name}"
 	end
@@ -31,6 +24,12 @@ class User < ActiveRecord::Base
 	def rating
 		"#{rand(5)} stars"
 	end
+
+  def profile_pic(uid = self.uid)
+    return "http://graph.facebook.com/#{uid}/picture"
+  end
+
+
 
 	# def review_score
 	# 	self.reviews_received
