@@ -1,10 +1,4 @@
 
-
-
-
-
-
-
 $(document).ready(function() {
 	var map;
 	function initialize() {
