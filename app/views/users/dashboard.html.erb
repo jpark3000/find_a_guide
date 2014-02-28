@@ -4,14 +4,27 @@
   <div class="profile_tours">
     <h4 class="profile_tours_title">Tours</h4>
     <% @visitor_tours.each do |t| %>
-      <%= link_to user_meetup_path(@user,t) do %>
-        <div class="ambassador_tour_card">
+      <%= link_to user_meetup_path(t.ambassador,t) do %>
+        <div class="card">
           <%= image_tag(t.ambassador.profile_pic(t.ambassador.uid)) %>
           <span class="ambassador_name_card"><%= t.ambassador.first_name %></span>
           <span class="ambassador_tag_line_card"><%= t.ambassador.last_name %></span>
           <span class="tour_description_card"><%= t.meetup_notes %></span>
         </div>
       <% end %>
+    <% end %>
+  </div>
+  <div id="empty_reviews">
+    <h4 class="profile_reviews_title">How was your experience? Review:</h4>
+    <% @incomplete_reviews.each do |r| %>
+      <%= link_to new_user_review_path(r.ambassador,r) do %>
+        <div class="card">
+          <%= image_tag(r.ambassador.profile_pic(r.ambassador.uid)) %>
+          <span class="ambassador_name_card"><%= r.ambassador.first_name %></span>
+          <span class="ambassador_tag_line_card"><%= r.ambassador.last_name %></span>
+          <span class="tour_description_card"><%= r.meetup_notes %></span>
+        </div>
+      <% end %>      
     <% end %>
   </div>
 </div>
