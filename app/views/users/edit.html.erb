@@ -1,2 +1,29 @@
-
-
+<div id="edit_user_info">
+  <%= form_for(@user) do |f| %>
+    <span id="edit_user_pic">
+      <%= image_tag(@user.profile_pic) %>
+    </span>
+    <div id="edit_user_name">
+      <%= @user.name %>
+    </div>
+    <div id="edit_user_email">
+      <%= f.text_field :email, :placeholder => 'email' %>
+    </div>
+    <div id="edit_user_phone">
+      <%= f.text_field :phone, :placeholder => 'phone' %>
+    </div>
+    <div id="edit_user_phone">
+      <%= f.text_field :phone, :placeholder => 'phone' %>
+    </div>
+    <div id="edit_user_gender">
+      <%= f.text_field :gender, :placeholder => 'gender' %>
+    </div>
+    <div id="edit_user_age">
+      <%= f.text_field :age, :placeholder => 'age' %>
+    </div>
+    <div id="edit_user_bio">
+      <%= f.text_area :bio, :placeholder => 'bio' %>
+    </div>
+    <%= f.submit %>
+  <% end %>
+</div>
