@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 20140227160602) do
     t.string   "username"
     t.text     "bio"
     t.string   "gender"
-    t.integer  "age"
+    t.string   "birthday"
     t.boolean  "is_ambassador"
     t.boolean  "ambassador_availability"
     t.string   "tagline"
