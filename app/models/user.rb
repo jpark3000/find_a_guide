@@ -29,6 +29,14 @@ class User < ActiveRecord::Base
     return "http://graph.facebook.com/#{uid}/picture"
   end
 
+  def open_information
+    [email,phone,gender,age]
+  end
+
+  def has_specialty?(specialty)
+    self.specialties.any? {|s| s == specialty}
+  end
+
 
 
 	# def review_score

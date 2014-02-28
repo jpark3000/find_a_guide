@@ -1,5 +1,13 @@
 class ReviewsController < ApplicationController
   def create
+    @review = Review.new(create_params)
+
+    if @review.save
+      redirect_to :root
+    else
+      redirect_to :root
+    end
+
   end
 
   def new
@@ -10,5 +18,10 @@ class ReviewsController < ApplicationController
   end
 
   def update
+  end
+
+  private
+  def create_params
+    params.require(:review).permit(:rating, :comment, :meetup_id, :reviewee_id, :reviewer_id)
   end
 end

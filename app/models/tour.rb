@@ -4,6 +4,4 @@ class Tour < ActiveRecord::Base
 
 	validates :ambassador_id, :longitude, :latitude, :description, presence: true
 
-	def index
-	end
 end

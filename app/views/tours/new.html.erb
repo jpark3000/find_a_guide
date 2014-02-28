@@ -1,10 +1,37 @@
 
+<div id="ambassador_avaliablity">
+  <span id="availablity_title">Availability</span>
+  <%= form_for(@ambassador) do |f| %>
+    <%= f.radio_button :ambassador_avaliablity, "true", checked: @ambassador.is_ambassador, class: 'availablity_button'%>
+    <%= f.label :ambassador_avaliablity, "Available" %>
+    <%= f.radio_button :ambassador_avaliablity, "true", checked: @ambassador.is_ambassador == false, class: 'availablity_button'%>
+    <%= f.label :ambassador_avaliablity, "Unavailable" %>
+    </div>
+
+
+    <div id="where_guide_title">Where can you be  guide?</div>
+
+
+
+
+    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places" %>
+
+
+    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+    <div id="map-canvas"></div>
 
 
 
 
 
 
-
-
+    <div id="choose_specialties">
+      <h2 id="specialties_title">Specialties:</h2>
+      <% @specialties.each do |s| %>
+        <span class="specialty_name"><%= s.specialty %></span>
+        <%= f.check_box s.specialty, class: 'pick_specialty', checked: @ambassador.has_specialty?(s) %>
+      <% end %>
+    <%= f.submit %>
+    </div>
+  <% end %>
 
