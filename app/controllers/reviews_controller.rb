@@ -12,7 +12,7 @@ class ReviewsController < ApplicationController
 
   def new
     @reviewee = User.find(params["user_id"])
-    @meetup = current_user.visitor_meetups.find_by_ambassador_id(@reviewee.id)
+    @meetup = Meetup.where('ambassador_id = ? AND visitor_id = ?', (current_user.id || @reviewee.id), (current_user.id || @reviewee.id)).first
     @rating_options = (1..5).to_a
     @review = Review.new
   end

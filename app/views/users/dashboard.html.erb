@@ -68,8 +68,9 @@
       Overall rating: <%= @ambassador_overall_rating %>
     </div>
     <div id="ambassador_ratings">
-      <%= @user.all_ratings(:ambassador).each do |r| %>
-        <span class="rating"><%= r.rating %></span>
+      <% @user.all_ratings(:ambassador).each do |r| %>
+        <span class="rating"><%= r.rating %> - </span>
+        <span class="rating_comments"><%= r.comment %></span>
       <% end %>
     </div>
 
@@ -79,12 +80,12 @@
     <div class="profile_section_title">
       <h4 class="profile_reviews_title">How was your experience? Review:</h4>
       <% @ambassador_incomplete_reviews.each do |r| %>
-        <%= link_to new_user_review_path(r.ambassador,r) do %>
+        <%= link_to new_user_review_path(r.visitor,r) do %>
           <div class="card">
             <%= image_tag(r.visitor.profile_pic(r.visitor.uid)) %>
             <span class="card_name"><%= r.visitor.first_name %></span>
             <span class="card_tag"><%= r.visitor.last_name %></span>
-            <span class="care_despcription"><%= r.meetup_notes %></span>
+            <span class="card_despcription"><%= r.meetup_notes %></span>
           </div>
         <% end %>      
       <% end %>
