@@ -27,6 +27,8 @@ var markers = [];
 var marker_id = 0
 
 $(document).ready(function() {
+  var userId = $('#availablity_title').data('id')
+  console.log(userId);
 	var map;
 
   var mapOptions = {
@@ -60,14 +62,15 @@ $(document).ready(function() {
       var infowindow = new google.maps.InfoWindow({content : iw.template[0] });
 
       $(infowindow.content).find('#new_tour_button').on('click', function() {
-        var data = {
-                    description: $($($(this).parent()[0]).find('.tour_text')[0]).html(),
-                    latitude: user_marker.position['d'],
-                    longitude: user_marker.position['e']
+        var data = {tour: {
+                            description: $($($(this).parent()[0]).find('.tour_text')[0]).html(),
+                            latitude: user_marker.position['d'],
+                            longitude: user_marker.position['e']
+                          }
                    }
 
-        $.post('/tours', data, function() {
-          console.log('yea!')
+        $.post('/users/' + userId + '/tours', data, function(response) {
+          $('body').append('<p>' + response.message + '</p>')
         });
       });
 
