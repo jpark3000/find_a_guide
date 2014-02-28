@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to user_path(@user)
     else
-      render template: 'users/edit'   
+      render 'edit'   
     end
   end
 
