@@ -39,6 +39,9 @@ end
 
 group :test do
   gem 'shoulda-matchers'
+  gem 'capybara', '2.0.3'
+  gem 'rack_session_access'
+  gem 'database_cleaner'
 end
 
 gem 'dotenv-rails'
