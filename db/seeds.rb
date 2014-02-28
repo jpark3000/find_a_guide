@@ -27,19 +27,9 @@ gender = ['male','female']
 boolean = [true,false]
 
 50.times do
-<<<<<<< HEAD
-  User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, 
-               email: Faker::Internet.email, bio: Faker::Lorem.sentences.join(" "), 
-               gender: gender.sample, phone: Faker::PhoneNumber.cell_phone, age: (18..60).to_a.sample, 
-||||||| merged common ancestors
-  User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, 
-               email: Faker::Internet.email, profile_pic: 'pic', bio: Faker::Lorem.sentences.join(" "), 
-               gender: gender.sample, phone: Faker::PhoneNumber.cell_phone, age: (18..60).to_a.sample, 
-=======
   User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
                email: Faker::Internet.email, bio: Faker::Lorem.sentences.join(" "),
                gender: gender.sample, phone: Faker::PhoneNumber.cell_phone, age: (18..60).to_a.sample,
->>>>>>> a624ea57786522c2d4631cfd2b437c99f69a84a3
                tagline: Faker::Commerce.product_name, is_ambassador: boolean.sample)
 end
 
