@@ -8,13 +8,14 @@
 <div id="reviewee_form">
   <%= form_for [current_user, @review] do |f| %>
     <div id="reviewee_rating">
-      <%= f.label(:rating, "Rating:") %>
       <%= f.select :rating, options_for_select(@rating_options) %>
     </div>
-      <%= f.label(:comment, "Comment:") %>
       <%= f.text_area :comment, cols: 40, rows: 4,
                       :class => 'experience',
                       :placeholder => 'How was your experience?' %>
+      <%= f.hidden_field :meetup_id, :value => @meetup.id %>
+      <%= f.hidden_field :reviewee_id, :value => @reviewee.id %>
+      <%= f.hidden_field :reviewer_id, :value => @meetup.visitor_id %>
       <%= f.submit %>
   <% end %>
 </div>
