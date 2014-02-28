@@ -4,11 +4,10 @@
       <span id="right_hand_navbar">
         <% if current_user %>
           <% if current_user.is_ambassador %>
-            <%= link_to ambassadors_path do %><span id="user_ambassador_icon"></span><% end %>
+            <%= link_to new_user_tour_path(current_user.id) do %><span id="user_manage_tour_icon"></span><% end %>
           <% end %>
           <%= link_to dashboard_path do %><span id="user_dashboard_icon"></span><% end %>
-          <%= link_to new_user_tour_path(current_user.id) do %><span id="user_manage_tour_icon"></span><% end %>
-          <%= link_to '#' do %><%= image_tag(current_user.profile_pic) %><% end %>
+          <%= image_tag(current_user.profile_pic) %>
           <%= link_to "Sign out", signout_path, id: "sign_out" %>
         <% else %>
           <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
