@@ -15,7 +15,7 @@
     <% @tours.each do |t| %>
       <%= link_to tour_path(t) do %>
         <div class="ambassador_tour_card">
-          <%= image_tag(t.ambassador.profile_pic) %>
+          <%= image_tag(t.ambassador.profile_pic(t.ambassador.uid)) %>
           <span class="ambassador_name_card"><%= t.ambassador.first_name %></span>
           <span class="ambassador_tag_line_card"><%= t.ambassador.first_name %></span>
           <span class="ambassador_rating_card"><%= t.ambassador.rating %></span>

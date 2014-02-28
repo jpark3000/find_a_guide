@@ -18,6 +18,7 @@ l3 = Language.create!(language: "Korean")
 l4 = Language.create!(language: "German")
 
 
+
 user = User.create!(first_name: "user", last_name: 'user', email: 'email@email.com', bio: 'this is my bio', gender: 'male',
                    phone: '3127592048', age: 25, tagline: "It's gonna be a good time.",
                    is_ambassador: true)
