@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20140227160602) do
   end
 
   create_table "reviews", force: true do |t|
-    t.integer  "rating"
+    t.integer  "rating" 
     t.text     "comment"
     t.integer  "meetup_id"
     t.integer  "reviewer_id"
