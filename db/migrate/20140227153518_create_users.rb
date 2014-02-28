@@ -13,7 +13,7 @@ class CreateUsers < ActiveRecord::Migration
     	t.string :username
     	t.text :bio
     	t.string :gender
-    	t.string :birthday
+    	t.string :age
     	t.boolean :is_ambassador, :default => 'false'
     	t.boolean :ambassador_availability, :default => 'false'
 
