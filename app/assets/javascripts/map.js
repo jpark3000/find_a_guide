@@ -1,7 +1,7 @@
 var tour_description_template = "<div id='tour_desc'>\
                                   <form id='tour_form'>\
                                     <textarea rows='6' cols='25'></textarea>\
-                                    <br><button type='button'>Submit</button>\
+                                    <br><button type='button'>Save</button>\
                                   </form>\
                                 </div>"
 
@@ -28,23 +28,24 @@ $(document).ready(function() {
 
 	function initialize() {
 		var mapOptions = {
-		  center: new google.maps.LatLng(0, 0),
-		  zoom: 3,
+		  center: new google.maps.LatLng(20, 0),
+		  zoom: 2,
 		  streetViewControl: false,
 		  styles: styleOptions
 		};
 
 		map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 	
-	  var markers = [];
-	  // var map = new google.maps.Map(document.getElementById('map-canvas'), {
-	  //   mapTypeId: google.maps.MapTypeId.ROADMAP
-	  // });
 
-	  var defaultBounds = new google.maps.LatLngBounds(
-	      new google.maps.LatLng(-60, -150),
-	      new google.maps.LatLng(60, 150));
-	  map.fitBounds(defaultBounds);
+	  var markers = [];
+	//   // var map = new google.maps.Map(document.getElementById('map-canvas'), {
+	//   //   mapTypeId: google.maps.MapTypeId.ROADMAP
+	//   // });
+
+	  // var defaultBounds = new google.maps.LatLngBounds(
+	  //     new google.maps.LatLng(-60, -150),
+	  //     new google.maps.LatLng(60, 150));
+	  // map.fitBounds(defaultBounds);
 			
 
 		google.maps.event.addListener(map, 'click', function(e) {
@@ -53,18 +54,15 @@ $(document).ready(function() {
         position: myLatLng,
         map: map
       })
-			google.maps.event.addListener(user_marker, 'click', function() {
-        infowindow.open(map, user_marker);
-      })
+      infowindow.open(map, user_marker);
+			// google.maps.event.addListener(user_marker, 'click', function() {
+   //      infowindow.open(map, user_marker);
+   //    })
 		});
   
     var infowindow = new google.maps.InfoWindow({
       content: tour_description_template
     });
-
-    // google.maps.event.addListener(user_markers, 'click', function() {
-    //   infowindow.open(map,user_marker);
-    // });
     
 
 		var input = (document.getElementById('pac-input'));
@@ -107,6 +105,7 @@ $(document).ready(function() {
     }
 
     map.fitBounds(bounds);
+    map.setZoom(15)
   });
 
   // Bias the SearchBox results towards places that are within the bounds of the
