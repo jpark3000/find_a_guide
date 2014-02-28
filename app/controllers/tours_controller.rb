@@ -11,4 +11,9 @@ class ToursController < ApplicationController
 
   def create
   end
+
+  def index
+    @ambassador = current_user
+    @tours = @ambassador.ambassador_meetups
+  end
 end
