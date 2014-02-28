@@ -17,3 +17,9 @@ nav {
 	float: right;
 }
 
+/* Home Page */
+
+#main_search {
+	text-align: center;
+	margin-top: 200px;
+}
