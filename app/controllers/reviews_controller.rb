@@ -1,3 +1,5 @@
+require 'pry'
+
 class ReviewsController < ApplicationController
   def create
     @review = Review.new(create_params)
@@ -16,7 +18,7 @@ class ReviewsController < ApplicationController
 
   def new
     @reviewee = User.find(params["user_id"])
-    @meetup = current_user.visitor_meetups.find_by_ambassador_id(@reviewee.id)
+    @meetup = current_user.find_meetup(@reviewee)
     @rating_options = (1..5).to_a
     @review = Review.new
   end
