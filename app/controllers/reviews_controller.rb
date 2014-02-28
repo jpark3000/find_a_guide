@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(create_params)
 
     if @review.save
-      redirect_to :root
+      redirect_to dashboard_path
     else
       @errors = @review.errors.full_messages
 
