@@ -9,5 +9,4 @@ class Meetup < ActiveRecord::Base
 						presence: true
   #TODO: verify that meetups are unique
 
-
 end

@@ -66,6 +66,11 @@ class User < ActiveRecord::Base
     reviews_received.where('reviewee_id = ?', id)
   end
 
+  def find_meetup(reviewee)
+    @user_meetups = Meetup.where('ambassador_id = ? OR visitor_id = ?', id, id)
+    @meetup = @user_meetups.select{|m| m.reviews.all && (m.ambassador_id == reviewee.id || m.visitor.id == reviewee.id)}.first
+  end  
+
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
       user.provider = auth.provider
