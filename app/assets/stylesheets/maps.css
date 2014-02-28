@@ -12,3 +12,8 @@
 	margin-top: 10px;
 	border-radius: 3px;
 }
+
+#tour_desc {
+	width: 200px;
+	height: 120px;
+}

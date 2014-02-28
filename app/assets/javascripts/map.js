@@ -1,7 +1,16 @@
+var tour_description_template = "<div id='tour_desc'>\
+                                  <form id='tour_form'>\
+                                    <textarea rows='6' cols='25'></textarea>\
+                                    <br><button type='button'>Submit</button>\
+                                  </form>\
+                                </div>"
+
+
+
+
 
 $(document).ready(function() {
 	var map;
-
   var styleOptions = [
                         {
                           "featureType": "poi",
@@ -40,12 +49,23 @@ $(document).ready(function() {
 
 		google.maps.event.addListener(map, 'click', function(e) {
 			var myLatLng = new google.maps.LatLng(e.latLng['d'], e.latLng['e'])
-			var marker = new google.maps.Marker({
-				position: myLatLng,
-				map: map
-			});
+      var user_marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map
+      })
+			google.maps.event.addListener(user_marker, 'click', function() {
+        infowindow.open(map, user_marker);
+      })
 		});
+  
+    var infowindow = new google.maps.InfoWindow({
+      content: tour_description_template
+    });
 
+    // google.maps.event.addListener(user_markers, 'click', function() {
+    //   infowindow.open(map,user_marker);
+    // });
+    
 
 		var input = (document.getElementById('pac-input'));
   	map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
