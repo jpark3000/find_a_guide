@@ -19,7 +19,7 @@ l4 = Language.create!(language: "German")
 
 
 user = User.create!(first_name: "user", last_name: 'user', email: 'email@email.com',
-                   profile_pic: 'pic', bio: 'this is my bio', gender: 'male',
+                   bio: 'this is my bio', gender: 'male',
                    phone: '3127592048', age: 25, tagline: "It's gonna be a good time.",
                    is_ambassador: true)
 
@@ -28,7 +28,7 @@ boolean = [true,false]
 
 50.times do
   User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, 
-               email: Faker::Internet.email, profile_pic: 'pic', bio: Faker::Lorem.sentences.join(" "), 
+               email: Faker::Internet.email, bio: Faker::Lorem.sentences.join(" "), 
                gender: gender.sample, phone: Faker::PhoneNumber.cell_phone, age: (18..60).to_a.sample, 
                tagline: Faker::Commerce.product_name, is_ambassador: boolean.sample)
 end
