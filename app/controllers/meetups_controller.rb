@@ -1,5 +1,7 @@
 class MeetupsController < ApplicationController
   def index
+    @ambassador = current_user
+    @tours = @ambassador.ambassador_meetups
   end
 
   def show

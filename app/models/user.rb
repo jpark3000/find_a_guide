@@ -33,6 +33,10 @@ class User < ActiveRecord::Base
     [email,phone,gender,age]
   end
 
+  def has_specialty?(specialty)
+    self.specialties.any? {|s| s == specialty}
+  end
+
 
 
 	# def review_score
