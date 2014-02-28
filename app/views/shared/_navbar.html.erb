@@ -7,7 +7,7 @@
             <%= link_to ambassadors_path do %><span id="user_ambassador_icon"></span><% end %>
           <% end %>
           <%= link_to dashboard_path do %><span id="user_dashboard_icon"></span><% end %>
-          <%= link_to new_tour_path do %><span id="user_manage_tour_icon"></span><% end %>
+          <%= link_to new_user_tour_path(current_user.id) do %><span id="user_manage_tour_icon"></span><% end %>
           <%= link_to '#' do %><%= image_tag(current_user.profile_pic) %><% end %>
           <%= link_to "Sign out", signout_path, id: "sign_out" %>
         <% else %>
