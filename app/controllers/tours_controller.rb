@@ -13,7 +13,5 @@ class ToursController < ApplicationController
   end
 
   def index
-    @ambassador = current_user
-    @tours = @ambassador.ambassador_meetups
   end
 end
