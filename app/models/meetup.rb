@@ -7,5 +7,6 @@ class Meetup < ActiveRecord::Base
 
 	validates :ambassador_id, :visitor_id, :date_time, :address, :tour_id,
 						presence: true
+  #TODO: verify that meetups are unique
 
 end
