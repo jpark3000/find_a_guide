@@ -11,7 +11,7 @@ class EmailsController < ApplicationController
    # text = strip_tags(html)
 
    message = {:to => @recipient.email, :html => html, :from => 'postmaster@sandbox57336.mailgun.org', :subject => params[:subject], "h:Reply-To" => @sender.fake_email}
-   Mailgun.send_message(message)
+   Email.send_message(message)
    
    render :text => "OK"
   end
