@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
 		"#{rand(5)} stars"
 	end
 
-  def profile_pic
+  def profile_pic(uid = self.uid)
     return "http://graph.facebook.com/#{uid}/picture"
   end
 
