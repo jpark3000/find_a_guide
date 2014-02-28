@@ -42,11 +42,12 @@ class User < ActiveRecord::Base
 
   def empty_reviews(type)
     if type == :visitor
-      self.visitor_meetups.all
+      self.visitor_meetups.all - self.visitor_reviews.map{|r| r.meetup}
     else
+      self.ambassador_meetups.all - self.ambassador_reviews.map{|r| r.meetup}
     end
   end
-
+  
 
 
 	# def review_score
