@@ -23,10 +23,12 @@ class MeetupsController < ApplicationController
   def update
     @meetup = Meetup.find(params[:id])
     @meetup.attributes = meetup_params
-    if @meetup.save
-      redirect_to user_meetup_path(current_user.id, @meetup.id)
-    else
-      render 'edit'   
+    respond_to do |format|
+      if @meetup.save
+        format.json{ render :json => {new_url: user_meetup_url(current_user.id, @meetup.id)}}
+      else
+        format.json{ render :json => {errors: @meetup.errors.full_messages} }
+      end
     end
   end
 
