@@ -2,11 +2,14 @@ FindAGuide::Application.routes.draw do
 
   # resources :authentications
 
+  match '/users/toggle_ambassador', to: 'users#ambassador_toggle', via: [:put]
+
   resources :users, only: [:edit, :update, :show] do
     resources :meetups, only: [:index, :show, :edit, :update]
     resources :reviews, only: [:index, :new, :create]
     resources :tours
   end
+
 
 
 
