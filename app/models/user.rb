@@ -21,6 +21,8 @@ class User < ActiveRecord::Base
 	validates :first_name, :last_name, :email, presence: true
   validates :email, :uid, uniqueness: true
 
+  after_create :create_alias_email
+
 	def name
  		"#{first_name} #{last_name}"
 	end
@@ -91,8 +93,10 @@ class User < ActiveRecord::Base
     end
   end
 
-
-
+  def create_alias_email
+    self.anonymous_email = 'user' + self.id.to_s + Time.now.to_i.to_s + '@sandbox57336.mailgun.org'
+    self.save
+  end
 
 end
 
