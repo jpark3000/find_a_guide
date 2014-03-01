@@ -29,12 +29,25 @@ class UsersController < ApplicationController
   def ambassador_toggle
     @user = current_user
 
-    if @user.is_ambassador == true
+    if @user.is_ambassador
       @user.update(is_ambassador: false)
       redirect_to :dashboard
     else
       @user.update(is_ambassador: true)
       redirect_to :dashboard
+    end
+
+  end
+
+  def ambassador_availability_toggle
+    @user = current_user
+
+    if @user.ambassador_availability
+      @user.update(ambassador_availability: false)
+      redirect_to new_user_tour_path(@user)
+    else
+      @user.update(ambassador_availability: true)
+      redirect_to new_user_tour_path(@user)
     end
 
   end
@@ -52,6 +65,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :phone, :gender, :age, :bio)
+    params.require(:user).permit(:email, :phone, :gender, :age, :bio, :tagline)
   end
 end

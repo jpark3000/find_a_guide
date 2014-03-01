@@ -12,7 +12,9 @@
           <%= link_to new_user_tour_path(current_user.id) do %><span id="user_manage_tour_icon"><%= image_tag 'ambassador.png', :class => 'navbar_icon' %></span><% end %>
         <% end %>
         <%= link_to dashboard_path do %><span id="user_dashboard_icon"><%= image_tag 'dashboard.png', :class => 'navbar_icon' %></span><% end %>
-        <%= image_tag current_user.profile_pic, :id => 'profile_pic' %>
+        <div id="nav_image_container">
+          <span id="nav_profile_pic" style="background-image:url('<%= current_user.profile_pic %>')"></span>
+        </div>
       <% else %>
         <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
       <% end %>
