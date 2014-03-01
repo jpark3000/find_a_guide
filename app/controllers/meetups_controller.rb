@@ -4,6 +4,9 @@ class MeetupsController < ApplicationController
     @tours = @ambassador.ambassador_meetups
   end
 
+  def create
+  end
+
   def show
     @meetup = Meetup.find(params[:id])
     @ambassador = @meetup.ambassador
