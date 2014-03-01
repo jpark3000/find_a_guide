@@ -30,7 +30,7 @@ var markers = [];
 var marker_id = 0;
 $(document).ready(function() {
 
-
+  console.log(coords)
   var mapOptions = {
     center: new google.maps.LatLng(initialLat, initialLng),
     zoom: 14,
@@ -42,12 +42,13 @@ $(document).ready(function() {
 		map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 
 
-    // $.each(coords, function(i,v) {
-    //   var myLatLng = new google.max.LatLng
-    //   $.each(coords[i], function(i,v) {
-    //     coords[i][i]
-    //   });
-    // });
+    $.each(coords, function(i,v) {
+      var myLatLng = new google.maps.LatLng(coords[i][0], coords[i][1])
+      var tour_marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map
+      });
+    });
 
 
 

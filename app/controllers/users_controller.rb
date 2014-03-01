@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     @specialties = Specialty.all
     @languages = Language.all
     @tours = Tour.near('Chicago, IL, US', 100)
-    gon.points = [[0,0],[30,100]]
+    gon.points = @tours.
     # puts "***************** 
 
     render 'index'
