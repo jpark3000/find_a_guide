@@ -42,9 +42,9 @@ class User < ActiveRecord::Base
 
   def empty_reviews(type)
     if type == :visitor
-      self.visitor_meetups.where('date_time < ?', Time.now).order('created_at') - self.visitor_reviews.map{|r| r.meetup}
+      self.visitor_meetups.where('date_time < ?', Time.now).order('date_time').reverse - self.visitor_reviews.map{|r| r.meetup}
     else
-      self.ambassador_meetups.where('date_time < ?', Time.now).order('created_at') - self.ambassador_reviews.map{|r| r.meetup}
+      self.ambassador_meetups.where('date_time < ?', Time.now).order('date_time').reverse - self.ambassador_reviews.map{|r| r.meetup}
     end
   end
 
