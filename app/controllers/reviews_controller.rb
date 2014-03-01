@@ -3,17 +3,13 @@ require 'pry'
 class ReviewsController < ApplicationController
   def create
     @review = Review.new(create_params)
-
-    if @review.save
-      redirect_to dashboard_path
-    else
-      @errors = @review.errors.full_messages
-
-      flash[:message] = @errors
-
-      redirect_to :back
+    respond_to do |format|
+      if @review.save
+        format.json{ render :json => {new_url: dashboard_url}}
+      else
+        format.json{ render :json => {errors: @review.errors.full_messages} }
+      end
     end
-
   end
 
   def new
