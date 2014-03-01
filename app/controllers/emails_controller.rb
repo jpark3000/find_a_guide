@@ -17,8 +17,8 @@ class EmailsController < ApplicationController
   end
 
   def new_request
-    @visitor = params[:visitor_id]
-    @ambassador = params[:ambassador_id]
+    @visitor = current_user
+    @ambassador = User.find(params[:ambassador_id])
     email_html = render_to_string "new_request"
     Email.new_request(@visitor, @ambassador, email_html)
   end

@@ -28,7 +28,7 @@ FindAGuide::Application.routes.draw do
 
   get '/thanks', to: 'marketing#thanks'
 
-  post '/contact_ambassador', to: 'emails#initial_contact'
+  post '/contact_ambassador', to: 'emails#new_request'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
