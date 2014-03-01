@@ -1,4 +1,3 @@
-require 'pry'
 
 class ReviewsController < ApplicationController
   def create
