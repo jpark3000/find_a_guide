@@ -272,6 +272,11 @@ nav {
   width: 100%;
 }
 
+.profile_section > h4 {
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+
 /* CARD */
 
 .card_image {
@@ -310,8 +315,6 @@ nav {
 
 
 /* AMBASSADOR PLACE TOURS */
-
-
 
 #ambassador_avaliablity {
     padding: 30px;
