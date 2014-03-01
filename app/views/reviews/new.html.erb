@@ -20,16 +20,10 @@
 
       <%= f.submit %>
   <% end %>
-
-  <%= flash[:message] %>
-
-
-<!--   <% flash.each do |key, msg| %>
-    <%= content_tag :div, msg, :id => key %>
-  <% end %>
- -->
-
 </div>
+<ul id="errors"></ul>
+<%= javascript_include_tag 'ajax' %>
+
 
 
 

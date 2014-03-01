@@ -2,11 +2,12 @@
   
   $("form").submit(function(e){
     e.preventDefault();
+    $("#errors").empty();
     var url = $('form').attr('action');
+    var method = $('form').attr('method');
     data = convertFormToJSON($('form'));
-    console.log(url)
     $.ajax({
-          type: "PUT",
+          type: method,
           url: url,
           data: data,
           success: checkError,
@@ -29,7 +30,7 @@ var convertFormToJSON = function (form){
 var checkError = function (response) {
   if (response.errors) {
     $.each(response.errors,function(index,value){
-      $("#errors").append(value);
+      $("#errors").append("<li>"+value+"</li>");
     });
   }
   else{
