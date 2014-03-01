@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140227160602) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "languages", force: true do |t|
     t.string   "language"
     t.datetime "created_at"
@@ -38,7 +41,7 @@ ActiveRecord::Schema.define(version: 20140227160602) do
   end
 
   create_table "reviews", force: true do |t|
-    t.integer  "rating" 
+    t.integer  "rating"
     t.text     "comment"
     t.integer  "meetup_id"
     t.integer  "reviewer_id"
