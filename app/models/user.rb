@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
 	has_many :visitor_meetups, class_name: "Meetup", foreign_key: "visitor_id"
 
 	validates :first_name, :last_name, :email, presence: true
+  validates :email, :uid, uniqueness: true
 
 	def name
  		"#{first_name} #{last_name}"
