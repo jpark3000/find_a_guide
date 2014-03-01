@@ -39,6 +39,8 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'faker'
   gem 'pry'
+
+  gem "factory_girl_rails", "~> 4.0"
 end
 
 group :test do
@@ -46,6 +48,7 @@ group :test do
   gem 'capybara', '2.0.3'
   gem 'rack_session_access'
   gem 'database_cleaner'
+  gem "factory_girl_rails", "~> 4.0"
 end
 
 gem 'dotenv-rails'
