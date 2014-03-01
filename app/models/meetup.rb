@@ -5,8 +5,7 @@ class Meetup < ActiveRecord::Base
 
 	has_many :reviews
 
-	validates :ambassador_id, :visitor_id, :date_time, :address, :tour_id,
-						presence: true
+	validates :ambassador_id, :visitor_id, presence: true
   #TODO: verify that meetups are unique
 
 end
