@@ -1,5 +1,5 @@
 var markers = []
-
+var centerCoords;
 $(document).ready(function() { 
   var input = (document.getElementById('pac-input'));
   // map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
@@ -38,13 +38,12 @@ $(document).ready(function() {
       bounds.extend(place.geometry.location);
     }; //end for loop
 
-    // console.log(bounds.getCenter().lat())
-    var data = { lat : bounds.getCenter().lat(), lng : bounds.getCenter().lng() }
 
-    $.post('/search', data);
+    $('#center_lat').val(bounds.getCenter().lat())
+    $('#center_lng').val(bounds.getCenter().lng())
 
-    // map.fitBounds(bounds);
-    // map.setZoom(15)
+
   }); //end searchBox event listener
+
 
 });

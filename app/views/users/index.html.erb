@@ -1,7 +1,9 @@
-<%= javascript_include_tag "map/search_results" %>
+<%= javascript_include_tag "search_results" %>
+<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places" %>
 
-<input type='hidden' id='lat' value="<%= @foo[:lat] %>">
-<input type='hidden' id='lng' value="<%= @foo[:lng] %>">
+
+<h1><%= @foo %></h1>
+
 
 <div id="map-canvas"></div>
 <div id="search_results_content">

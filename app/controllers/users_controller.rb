@@ -8,10 +8,11 @@ class UsersController < ApplicationController
 
   def search
     @foo = params
+    gon.lat = params[:center_lat]
+    gon.lng = params[:center_lng]
     @specialties = Specialty.all
     @languages = Language.all
     @tours = []
-    puts "!!!!!!!!!!!!!!!!!!!! #{@foo[:lat]}"
     # puts "*****************
 
     render 'index'

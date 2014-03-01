@@ -57,6 +57,10 @@ GEM
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.3)
+    geocoder (1.1.9)
+    gon (5.0.4)
+      actionpack (>= 2.3.0)
+      json
     hashie (2.0.5)
     hike (1.2.3)
     i18n (0.6.9)
@@ -191,6 +195,8 @@ DEPENDENCIES
   database_cleaner
   dotenv-rails
   faker
+  geocoder
+  gon
   jbuilder (~> 1.2)
   jquery-rails
   omniauth

@@ -1,20 +1,24 @@
-<%= javascript_include_tag "map/search" %>
+<%= javascript_include_tag "search" %>
+<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places" %>
 
 <div id="main_search">
-  <%= form_tag search_path do %>
+  <%= form_tag search_path, id: 'search_form' do %>
     <input id="pac-input" class="controls" type="text" placeholder="Where Are You Going?">
+    <input id='center_lat' type='hidden' name='center_lat' value=''>
+    <input id='center_lng' type='hidden' name='center_lng' value=''>
     <%= date_select("show", "date", :default => Date.today, 
       :order => [:month, :day, :year], :start_year => Date.today.year, 
       :end_year => Date.today.year + 3) %>
     <%= date_select("show", "date", :default => Date.today + 1, 
       :order => [:month, :day, :year], :start_year => Date.today.year, 
       :end_year => Date.today.year + 3) %>
+    <%= submit_tag "Search!", id: "search_submit" %>
   <% end %>
 </div>
 
 
 
-<p><%= @foo %></p>
+
 
 <%= javascript_include_tag 'facebook' %>
 
