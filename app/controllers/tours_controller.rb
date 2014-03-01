@@ -1,6 +1,6 @@
 class ToursController < ApplicationController
   def show
-    @ambassador = User.first
+    @ambassador = User.find(params[:user_id])
     @selected_tour = Tour.find(params[:id])
   end
 
