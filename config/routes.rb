@@ -3,6 +3,7 @@ FindAGuide::Application.routes.draw do
   # resources :authentications
 
   match '/users/toggle_ambassador', to: 'users#ambassador_toggle', via: [:put]
+  match '/contact_ambassador', to: 'emails#new_request', via: [:post]
 
   resources :users, only: [:edit, :update, :show] do
     resources :meetups, only: [:index, :show, :edit, :update]
@@ -28,7 +29,7 @@ FindAGuide::Application.routes.draw do
 
   get '/thanks', to: 'marketing#thanks'
 
-  post '/contact_ambassador', to: 'emails#new_request'
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,3 +1,4 @@
+require 'pry'
 class EmailsController < ApplicationController
    skip_before_filter :verify_authenticity_token
    # include ActionController::Base.helpers
@@ -19,7 +20,7 @@ class EmailsController < ApplicationController
   def new_request
     @visitor = current_user
     @ambassador = User.find(params[:ambassador_id])
-    email_html = render_to_string "new_request"
+    email_html = render_to_string "new_request", :layout => false
     Email.new_request(@visitor, @ambassador, email_html)
   end
 end
