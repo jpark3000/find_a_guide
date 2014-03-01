@@ -87,7 +87,11 @@ describe 'user methods:' do
   end
 
   # describe 'has_specialty' do
-  #   user.save
+  #   user = user.save
+
+  #   # Specialty.create(specialty: "History")
+  #   # Specialty.create(specialty: "Nightlife")
+  #   # Specialty.create(specialty: "Food")
 
   #   user.specialties << Specialty.first
   #   user.specialties << Specialty.last
