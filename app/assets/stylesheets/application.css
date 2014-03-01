@@ -257,7 +257,24 @@ nav {
   height: 340px;
 }
 
+/* CARD */
 
+.card_image_container   {
+  float: left;
+}
+
+.card_info {
+    float: left;
+    width: 80%;
+    color: #000;
+    margin-left: 13px;
+}
+
+.card {
+    display: block;
+    height: 70px;
+    width: 100%;
+}
 
 
 

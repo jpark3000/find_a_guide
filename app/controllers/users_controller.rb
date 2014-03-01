@@ -41,7 +41,7 @@ class UsersController < ApplicationController
 
   def dashboard
     @user = current_user
-    @visitor_tours = @user.visitor_meetups.where('date_time > ?', Time.now)
+    @visitor_meetups = @user.visitor_meetups.where('date_time > ?', Time.now)
     @visitor_incomplete_reviews = @user.empty_reviews(:visitor)
     @ambassador_tours = @user.ambassador_meetups.where('date_time > ?', Time.now)
     @ambassador_incomplete_reviews = @user.empty_reviews(:ambassador)
