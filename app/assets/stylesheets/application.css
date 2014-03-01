@@ -13,42 +13,42 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup, 
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
-	display: block;
+  display: block;
 }
 body {
-	line-height: 1;
+  line-height: 1;
 }
 ol, ul {
-	list-style: none;
+  list-style: none;
 }
 blockquote, q {
-	quotes: none;
+  quotes: none;
 }
 blockquote:before, blockquote:after,
 q:before, q:after {
-	content: '';
-	content: none;
+  content: '';
+  content: none;
 }
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 /* BODY */
 
 #content {
-	max-width: 1000px;
-	margin: 41px auto 0;
+  max-width: 1000px;
+  margin: 41px auto 0;
 }
 
 
@@ -64,7 +64,7 @@ nav {
   width: 100%;
 }
 
-#nav_search	 > input {
+#nav_search   > input {
   display: inline;
   position: absolute;
   top: 9px;
@@ -93,33 +93,33 @@ nav {
 }
 
 nav {
-	height: 40px;
-	width: 100%;
-	background: #eee;
+  height: 40px;
+  width: 100%;
+  background: #eee;
 }
 
 #nav_logo {
-	float: left;
+  float: left;
 }
 
 #right_hand_navbar {
-	float: right;
-	display: inline-block;
-	height: 41px;
+  float: right;
+  display: inline-block;
+  height: 41px;
 }
 
 .navbar_icon {
-	height: 26px;
-	width: 26px;
-	margin-left: 13px;
+  height: 26px;
+  width: 26px;
+  margin-left: 13px;
 
 }
 
 #profile_pic {
-    height: 32px;
-    margin: 3px 0 0 17px;
-    width: 32px;
-    cursor: pointer;
+  height: 32px;
+  margin: 3px 0 0 17px;
+  width: 32px;
+  cursor: pointer;
 }
 
 /* DROPDOWN */
@@ -170,6 +170,34 @@ nav {
 /* Home Page */
 
 #main_search {
-	text-align: center;
-	margin-top: 200px;
+  text-align: center;
+  margin-top: 200px;
+}
+
+/* MAPS */
+
+#map-canvas {
+  position: absolute;
+  width: 80%;
+  height: 450px;
+  border: 1px solid black;
+  left: 120px;
+}
+
+#pac-input {
+  width: 300px;
+  height: 20px;
+  margin-top: 10px;
+  border-radius: 3px;
+}
+
+.tour_desc {
+  width: 200px;
+  height: 120px;
+}
+
+.tour_text {
+  width: 190px;
+  height: 110px;
+  background-color: yellow;
 }
