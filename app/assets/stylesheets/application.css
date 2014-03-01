@@ -316,12 +316,38 @@ nav {
 
 /* AMBASSADOR PLACE TOURS */
 
-#ambassador_avaliablity {
+#ambassador_availability {
     padding: 30px;
     text-align: center;
 }
 
+#where_guide_title {  
+    text-align: center;
+}
 
+#choose_specialties > h2 {
+  text-align: center;
+  padding: 30px;
+}
+
+#specialties {
+    margin: auto;
+    padding-left: 58px;
+    width: 458px;
+}
+
+.specialty {
+  width: 150px;
+  display: inline-block;
+}
+
+.center {
+  text-align: center;
+}
+
+.submit_button {
+  padding: 30px;
+}
 
 
 
