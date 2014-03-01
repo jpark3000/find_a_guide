@@ -63,28 +63,36 @@
   <div id="ambassador_profile" class="section">
     <div class="profile_section">
       <h4 class="profile_tours_title">Upcoming Tours</h4>
-      <% @ambassador_tours.each do |t| %>
-        <%= link_to user_meetup_path(t.ambassador,t) do %>
-          <div class="card">
-            <%= image_tag(t.visitor.profile_pic(t.visitor.uid), :class => 'card_image') %>
-            <span class="card_name"><%= t.visitor.first_name %></span>
-            <span class="card_tag"><%= t.visitor.last_name %></span>
-            <span class="care_despcription"><%= t.meetup_notes %></span>
-          </div>
+      <% if @ambassador_tours.size > 0 %>
+        <% @ambassador_tours.each do |t| %>
+          <%= link_to user_meetup_path(t.ambassador,t) do %>
+            <div class="card">
+              <%= image_tag(t.visitor.profile_pic(t.visitor.uid), :class => 'card_image') %>
+              <span class="card_name"><%= t.visitor.first_name %></span>
+              <span class="card_tag"><%= t.visitor.last_name %></span>
+              <span class="care_despcription"><%= t.meetup_notes %></span>
+            </div>
+          <% end %>
         <% end %>
+      <% else %>
+        <p>You have no upcoming tours</p>
       <% end %>
     </div>
     <div class="profile_section">
       <h3 class="profile_section_title">Your Ratings</h3>
-      <div id="ambassador_overall_rating">
-        Overall rating: <%= @ambassador_overall_rating %>
-      </div>
-      <div id="ambassador_ratings">
-        <% @user.all_ratings(:ambassador).each do |r| %>
-          <span class="rating"><%= r.rating %> - </span>
-          <span class="rating_comments"><%= r.comment %></span>
-        <% end %>
-      </div>
+      <% if @ambassador_overall_rating %>
+        <div id="ambassador_overall_rating">
+          <p>Overall rating: <%= @ambassador_overall_rating %></p>
+        </div>
+        <div id="ambassador_ratings">
+          <% @user.all_ratings(:ambassador).each do |r| %>
+            <span class="rating"><%= r.rating %> - </span>
+            <span class="rating_comments"><%= r.comment %></span>
+          <% end %>
+        </div>
+      <% else %>
+        <p>You have no ratings</p>
+      <% end %>
     </div>
 
     <% if @ambassador_incomplete_reviews.size > 0 %>
