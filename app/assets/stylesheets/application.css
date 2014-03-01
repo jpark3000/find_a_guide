@@ -100,6 +100,9 @@ nav {
 
 #nav_logo {
   float: left;
+  text-decoration: none;
+  color: #000;
+  line-height: 41px;
 }
 
 #right_hand_navbar {

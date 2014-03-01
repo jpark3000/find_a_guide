@@ -1,6 +1,6 @@
 <nav>
   <div id="nav_container">
-    <span id="nav_logo">LOGO</span>
+    <%= link_to 'LOGO', root_path, :id => 'nav_logo' %>
     <span id="nav_search">
       <%= text_field_tag 'search', nil, :placeholder => 'Search' %>
     </span>
