@@ -16,6 +16,5 @@
 //= require_tree .
 
 $(document).ready(function(){
-  $("#main_search").css('margin-top', ($(document).height() / 2   ) + 'px');
-  $("#dropdown").css('right', (($(document).width() - 1010) / 2));
+  
 });
