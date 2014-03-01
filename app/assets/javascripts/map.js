@@ -2,6 +2,7 @@
 var Tour = function() {
 this.template = $("<div class='tour_desc'>\
                     <div class='tour_text' contenteditable='true'></div>\
+                    <br><button type='button' id='remove_marker'>Remove</button>\
                     <br><button type='button' id='new_tour_button'>Save</button>\
                   </div>")
 };
@@ -61,6 +62,8 @@ $(document).ready(function() {
     
       var infowindow = new google.maps.InfoWindow({content : iw.template[0] });
 
+      $(infowindow.content).find('#remove_marker').on('click', function() { user_marker.setMap(null); user_marker=null });
+
       $(infowindow.content).find('#new_tour_button').on('click', function() {
         var data = {tour: {
                             description: $($($(this).parent()[0]).find('.tour_text')[0]).html(),
@@ -76,7 +79,7 @@ $(document).ready(function() {
             $(infowindow.content).find('.tour_text').attr('contenteditable', false);
             $(infowindow.content).find('.tour_text').css('background-color', 'white');
             $(infowindow.content).find('#new_tour_button').css('display','none'); 
-
+            $(infowindow.content).find('#remove_marker').css('display','none'); 
           } else {
             console.log('blah')
             $('body').append('<p>' + response.message + '</p>');
