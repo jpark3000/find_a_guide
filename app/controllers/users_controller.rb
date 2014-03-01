@@ -13,10 +13,12 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     @user.attributes = user_params
-    if @user.save
-      redirect_to user_path(@user)
-    else
-      render 'edit'
+    respond_to do |format|
+      if @user.save
+        format.json{ render :json => {new_url: user_url(@user)}}
+      else
+        format.json{ render :json => {errors: @user.errors.full_messages} }
+      end
     end
   end
 
