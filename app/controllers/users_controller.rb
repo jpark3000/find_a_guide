@@ -16,12 +16,25 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to user_path(@user)
     else
-      render 'edit'   
+      render 'edit'
     end
   end
 
   def show
     @user = User.find(params[:id])
+  end
+
+  def ambassador_toggle
+    @user = current_user
+
+    if @user.is_ambassador == true
+      @user.update(is_ambassador: false)
+      redirect_to :dashboard
+    else
+      @user.update(is_ambassador: true)
+      redirect_to :dashboard
+    end
+
   end
 
   def dashboard
@@ -31,7 +44,7 @@ class UsersController < ApplicationController
     @ambassador_tours = @user.ambassador_meetups.where('date_time > ?', Time.now)
     @ambassador_incomplete_reviews = @user.empty_reviews(:ambassador)
     @ambassador_overall_rating = @user.rating(:ambassador)
-    @ambassador_ratings = @user.all_ratings(:ambassador) 
+    @ambassador_ratings = @user.all_ratings(:ambassador)
   end
 
   private

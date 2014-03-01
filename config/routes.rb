@@ -8,6 +8,7 @@ FindAGuide::Application.routes.draw do
     resources :tours
   end
 
+  match '/users/toggle_ambassador', to: 'users#ambassador_toggle', via: [:post]
 
 
   get '/dashboard', to: 'users#dashboard'

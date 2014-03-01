@@ -2,6 +2,23 @@
 <div id="visitor_profile">
   <h3 class="profile_title">Visitor Profile</h3>
 
+  <div>
+  <h4>Are you currently and ambassador?</h4>
+  <% if @user.is_ambassador == true %>
+    <p>Yes.</p>
+    <form method="post" action="/users/toggle_ambassador" class="button_to">
+       <div><input value="Stop being one? :(" type="submit" /></div>
+    </form>
+
+  <% else %>
+    <p>No</p>
+    <form method="post" action="/users/toggle_ambassador" class="button_to">
+       <div><input value="Become one!!!" type="submit" /></div>
+    </form>
+  <% end %>
+  </div>
+
+
   <div class="profile_section_title">
     <h4 class="profile_tours_title">Tours</h4>
     <% @visitor_tours.each do |t| %>
@@ -27,7 +44,7 @@
             <span class="card_tag"><%= r.ambassador.last_name %></span>
             <span class="care_despcription"><%= r.meetup_notes %></span>
           </div>
-        <% end %>      
+        <% end %>
       <% end %>
     </div>
   <% end %>
@@ -87,7 +104,7 @@
             <span class="card_tag"><%= r.visitor.last_name %></span>
             <span class="card_despcription"><%= r.meetup_notes %></span>
           </div>
-        <% end %>      
+        <% end %>
       <% end %>
     </div>
   <% end %>
