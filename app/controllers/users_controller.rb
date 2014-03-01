@@ -7,13 +7,22 @@ class UsersController < ApplicationController
   end
 
   def search
-    # @foo = params
+    gon.points = []
+   
     gon.lat = params[:center_lat]
     gon.lng = params[:center_lng]
+
     @specialties = Specialty.all
     @languages = Language.all
-    @tours = Tour.near('Chicago, IL, US', 100)
-    gon.points = @tours.
+    @tours = Tour.near([params[:center_lat], params[:center_lng]], 20)
+
+
+    @tours.each do |tour|
+      gon.points << tour.format_coordinates
+    end
+
+
+
     # puts "***************** 
 
     render 'index'
