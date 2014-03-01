@@ -7,14 +7,20 @@
   <div id="visitor_profile" class="section">
     <div class="profile_section">
       <h4 class="profile_tours_title">Tours</h4>
-      <% @visitor_tours.each do |t| %>
-        <%= link_to user_meetup_path(t.ambassador,t) do %>
-          <div class="card">
-            <%= image_tag(t.ambassador.profile_pic(t.ambassador.uid), :class => 'card_image') %>
-            <span class="card_name"><%= t.ambassador.first_name %></span>
-            <span class="card_tag"><%= t.ambassador.last_name %></span>
-            <span class="care_despcription"><%= t.meetup_notes %></span>
-          </div>
+      <% @visitor_meetups.each do |m| %>
+        <%= link_to user_meetup_path(m.ambassador,m) do %>
+          <span class="card">
+            <span class="card_image_container">
+              <%= image_tag(m.ambassador.profile_pic(m.ambassador.uid), :class => 'card_image') %>
+            </span>
+            <span class="card_info">
+              <p class="card_name">
+                <%= m.ambassador.name + " - " + m.date_time.to_formatted_s(:upcoming_date) %>
+              </p>
+              <p class="card_tag"><%= m.ambassador.tagline %></p>
+              <p class="card_despcription"><%= m.tour.description.truncate(45) %></p>
+            </span>
+          </span>
         <% end %>
       <% end %>
     </div>
@@ -24,12 +30,17 @@
         <h4 class="profile_reviews_title">How was your experience? Review:</h4>
         <% @visitor_incomplete_reviews.each do |r| %>
           <%= link_to new_user_review_path(r.ambassador,r) do %>
-            <div class="card">
-              <%= image_tag(r.ambassador.profile_pic(r.ambassador.uid), :class => 'card_image') %>
-              <span class="card_name"><%= r.ambassador.first_name %></span>
-              <span class="card_tag"><%= r.ambassador.last_name %></span>
-              <span class="care_despcription"><%= r.meetup_notes %></span>
-            </div>
+            <span class="card">
+              <span class="card_image_container">
+                <%= image_tag(r.ambassador.profile_pic(r.ambassador.uid), :class => 'card_image') %>
+              </span>
+              <span class="card_info">
+                <p class="card_name">
+                  <%= r.ambassador.name + " - " + distance_of_time_in_words_to_now(r.date_time) + " ago"%>
+                </p>
+                <p class="card_location"><%= r.address %></p>
+              </span>
+            </span>
           <% end %>      
         <% end %>
       </div>
@@ -43,7 +54,7 @@
         </span>
         <% @user.incomplete_information.each do |i| %>
           <%= link_to edit_user_path(@user) do %>
-            Add your <%= i %>
+            <p>Add your <%= i %></p>
           <% end %>
         <% end %>
       </div>
@@ -63,10 +74,14 @@
         <% @ambassador_tours.each do |t| %>
           <%= link_to user_meetup_path(t.ambassador,t) do %>
             <div class="card">
-              <%= image_tag(t.visitor.profile_pic(t.visitor.uid), :class => 'card_image') %>
-              <span class="card_name"><%= t.visitor.first_name %></span>
-              <span class="card_tag"><%= t.visitor.last_name %></span>
-              <span class="care_despcription"><%= t.meetup_notes %></span>
+              <span class="card_image_container">
+                <%= image_tag(t.visitor.profile_pic(t.visitor.uid), :class => 'card_image') %>
+              </span>
+              <span class="card_info">
+                <p class="card_name"><%= t.visitor.name + " - " + t.date_time.to_formatted_s(:upcoming_date) %></p>
+                <p class="card_location"><%= t.address %></p>
+                <p class="card_tagline"><%= t.visitor.tagline %></p>
+              </span>
             </div>
           <% end %>
         <% end %>
@@ -75,18 +90,17 @@
       <% end %>
     </div>
     <div class="profile_section">
-      <h3 class="profile_section_title">Your Ratings</h3>
       <% if @ambassador_overall_rating %>
-        <div id="ambassador_overall_rating">
-          <p>Overall rating: <%= @ambassador_overall_rating %></p>
-        </div>
+        <h3 class="profile_section_title">
+          Your rating: <%= @ambassador_overall_rating %>
+        </h3>
         <div id="ambassador_ratings">
           <% @user.all_ratings(:ambassador).each do |r| %>
-            <span class="rating"><%= r.rating %> - </span>
-            <span class="rating_comments"><%= r.comment %></span>
+            <p><span class="rating"><%= r.rating %> - </span><%= r.comment %></p>
           <% end %>
         </div>
       <% else %>
+        <h3 class="profile_section_title">Ratings:</h3>
         <p>You have no ratings</p>
       <% end %>
     </div>
@@ -96,12 +110,16 @@
         <h4 class="profile_reviews_title">How was your experience? Review:</h4>
         <% @ambassador_incomplete_reviews.each do |r| %>
           <%= link_to new_user_review_path(r.visitor,r) do %>
-            <div class="card">
-              <%= image_tag(r.visitor.profile_pic(r.visitor.uid), :class => 'card_image') %>
-              <span class="card_name"><%= r.visitor.first_name %></span>
-              <span class="card_tag"><%= r.visitor.last_name %></span>
-              <span class="card_despcription"><%= r.meetup_notes %></span>
-            </div>
+            <span class="card">
+              <span class="card_image_container">
+                <%= image_tag(r.visitor.profile_pic(r.visitor.uid), :class => 'card_image') %>
+              </span>
+              <span class="card_info">
+                <p class="card_name">
+                  <%= r.visitor.name + " - " + distance_of_time_in_words_to_now(r.date_time) + " ago"%>
+                <p class="card_despcription"><%= r.address %></p>
+              </span>
+            </span>
           <% end %>      
         <% end %>
       </div>

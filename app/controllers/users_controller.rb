@@ -41,12 +41,12 @@ class UsersController < ApplicationController
 
   def dashboard
     @user = current_user
-    @visitor_tours = @user.visitor_meetups.where('date_time > ?', Time.now)
+    @visitor_meetups = @user.visitor_meetups.where('date_time > ?', Time.now).order('date_time')
     @visitor_incomplete_reviews = @user.empty_reviews(:visitor)
-    @ambassador_tours = @user.ambassador_meetups.where('date_time > ?', Time.now)
+    @ambassador_tours = @user.ambassador_meetups.where('date_time > ?', Time.now).order('date_time')
     @ambassador_incomplete_reviews = @user.empty_reviews(:ambassador)
     @ambassador_overall_rating = @user.average_rating(:ambassador)
-    @ambassador_ratings = @user.all_ratings(:ambassador)
+    @ambassador_ratings = @user.all_ratings(:ambassador).order('created_at')
   end
 
   private

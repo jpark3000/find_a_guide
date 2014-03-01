@@ -48,16 +48,16 @@ user.languages_spoken.create(language_id:1)
                      description: Faker::Lorem.paragraphs.join("\n\n"))
 end
 
-user.visitor_meetups.create!(ambassador_id: (2),
-                             tour_id: (rand(200)+1),
-                             date_time: [rand(2.months).ago, rand(2.months).from_now].sample,
-                             address: Faker::Address.street_address)
-
 User.all.each do |u|
   10.times do
-    u.visitor_meetups.create!(ambassador_id: (rand(50)+1),
-                              tour_id: (rand(200)+1),
-                              date_time: [rand(2.months).ago, rand(2.months).from_now].sample,
-                              address: Faker::Address.street_address)
+    ambassador_id = (rand(50)+1)
+    meetup = u.visitor_meetups.create!(ambassador_id: ambassador_id,
+                                       tour_id: (rand(200)+1),
+                                       date_time: [rand(2.months).ago, rand(2.months).from_now].sample,
+                                       address: Faker::Address.street_address)
+    if ambassador_id == 1
+      meetup.reviews.create!(reviewee_id: 1, reviewer_id: u.id, 
+                            comment: Faker::Company.bs, rating: (1..5).to_a.sample )
+    end
   end
 end
