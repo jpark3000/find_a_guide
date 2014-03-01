@@ -53,7 +53,7 @@ class User < ActiveRecord::Base
     hash = self.attributes.select{|k,v| v.nil? && possible_incomplete_attributes.include?(k)}.keys
   end
 
-  def rating(type)
+  def average_rating(type)
     ratings = all_ratings(type)
     if ratings.empty?
       return false
