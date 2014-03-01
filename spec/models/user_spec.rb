@@ -86,5 +86,45 @@ describe 'user methods:' do
     end
   end
 
+  # describe 'has_specialty' do
+  #   user = user.save
+
+  #   # Specialty.create(specialty: "History")
+  #   # Specialty.create(specialty: "Nightlife")
+  #   # Specialty.create(specialty: "Food")
+
+  #   user.specialties << Specialty.first
+  #   user.specialties << Specialty.last
+
+  #   it 'should have the History specialty' do
+  #     expect(user.has_specialty?(Specialty.first)).to eq true
+  #   end
+
+  #   it 'should have the Food specialty' do
+  #     expect(user.has_specialty?(Specialty.last)).to eq true
+  #   end
+  # end
+
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
