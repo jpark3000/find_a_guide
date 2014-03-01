@@ -70,7 +70,17 @@ $(document).ready(function() {
                    }
 
         $.post('/users/' + userId + '/tours', data, function(response) {
-          $('body').append('<p>' + response.message + '</p>')
+          console.log(response.success)
+          if (response.success) {
+            $('body').append('<p>' + response.message + '</p>');
+            $(infowindow.content).find('.tour_text').attr('contenteditable', false);
+            $(infowindow.content).find('.tour_text').css('background-color', 'white');
+            $(infowindow.content).find('#new_tour_button').css('display','none'); 
+
+          } else {
+            console.log('blah')
+            $('body').append('<p>' + response.message + '</p>');
+          };
         });
       });
 
