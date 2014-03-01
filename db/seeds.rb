@@ -18,12 +18,6 @@ l3 = Language.create!(language: "Korean")
 l4 = Language.create!(language: "German")
 
 
-user = User.create!(provider: "facebook", uid: "100007876298770",
-                    oauth_token: "AAFSZAkl6RDMBAPXi7hnqAlUza8MY83HTLJOZBgbtelhwbCO96ZBSnaASNcsX8xuAdrrir5M7FNkyp76twZBKCKu5FueFgQIrHUNloT6508RSh2q5h3Aiclw8KbwkCJzWlnwPBYZBdoWnzVwLRKZBoGoZAAXbDDvC9SHbwicZBCRBAUgunK42VuB",
-                    oauth_expires_at: "2000-01-01 03:00:01", first_name: "Steven", last_name: "Spiel",
-                    email: "steven_rvqtnhl_spiel@tfbnw.net", phone: nil, username: nil, bio: nil,
-                    gender: nil, age: nil, is_ambassador: true, ambassador_availability: false,
-                    tagline: nil, anonymous_email: nil, authentication_id: nil)
 
 gender = ['male','female']
 boolean = [true,false]
@@ -37,9 +31,9 @@ random_uid = ['511571783', '724578054', '1037742890', '100000287146443', '100001
                tagline: Faker::Commerce.product_name, is_ambassador: boolean.sample, uid: random_uid.sample).save(validate: false)
 end
 
-user.users_specialties.create(specialty_id:1)
-user.users_specialties.create(specialty_id:2)
-user.languages_spoken.create(language_id:1)
+User.first.users_specialties.create(specialty_id:1)
+User.first.users_specialties.create(specialty_id:2)
+User.first.languages_spoken.create(language_id:1)
 
 200.times do
   user = User.find((1..51).to_a.sample)
