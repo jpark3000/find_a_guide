@@ -20,8 +20,10 @@
 
 <div id="dropdown" class="hide">
   <ul>
-    <%= link_to edit_user_path(current_user) do %><li>Account Settings</li><% end %>
-    <%= link_to signout_path, id: "sign_out" do %><li>Logout</li><% end %>
+    <% if session[:user_id] %>
+      <%= link_to edit_user_path(current_user) do %><li>Account Settings</li><% end %>
+      <%= link_to signout_path, id: "sign_out" do %><li>Logout</li><% end %>
+    <% end %>
   </ul>
 
 </div>
