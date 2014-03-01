@@ -15,28 +15,7 @@
 //= require turbolinks
 
 
+
 $(document).ready(function(){
-    $("#main_search").css('margin-top', ($(document).height() / 2   ) + 'px');
-    $("#dropdown").css('right', (($(document).width() - 1010) / 2));
-    $("#profile_pic").click(function(){
-        $("#dropdown").toggleClass('hide');
-    });
-    $(document).click(function(e){
-        if(e.target.id !== "profile_pic"){
-          $("#dropdown").addClass('hide');
-        }
-      }
-    );
-
-});
-
-$(document).mouseup(function (e)
-{
-    var container = $("YOUR CONTAINER SELECTOR");
-
-    if (!container.is(e.target) // if the target of the click isn't the container...
-        && container.has(e.target).length === 0) // ... nor a descendant of the container
-    {
-        container.hide();
-    }
+  
 });

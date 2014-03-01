@@ -18,5 +18,21 @@
   <%= yield %>
 </div>
 
+<script>  //dropdown menu jquery here to avoid turbolinks
+  $("#profile_pic").on('click',function(){
+    $("#dropdown").toggleClass('hide');
+  });
+
+  $(document).on('click',function(e){
+    if(e.target.id !== "profile_pic"){
+      $("#dropdown").addClass('hide');
+    }
+  });
+
+  //search bar location here to avoid turbolinks
+  $("#main_search").css('margin-top', ($(document).height() / 2.5   ) + 'px');
+  $("#dropdown").css('right', (($(document).width() - 1010) / 2));
+</script>
+
 </body>
 </html>

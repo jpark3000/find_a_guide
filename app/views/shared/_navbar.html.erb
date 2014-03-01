@@ -1,9 +1,11 @@
 <nav>
   <div id="nav_container">
-    <span id="nav_logo">LOGO</span>
-    <span id="nav_search">
-      <%= text_field_tag 'search', nil, :placeholder => 'Search' %>
-    </span>
+    <%= link_to 'LOGO', root_path, :id => 'nav_logo' %>
+    <% if request.fullpath != root_path %>
+      <span id="nav_search">
+        <%= text_field_tag 'search', nil, :placeholder => 'Search' %>
+      </span>
+    <% end %>
     <span id="right_hand_navbar">
       <% if current_user %>
         <% if current_user.is_ambassador %>
@@ -20,8 +22,10 @@
 
 <div id="dropdown" class="hide">
   <ul>
-    <%= link_to edit_user_path(current_user) do %><li>Account Settings</li><% end %>
-    <%= link_to signout_path, id: "sign_out" do %><li>Logout</li><% end %>
+    <% if session[:user_id] %>
+      <%= link_to edit_user_path(current_user) do %><li>Account Settings</li><% end %>
+      <%= link_to signout_path, id: "sign_out" do %><li>Logout</li><% end %>
+    <% end %>
   </ul>
 
 </div>
