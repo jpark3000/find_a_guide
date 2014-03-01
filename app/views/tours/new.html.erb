@@ -1,3 +1,7 @@
+<% content_for :head do %>
+  <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places" %>
+  <%= javascript_include_tag "map" %>
+<% end %> 
 
 <div id="ambassador_avaliablity">
   <span id="availablity_title" data-id="<%= @ambassador.id %>">Availability</span>
@@ -13,8 +17,6 @@
 
 
 
-
-    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places" %>
 
 
     <input id="pac-input" class="controls" type="text" placeholder="Search Box">

@@ -73,7 +73,6 @@ $(document).ready(function() {
                    }
 
         $.post('/users/' + userId + '/tours', data, function(response) {
-          console.log(response.success)
           if (response.success) {
             $('body').append('<p>' + response.message + '</p>');
             $(infowindow.content).find('.tour_text').attr('contenteditable', false);
@@ -81,7 +80,6 @@ $(document).ready(function() {
             $(infowindow.content).find('#new_tour_button').css('display','none'); 
             $(infowindow.content).find('#remove_marker').css('display','none'); 
           } else {
-            console.log('blah')
             $('body').append('<p>' + response.message + '</p>');
           };
         });
