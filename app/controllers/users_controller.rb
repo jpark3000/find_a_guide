@@ -42,12 +42,12 @@ class UsersController < ApplicationController
   def ambassador_availability_toggle
     @user = current_user
 
-    if @user.ambassador_availablity
-      @user.update(ambassador_availablity: false)
-      redirect_to :dashboard
+    if @user.ambassador_availability
+      @user.update(ambassador_availability: false)
+      redirect_to new_user_tour_path(@user)
     else
-      @user.update(ambassador_availablity: true)
-      redirect_to :dashboard
+      @user.update(ambassador_availability: true)
+      redirect_to new_user_tour_path(@user)
     end
 
   end

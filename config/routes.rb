@@ -3,6 +3,7 @@ FindAGuide::Application.routes.draw do
   # resources :authentications
 
   match '/users/toggle_ambassador', to: 'users#ambassador_toggle', via: [:put]
+  match '/users/toggle_ambassador_availability', to: 'users#ambassador_availability_toggle', via: [:put]
 
   resources :users, only: [:edit, :update, :show] do
     resources :meetups, only: [:index, :show, :edit, :update]

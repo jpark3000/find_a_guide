@@ -14,10 +14,6 @@
   <% end %>
   </span>
   <%= form_for(@ambassador) do |f| %>
-    <%= f.radio_button :ambassador_availability, "true", checked: @ambassador.is_ambassador, class: 'availablity_button', :id => 'user_available'%>
-    <%= f.label :available, "Available" %>
-    <%= f.radio_button :ambassador_availability, "true", checked: @ambassador.is_ambassador == false, class: 'availablity_button', :id => 'user_unavailable'%>
-    <%= f.label :unavailable, "Unavailable" %>
     </div>
 
     <div id="where_guide_title">Where can you be  guide?</div>
