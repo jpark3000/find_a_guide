@@ -4,4 +4,5 @@ class Tour < ActiveRecord::Base
 
 	validates :ambassador_id, :longitude, :latitude, :description, presence: true
 
+	reverse_geocoded_by :latitude, :longitude
 end
