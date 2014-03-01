@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
+
 
 $(document).ready(function(){
     $("#main_search").css('margin-top', ($(document).height() / 2   ) + 'px');

@@ -1,4 +1,9 @@
-<div id="mapp-canvas"></div>
+<%= javascript_include_tag "map/search_results" %>
+
+<input type='hidden' id='lat' value="<%= @foo[:lat] %>">
+<input type='hidden' id='lng' value="<%= @foo[:lng] %>">
+
+<div id="map-canvas"></div>
 <div id="search_results_content">
   <div id="refine_search">
     <% @specialties.each do |s| %>

@@ -3,7 +3,18 @@ class UsersController < ApplicationController
   def index
     @specialties = Specialty.all
     @languages = Language.all
-    @tours = Tour.all
+    @tours = []
+  end
+
+  def search
+    @foo = params
+    @specialties = Specialty.all
+    @languages = Language.all
+    @tours = []
+    puts "!!!!!!!!!!!!!!!!!!!! #{@foo[:lat]}"
+    # puts "*****************
+
+    render 'index'
   end
 
   def edit
