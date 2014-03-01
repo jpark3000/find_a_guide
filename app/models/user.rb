@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
 	has_many :ambassador_meetups, class_name: "Meetup", foreign_key: "ambassador_id", dependent: :destroy
 	has_many :visitor_meetups, class_name: "Meetup", foreign_key: "visitor_id"
 
-	validates :first_name, :last_name, presence: true
+	validates :first_name, :last_name, :email, presence: true
 
 	def name
  		"#{first_name} #{last_name}"
@@ -69,7 +69,7 @@ class User < ActiveRecord::Base
   def find_meetup(reviewee)
     @user_meetups = Meetup.where('ambassador_id = ? OR visitor_id = ?', id, id)
     @meetup = @user_meetups.select{|m| m.reviews.all && (m.ambassador_id == reviewee.id || m.visitor.id == reviewee.id)}.first
-  end  
+  end
 
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
