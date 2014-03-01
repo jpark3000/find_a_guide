@@ -8,7 +8,7 @@ FactoryGirl.define do
     sequence(:email) { |number| "user#{number}@blah.com" }
 
 
-    f.uid { Faker::Number.number(10) }
+    f.uid { rand(1..10000000) }
 
     f.phone { Faker::PhoneNumber.phone_number }
     f.username { Faker::Internet.user_name }

@@ -86,5 +86,38 @@ describe 'user methods:' do
     end
   end
 
+  describe 'has_specialty' do
+    # user2 = FactoryGirl.create(:user)
+
+    # user.specialties << Specialty.first
+    # user.specialties << Specialty.last
+
+    # it 'should have the History specialty' do
+    #   expect(user.has_specialty?(Specialty.first)).to eq true
+    # end
+
+  end
+
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
