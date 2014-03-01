@@ -317,12 +317,12 @@ nav {
 /* AMBASSADOR PLACE TOURS */
 
 #ambassador_availability {
-    padding: 30px;
-    text-align: center;
+  padding: 30px;
+  text-align: center;
 }
 
 #where_guide_title {  
-    text-align: center;
+  text-align: center;
 }
 
 #choose_specialties > h2 {
@@ -331,9 +331,9 @@ nav {
 }
 
 #specialties {
-    margin: auto;
-    padding-left: 58px;
-    width: 458px;
+  margin: auto;
+  padding-left: 58px;
+  width: 458px;
 }
 
 .specialty {
@@ -349,6 +349,87 @@ nav {
   padding: 30px;
 }
 
+/* USER INFO */
+
+.user_info {
+  width: 600px;
+  margin: auto;
+  padding: 30px;
+}
+
+.user_info div {
+    height: 30px;
+    padding: 10px 0;
+}
+
+.user_pic {
+  height: 150px;
+  width: 150px;
+  display: inline-block;
+  background-position: top center;
+  background-size: cover;
+}
+
+#change_picture{
+  margin-top: 120px;
+  text-align: center;
+  vertical-align: bottom;
+  cursor: pointer;
+  padding: 3px;
+  border: 1px solid #ddd;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+#right_of_picture {
+    display: inline-block;
+    vertical-align: top;
+    width: 50%;
+}
+
+#right_of_picture div {
+    display: block;
+    padding: 0 15px 15px;
+    width: 100%;
+}
+
+.user_tagline input {
+  width: 100%;
+}
+
+.user_email input {
+  width: 70%;
+}
+
+.user_name {
+  font-size: 3em;
+  height: 50px !important;
+}
+
+.user_bio {
+  height: 100px !important;
+}
+
+.user_bio textarea {
+  width: 100%;
+  height: 100px;
+}
+
+#right_of_picture > input {
+    margin: 13px;
+}
+
+#under_picture {
+  padding-top: 20px;
+}
+
+#private_info div {
+  height: 1em;
+}
+
+#private_info h3{
+  font-weight: bold;
+  padding: 20px 0;
+}
 
 
 
