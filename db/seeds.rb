@@ -29,12 +29,17 @@ random_uid = ['511571783', '724578054', '1037742890', '100000287146443', '100001
                tagline: Faker::Commerce.product_name, is_ambassador: boolean.sample, uid: random_uid.sample).save(validate: false)
 end
 
-User.first.users_specialties.create(specialty_id:1)
-User.first.users_specialties.create(specialty_id:2)
-User.first.languages_spoken.create(language_id:1)
+user = User.first
+
+user.is_ambassador = true
+user.ambassador_availability = true
+user.save
+user.users_specialties.create(specialty_id:1)
+user.users_specialties.create(specialty_id:2)
+user.languages_spoken.create(language_id:1)
 
 200.times do
-  user = User.find((1..51).to_a.sample)
+  user = User.find((1..50).to_a.sample)
   user.tours.create!(longitude: Faker::Address.longitude,
                      latitude: Faker::Address.latitude,
                      description: Faker::Lorem.paragraphs.join("\n\n"))
@@ -48,8 +53,10 @@ User.all.each do |u|
                                        date_time: [rand(2.months).ago, rand(2.months).from_now].sample,
                                        address: Faker::Address.street_address)
     if ambassador_id == 1
-      meetup.reviews.create!(reviewee_id: 1, reviewer_id: u.id, 
-                            comment: Faker::Company.bs, rating: (1..5).to_a.sample )
+      if Time.now - meetup.date_time > 7.days
+        meetup.reviews.create!(reviewee_id: 1, reviewer_id: u.id, 
+                               comment: Faker::Company.bs, rating: (1..5).to_a.sample )
+      end
     end
   end
 end
