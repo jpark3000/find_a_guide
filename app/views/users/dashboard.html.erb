@@ -14,7 +14,7 @@
               <%= image_tag(m.ambassador.profile_pic(m.ambassador.uid), :class => 'card_image') %>
             </span>
             <span class="card_info">
-              <p class="card_name"><%= m.ambassador.name %></p>
+              <p class="card_name"><%= m.ambassador.name %> - In <%= distance_of_time_in_words_to_now(m.date_time)%></p>
               <p class="card_tag"><%= m.ambassador.tagline %></p>
               <p class="card_despcription"><%= m.tour.description.truncate(45) %></p>
             </span>
@@ -34,7 +34,9 @@
               </span>
               <span class="card_info">
                 <p class="card_name"><%= r.ambassador.name %></p>
-                <p class="card_date"><%= r.date_time %></p>
+                <p class="card_date">
+                  <%= distance_of_time_in_words_to_now(r.date_time) %> ago
+                </p>
                 <p class="card_location"><%= r.address %></p>
               </span>
             </span>
@@ -76,8 +78,9 @@
               </span>
               <span class="card_info">
                 <p class="card_name"><%= t.visitor.name %></p>
-                <p class="card_tag"><%= t.visitor.tagline %></p>
-                <p class="card_despcription"><%= t.meetup_notes %></p>
+                <p class="card_date">
+                  In <%= distance_of_time_in_words_to_now(t.date_time) %></p>
+                <p class="card_location"><%= t.address %></p>
               </span>
             </div>
           <% end %>
@@ -113,7 +116,9 @@
               </span>
               <span class="card_info">
                 <p class="card_name"><%= r.visitor.name %></p>
-                <p class="card_tag"><%= r.date_time %></p>
+                <p class="card_tag">
+                  <%= distance_of_time_in_words_to_now(r.date_time) %> ago
+                </p>
                 <p class="card_despcription"><%= r.address %></p>
               </span>
             </span>
