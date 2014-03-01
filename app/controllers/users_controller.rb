@@ -43,7 +43,7 @@ class UsersController < ApplicationController
     @visitor_incomplete_reviews = @user.empty_reviews(:visitor)
     @ambassador_tours = @user.ambassador_meetups.where('date_time > ?', Time.now)
     @ambassador_incomplete_reviews = @user.empty_reviews(:ambassador)
-    @ambassador_overall_rating = @user.rating(:ambassador)
+    @ambassador_overall_rating = @user.average_rating(:ambassador)
     @ambassador_ratings = @user.all_ratings(:ambassador)
   end
 

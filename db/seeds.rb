@@ -22,7 +22,7 @@ user = User.create!(provider: "facebook", uid: "100007876298770",
                     oauth_token: "AAFSZAkl6RDMBAPXi7hnqAlUza8MY83HTLJOZBgbtelhwbCO96ZBSnaASNcsX8xuAdrrir5M7FNkyp76twZBKCKu5FueFgQIrHUNloT6508RSh2q5h3Aiclw8KbwkCJzWlnwPBYZBdoWnzVwLRKZBoGoZAAXbDDvC9SHbwicZBCRBAUgunK42VuB", 
                     oauth_expires_at: "2000-01-01 03:00:01", first_name: "Steven", last_name: "Spiel", 
                     email: "steven_rvqtnhl_spiel@tfbnw.net", phone: nil, username: nil, bio: nil, 
-                    gender: nil, age: nil, is_ambassador: false, ambassador_availability: false, 
+                    gender: nil, age: nil, is_ambassador: true, ambassador_availability: false, 
                     tagline: nil, anonymous_email: nil, authentication_id: nil)
 
 gender = ['male','female']
