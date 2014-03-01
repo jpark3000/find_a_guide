@@ -108,21 +108,36 @@ nav {
 #right_hand_navbar {
   float: right;
   display: inline-block;
-  height: 41px;
+  vertical-align: middle;
 }
 
 .navbar_icon {
   height: 26px;
   width: 26px;
   margin-left: 13px;
-
+  vertical-align: middle;
 }
 
-#profile_pic {
+#nav_image_container {
+  line-height: 32px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#nav_profile_pic {
+  border: 1px solid #CCCCCC;
   height: 32px;
-  margin: 3px 0 0 17px;
+  display: inline-block;
   width: 32px;
+  background-position: top center;
+  background-size: cover;
+  margin: 0 0 0 17px;
   cursor: pointer;
+}
+
+#right_hand_navbar span {
+  line-height: 41px;
+  vertical-align: middle;
 }
 
 /* DROPDOWN */
@@ -233,11 +248,6 @@ nav {
   padding: 10px 0;
 }
 
-.card_image {
-  width: 50px;
-  height: 50px;
-}
-
 #become_ambassador {
   left: 50%;
   margin: 0 0 0 -8em;
@@ -265,8 +275,21 @@ nav {
 
 /* CARD */
 
-.card_image_container   {
+.card_image {
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  vertical-align: middle;
+}
+
+.card_image_container {
+  border: 1px solid #CCCCCC;
   float: left;
+  height: 50px;
+  display: inline-block;
+  width: 50px;
+  background-position: top center;
+  background-size: cover;
 }
 
 .card_info {

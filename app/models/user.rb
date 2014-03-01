@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
 	end
 
   def profile_pic(uid = self.uid)
-    return "http://graph.facebook.com/#{uid}/picture"
+    return "http://graph.facebook.com/#{uid}/picture?type=large"
   end
 
   def open_information
