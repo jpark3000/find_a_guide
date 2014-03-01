@@ -94,8 +94,7 @@
         </div>
         <div id="ambassador_ratings">
           <% @user.all_ratings(:ambassador).each do |r| %>
-            <span class="rating"><%= r.rating %> - </span>
-            <span class="rating_comments"><%= r.comment %></span>
+            <p><span class="rating"><%= r.rating %> - </span><%= r.comment %></p>
           <% end %>
         </div>
       <% else %>
