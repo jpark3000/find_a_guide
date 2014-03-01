@@ -50,6 +50,16 @@
     <% end %>
   </div>
 
+  <h4>Are you currently and ambassador?</h4>
+    <% if @user.is_ambassador == true %>
+      <p>Yes.</p>
+      <%= button_to 'Sir (or Lady), I do declare that I shall meet those terms.', {:controller => "users", :action => "ambassador_toggle" }, :method=>:put, class: "button_style3"%>
+    <% else %>
+      <p>No</p>
+      <%= button_to 'Sir (or Lady), I do declare that I shall meet those terms.', {:controller => "users", :action => "ambassador_toggle" }, :method=>:put, class: "button_style3"%>
+    <% end %>
+  </div>
+
   <div id="ambassador_profile" class="section">
     <div class="profile_section">
       <h4 class="profile_tours_title">Upcoming Tours</h4>
