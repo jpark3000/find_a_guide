@@ -9,6 +9,7 @@ describe ReviewsController do
     @user = FactoryGirl.create(:user)
   end
 
+  # Route Testing
   describe "GET reviews#index" do
     it "renders the :index template for the user" do
       # login_user(@user.id)
@@ -35,8 +36,14 @@ describe ReviewsController do
       expect(response).to be_success #Hope this is correct. Haha.
     end
   end
-end
 
+  #Object Creation Testing
 
-# end # End ReviewsController controller
+  describe "POST reviews#create" do
+    it "expect a new reviews object to be created" do
+      pending
+    end
+  end
+
+end #End ReviewsController controller
 

@@ -5,25 +5,38 @@
         1,
         null
       ],
-      "/Users/MooMooMachine/Desktop/gingerSpice/app/controllers/reviews_controller.rb": [
+      "/Users/MooMooMachine/Desktop/gingerSpice/app/controllers/tours_controller.rb": [
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        null,
         null,
         1,
         1,
         1,
+        null,
+        null,
         1,
-        1,
-        2,
+        null,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
         null,
         0,
         null,
         null,
         null,
         null,
-        1,
-        1,
-        1,
-        1,
-        1,
+        null,
+        null,
+        0,
         null,
         null,
         1,
@@ -31,7 +44,8 @@
         null,
         1,
         1,
-        1,
+        0,
+        null,
         null,
         null
       ],
@@ -117,8 +131,8 @@
         null,
         null,
         1,
-        1,
-        1,
+        0,
+        0,
         null,
         null,
         1,
@@ -146,8 +160,7 @@
         null,
         null
       ],
-      "/Users/MooMooMachine/Desktop/gingerSpice/app/models/review.rb": [
-        1,
+      "/Users/MooMooMachine/Desktop/gingerSpice/app/models/tour.rb": [
         1,
         1,
         1,
@@ -156,20 +169,20 @@
         null,
         null
       ],
-      "/Users/MooMooMachine/Desktop/gingerSpice/app/models/meetup.rb": [
-        1,
+      "/Users/MooMooMachine/Desktop/gingerSpice/app/models/specialty.rb": [
         1,
         1,
         1,
         null,
         1,
         null,
-        1,
         null,
+        1,
+        0,
         null,
         null
       ]
     },
-    "timestamp": 1393793507
+    "timestamp": 1393795856
   }
 }
