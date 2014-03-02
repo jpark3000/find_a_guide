@@ -23,6 +23,15 @@ class Email
       :subject => 'Upcoming Meetup', "recipient-variables" => recipients.to_json}
     self.send_message(message)
   end
+
+  def self.request_review
+    root = ENV['DOMAIN']
+    html = ActionController::Base.new().render_to_string(:template => '/emails/review', :layout => false, :locals => {:root=>root})
+    recipients = Meetup.completed_meetups
+    message = {:to => recipients.keys, :html => html, :from => 'postmaster@sandbox57336.mailgun.org', 
+      :subject => 'Rate Your Experience', "recipient-variables" => recipients.to_json}
+    self.send_message(message)
+  end
 end
 
    
