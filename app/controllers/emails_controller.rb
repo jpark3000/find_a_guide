@@ -1,4 +1,3 @@
-
 class EmailsController < ApplicationController
    skip_before_filter :verify_authenticity_token
    # include ActionController::Base.helpers
@@ -6,14 +5,14 @@ class EmailsController < ApplicationController
   def reply
    @recipient = User.find_by(anonymous_email: params[:recipient])
    @sender = User.find_by(email: params[:sender])
-   @body = params["stripped-text"]
+   @body = params["stripped-text"].split('\n')
 
-   html = render_to_string "reply"
+   html = render_to_string "reply", :layout => false
    # text = strip_tags(html)
 
    message = {:to => @recipient.email, :html => html, :from => 'postmaster@sandbox57336.mailgun.org', :subject => params[:subject], "h:Reply-To" => @sender.anonymous_email}
    Email.send_message(message)
-   
+
    render :text => "OK"
   end
 
@@ -23,6 +22,7 @@ class EmailsController < ApplicationController
     subject = 'A New Visitor Needs Your Help!'
     email_html = render_to_string "new_request", :layout => false
     Email.new_request(@visitor, @ambassador, email_html, subject)
+    render 'new_acknowledge'
   end
 
   def reject
@@ -31,5 +31,6 @@ class EmailsController < ApplicationController
     subject = 'Ambassador Unavailable'
     email_html = render_to_string "reject", :layout => false
     Email.new_request(@ambassador, @visitor, email_html, subject)
+    render 'reject_acknowledge'
   end
 end

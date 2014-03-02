@@ -6,6 +6,7 @@ FindAGuide::Application.routes.draw do
   match '/users/toggle_ambassador_availability', to: 'users#ambassador_availability_toggle', via: [:put]
   match '/contact_ambassador', to: 'emails#new_request', via: [:post]
   match '/reject_request', to: 'emails#reject', via: [:post]
+  match '/reply', to: 'emails#reply', via: [:post]
 
   resources :users, only: [:edit, :update, :show] do
     resources :meetups, only: [:index, :show, :edit, :update, :create]
