@@ -358,8 +358,8 @@ nav {
 }
 
 .user_info div {
-    height: 30px;
-    padding: 10px 0;
+  height: 30px;
+  padding: 10px 0;
 }
 
 .user_pic {
@@ -381,15 +381,15 @@ nav {
 }
 
 #right_of_picture {
-    display: inline-block;
-    vertical-align: top;
-    width: 50%;
+  display: inline-block;
+  vertical-align: top;
+  width: 50%;
 }
 
 #right_of_picture div {
-    display: block;
-    padding: 0 15px 15px;
-    width: 100%;
+  display: block;
+  padding: 0 15px 15px;
+  width: 100%;
 }
 
 .user_tagline input {
@@ -415,7 +415,7 @@ nav {
 }
 
 #right_of_picture > input {
-    margin: 13px;
+  margin: 13px;
 }
 
 #under_picture {
@@ -434,10 +434,33 @@ nav {
 /* MEETUPS VIEW */
 
 
+.meetup_pic {
+  height: 150px;
+  width: 150px;
+  display: inline-block;
+  background-position: top center;
+  background-size: cover;  
+}
 
+.meetup_card h2{
+  font-size: 3em;
+}
 
+.meetup_info {
+  width: 600px;
+  margin: auto;
+  padding: 30px;
+}
 
+.meetup_info h3{
+  text-align: center;
+  padding: 30px;
+}
 
+.user_info {
+  display: block;
+  padding: 4px 0;
+}
 
 
 
