@@ -4,6 +4,8 @@ class ToursController < ApplicationController
     @selected_tour = Tour.find(params[:id])
   end
 
+  def edit
+  end
 
   def new
     @ambassador = current_user
@@ -27,7 +29,7 @@ class ToursController < ApplicationController
 
 
     puts "THIS IS THE TOUR************ #{@tour.ambassador_id}"
-  end 
+  end
 
   def index
   end
