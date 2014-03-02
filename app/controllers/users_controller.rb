@@ -35,10 +35,11 @@ class UsersController < ApplicationController
           render :json => { points: gon.points, users: @users }
         end
       else
-        @tours = Tour.near([params[:center_lat], params[:center_lng]], 20)
+        @tours = Tour.near([params[:center_lat], params[:center_lng]], 500)
         @tours.each do |tour|
           gon.points << tour.format_coordinates
         end
+        @users = @tours.map { |tour| tour.ambassador }
         format.html do
           render 'index'
         end

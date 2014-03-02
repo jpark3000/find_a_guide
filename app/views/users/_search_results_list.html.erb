@@ -1,0 +1,11 @@
+<div id="search_results_list">
+  <% @users.each do |user| %>
+    <%= link_to user_tours_path(user), {:class => 'amb'} do %>
+      <div class="ambassador_tour_card">
+        <span class="ambassador_name_card"><%= user.first_name %></span>
+        <span class="ambassador_tag_line_card"><%= user.last_name %></span>
+        <span class="ambassador_rating_card"><%= user.rating %></span>
+      </div>
+    <% end %>
+  <% end %>
+</div>

@@ -33,7 +33,7 @@ $(document).ready(function() {
   // console.log(coords)
   var mapOptions = {
     center: new google.maps.LatLng(initialLat, initialLng),
-    zoom: 14,
+    zoom: 5,
     streetViewControl: false,
     styles: styleOptions
   };
@@ -62,7 +62,7 @@ $(document).ready(function() {
             map: map
           }); //end new marker
         }); //end each
-
+        $('.amb').remove()
         $.each(response.users, function(i,v) {
           
         });
