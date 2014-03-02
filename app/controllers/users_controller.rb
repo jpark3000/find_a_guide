@@ -23,7 +23,7 @@ class UsersController < ApplicationController
                                                                      params[:bounds][2], params[:bounds][3],  
                                                                      'latitude', 'longitude'))
 
-        @users = @tours.map { |tour| tour.ambassador.to_json }
+        @users = @tours.map { |tour| tour.ambassador }.uniq
         @tours.each do |tour|
           gon.points << tour.format_coordinates
         end

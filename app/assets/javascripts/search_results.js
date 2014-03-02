@@ -5,6 +5,17 @@ this.template = $("<div class='tour_desc'>\
                   </div>")
 };
 
+var User = function(user_id, first_name, tag_line, rating) {
+  this.template = $("<a class='amb' href='/users/" + user_id + "/tours'>\
+                      <div class='ambassador_tour_card'>\
+                        <span class='ambassador_name_card'>" + first_name + "</span>\
+                        <span class='ambassador_tag_line_card'>" + tag_line + "</span>\
+                        <span class='ambassador_rating_card'>" + rating + "</span>\
+                      </div>\
+                    </a>")
+};
+
+
 var styleOptions = [
                       {
                         "featureType": "poi",
@@ -55,6 +66,7 @@ $(document).ready(function() {
       var data = { bounds :  map.getBounds().toString()}
       $.post('/search', data, function(response) {
         console.log(response)
+
         $.each(response.points, function(i,v) {
           var myLatLng = new google.maps.LatLng(response.points[i][0], response.points[i][1])
           var tour_marker = new google.maps.Marker({
@@ -62,9 +74,12 @@ $(document).ready(function() {
             map: map
           }); //end new marker
         }); //end each
+
         $('.amb').remove()
         $.each(response.users, function(i,v) {
-          
+          // console.log(v.id)
+          var user = new User(v.id, v.first_name, v.tagline, '2 stars')
+          $('#search_results_list').append(user.template)
         });
 
       });//end ajax callback
