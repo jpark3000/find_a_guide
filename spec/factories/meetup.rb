@@ -9,10 +9,5 @@ FactoryGirl.define do
     f.address { Faker::Address.street_address }
     f.meetup_notes { Faker::Lorem.sentences.join(" ") }
 
-
-    f.first_name { Faker::Name.first_name }
-    f.last_name { Faker::Name.last_name }
-    sequence(:email) { |number| "user#{number}@blah.com" }
-
   end
 end
