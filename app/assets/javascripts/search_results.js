@@ -44,7 +44,7 @@ $(document).ready(function() {
   // console.log(coords)
   var mapOptions = {
     center: new google.maps.LatLng(initialLat, initialLng),
-    zoom: 5,
+    zoom: 7,
     streetViewControl: false,
     styles: styleOptions
   };
@@ -60,7 +60,7 @@ $(document).ready(function() {
       });
     });
 
-    google.maps.event.addListener(map, 'zoom_changed', function() {
+    google.maps.event.addListener(map, 'idle', function() {
       // console.log(map.getBounds().toString());
 
       var data = { bounds :  map.getBounds().toString()}
