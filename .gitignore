@@ -17,3 +17,6 @@
 
 #Ignore api keys in env local file
 .env.local
+
+# Ignore the test coverage folder
+/coverage
