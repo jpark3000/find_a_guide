@@ -15,9 +15,9 @@ module OmniauthMacros
     end
 
     def set_omniauth_environment
-      before do
+      # before do
         request.env["omniauth.auth"] = mock_auth_hash
-      end
+      # end
     end
 
     def login_user(user_id)
@@ -29,4 +29,5 @@ module OmniauthMacros
         session[:user_id] = nil
       end
     end
+
 end
