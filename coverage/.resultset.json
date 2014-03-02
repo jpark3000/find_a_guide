@@ -5,32 +5,18 @@
         1,
         null
       ],
-      "/Users/MooMooMachine/Desktop/gingerSpice/app/controllers/sessions_controller.rb": [
-        1,
-        1,
-        0,
-        0,
-        0,
-        null,
-        null,
-        1,
-        0,
-        0,
-        null,
-        null
-      ],
-      "/Users/MooMooMachine/Desktop/gingerSpice/app/controllers/application_controller.rb": [
+      "/Users/MooMooMachine/Desktop/gingerSpice/app/controllers/marketing_controller.rb": [
         1,
         1,
         null,
-        1,
-        1,
-        0,
         null,
         1,
+        null,
+        null,
+        null,
         null
       ]
     },
-    "timestamp": 1393735883
+    "timestamp": 1393772780
   }
 }
