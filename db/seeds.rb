@@ -51,7 +51,8 @@ User.all.each do |u|
     meetup = u.visitor_meetups.create!(ambassador_id: ambassador_id,
                                        tour_id: (rand(200)+1),
                                        date_time: [rand(2.months).ago, rand(2.months).from_now].sample,
-                                       address: Faker::Address.street_address)
+                                       address: Faker::Address.street_address
+                                       meetup_notes: Faker::Lorem.sentences.join(" "))
     if ambassador_id == 1
       if Time.now - meetup.date_time > 7.days
         meetup.reviews.create!(reviewee_id: 1, reviewer_id: u.id, 
