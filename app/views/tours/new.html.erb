@@ -13,8 +13,7 @@
     <%= button_to 'Become Availabile', {:controller => "users", :action => "ambassador_availability_toggle" }, :method=>:put, class: "button_style3", :id => 'become_unvailable' %>
   <% end %>
   </span>
-  <%= form_for(@ambassador) do |f| %>
-    </div>
+</div>
 
     <div id="where_guide_title">Where can you be  guide?</div>
     <input id="pac-input" class="controls" type="text" placeholder="Search Box">
@@ -23,16 +22,19 @@
     <div id="choose_specialties">
       <h2 id="specialties_title">Specialties:</h2>
       <div id="specialties">
+        <%= form_tag user_specialties_path(@ambassador), :id => 'form_specialty' do %>
         <% @specialties.each do |s| %>
           <div class="specialty">
-            <%= f.check_box s.specialty, class: 'pick_specialty', checked: @ambassador.has_specialty?(s) %>
-            <%= f.label s, s.specialty %>
+            <%= check_box_tag "specialty[#{s.id}]", s.id, @ambassador.has_specialty?(s), class: 'pick_specialty'%>
+            <%= label_tag "specialty[#{s.id}]", s.specialty %>
           </div>
-        <% end %>
+        <% end %>  
+        <div class="center submit_button">
+            <%= submit_tag("Update Specialties") %>
+        </div>
+        <% end %> 
       </div>
     </div>
-    <div class="center submit_button">
-      <%= f.submit %>
-    </div> 
-  <% end %>
+    
+  
 
