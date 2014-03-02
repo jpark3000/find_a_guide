@@ -8,7 +8,7 @@ class EmailsController < ApplicationController
    @sender = User.find_by(email: params[:sender])
    @body = params["stripped-text"].split('\n')
 
-   html = render_to_string "reply"
+   html = render_to_string "reply", :layout => false
    # text = strip_tags(html)
 
    message = {:to => @recipient.email, :html => html, :from => 'postmaster@sandbox57336.mailgun.org', :subject => params[:subject], "h:Reply-To" => @sender.anonymous_email}
