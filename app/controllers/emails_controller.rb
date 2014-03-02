@@ -6,7 +6,7 @@ class EmailsController < ApplicationController
   def reply
    @recipient = User.find_by(anonymous_email: params[:recipient])
    @sender = User.find_by(email: params[:sender])
-   @body = params["stripped-text"]
+   @body = params["stripped-text"].split('\n')
 
    html = render_to_string "reply"
    # text = strip_tags(html)
