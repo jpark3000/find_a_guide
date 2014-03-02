@@ -1,29 +1,35 @@
 <div id="meetup_header_stretch_map_canvas"></div>
-<div id="meetup_info_edit">
-  <%= @meetup.date_time %>
-  <% s = 'ambassador' %>
+<div class="meetup_info">
+  <h3>Your meetup with:</h3>
   <div id="meetup_participants">
-    <div class="meetup_card">
-      <span id="meetup_ambassador_pic">
-        <%= image_tag(@ambassador.profile_pic) %>
-      </span>
-      <h2 id="meetup_ambassador_name_title"><%= @ambassador.name %></h2>
-      <% @ambassador_attributes.each do |a| %>
-        <span class="user_email" id="meetup_ambassador_email"><%= a %></span>
-      <% end %>
-    </div>
+    <% if @visitor.id == current_user.id %>
+      <div class="meetup_card">
+        <span class="meetup_pic" style="background-image: url('<%= @ambassador.profile_pic %>')"></span>
+        <div id="right_of_picture">
+          <h2><%= @ambassador.name %></h2>
+          <%= @meetup.date_time.to_formatted_s(:upcoming_date) %>
+          <% @ambassador_attributes.each do |a| %>
+            <span class="user_info"><%= a %></span>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
 
-    <div class="meetup_card">
-      <span id="meetup_visitor_pic">
-        <%= image_tag(@visitor.profile_pic) %>
-      </span>
-      <h2 id="meetup_visitor_name_title"><%= @visitor.name %></h2>
-      <% @visitor_attributes.each do |a| %>
-        <span class="user_email" id="meetup_visitor_email"><%= a %></span>
-      <% end %>        
-    </div>
+    <% if @ambassador.id == current_user.id %>
+      <div class="meetup_card">
+        <span class="meetup_pic" style="background-image: url('<%= @visitor.profile_pic %>')"></span>
+        <div id="right_of_picture">
+          <h2><%= @visitor.name %></h2>
+          <%= @meetup.date_time.to_formatted_s(:upcoming_date) %>
+          <% @visitor_attributes.each do |a| %>
+            <span class="user_info"><%= a %></span>
+          <% end %>
+        </div>      
+      </div>
+    <% end %>
 
-    <span id="review_meetup_date"><%= @meetup.date_time %></span>
   </div>
-  <%= @meetup.meetup_notes %>
+  <span id="meetup_notes">
+    <%= "Notes: " + @meetup.meetup_notes if @meetup.meetup_notes%>
+  </span>
 </div>

@@ -12,14 +12,23 @@ class EmailsController < ApplicationController
 
    message = {:to => @recipient.email, :html => html, :from => 'postmaster@sandbox57336.mailgun.org', :subject => params[:subject], "h:Reply-To" => @sender.anonymous_email}
    Email.send_message(message)
-   
+
    render :text => "OK"
   end
 
   def new_request
-    @visitor = params[:visitor_id]
-    @ambassador = params[:ambassador_id]
-    email_html = render_to_string "new_request"
-    Email.new_request(@visitor, @ambassador, email_html)
+    @visitor = current_user
+    @ambassador = User.find(params[:ambassador_id])
+    subject = 'A New Visitor Needs Your Help!'
+    email_html = render_to_string "new_request", :layout => false
+    Email.new_request(@visitor, @ambassador, email_html, subject)
+  end
+
+  def reject
+    @ambassador = current_user
+    @visitor = User.find(params[:visitor_id])
+    subject = 'Ambassador Unavailable'
+    email_html = render_to_string "reject", :layout => false
+    Email.new_request(@ambassador, @visitor, email_html, subject)
   end
 end

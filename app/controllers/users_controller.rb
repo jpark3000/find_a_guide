@@ -70,7 +70,7 @@ class UsersController < ApplicationController
   def ambassador_toggle
     @user = current_user
 
-    if @user.is_ambassador == true
+    if @user.is_ambassador
       @user.update(is_ambassador: false)
       redirect_to :dashboard
     else
@@ -80,19 +80,32 @@ class UsersController < ApplicationController
 
   end
 
+  def ambassador_availability_toggle
+    @user = current_user
+
+    if @user.ambassador_availability
+      @user.update(ambassador_availability: false)
+      redirect_to new_user_tour_path(@user)
+    else
+      @user.update(ambassador_availability: true)
+      redirect_to new_user_tour_path(@user)
+    end
+
+  end
+
   def dashboard
     @user = current_user
-    @visitor_tours = @user.visitor_meetups.where('date_time > ?', Time.now)
+    @visitor_meetups = @user.visitor_meetups.where('date_time > ?', Time.now).order('date_time')
     @visitor_incomplete_reviews = @user.empty_reviews(:visitor)
-    @ambassador_tours = @user.ambassador_meetups.where('date_time > ?', Time.now)
+    @ambassador_tours = @user.ambassador_meetups.where('date_time > ?', Time.now).order('date_time')
     @ambassador_incomplete_reviews = @user.empty_reviews(:ambassador)
     @ambassador_overall_rating = @user.average_rating(:ambassador)
-    @ambassador_ratings = @user.all_ratings(:ambassador)
+    @ambassador_ratings = @user.all_ratings(:ambassador).order('created_at')
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:email, :phone, :gender, :age, :bio)
+    params.require(:user).permit(:email, :phone, :gender, :age, :bio, :tagline)
   end
 end

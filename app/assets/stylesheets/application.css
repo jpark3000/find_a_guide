@@ -108,21 +108,36 @@ nav {
 #right_hand_navbar {
   float: right;
   display: inline-block;
-  height: 41px;
+  vertical-align: middle;
 }
 
 .navbar_icon {
   height: 26px;
   width: 26px;
   margin-left: 13px;
-
+  vertical-align: middle;
 }
 
-#profile_pic {
+#nav_image_container {
+  line-height: 32px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#nav_profile_pic {
+  border: 1px solid #CCCCCC;
   height: 32px;
-  margin: 3px 0 0 17px;
+  display: inline-block;
   width: 32px;
+  background-position: top center;
+  background-size: cover;
+  margin: 0 0 0 17px;
   cursor: pointer;
+}
+
+#right_hand_navbar span {
+  line-height: 41px;
+  vertical-align: middle;
 }
 
 /* DROPDOWN */
@@ -180,7 +195,6 @@ nav {
 /* MAPS */
 
 #map-canvas {
-  position: absolute;
   width: 80%;
   height: 450px;
   border: 1px solid black;
@@ -233,11 +247,6 @@ nav {
   padding: 10px 0;
 }
 
-.card_image {
-  width: 50px;
-  height: 50px;
-}
-
 #become_ambassador {
   left: 50%;
   margin: 0 0 0 -8em;
@@ -257,21 +266,229 @@ nav {
   height: 340px;
 }
 
-#search_results_list {
-  margin-top: 500px;
+
+#ambassador_ratings {
+  max-height: 176px;  
+  overflow: auto;
+  width: 100%;
+}
+
+.profile_section > h4 {
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+
+/* CARD */
+
+.card_image {
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  vertical-align: middle;
+}
+
+.card_image_container {
+  border: 1px solid #CCCCCC;
+  float: left;
+  height: 50px;
+  display: inline-block;
+  width: 50px;
+  background-position: top center;
+  background-size: cover;
+}
+
+.card_info {
+  float: left;
+  width: 80%;
+  color: #000;
+  margin-left: 13px;
+}
+
+.card {
+  display: block;
+  height: 70px;
+  width: 100%;
+}
+
+.coming_soon {
+  color: red;
 }
 
 
+/* AMBASSADOR PLACE TOURS */
+
+#ambassador_availability {
+  padding: 30px;
+  text-align: center;
+}
+
+#where_guide_title {  
+  text-align: center;
+}
+
+#choose_specialties > h2 {
+  text-align: center;
+  padding: 30px;
+}
+
+#specialties {
+  margin: auto;
+  padding-left: 58px;
+  width: 458px;
+}
+
+.specialty {
+  width: 150px;
+  display: inline-block;
+}
+
+.center {
+  text-align: center;
+}
+
+.submit_button {
+  padding: 30px;
+}
+
+/* USER INFO */
+
+.user_info {
+  width: 600px;
+  margin: auto;
+  padding: 30px;
+}
+
+.user_info div {
+  height: 30px;
+  padding: 10px 0;
+}
+
+.user_pic {
+  height: 150px;
+  width: 150px;
+  display: inline-block;
+  background-position: top center;
+  background-size: cover;
+}
+
+#change_picture{
+  margin-top: 120px;
+  text-align: center;
+  vertical-align: bottom;
+  cursor: pointer;
+  padding: 3px;
+  border: 1px solid #ddd;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+#right_of_picture {
+  display: inline-block;
+  vertical-align: top;
+  width: 50%;
+  padding-left:20px;
+}
+
+#right_of_picture div {
+  display: block;
+  padding: 0 0 15px;
+  width: 100%;
+}
+
+.user_tagline input {
+  width: 100%;
+}
+
+.user_email input {
+  width: 70%;
+}
+
+.user_name {
+  font-size: 3em;
+  height: 50px !important;
+}
+
+.user_bio {
+  height: 100px !important;
+}
+
+.user_bio textarea {
+  width: 100%;
+  height: 100px;
+}
+
+#right_of_picture > input {
+  margin: 13px;
+}
+
+#under_picture {
+  padding-top: 20px;
+}
+
+#private_info div {
+  height: 1em;
+}
+
+#private_info h3{
+  font-weight: bold;
+  padding: 20px 0;
+}
+
+/* MEETUPS VIEW */
 
 
+.meetup_pic {
+  height: 150px;
+  width: 150px;
+  display: inline-block;
+  background-position: top center;
+  background-size: cover;  
+}
 
+.meetup_card h2{
+  font-size: 3em;
+}
 
+.meetup_info {
+  width: 600px;
+  margin: auto;
+  padding: 30px;
+}
 
+.meetup_info h3{
+  text-align: center;
+  padding: 30px;
+}
 
+.user_info {
+  display: block;
+  padding: 4px 0;
+}
 
+#meetup_meetup_notes {
+  width: 100%;
+  height: 60px;
+  margin: 20px 0;
+}
 
+#meetup_notes {
+    display: block;
+    margin: 20px 0;
+}
 
+/* REVIEW VIEW */
 
+.reviewee_pic{
+  height: 150px;
+  width: 150px;
+  display: inline-block;
+  background-position: top center;
+  background-size: cover;   
+}
+
+#reviewee_form textarea{
+  width: 100%;
+  margin: 20px 0;
+}
 
 
 

@@ -1,10 +1,21 @@
+#The code below is to run SimpleCov
+require 'simplecov'
+SimpleCov.start
+
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
+require 'simplecov'
+SimpleCov.start 'rails'
+puts "required simplecov"
+
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
 require 'capybara/rspec'
 require 'rack_session_access/capybara'
+require "factory_girl_rails"
+
+require_relative './support/omniauth_macros'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -15,6 +26,11 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
 RSpec.configure do |config|
+
+  config.include FactoryGirl::Syntax::Methods
+
+  config.include(OmniauthMacros)
+
   config.include Capybara::DSL, :type => :feature
   # ## Mock Framework
   #
@@ -42,4 +58,12 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+
 end
+
+OmniAuth.config.test_mode = true
+
+
+
+
+

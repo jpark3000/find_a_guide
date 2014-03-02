@@ -4,7 +4,10 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.2'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# gem 'sqlite3'
+
+# Use postgresas the database for Active Record
+gem 'pg'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -36,6 +39,8 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'faker'
   gem 'pry'
+
+  gem "factory_girl_rails", "~> 4.0"
 end
 
 group :test do
@@ -43,6 +48,7 @@ group :test do
   gem 'capybara', '2.0.3'
   gem 'rack_session_access'
   gem 'database_cleaner'
+  gem "factory_girl_rails", "~> 4.0"
 end
 
 gem 'dotenv-rails'
@@ -65,6 +71,9 @@ gem "geocoder"
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+# Test Coverage
+gem 'simplecov', :require => false, :group => :test
 
 # Oauth Related
 gem 'omniauth'

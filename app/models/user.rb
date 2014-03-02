@@ -18,7 +18,8 @@ class User < ActiveRecord::Base
 	has_many :ambassador_meetups, class_name: "Meetup", foreign_key: "ambassador_id", dependent: :destroy
 	has_many :visitor_meetups, class_name: "Meetup", foreign_key: "visitor_id"
 
-	validates :first_name, :last_name, presence: true
+	validates :first_name, :last_name, :email, presence: true
+  validates :email, :uid, uniqueness: true
 
 	def name
  		"#{first_name} #{last_name}"
@@ -29,7 +30,7 @@ class User < ActiveRecord::Base
 	end
 
   def profile_pic(uid = self.uid)
-    return "http://graph.facebook.com/#{uid}/picture"
+    return "http://graph.facebook.com/#{uid}/picture?type=large"
   end
 
   def open_information
@@ -42,9 +43,9 @@ class User < ActiveRecord::Base
 
   def empty_reviews(type)
     if type == :visitor
-      self.visitor_meetups.where('date_time < ?', Time.now) - self.visitor_reviews.map{|r| r.meetup}
+      self.visitor_meetups.where('date_time < ?', Time.now).order('date_time').reverse - self.visitor_reviews.map{|r| r.meetup}
     else
-      self.ambassador_meetups.where('date_time < ?', Time.now) - self.ambassador_reviews.map{|r| r.meetup}
+      self.ambassador_meetups.where('date_time < ?', Time.now).order('date_time').reverse - self.ambassador_reviews.map{|r| r.meetup}
     end
   end
 
@@ -58,18 +59,18 @@ class User < ActiveRecord::Base
     if ratings.empty?
       return false
     else
-      ratings.map{|r| r.rating.to_i}.reduce(:+) / ratings.count
+      ratings.order('created_at').map{|r| r.rating.to_i}.reduce(:+) / ratings.count.to_f.round(2)
     end
   end
 
   def all_ratings(type) #specify ambassador ratings
-    reviews_received.where('reviewee_id = ?', id)
+    reviews_received.where('reviewee_id = ?', id).order('created_at')
   end
 
   def find_meetup(reviewee)
     @user_meetups = Meetup.where('ambassador_id = ? OR visitor_id = ?', id, id)
     @meetup = @user_meetups.select{|m| m.reviews.all && (m.ambassador_id == reviewee.id || m.visitor.id == reviewee.id)}.first
-  end  
+  end
 
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
