@@ -23,6 +23,7 @@ class EmailsController < ApplicationController
     subject = 'A New Visitor Needs Your Help!'
     email_html = render_to_string "new_request", :layout => false
     Email.new_request(@visitor, @ambassador, email_html, subject)
+    render 'new_acknowledge'
   end
 
   def reject
@@ -31,5 +32,6 @@ class EmailsController < ApplicationController
     subject = 'Ambassador Unavailable'
     email_html = render_to_string "reject", :layout => false
     Email.new_request(@ambassador, @visitor, email_html, subject)
+    render 'reject_acknowledge'
   end
 end
