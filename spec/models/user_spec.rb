@@ -74,36 +74,38 @@ describe 'user methods:' do
 
   user = FactoryGirl.build(:user)
 
-  describe 'name' do
+  describe 'name method:' do
     it 'returns full name as a string' do
       expect(user.name).to eq "#{user.first_name} #{user.last_name}"
     end
   end
 
-  describe 'profile_pic' do
+  describe 'profile_pic method:' do
     it 'returns a string with the users uid interpolated into a url' do
-      expect(user.profile_pic).to eq "http://graph.facebook.com/#{user.uid}/picture"
+      expect(user.profile_pic).to eq "http://graph.facebook.com/#{user.uid}/picture?type=large"
     end
   end
 
-  # describe 'has_specialty' do
-  #   user = user.save
+  describe 'has_specialty method:' do
 
-  #   # Specialty.create(specialty: "History")
-  #   # Specialty.create(specialty: "Nightlife")
-  #   # Specialty.create(specialty: "Food")
+    user = FactoryGirl.build(:user)
 
-  #   user.specialties << Specialty.first
-  #   user.specialties << Specialty.last
+    s1 = Specialty.new(specialty: "History")
+    s2 = Specialty.new(specialty: "Nightlife")
+    s3 = Specialty.new(specialty: "Food")
 
-  #   it 'should have the History specialty' do
-  #     expect(user.has_specialty?(Specialty.first)).to eq true
-  #   end
+    user.specialties << s1
+    user.specialties << s2
+    user.specialties << s3
 
-  #   it 'should have the Food specialty' do
-  #     expect(user.has_specialty?(Specialty.last)).to eq true
-  #   end
-  # end
+    it 'should have the History specialty' do
+      expect(user.has_specialty?(s1)).to eq true
+    end
+
+    it 'should have the Food specialty' do
+      expect(user.has_specialty?(s3)).to eq true
+    end
+  end
 
 end
 
