@@ -14,7 +14,7 @@
           dataType: 'json'
     });
   });
-});
+}); 
 
 var convertFormToJSON = function (form){
     var array = jQuery(form).serializeArray();
@@ -27,6 +27,6 @@ var convertFormToJSON = function (form){
     return json;
 }
 
-var confirmSave = function (response) {
+var confirmSave = function () {
   $("#response").append("<li>Specialties Updated</li>");
 }
