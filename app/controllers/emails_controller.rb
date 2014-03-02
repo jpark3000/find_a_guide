@@ -1,4 +1,3 @@
-
 class EmailsController < ApplicationController
    skip_before_filter :verify_authenticity_token
    # include ActionController::Base.helpers
@@ -13,7 +12,7 @@ class EmailsController < ApplicationController
 
    message = {:to => @recipient.email, :html => html, :from => 'postmaster@sandbox57336.mailgun.org', :subject => params[:subject], "h:Reply-To" => @sender.anonymous_email}
    Email.send_message(message)
-   
+
    render :text => "OK"
   end
 

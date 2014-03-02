@@ -1,27 +1,35 @@
-<div id="edit_user_info">
+<div class="user_info">
   <%= form_for(@user) do |f| %>
-    <span id="edit_user_pic">
-      <%= image_tag(@user.profile_pic) %>
+    <span class="user_pic" style="background-image: url('<%= @user.profile_pic %>')">
+      <p id="change_picture">Change Picture</p>
     </span>
-    <div id="edit_user_name">
-      <%= @user.name %>
+    <div id="right_of_picture">
+      <div class="user_name">
+        <%= @user.name %>
+      </div>
+      <div class="user_email">
+        <%= f.text_field :email, :placeholder => 'email' %>
+      </div>
+      <div class="user_tagline">
+        <%= f.text_field :tagline, :placeholder => 'tagline' %>
+      </div>
     </div>
-    <div id="edit_user_bio">
-      <%= f.text_area :bio, :placeholder => 'bio' %>
+    <div id="under_picture">
+      <div class="user_gender">
+        <%= f.radio_button :gender, 'male' %> Male
+        <%= f.radio_button :gender, 'female' %> Female
+      </div>
+      <div class="user_phone">
+        <%= f.text_field :phone, :placeholder => 'phone' %>
+      </div>
+      <div class="user_age">
+        <%= f.text_field :age, :placeholder => 'age' %>
+      </div>
+      <div class="user_bio">
+        <%= f.text_area :bio, :placeholder => 'bio' %>
+      </div>
+      <%= f.submit %>
     </div>
-    <div id="edit_user_email">
-      <%= f.text_field :email, :placeholder => 'email' %>
-    </div>
-    <div id="edit_user_phone">
-      <%= f.text_field :phone, :placeholder => 'phone' %>
-    </div>
-    <div id="edit_user_gender">
-      <%= f.text_field :gender, :placeholder => 'gender' %>
-    </div>
-    <div id="edit_user_age">
-      <%= f.text_field :age, :placeholder => 'age' %>
-    </div>
-    <%= f.submit %>
   <% end %>
 </div>
 <ul id="errors"></ul>

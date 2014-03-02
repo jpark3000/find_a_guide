@@ -20,12 +20,12 @@
 </div>
 
 <script>  //dropdown menu jquery here to avoid turbolinks
-  $("#profile_pic").on('click',function(){
+  $("#nav_profile_pic").on('click',function(){
     $("#dropdown").toggleClass('hide');
   });
 
   $(document).on('click',function(e){
-    if(e.target.id !== "profile_pic"){
+    if(e.target.id !== "nav_profile_pic"){
       $("#dropdown").addClass('hide');
     }
   });

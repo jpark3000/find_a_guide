@@ -3,37 +3,36 @@
   <%= javascript_include_tag "map" %>
 
 
-<div id="ambassador_avaliablity">
-  <span id="availablity_title" data-id="<%= @ambassador.id %>">Availability</span>
+<div id="ambassador_availability">
+  <span id="availablity_title" data-id="<%= @ambassador.id %>">You are currently
+  <% if @ambassador.ambassador_availability %>
+    Available
+    <%= button_to 'Remove Availability', {:controller => "users", :action => "ambassador_availability_toggle" }, :method=>:put, class: "button_style3", :id => 'become_available' %>
+  <% else %>
+    Unavailable
+    <%= button_to 'Become Availabile', {:controller => "users", :action => "ambassador_availability_toggle" }, :method=>:put, class: "button_style3", :id => 'become_unvailable' %>
+  <% end %>
+  </span>
   <%= form_for(@ambassador) do |f| %>
-    <%= f.radio_button :ambassador_avaliablity, "true", checked: @ambassador.is_ambassador, class: 'availablity_button'%>
-    <%= f.label :ambassador_avaliablity, "Available" %>
-    <%= f.radio_button :ambassador_avaliablity, "true", checked: @ambassador.is_ambassador == false, class: 'availablity_button'%>
-    <%= f.label :ambassador_avaliablity, "Unavailable" %>
     </div>
-
 
     <div id="where_guide_title">Where can you be  guide?</div>
-
-
-
-
-
     <input id="pac-input" class="controls" type="text" placeholder="Search Box">
     <div id="map-canvas"></div>
-
-
-
-
-
-
+    
     <div id="choose_specialties">
       <h2 id="specialties_title">Specialties:</h2>
-      <% @specialties.each do |s| %>
-        <span class="specialty_name"><%= s.specialty %></span>
-        <%= f.check_box s.specialty, class: 'pick_specialty', checked: @ambassador.has_specialty?(s) %>
-      <% end %>
-    <%= f.submit %>
+      <div id="specialties">
+        <% @specialties.each do |s| %>
+          <div class="specialty">
+            <%= f.check_box s.specialty, class: 'pick_specialty', checked: @ambassador.has_specialty?(s) %>
+            <%= f.label s, s.specialty %>
+          </div>
+        <% end %>
+      </div>
     </div>
+    <div class="center submit_button">
+      <%= f.submit %>
+    </div> 
   <% end %>
 

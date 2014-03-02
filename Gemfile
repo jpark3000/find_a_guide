@@ -68,6 +68,9 @@ gem "rest-client", "~> 1.6.7"
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+# Test Coverage
+gem 'simplecov', :require => false, :group => :test
+
 # Oauth Related
 gem 'omniauth'
 gem 'omniauth-facebook', '1.6.0'

@@ -3,6 +3,7 @@ FindAGuide::Application.routes.draw do
   # resources :authentications
 
   match '/users/toggle_ambassador', to: 'users#ambassador_toggle', via: [:put]
+  match '/users/toggle_ambassador_availability', to: 'users#ambassador_availability_toggle', via: [:put]
   match '/contact_ambassador', to: 'emails#new_request', via: [:post]
   match '/reject_request', to: 'emails#reject', via: [:post]
   match '/reply', to: 'emails#reply', via: [:post]

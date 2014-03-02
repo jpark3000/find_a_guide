@@ -1,35 +1,31 @@
-<div id="show_user_info">
-    <div id="show_user_pic">
-      <%= image_tag(@user.profile_pic) %>
+<div class="user_info">
+    <span class="user_pic" style="background-image: url('<%= @user.profile_pic %>')">
+    </span>
+
+    <div id="right_of_picture">
+      <% if @user.id == session[:user_id] %>
+        <div class="user_name">
+          <%= @user.name %>
+        </div>
+      <% else %>
+        <div class="user_name">
+            <%= @user.first_name %>
+        </div>
+      <% end %>
+      <div class="user_tagline"><%= @user.tagline %></div>
     </div>
 
-    <% if @user.id == session[:user_id] %>
-      <div id="show_user_name">
-        Name: <%= @user.name %>
-      </div>
-    <% else %>
-    <div id="show_user_name">
-        First Name: <%= @user.first_name %>
-    </div>
-    <% end %>
-
-    <div id="show_user_bio">
+    <div id="user_bio_display">
       Bio: <%= @user.bio %>
     </div>
 
-    <% if @user.id == session[:user_id] %>
-      <h3> Your Private Information </h3>
-      <div id="show_user_email">
-        Email: <%= @user.email %>
-      </div>
-      <div id="show_user_phone">
-        Phone: <%= @user.phone %>
-      </div>
-      <div id="show_user_gender">
-        Gender: <%= @user.gender %>
-      </div>
-      <div id="show_user_age">
-        Age: <%= @user.age %>
-      </div>
-    <% end %>
+    <div id="private_info">
+      <% if @user.id == session[:user_id] %>
+        <h3> Your Private Information </h3>
+        <div class="user_email"><%= @user.email %></div>
+        <div class="user_phone"><%= @user.phone %></div>
+        <div class="user_gender"><%= @user.gender %></div>
+        <div class="user_age"><%= @user.age %></div>
+      <% end %>
+    </div>
 </div>
