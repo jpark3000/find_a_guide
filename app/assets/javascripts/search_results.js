@@ -58,21 +58,28 @@ $(document).ready(function() {
         position: myLatLng,
         map: map
       });
+      markers.push(tour_marker)
     });
 
     google.maps.event.addListener(map, 'idle', function() {
-      // console.log(map.getBounds().toString());
 
       var data = { bounds :  map.getBounds().toString()}
+
       $.post('/search', data, function(response) {
-        console.log(response)
+        // console.log(markers.length)
+        $.each(markers, function(i,v) {
+          v.setMap(null);
+        });
+        markers.length = 0
 
         $.each(response.points, function(i,v) {
           var myLatLng = new google.maps.LatLng(response.points[i][0], response.points[i][1])
+
           var tour_marker = new google.maps.Marker({
             position: myLatLng,
             map: map
           }); //end new marker
+          markers.push(tour_marker);
         }); //end each
 
         $('.amb').remove()
