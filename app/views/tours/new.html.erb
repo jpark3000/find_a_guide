@@ -15,26 +15,27 @@
   </span>
 </div>
 
-    <div id="where_guide_title">Where can you be  guide?</div>
-    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-    <div id="map-canvas"></div>
-    
-    <div id="choose_specialties">
-      <h2 id="specialties_title">Specialties:</h2>
-      <div id="specialties">
-        <%= form_tag user_specialties_path(@ambassador), :id => 'form_specialty' do %>
-        <% @specialties.each do |s| %>
-          <div class="specialty">
-            <%= check_box_tag "specialty[#{s.id}]", s.id, @ambassador.has_specialty?(s), class: 'pick_specialty'%>
-            <%= label_tag "specialty[#{s.id}]", s.specialty %>
-          </div>
-        <% end %>  
-        <div class="center submit_button">
-            <%= submit_tag("Update Specialties") %>
-        </div>
-        <% end %> 
+<div id="where_guide_title">Where can you be  guide?</div>
+<input id="pac-input" class="controls" type="text" placeholder="Search Box">
+<div id="map-canvas"></div>
+
+<div id="choose_specialties">
+  <h2 id="specialties_title">Specialties:</h2>
+  <div id="specialties">
+    <%= form_tag user_specialties_path(@ambassador), :id => 'form_specialty' do %>
+    <% @specialties.each do |s| %>
+      <div class="specialty">
+        <%= check_box_tag "specialty[#{s.id}]", s.id, @ambassador.has_specialty?(s), class: 'pick_specialty'%>
+        <%= label_tag "specialty[#{s.id}]", s.specialty %>
       </div>
+    <% end %>  
+    <div class="center submit_button">
+        <%= submit_tag("Update Specialties") %>
     </div>
-    
+    <% end %> 
+  </div>
+</div>
+<ul id="response"></ul>
+<%= javascript_include_tag 'specialty' %>    
   
 
