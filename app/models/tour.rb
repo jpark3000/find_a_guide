@@ -11,4 +11,6 @@ class Tour < ActiveRecord::Base
 	def format_coordinates
 		[latitude, longitude]
 	end
+
+	
 end
