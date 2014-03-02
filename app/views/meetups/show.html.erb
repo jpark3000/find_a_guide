@@ -29,5 +29,7 @@
     <% end %>
 
   </div>
-  <%= @meetup.meetup_notes %>
+  <span id="meetup_notes">
+    <%= "Notes: " + @meetup.meetup_notes if @meetup.meetup_notes%>
+  </span>
 </div>
