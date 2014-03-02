@@ -18,10 +18,13 @@
     <% if @ambassador.id == current_user.id %>
       <div class="meetup_card">
         <span class="meetup_pic" style="background-image: url('<%= @visitor.profile_pic %>')"></span>
-        <h2><%= @visitor.name %></h2>
-        <% @visitor_attributes.each do |a| %>
-          <span class="user_email" id="meetup_visitor_email"><%= a %></span>
-        <% end %>        
+        <div id="right_of_picture">
+          <h2><%= @visitor.name %></h2>
+          <%= @meetup.date_time.to_formatted_s(:upcoming_date) %>
+          <% @visitor_attributes.each do |a| %>
+            <span class="user_info"><%= a %></span>
+          <% end %>
+        </div>      
       </div>
     <% end %>
 
