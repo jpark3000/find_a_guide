@@ -1,12 +1,12 @@
 <h2 id="dashboard_title">Dashboard</h2>
 <div id="section_headers">
-  <h3 class="profile_title">Visitor Profile</h3>
-  <h3 class="profile_title">Ambassador Profile</h3>
+  <h3 class="profile_title">Visitor</h3>
+  <h3 class="profile_title">Ambassador</h3>
 </div>
 <div id="dashboard_sections">
   <div id="visitor_profile" class="section">
     <div class="profile_section">
-      <h4 class="profile_tours_title">Tours</h4>
+      <h4 class="profile_tours_title">Upcoming Meetups</h4>
       <% @visitor_meetups.each do |m| %>
         <%= link_to user_meetup_path(m.ambassador,m) do %>
           <span class="card">
@@ -67,7 +67,7 @@
       </div>
     <% end %>
     <div class="profile_section">
-      <h4 class="profile_tours_title">Upcoming Tours</h4>
+      <h4 class="profile_tours_title">Upcoming Meetups</h4>
       <% if @ambassador_tours.size > 0 %>
         <% @ambassador_tours.each do |t| %>
           <%= link_to edit_user_meetup_path(t.ambassador,t) do %>
@@ -122,7 +122,17 @@
       </div>
     <% end %>
     <% if @user.is_ambassador %>
-      <%= button_to 'Stop being an Ambassador!', {:controller => "users", :action => "ambassador_toggle" }, :method=>:put, class: "button_style3"%>
+      <div id="ambassador_availability">
+        <span id="availablity_title" data-id="<%= @user.id %>">You are currently
+        <% if @user.ambassador_availability %>
+          Available
+          <%= button_to 'Set to Unavailable', {:controller => "users", :action => "ambassador_availability_toggle" }, :method=>:put, class: "button_style3", :id => 'become_available' %>
+        <% else %>
+          Unavailable
+          <%= button_to 'Become Availabile', {:controller => "users", :action => "ambassador_availability_toggle" }, :method=>:put, class: "button_style3", :id => 'become_unvailable' %>
+        <% end %>
+        </span>
+      </div>
     <% end %>
   </div>
 </div>
