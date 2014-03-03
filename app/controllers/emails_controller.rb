@@ -19,10 +19,14 @@ class EmailsController < ApplicationController
   def new_request
     @visitor = current_user
     @ambassador = User.find(params[:ambassador_id])
+    @start_date = params[:start_date]
+    @end_date = params[:end_date]
     subject = 'A New Visitor Needs Your Help!'
     email_html = render_to_string "new_request", :layout => false
     Email.new_request(@visitor, @ambassador, email_html, subject)
-    render 'new_acknowledge'
+    respond_to do |format|
+      format.json{ render :json => {response: 'Email Sent'}}
+    end
   end
 
   def reject
