@@ -1,9 +1,14 @@
+<div id="home_full_background"></div>
+
 <div id="main_search">
-  <%= form_tag search_results_path do %>
-    <%= text_field_tag 'search', nil, :placeholder => 'Where are you going?' %>
-  <input type="text" data-behaviour='datepicker' id="starting_date">
-  <input type="text" data-behaviour='datepicker' id="ending_date">
-  <% end %>
+  <div id="search_container">
+    <%= form_tag search_results_path do %>
+      <%= text_field_tag 'search', nil, :placeholder => 'Where are you going?' %>
+    <input type="text" class="date_picker" data-behaviour='datepicker' id="starting_date"><span class="icon_container"><span class="calendar_icon"></span></span>
+    <input type="text" class="date_picker" data-behaviour='datepicker' id="ending_date"><span class="icon_container"><span class="calendar_icon"></span></span>
+    <button id="search_button">Search</button>
+    <% end %>
+  </div>
 </div>
 
 <script type="text/javascript">
