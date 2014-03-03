@@ -1,6 +1,8 @@
 <h4>Hi, <%= @ambassador.first_name%> </h4>
 
 <p>A new visitor, <%= @visitor.first_name%>, wants your help to get to know your city!</p>
+<p>Start Date: <%= @start_date%></p>
+<p>End Date: <%= @end_date%></p>
 
 <%= form_tag(reject_request_url, method: "post") do %>
   <%= hidden_field_tag(:ambassador_id, @ambassador.id) %>
