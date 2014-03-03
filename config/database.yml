@@ -8,6 +8,7 @@ development:
   database: gingerspice_development
   pool: 5
   timeout: 5000
+  host: localhost
 
 
 # Warning: The database defined as "test" will be erased and
@@ -18,10 +19,12 @@ test:
   database: gingerspice_test
   pool: 5
   timeout: 5000
+  host: localhost
 
 production:
   adapter: postgresql
   database: gingerspice_production
   pool: 5
   timeout: 5000
+  host: localhost
 

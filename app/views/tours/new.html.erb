@@ -1,6 +1,5 @@
-
-  <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places" %>
-  <%= javascript_include_tag "map" %>
+<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places" %>
+<%= javascript_include_tag "map" %>
 
 
 <div id="ambassador_availability">
@@ -19,6 +18,8 @@
 <input id="pac-input" class="controls" type="text" placeholder="Search Box">
 <div id="map-canvas"></div>
 
+
+
 <div id="choose_specialties">
   <h2 id="specialties_title">Specialties:</h2>
   <div id="specialties">
@@ -27,6 +28,7 @@
       <div class="specialty">
         <%= check_box_tag "specialty[#{s.id}]", s.id, @ambassador.has_specialty?(s), class: 'pick_specialty'%>
         <%= label_tag "specialty[#{s.id}]", s.specialty %>
+
       </div>
     <% end %>  
     <div class="center submit_button">

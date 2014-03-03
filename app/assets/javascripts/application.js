@@ -16,3 +16,9 @@
 //= require turbolinks
 //= require_self
 
+
+
+
+$(document).ready(function(){
+  
+});

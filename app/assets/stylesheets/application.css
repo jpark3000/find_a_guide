@@ -391,6 +391,7 @@ nav {
   height: 340px;
 }
 
+
 #ambassador_ratings {
   max-height: 176px;  
   overflow: auto;
@@ -614,6 +615,24 @@ nav {
   margin: 20px 0;
 }
 
+/* REMOVE THIS BEFORE PUSH OR JUST REMOVE IF I (JUSTIN) FORGOT TO */
+#search_results_list {
+margin-top: 63px;
+border: 1px solid black;
+width: auto;
+height: 400px;
+}
+
+
+.tour_box {
+  width: 248px;
+  height: 214px;
+  background-color: white;
+  border: 1px solid black;
+}
+
+
+
 
 
 /*DATEPICKER*/
@@ -742,3 +761,4 @@ nav {
   color: #000;
   text-decoration: none;
 }
+

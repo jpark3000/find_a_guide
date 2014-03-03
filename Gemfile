@@ -56,6 +56,12 @@ gem 'faker'
 gem 'dotenv-rails'
 gem "rest-client", "~> 1.6.7"
 
+# allows variables set in controllers to be available to javascripts
+gem 'gon'
+
+# for querying database to fill map
+gem "geocoder"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
