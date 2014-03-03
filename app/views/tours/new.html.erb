@@ -2,17 +2,7 @@
 <%= javascript_include_tag "map" %>
 
 
-<div id="ambassador_availability">
-  <span id="availablity_title" data-id="<%= @ambassador.id %>">You are currently
-  <% if @ambassador.ambassador_availability %>
-    Available
-    <%= button_to 'Remove Availability', {:controller => "users", :action => "ambassador_availability_toggle" }, :method=>:put, class: "button_style3", :id => 'become_available' %>
-  <% else %>
-    Unavailable
-    <%= button_to 'Become Availabile', {:controller => "users", :action => "ambassador_availability_toggle" }, :method=>:put, class: "button_style3", :id => 'become_unvailable' %>
-  <% end %>
-  </span>
-</div>
+
 
 <div id="where_guide_title">Where can you be  guide?</div>
 <input id="pac-input" class="controls" type="text" placeholder="Search Box">

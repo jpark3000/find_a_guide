@@ -96,10 +96,10 @@ class UsersController < ApplicationController
 
     if @user.ambassador_availability
       @user.update(ambassador_availability: false)
-      redirect_to new_user_tour_path(@user)
+      redirect_to dashboard_path(@user)
     else
       @user.update(ambassador_availability: true)
-      redirect_to new_user_tour_path(@user)
+      redirect_to dashboard_path(@user)
     end
 
   end
