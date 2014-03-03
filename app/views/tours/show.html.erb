@@ -36,4 +36,12 @@
     <% end %>
   </div>
 <% end %>
-<%= button_to 'Contact', {:controller => "emails", :action => "new_request", :ambassador_id => @ambassador.id }, :method=>'post'%>
+<div id="dialog-message" title="Ambassador Contacted">
+  <p>An email has been sent to the ambassador.  You should receive a response shortly.</p>
+</div>
+
+<%= form_tag({controller: "emails", action: "new_request"}, method: "post", id: 'contact') do %>
+  <%=hidden_field_tag 'ambassador_id', @ambassador.id%>
+  <%= submit_tag("Contact") %>
+<% end %> 
+<%= javascript_include_tag 'contact' %>  
