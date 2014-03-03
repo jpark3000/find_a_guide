@@ -71,7 +71,8 @@ $(document).ready(function() {
       var data = { bounds :  map.getBounds().toString()}
 
       $.post('/search', data, function(response) {
-        console.log(response)
+        // console.log(response)
+        $('.amb').remove()
         $.each(markers, function(i,v) {
           v.setMap(null);
         });
@@ -84,7 +85,7 @@ $(document).ready(function() {
             position: myLatLng,
             map: map
           }); //end new marker
-          var user = response[v[2]]
+          var user = response['users'][v[2]]
           var tourBox = new TourBox(user.first_name, user.tagline, user.rating, v[3])
           var infoWindow = new google.maps.InfoWindow({ content : tourBox.template[0] })
           infoWindows.push(infoWindow);
@@ -97,14 +98,17 @@ $(document).ready(function() {
           });
 
           markers.push(tour_marker);
+
+          
+
         }); //end each
 
-        $('.amb').remove()
-        // $.each(response.users, function(i,v) {
-        //   // console.log(v.id)
-        //   var user = new User(v.id, v.first_name, v.tagline, '2 stars')
-        //   $('#search_results_list').append(user.template)
-        // });
+        // console.log(response.users)
+        $.each(response.users, function(i,v) {
+          // console.log(v)
+            var user = new User(v.id, v.first_name, v.tagline, v.rating)
+            $('#search_results_list').append(user.template)
+        });
 
       });//end ajax callback
     });//end event listener

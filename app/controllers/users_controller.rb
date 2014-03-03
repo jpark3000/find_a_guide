@@ -32,10 +32,10 @@ class UsersController < ApplicationController
         #   render
         # end
         format.json do
-          hashy = {points: points}
+          hashy = {points: points, users: {}}
 
           @users.each do |u|
-            hashy[u.id] = {first_name: u.first_name, tagline: u.tagline, rating: u.rating}
+            hashy[:users][u.id] = {id: u.id, first_name: u.first_name, tagline: u.tagline, rating: u.rating} 
           end
 
 
