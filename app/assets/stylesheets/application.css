@@ -485,6 +485,7 @@ nav {
   width: 499px;
   z-index: 10;
   height: 340px;
+  display: none;
 }
 
 
@@ -868,5 +869,9 @@ nav {
 }
 
 #dialog-message{
+  display: none;
+}
+
+#availability_form{
   display: none;
 }

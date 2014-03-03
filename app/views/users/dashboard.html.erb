@@ -61,11 +61,11 @@
 
 
   <div id="ambassador_profile" class="section">
-    <% if !@user.is_ambassador %>
-      <div id="ambassador_overlay">
-        <%= button_to 'Become an Ambassador!', {:controller => "users", :action => "ambassador_toggle" }, :method=>:put, class: "button_style3", :id => 'become_ambassador'%>
-      </div>
-    <% end %>
+    <div id="ambassador_overlay" data-ambassador="<%=@user.is_ambassador%>">
+      <%= form_tag({controller: "users", action: "ambassador_toggle"}, method: :put, id: 'become_ambassador') do %>
+        <%= submit_tag("Become an Ambassador!") %>
+      <% end %>
+    </div>
     <div class="profile_section">
       <h4 class="profile_tours_title">Upcoming Meetups</h4>
       <% if @ambassador_tours.size > 0 %>
@@ -121,18 +121,15 @@
         <% end %>
       </div>
     <% end %>
-    <% if @user.is_ambassador %>
-      <div id="ambassador_availability">
-        <span id="availablity_title" data-id="<%= @user.id %>">You are currently
-        <% if @user.ambassador_availability %>
-          Available
-          <%= button_to 'Set to Unavailable', {:controller => "users", :action => "ambassador_availability_toggle" }, :method=>:put, class: "button_style3", :id => 'become_available' %>
-        <% else %>
-          Unavailable
-          <%= button_to 'Become Availabile', {:controller => "users", :action => "ambassador_availability_toggle" }, :method=>:put, class: "button_style3", :id => 'become_unvailable' %>
+    <div id="ambassador_availability">
+      <% @user.ambassador_availability? ? status = 'Available' : status = 'Unavailable' %>
+      <% @user.ambassador_availability? ? new_status = 'Unavailable' : new_status = 'Available' %>
+        <%= form_tag({controller: "users", action: "ambassador_availability_toggle"}, method: :put, id: 'availability_form') do %>
+          <span id="availablity_title" data-id="<%= @user.id %>">You are currently <%=status%>.</span>
+          <%=hidden_field_tag 'availability', !@user.ambassador_availability?%>
+          <%= submit_tag("Set status to #{new_status}") %>
         <% end %>
-        </span>
-      </div>
-    <% end %>
+    </div>
   </div>
 </div>
+<%= javascript_include_tag 'dashboard' %>  
