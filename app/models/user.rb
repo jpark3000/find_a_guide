@@ -93,10 +93,12 @@ class User < ActiveRecord::Base
     end
   end
 
+
   def create_alias_email
     self.anonymous_email = 'user' + self.id.to_s + Time.now.to_i.to_s + '@sandbox57336.mailgun.org'
     self.save
   end
+
 
 end
 

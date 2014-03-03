@@ -1,4 +1,11 @@
-<div id="mapp-canvas"></div>
+<%= javascript_include_tag "search_results" %>
+<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places" %>
+
+
+
+
+
+<div id="map-canvas"></div>
 <div id="search_results_content">
   <div id="refine_search">
     <% @specialties.each do |s| %>
@@ -11,19 +18,9 @@
     <% end %>
     <% options_for_select(@languages) %>
   </div>
-  <div id="search_results_list">
-    <% @tours.each do |t| %>
-      <%= link_to user_tour_path(t.ambassador,t) do %>
-        <div class="ambassador_tour_card">
-          <%= image_tag(t.ambassador.profile_pic(t.ambassador.uid)) %>
-          <span class="ambassador_name_card"><%= t.ambassador.first_name %></span>
-          <span class="ambassador_tag_line_card"><%= t.ambassador.last_name %></span>
-          <span class="ambassador_rating_card"><%= t.ambassador.rating %></span>
-          <span class="tour_description_card"><%= t.description.truncate(30) %></span>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
+
+  <%= render partial: "search_results_list" %>
+
   <div id="home_marketing">
     
   </div>

@@ -1,9 +1,59 @@
+require 'pry'
 class UsersController < ApplicationController
 
   def index
     @specialties = Specialty.all
     @languages = Language.all
-    @tours = Tour.all
+    @tours = []
+  end
+
+  def search
+    points = []
+    gon.lat = params[:center_lat]
+    gon.lng = params[:center_lng]
+
+    @specialties = Specialty.all
+    @languages = Language.all
+
+    respond_to do |format| 
+      if request.xhr?
+        params[:bounds] = params[:bounds].gsub!(/\(+|\)+/, '').split(',').map! { |i| i.to_f }
+
+        @tours = Tour.where(Geocoder::Sql.within_bounding_box(params[:bounds][0], params[:bounds][1],
+                                                                     params[:bounds][2], params[:bounds][3],  
+                                                                     'latitude', 'longitude'))
+
+        @users = @tours.map { |tour| tour.ambassador }.uniq
+        @tours.each do |tour|
+          points << tour.format_coordinates
+        end
+
+        # format.html do 
+        #   render
+        # end
+        format.json do
+          hashy = {points: points, users: {}}
+
+          @users.each do |u|
+            hashy[:users][u.id] = {id: u.id, first_name: u.first_name, tagline: u.tagline, rating: u.rating} 
+          end
+
+
+          render :json => hashy
+        end
+      else
+        gon.points = []
+        @tours = Tour.near([params[:center_lat], params[:center_lng]], 500)
+        @tours.each do |tour|
+          gon.points << tour.format_coordinates
+        end
+        @users = @tours.map { |tour| tour.ambassador }
+        format.html do
+          render 'index'
+        end
+      end 
+    end
+
   end
 
   def edit

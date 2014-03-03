@@ -1,3 +1,6 @@
+
+<%= javascript_include_tag "search" %>
+<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places" %>
 <div id="home_full_background">
   <div id="milan" class="sliding_images"></div>
   <div id="cafe" class="sliding_images"></div>
@@ -8,8 +11,11 @@
 
 <div id="main_search">
   <div id="search_container">
-    <%= form_tag search_results_path do %>
-      <%= text_field_tag 'search', nil, :placeholder => 'Where are you going?' %>
+    <%= form_tag search_path, id: 'search_form' do %>
+    <input id="pac-input" class="controls" type="text" placeholder="Where Are You Going?">
+    <input id='center_lat' type='hidden' name='center_lat' value=''>
+    <input id='center_lng' type='hidden' name='center_lng' value=''>
+      
     <input type="text" onfocus="this.blur()" class="date_picker" data-behaviour='datepicker' id="starting_date"><span class="icon_container"><span class="calendar_icon"></span></span>
     <input type="text" onfocus="this.blur()" class="date_picker" data-behaviour='datepicker' id="ending_date"><span class="icon_container"><span class="calendar_icon"></span></span>
     <button id="search_button">Search</button>
@@ -27,3 +33,4 @@
 </script>
 
 <%= javascript_include_tag 'facebook' %>
+
