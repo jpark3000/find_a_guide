@@ -1,8 +1,4 @@
 class ToursController < ApplicationController
-  def show
-    @ambassador = User.find(params[:user_id])
-    @selected_tour = Tour.find(params[:id])
-  end
 
   def edit
   end
@@ -31,6 +27,7 @@ class ToursController < ApplicationController
   end
 
   def index
+    @ambassador = current_user
   end
 
   private

@@ -164,6 +164,14 @@ nav {
   margin-top: 4px !important;
 }
 
+/*HOME NAVBAR */
+
+.home_nav {
+  background: none;
+  border: none;
+  
+}
+
 /* DROPDOWN */
 
 #dropdown {
