@@ -1,12 +1,32 @@
-<div id="main_search">
-  <%= form_tag search_results_path do %>
-    <%= text_field_tag 'search', nil, :placeholder => 'Where are you going?' %>
-    <%= date_select("show", "date", :default => Date.today, 
-      :order => [:month, :day, :year], :start_year => Date.today.year, 
-      :end_year => Date.today.year + 3) %>
-    <%= date_select("show", "date", :default => Date.today + 1, 
-      :order => [:month, :day, :year], :start_year => Date.today.year, 
-      :end_year => Date.today.year + 3) %>
-  <% end %>
+<div id="home_full_background">
+  <div id="milan" class="sliding_images"></div>
+  <div id="cafe" class="sliding_images"></div>
+  <div id="bike" class="sliding_images"></div>
+  <div id="fishing" class="sliding_images"></div>
+  <div id="walking" class="sliding_images"></div>
 </div>
+
+<div id="main_search">
+  <div id="search_container">
+    <%= form_tag search_results_path do %>
+      <%= text_field_tag 'search', nil, :placeholder => 'Where are you going?' %>
+    <input type="text" onfocus="this.blur()" class="date_picker" data-behaviour='datepicker' id="starting_date"><span class="icon_container"><span class="calendar_icon"></span></span>
+    <input type="text" onfocus="this.blur()" class="date_picker" data-behaviour='datepicker' id="ending_date"><span class="icon_container"><span class="calendar_icon"></span></span>
+    <button id="search_button">Search</button>
+    <% end %>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('[data-behaviour~=datepicker]').datepicker({
+      format: "MM dd yyyy",
+      autoclose: true,
+    });
+    function slide(){
+      $('#home_full_background').delay(5500).animate({left: '-=100%'},2000).delay(1500).then(slide());
+      }
+  })
+</script>
+
 <%= javascript_include_tag 'facebook' %>
