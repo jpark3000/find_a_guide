@@ -1,5 +1,4 @@
-/* CSS RESET */
-
+/* BODY */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -44,13 +43,11 @@ table {
   border-spacing: 0;
 }
 
-/* BODY */
 
 #content {
   max-width: 1000px;
   margin: 41px auto 0;
 }
-
 
 /* Nav Bar */
 
@@ -189,10 +186,138 @@ nav {
 
 #main_search {
   text-align: center;
-  margin-top: 200px;
+  margin: 200px auto 0;
+  width: 880px;
+  left:0;
 }
 
-/* MAPS */
+#home_full_background {
+  position: fixed;
+  height: 100%;
+  width: 500%;
+  z-index: -10;
+  top: 0;
+  left: 0;
+}
+
+.sliding_images{
+  width: 20%;
+  height: 100%;
+  display: inline-block;
+  margin-left:-4px;
+}
+
+#milan {
+  margin-left: 0px;
+  background: url("milan.jpg");
+  background-position: center center;
+  background-size: cover;
+}
+
+#cafe {
+  background: url("cafe.jpg");
+  background-position: center center;
+  background-size: cover;
+}
+
+#bike {
+  background: url("bike.jpg");
+  background-position: top center;
+  background-size: cover;
+}
+
+#fishing {
+  background: url("fishing.jpg");
+  background-position: top center;
+  background-size: cover;
+}
+
+#walking {
+  background: url("walking.jpg");
+  background-position: top center;
+  background-size: cover;
+}
+
+#search_container {
+  background: rgba(255, 255, 255, 0.4);
+  padding: 10px;
+  border-radius: 3px;
+}
+
+#search_container input {
+    border: 0 none;
+    border-radius: 4px;
+    font-size: 18px;
+    height: 29px;
+    line-height: 30px;
+    margin-top: 2px;
+    padding: 3px 12px;
+    vertical-align: top;
+    width: 386px;
+}
+
+#search_container form {
+  width: auto;
+}
+
+.date_picker {
+  width: 116px !important;
+  margin-left: 3px;
+  border-radius: 4px !important;
+  font-size: 15px !important;
+  color: #666;
+}
+
+.calendar_icon{
+  background: url('glyphicons-halflings.png');
+  cursor: pointer;  
+  width: 30px;  
+  height: 30px;  
+  background-position: -263px -182px;  
+  height: 15px;
+  width: 15px;
+  position: absolute; 
+  top: -2px;
+} 
+
+.icon_container {
+  position: relative;
+  right: 23px;
+  opacity: 0.5
+}
+
+#search_button {
+    background-color: #EB5646;
+    border: medium none;
+    border-radius: 4px;
+    color: #FFFFFF;
+    font-size: 1.1em;
+    padding: 8px 28px;
+    height: 40px;
+    margin-left: 12px;
+    cursor: pointer;
+}
+
+#sliding_nav{
+  position: fixed;
+  bottom:20px;
+  right:20px;
+  width: 43px;
+}
+
+#sliding_nav a{
+  color: #000;
+  text-decoration: none;
+  width:20px;
+}
+
+.ui-datepicker-prev {  
+  float: left;  
+} 
+
+/*MAPS*/
+
+
 
 #map-canvas {
   width: 80%;
@@ -471,8 +596,8 @@ nav {
 }
 
 #meetup_notes {
-    display: block;
-    margin: 20px 0;
+  display: block;
+  margin: 20px 0;
 }
 
 /* REVIEW VIEW */
@@ -498,6 +623,7 @@ width: auto;
 height: 400px;
 }
 
+
 .tour_box {
   width: 248px;
   height: 214px;
@@ -506,4 +632,133 @@ height: 400px;
 }
 
 
+
+
+
+/*DATEPICKER*/
+
+.ui-datepicker {
+  top: 0;
+  left: 0;
+  padding: 4px;
+  margin-top: 1px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  display: none;
+  font-family: "Helvetica Neue",​Helvetica,​Arial,​sans-serif;
+}
+#ui-datepicker-div {
+  background: #fff;
+}
+.ui-datepicker:before {
+  content: '';
+  display: inline-block;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 7px solid #ccc;
+  border-bottom-color: rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: -7px;
+  left: 6px;
+}
+.ui-datepicker:after {
+  content: '';
+  display: inline-block;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid #ffffff;
+  position: absolute;
+  top: -6px;
+  left: 7px;
+}
+.ui-datepicker table {
+  margin: auto;
+}
+.ui-datepicker td,
+.ui-datepicker th {
+  text-align: center;
+  width: 30px;
+  height: 30px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  vertical-align: middle;
+}
+.ui-datepicker td:hover,
+.ui-datepicker-current-day {
+  background: #eeeeee;
+  cursor: pointer;
+}
+.ui-datepicker-unselectable,
+.ui-datepicker th {
+  font-weight: bold;
+  background: none !important;
+  cursor: default !important;
+}
+
+.ui-datepicker a {
+  text-decoration: none;
+  color: #000;
+}
+.ui-datepicker-title {  
+  text-align: center;
+  margin: 6px 26px 7px;
+  padding-top: 3px;
+} 
+.ui-datepicker-prev, .ui-datepicker-next {  
+  display: inline-block;  
+  width: 30px;  
+  height: 30px;  
+  text-align: center;  
+  cursor: pointer;  
+  background-image: url('glyphicons-halflings.png');  
+  background-repeat: no-repeat;  
+  line-height: 600%;  
+  overflow: hidden;  
+}  
+.ui-datepicker-prev {  
+  float: left;  
+  background-position: -237px -93px;  
+  width: 14px;
+  height: 14px;
+  margin-left: 4px;
+  padding: 4px;
+  border-radius: 4px;
+  position: absolute;
+  left: 4px;
+}  
+.ui-datepicker-next {  
+  float: right;  
+  background-position: -260px -93px;
+  width: 14px;
+  height: 14px;
+  margin-right: 4px;
+  padding: 4px;
+  border-radius: 4px;
+} 
+.ui-datepicker-prev:hover { 
+  background-color: #eee;
+}
+.ui-datepicker-next:hover { 
+  background-color: #eee;
+}
+
+
+/*BACKGROUND IMAGE CHANGER*/
+#background_choices {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  padding: 10px;
+  background-color: 
+}
+
+#background_choices a {
+  display: inline-block;
+  padding-left: 5px;
+  color: #000;
+  text-decoration: none;
+}
 

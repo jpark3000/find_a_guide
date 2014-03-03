@@ -22,7 +22,7 @@ gem 'coffee-rails', '~> 4.0.0'
 # gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails'
+gem 'jquery-rails', "~> 2.3.0"
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -37,7 +37,6 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
-  gem 'faker'
   gem 'pry'
 
   gem "factory_girl_rails", "~> 4.0"
@@ -48,9 +47,12 @@ group :test do
   gem 'capybara', '2.0.3'
   gem 'rack_session_access'
   gem 'database_cleaner'
-  gem "factory_girl_rails", "~> 4.0"
 end
 
+group :production do
+  gem 'rails_12factor'
+end
+gem 'faker'
 gem 'dotenv-rails'
 gem "rest-client", "~> 1.6.7"
 

@@ -5,7 +5,8 @@ FactoryGirl.define do
   factory :user do |f|
     f.first_name { Faker::Name.first_name }
     f.last_name { Faker::Name.last_name }
-    sequence(:email) { |number| "user#{number}@blah.com" }
+    # sequence(:email) { |number| "user#{number}@blah.com" }
+    f.email { Faker::Internet.email }
 
 
     f.uid { rand(1..10000000) }

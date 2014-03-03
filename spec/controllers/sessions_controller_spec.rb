@@ -3,84 +3,26 @@ include OmniauthMacros
 
 describe SessionsController do
 
-  # describe 'failure' do
-  #   it 'should respond with 301' do
-  #     request.env["omniauth.auth"] = :invalid_credentials
-  #     post :create
+  describe 'signout/sessions#destroy' do
+    it 'should render Application#Index' do
+      post :destroy
+      expect(response).to redirect_to '/'
+    end
+  end
 
-  #     expect(response.status).to eq(301)
-  #   end
-  # end
+  describe 'signin/sessions#create' do
+    # mock_auth_hash
+    # set_omniauth_environment
 
-  # describe 'signout' do
-  #   before do
-  #     request.env["omniauth.auth"] = mock_auth_hash
-  #   end
+    # it 'should render Application#Index' do
+    #   post :create
+    #   expect(response).to redirect_to '/'
+    # end
+    pending
+  end
 
-  #   login_user(1)
 
-  #   it 'should be successful' do
-  #     get 'destroy'
-  #     expect(response).to be_success
-  #   end
-  # end
-
-  # describe 'GET#index' do
-  #   before do
-  #       request.env["omniauth.auth"] = mock_auth_hash
-  #   end
-
-  #   context 'without active session' do
-  #     it 'should render Application#Index' do
-  #       get :sessions
-  #       expect(response).to render_template :index
-  #     end
-  #   end
-
-  #   context 'with active session' do
-  #     mock_auth_hash
-  #     it 'should render Application#Index' do
-  #       get :index
-  #       expect(response).to render_template :index
-  #     end
-  #   end
-  # end
-
-  # describe 'CREATE#index' do
-  #   context 'without active session' do
-  #     it 'should render Application#Index' do
-  #       get :index
-  #       expect(response).to render_template :index
-  #     end
-  #   end
-
-  #   context 'with active session' do
-  #     mock_auth_hash
-  #     it 'should render Application#Index' do
-  #       get :index
-  #       expect(response).to render_template :index
-  #     end
-  #   end
-  # end
-
-  # describe 'DESTROY#index' do
-  #   context 'without active session' do
-  #     it 'should render Application#Index' do
-  #       get :index
-  #       expect(response).to render_template :index
-  #     end
-  #   end
-
-  #   context 'with active session' do
-  #     mock_auth_hash
-  #     it 'should render Application#Index' do
-  #       get :index
-  #       expect(response).to render_template :index
-  #     end
-  #   end
-  # end
-
-end
+end # End sessions controller
 
 # request.env["omniauth.auth"] = mock_auth_hash
 

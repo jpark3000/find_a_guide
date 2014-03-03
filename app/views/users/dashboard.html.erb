@@ -28,7 +28,7 @@
       <div class="profile_section">
         <h4 class="profile_reviews_title">How was your experience? Review:</h4>
         <% @visitor_incomplete_reviews.each do |r| %>
-          <%= link_to new_user_review_path(r.ambassador,r) do %>
+          <%= link_to new_user_review_path(r.ambassador) do %>
             <span class="card">
               <span class="card_image_container" style="background-image:url('<%= r.ambassador.profile_pic(r.ambassador.uid) %>')">
               </span>

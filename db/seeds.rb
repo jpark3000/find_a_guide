@@ -55,7 +55,7 @@ User.all.each do |u|
                                        meetup_notes: Faker::Lorem.sentences.join(" "))
     if ambassador_id == 1
       if Time.now - meetup.date_time > 7.days
-        meetup.reviews.create!(reviewee_id: 1, reviewer_id: u.id, 
+        meetup.reviews.create!(reviewee_id: 1, reviewer_id: u.id,
                                comment: Faker::Company.bs, rating: (1..5).to_a.sample )
       end
     end
