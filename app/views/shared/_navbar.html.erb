@@ -1,11 +1,6 @@
 <nav>
   <div id="nav_container">
     <%= link_to 'LOGO', root_path, :id => 'nav_logo' %>
-    <% if request.fullpath != root_path %>
-      <span id="nav_search">
-        <%= text_field_tag 'search', nil, :placeholder => 'Search' %>
-      </span>
-    <% end %>
     <span id="right_hand_navbar">
       <% if current_user %>
         <% if current_user.is_ambassador %>
@@ -16,7 +11,9 @@
           <span id="nav_profile_pic" style="background-image:url('<%= current_user.profile_pic %>')"></span>
         </div>
       <% else %>
-        <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+        <%= link_to "/auth/facebook", id: "sign_in" do %>
+        <span id="nav_profile_pic" class="facebook_icon" style="background-image:url('<%= '/assets/facebook.png' %>')"></span>
+        <% end %>
       <% end %>
     </span>
   </div>
@@ -25,7 +22,7 @@
 <div id="dropdown" class="hide">
   <ul>
     <% if session[:user_id] %>
-      <%= link_to edit_user_path(current_user) do %><li>Account Settings</li><% end %>
+      <%= link_to edit_user_path(current_user) do %><li>Edit Profile</li><% end %>
       <%= link_to signout_path, id: "sign_out" do %><li>Logout</li><% end %>
     <% end %>
   </ul>

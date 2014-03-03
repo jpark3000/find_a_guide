@@ -1,17 +1,7 @@
 
 
 
-<div id="ambassador_availability">
-  <span id="availablity_title" data-id="<%= @ambassador.id %>">You are currently
-  <% if @ambassador.ambassador_availability %>
-    Available
-    <%= button_to 'Remove Availability', {:controller => "users", :action => "ambassador_availability_toggle" }, :method=>:put, class: "button_style3", :id => 'become_available' %>
-  <% else %>
-    Unavailable
-    <%= button_to 'Become Availabile', {:controller => "users", :action => "ambassador_availability_toggle" }, :method=>:put, class: "button_style3", :id => 'become_unvailable' %>
-  <% end %>
-  </span>
-</div>
+
 
 <div id="where_guide_title">Where can you be  guide?</div>
 <input id="pac-input-tour" class="controls" type="text" placeholder="Where can you guide?">
@@ -19,24 +9,7 @@
 
 
 
-<div id="choose_specialties">
-  <h2 id="specialties_title">Specialties:</h2>
-  <div id="specialties">
-    <%= form_tag user_specialties_path(@ambassador), :id => 'form_specialty' do %>
-    <% @specialties.each do |s| %>
-      <div class="specialty">
-        <%= check_box_tag "specialty[#{s.id}]", s.id, @ambassador.has_specialty?(s), class: 'pick_specialty'%>
-        <%= label_tag "specialty[#{s.id}]", s.specialty %>
 
-      </div>
-    <% end %>  
-    <div class="center submit_button">
-        <%= submit_tag("Update Specialties") %>
-        <ul id="response"></ul>
-    </div>
-    <% end %> 
-  </div>
-</div>
 <%= javascript_include_tag 'specialty' %>    
   
 

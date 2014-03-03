@@ -1,0 +1,43 @@
+<div id="ambassador">
+  <div id="ambassador_first_name"><%= @ambassador.first_name %></div>
+  <div id="ambassador_last_name"><%= @ambassador.last_name %></div>
+  <div id="ambassador_tag_line"><%= @ambassador.tagline %></div>
+  <div id="ambassador_rating"><%= @ambassador.average_rating(:ambassador) %></div>
+    <% @ambassador.specialties.each do |s| %>
+      <span class="specialty"><%= s.specialty %></span>
+    <% end %>
+  </div>
+</div>
+
+<div id="ambassador_info">
+  <h2 id="ambassador_bio_title">Bio:</h2>
+  <div id="ambassador_bio">
+    <%= @ambassador.bio %>
+  </div>
+</div>
+
+<%= button_to 'Contact', {:controller => "emails", :action => "new_request", :ambassador_id => @ambassador.id }, :method=>'post'%>
+
+<input type="text" onfocus="this.blur()" class="date_picker" data-behaviour='datepicker' id="starting_date"><span class="icon_container"><span class="calendar_icon"></span></span>
+<input type="text" onfocus="this.blur()" class="date_picker" data-behaviour='datepicker' id="ending_date"><span class="icon_container"><span class="calendar_icon"></span></span>
+
+<% if @ambassador.tours.size > 1 %>
+  <div id="more_tours">
+    <h3>See <%= @ambassador.first_name %>'s tours:</h3>
+    <% @ambassador.tours.each do |t| %>
+      <h2 id="tour_info_title">This tour's info:</h2>
+      <div id="tour_description">
+        <%= t.description %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('[data-behaviour~=datepicker]').datepicker({
+      format: "MM dd yyyy",
+      autoclose: true,
+    });
+  })
+</script>
