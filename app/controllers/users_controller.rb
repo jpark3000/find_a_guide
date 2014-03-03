@@ -79,16 +79,10 @@ class UsersController < ApplicationController
   end
 
   def ambassador_toggle
-    @user = current_user
-
-    if @user.is_ambassador
-      @user.update(is_ambassador: false)
-      redirect_to :dashboard
-    else
-      @user.update(is_ambassador: true)
-      redirect_to :dashboard
+    current_user.update(is_ambassador: true)
+    respond_to do |format|
+        format.json{ render :json => {is_ambassador: current_user.is_ambassador}}
     end
-
   end
 
   def ambassador_availability_toggle
