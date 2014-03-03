@@ -11,7 +11,9 @@
           <span id="nav_profile_pic" style="background-image:url('<%= current_user.profile_pic %>')"></span>
         </div>
       <% else %>
-        <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+        <%= link_to "/auth/facebook", id: "sign_in" do %>
+        <span id="nav_profile_pic" class="facebook_icon" style="background-image:url('<%= '/assets/facebook.png' %>')"></span>
+        <% end %>
       <% end %>
     </span>
   </div>
