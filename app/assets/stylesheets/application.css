@@ -376,10 +376,23 @@ nav {
   left: 120px;
 }
 
-#pac-input {
-  width: 300px;
+#pac-input-tour {
+  z-index: 3;
+  position: absolute;
+  left: 330px;
+  top: 575px;
+  width: 215px;
   height: 20px;
-  margin-top: 10px;
+  border-radius: 3px;
+}
+
+#pac-input-search {
+  z-index: 3;
+  position: absolute;
+  left: 330px;
+  top: 462px;
+  width: 215px;
+  height: 20px;
   border-radius: 3px;
 }
 
@@ -670,12 +683,12 @@ nav {
   margin: 20px 0;
 }
 
-/* REMOVE THIS BEFORE PUSH OR JUST REMOVE IF I (JUSTIN) FORGOT TO */
+
 #search_results_list {
-margin-top: 63px;
-border: 1px solid black;
-width: auto;
-height: 400px;
+  margin-top: 63px;
+  border: 1px solid black;
+  width: auto;
+  height: 400px;
 }
 
 

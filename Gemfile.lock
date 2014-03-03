@@ -81,6 +81,9 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-themes (0.0.11)
       httparty
+    jquery-turbolinks (2.0.2)
+      railties (>= 3.1.0)
+      turbolinks
     json (1.8.1)
     jwt (0.1.11)
       multi_json (>= 1.5)
@@ -222,6 +225,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails (~> 2.3.0)
   jquery-ui-themes
+  jquery-turbolinks
   omniauth
   omniauth-facebook (= 1.6.0)
   pg

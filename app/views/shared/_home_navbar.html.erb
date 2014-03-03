@@ -4,7 +4,7 @@
     <span id="right_hand_navbar">
       <% if current_user %>
         <% if current_user.is_ambassador %>
-          <%= link_to new_user_tour_path(current_user.id) do %><span id="user_manage_tour_icon"><%= image_tag 'ambassador.png', :class => 'navbar_icon' %></span><% end %>
+          <%= link_to new_user_tour_path(current_user.id), data: {no_turbolink: true} do %><span id="user_manage_tour_icon"><%= image_tag 'ambassador.png', :class => 'navbar_icon' %></span><% end %>
         <% end %>
         <%= link_to dashboard_path do %><span id="user_dashboard_icon"><%= image_tag 'dashboard.png', :class => 'navbar_icon' %></span><% end %>
         <div id="nav_image_container">
