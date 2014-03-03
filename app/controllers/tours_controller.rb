@@ -20,10 +20,6 @@ class ToursController < ApplicationController
         end
       end
     end
-
-
-
-    puts "THIS IS THE TOUR************ #{@tour.ambassador_id}"
   end
 
   def index

@@ -16,6 +16,11 @@
   </div>
 </div>
 
+<%= button_to 'Contact', {:controller => "emails", :action => "new_request", :ambassador_id => @ambassador.id }, :method=>'post'%>
+
+<input type="text" onfocus="this.blur()" class="date_picker" data-behaviour='datepicker' id="starting_date"><span class="icon_container"><span class="calendar_icon"></span></span>
+<input type="text" onfocus="this.blur()" class="date_picker" data-behaviour='datepicker' id="ending_date"><span class="icon_container"><span class="calendar_icon"></span></span>
+
 <% if @ambassador.tours.size > 1 %>
   <div id="more_tours">
     <h3>See <%= @ambassador.first_name %>'s tours:</h3>
@@ -27,4 +32,12 @@
     <% end %>
   </div>
 <% end %>
-<%= button_to 'Contact', {:controller => "emails", :action => "new_request", :ambassador_id => @ambassador.id }, :method=>'post'%>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('[data-behaviour~=datepicker]').datepicker({
+      format: "MM dd yyyy",
+      autoclose: true,
+    });
+  })
+</script>
