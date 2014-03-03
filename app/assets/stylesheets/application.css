@@ -187,7 +187,7 @@ nav {
 #main_search {
   text-align: center;
   margin: 200px auto 0;
-  width: 880px;
+  max-width: 880px;
   left:0;
 }
 
@@ -436,6 +436,11 @@ nav {
 
 .coming_soon {
   color: red;
+}
+
+/*TOURS VIEW*/
+#more_tours h3{
+  font-weight: bold;
 }
 
 
