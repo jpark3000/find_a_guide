@@ -188,18 +188,54 @@ nav {
   text-align: center;
   margin: 200px auto 0;
   width: 880px;
+  left:0;
 }
 
 #home_full_background {
-  background: url("milan.jpg");
-  background-position: center center;
-  background-size: cover;
   position: fixed;
   height: 100%;
-  width: 100%;
+  width: 500%;
   z-index: -10;
   top: 0;
   left: 0;
+}
+
+.sliding_images{
+  width: 20%;
+  height: 100%;
+  display: inline-block;
+  margin-left:-4px;
+}
+
+#milan {
+  margin-left: 0px;
+  background: url("milan.jpg");
+  background-position: center center;
+  background-size: cover;
+}
+
+#cafe {
+  background: url("cafe.jpg");
+  background-position: center center;
+  background-size: cover;
+}
+
+#bike {
+  background: url("bike.jpg");
+  background-position: top center;
+  background-size: cover;
+}
+
+#fishing {
+  background: url("fishing.jpg");
+  background-position: top center;
+  background-size: cover;
+}
+
+#walking {
+  background: url("walking.jpg");
+  background-position: top center;
+  background-size: cover;
 }
 
 #search_container {
@@ -213,7 +249,7 @@ nav {
     border-radius: 4px;
     font-size: 18px;
     height: 29px;
-    line-height: 44px;
+    line-height: 30px;
     margin-top: 2px;
     padding: 3px 12px;
     vertical-align: top;
@@ -237,10 +273,11 @@ nav {
   cursor: pointer;  
   width: 30px;  
   height: 30px;  
-  background-position: -266px -184px;  
-  height: 12px;
-  width: 11px;
+  background-position: -263px -182px;  
+  height: 15px;
+  width: 15px;
   position: absolute; 
+  top: -2px;
 } 
 
 .icon_container {

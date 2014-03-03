@@ -1,11 +1,17 @@
-<div id="home_full_background"></div>
+<div id="home_full_background">
+  <div id="milan" class="sliding_images"></div>
+  <div id="cafe" class="sliding_images"></div>
+  <div id="bike" class="sliding_images"></div>
+  <div id="fishing" class="sliding_images"></div>
+  <div id="walking" class="sliding_images"></div>
+</div>
 
 <div id="main_search">
   <div id="search_container">
     <%= form_tag search_results_path do %>
       <%= text_field_tag 'search', nil, :placeholder => 'Where are you going?' %>
-    <input type="text" class="date_picker" data-behaviour='datepicker' id="starting_date"><span class="icon_container"><span class="calendar_icon"></span></span>
-    <input type="text" class="date_picker" data-behaviour='datepicker' id="ending_date"><span class="icon_container"><span class="calendar_icon"></span></span>
+    <input type="text" onfocus="this.blur()" class="date_picker" data-behaviour='datepicker' id="starting_date"><span class="icon_container"><span class="calendar_icon"></span></span>
+    <input type="text" onfocus="this.blur()" class="date_picker" data-behaviour='datepicker' id="ending_date"><span class="icon_container"><span class="calendar_icon"></span></span>
     <button id="search_button">Search</button>
     <% end %>
   </div>
@@ -17,6 +23,9 @@
       format: "MM dd yyyy",
       autoclose: true,
     });
+    function slide(){
+      $('#home_full_background').delay(5500).animate({left: '-=100%'},2000).delay(1500).then(slide());
+      }
   })
 </script>
 
