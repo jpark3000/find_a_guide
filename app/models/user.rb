@@ -1,3 +1,5 @@
+# require 'pry'
+
 class User < ActiveRecord::Base
 	# has_one :authentication, dependent: :destroy
 
@@ -86,9 +88,10 @@ class User < ActiveRecord::Base
       user.email = auth.extra.raw_info.email
 
       user.username = auth.extra.raw_info.username
-      user.gender = auth.extra.raw_info.gender
+      # user.gender = auth.extra.raw_info.gender
       # user.birthday = auth.extra.raw_info.birthday
 
+      # binding.pry
       user.save!
     end
   end
