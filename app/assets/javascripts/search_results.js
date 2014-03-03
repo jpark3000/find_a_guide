@@ -70,7 +70,7 @@ $(document).ready(function() {
 
       var data = { bounds :  map.getBounds().toString()}
 
-      $.post('/search', data, function(response) {
+      $.get('/search', data, function(response) {
         // console.log(response)
         $('.amb').remove()
         $.each(markers, function(i,v) {
