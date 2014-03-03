@@ -9,6 +9,28 @@
 </div>
 
 <div id="main_search">
+  <div id="header">
+    <div class="home_top_left">
+      <h2 id="home_logo">
+        FIND<br>
+        A<br>
+        GUIDE
+      </h2>
+    </div>
+    <% if current_user %>
+      <%= link_to '#' do %><span id="open_menu"><%= image_tag 'left_arrow.png', :class => 'home_top_right', :id=> 'home_drop_down_toggle'  %></span><% end %>
+    <div id="home_dropdown" class="hide">
+      <%= link_to dashboard_path do %><span id="open_menu"><%= image_tag 'dashboard.png', :class => 'home_top_right', :id=> 'dashboard'  %></span><% end %>
+      <%= link_to new_user_tour_path(current_user.id) do %><span id="open_menu"><%= image_tag 'globe.png', :class => 'home_top_right', :id=> 'world'  %></span><% end %>
+    </div>
+    <% else %>
+      <%= link_to "/auth/facebook", id: "sign_in" do %>
+      <span id="home_facebook_icon" class="home_top_right facebook" style="background-image:url('<%= '/assets/facebook.png' %>')"></span>
+      <% end %>
+    <% end %>
+
+  </div>
+
   <div id="search_container">
 
     <%= form_tag search_path, method: :get, id: 'search_form' do %>
@@ -31,6 +53,19 @@
       autoclose: true,
     });
   })
+  
+  // HOME DROPDOWN
+  $("#home_drop_down_toggle").on('click',function(e){
+    e.preventDefault();
+    console.log(e.target.id);
+    $("#home_dropdown").removeClass('hide');
+  });
+
+  $(document).on('click',function(e){
+    if(e.target.id !== "home_drop_down_toggle"){
+      $("#home_dropdown").addClass('hide');
+    }
+  });
 </script>
 
 <%= javascript_include_tag 'facebook' %>
