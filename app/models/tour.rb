@@ -3,7 +3,7 @@ class Tour < ActiveRecord::Base
 	has_many :meetups
 
 	validates :ambassador_id, :longitude, :latitude, :description, presence: true
-  #Custom Validations
+  # Custom Validations
   validate :you_cannot_drop_pin_if_notambassador, on: :create
 
 	reverse_geocoded_by :latitude, :longitude
