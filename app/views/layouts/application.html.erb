@@ -21,6 +21,8 @@
 </div>
 
 <script>  //dropdown menu jquery here to avoid turbolinks
+
+  // SITE-WIDE DROPDOWN
   $("#nav_profile_pic").on('click',function(){
     $("#dropdown").toggleClass('hide');
   });
@@ -32,7 +34,10 @@
   });
 
   //search bar location here to avoid turbolinks
-  $("#main_search").css('margin-top', ($(document).height() / 2.5   ) + 'px');
+  $("#header").css({
+    height: ($(document).height() / 4   ) + 'px',
+    'max-height': '130px'
+  });
   $("#dropdown").css('right', (($(document).width() - 1010) / 2));
 </script>
 
