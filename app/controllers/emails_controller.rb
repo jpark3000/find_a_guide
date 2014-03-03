@@ -22,7 +22,9 @@ class EmailsController < ApplicationController
     subject = 'A New Visitor Needs Your Help!'
     email_html = render_to_string "new_request", :layout => false
     Email.new_request(@visitor, @ambassador, email_html, subject)
-    render 'new_acknowledge'
+    respond_to do |format|
+      format.json{ render :json => {response: 'Email Sent'}}
+    end
   end
 
   def reject
