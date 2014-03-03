@@ -20,9 +20,8 @@ FindAGuide::Application.routes.draw do
 
   get '/dashboard', to: 'users#dashboard'
 
-  match '/search_results', to: 'users#index', via: [:get]
 
-  match '/search', to: 'users#search', via: [:post]
+  match '/search', to: 'users#search', via: [:get]
 
   # match 'auth/:provider/callback', to: 'authentications#create', via: [:get, :post]
   # match 'auth/failure', to: redirect('/'), via: [:get, :post]
