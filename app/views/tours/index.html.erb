@@ -16,11 +16,6 @@
   </div>
 </div>
 
-<%= button_to 'Contact', {:controller => "emails", :action => "new_request", :ambassador_id => @ambassador.id }, :method=>'post'%>
-
-<input type="text" onfocus="this.blur()" class="date_picker" data-behaviour='datepicker' id="starting_date"><span class="icon_container"><span class="calendar_icon"></span></span>
-<input type="text" onfocus="this.blur()" class="date_picker" data-behaviour='datepicker' id="ending_date"><span class="icon_container"><span class="calendar_icon"></span></span>
-
 <% if @ambassador.tours.size > 1 %>
   <div id="more_tours">
     <h3>See <%= @ambassador.first_name %>'s tours:</h3>
@@ -33,11 +28,14 @@
   </div>
 <% end %>
 
-<script type="text/javascript">
-  $(document).ready(function(){
-    $('[data-behaviour~=datepicker]').datepicker({
-      format: "MM dd yyyy",
-      autoclose: true,
-    });
-  })
-</script>
+<div id="dialog-message" title="Ambassador Contacted">
+  <p>An email has been sent to the ambassador.  You should receive a response shortly.</p>
+</div>
+
+<%= form_tag({controller: "emails", action: "new_request"}, method: "post", id: 'contact') do %>
+  <input type="text" name='start_date' onfocus="this.blur()" class="date_picker" data-behaviour='datepicker' id="starting_date"><span class="icon_container"><span class="calendar_icon"></span></span>
+  <input type="text" name='end_date' onfocus="this.blur()" class="date_picker" data-behaviour='datepicker' id="ending_date"><span class="icon_container"><span class="calendar_icon"></span></span>
+  <%=hidden_field_tag 'ambassador_id', @ambassador.id%>
+  <%= submit_tag("Contact") %>
+<% end %> 
+<%= javascript_include_tag 'contact' %>  

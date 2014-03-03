@@ -1,3 +1,18 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ *= require jquery-ui/smoothness
+ */
+
 /* BODY */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -184,7 +199,7 @@ nav {
     background-size: 38px auto;
     float: right;
     height: 28px;
-    padding: 3px 25px;
+    padding: 3px 20px;
     width: 28px;
   margin-top: 11px !important;
 }
@@ -394,10 +409,23 @@ nav {
   left: 120px;
 }
 
-#pac-input {
-  width: 300px;
+#pac-input-tour {
+  z-index: 3;
+  position: absolute;
+  left: 330px;
+  top: 575px;
+  width: 215px;
   height: 20px;
-  margin-top: 10px;
+  border-radius: 3px;
+}
+
+#pac-input-search {
+  z-index: 3;
+  position: absolute;
+  left: 330px;
+  top: 462px;
+  width: 215px;
+  height: 20px;
   border-radius: 3px;
 }
 
@@ -688,12 +716,12 @@ nav {
   margin: 20px 0;
 }
 
-/* REMOVE THIS BEFORE PUSH OR JUST REMOVE IF I (JUSTIN) FORGOT TO */
+
 #search_results_list {
-margin-top: 63px;
-border: 1px solid black;
-width: auto;
-height: 400px;
+  margin-top: 63px;
+  border: 1px solid black;
+  width: auto;
+  height: 400px;
 }
 
 
@@ -835,3 +863,10 @@ height: 400px;
   text-decoration: none;
 }
 
+.no-close .ui-dialog-titlebar-close {
+  display: none;
+}
+
+#dialog-message{
+  display: none;
+}

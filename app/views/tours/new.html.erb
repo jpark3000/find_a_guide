@@ -1,11 +1,10 @@
-<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places" %>
-<%= javascript_include_tag "map" %>
+
 
 
 
 
 <div id="where_guide_title">Where can you be  guide?</div>
-<input id="pac-input" class="controls" type="text" placeholder="Search Box">
+<input id="pac-input-tour" class="controls" type="text" placeholder="Where can you guide?">
 <div id="map-canvas"></div>
 
 
@@ -14,3 +13,5 @@
 <%= javascript_include_tag 'specialty' %>    
   
 
+<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places" %>
+<%= javascript_include_tag "map" %>

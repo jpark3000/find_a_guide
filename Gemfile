@@ -62,6 +62,9 @@ gem 'gon'
 # for querying database to fill map
 gem "geocoder"
 
+
+gem 'jquery-turbolinks'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
@@ -80,3 +83,6 @@ gem 'simplecov', :require => false, :group => :test
 # Oauth Related
 gem 'omniauth'
 gem 'omniauth-facebook', '1.6.0'
+
+#adding jquery-ui themes
+gem 'jquery-ui-themes'
