@@ -35,19 +35,23 @@ AjaxSubmit.prototype.convertFormToJSON = function (){
 }
 
 AjaxSubmit.prototype.confirmAction = function () {
-  var dialog = new Dialog($( "#dialog-message" ));
+  var dialog = new Dialog($( "#dialog-message" ), $("#contact"));
   dialog.show();
 }
 
 
-function Dialog(el) {
-  this.$el = el
+function Dialog(el, form) {
+  this.$el = el;
+  this.$form = form;
+  var self = this;
   this.$el.dialog({
     modal: true,
     dialogClass: "no-close",
     autoOpen: false,
     buttons: {
       Ok: function() {
+        debugger;
+        self.$form.remove();
         $( this ).dialog( "close" );
       }
     }
