@@ -40,14 +40,18 @@ user.languages_spoken.create(language_id:1)
 
 200.times do
   user = User.find((1..50).to_a.sample)
-  user.tours.create!(longitude: Faker::Address.longitude,
-                     latitude: Faker::Address.latitude,
-                     description: Faker::Lorem.paragraphs.join("\n\n"))
+  if user.is_ambassador
+    user.tours.create!(longitude: Faker::Address.longitude,
+                       latitude: Faker::Address.latitude,
+                       description: Faker::Lorem.paragraphs.join("\n\n"))
+  end
 end
+
+ambassadors_ids = User.where('is_ambassador = ?', true).map{|u| u.id}
 
 User.all.each do |u|
   10.times do
-    ambassador_id = (rand(50)+1)
+    ambassador_id = (ambassadors_ids - [u.id]).sample
     meetup = u.visitor_meetups.create!(ambassador_id: ambassador_id,
                                        tour_id: (rand(200)+1),
                                        date_time: [rand(2.months).ago, rand(2.months).from_now].sample,

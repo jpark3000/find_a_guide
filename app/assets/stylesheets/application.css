@@ -144,9 +144,12 @@ nav {
 
 #nav_logo {
   float: left;
+  line-height: 41px;
+}
+
+#nav_logo a{  
   text-decoration: none;
   color: #000;
-  line-height: 41px;
 }
 
 .navbar_icon {
