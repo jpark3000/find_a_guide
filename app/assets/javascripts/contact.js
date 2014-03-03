@@ -5,7 +5,7 @@ $(document).ready(function(){
       format: "MM dd yyyy",
       autoclose: true,
     });
-}); 
+});
 function AjaxSubmit(el){
   this.$el = el;
   this.url = this.$el.attr('action');
@@ -27,7 +27,7 @@ function AjaxSubmit(el){
 
 AjaxSubmit.prototype.convertFormToJSON = function (){
     var array = this.$el.serializeArray();
-    var json = {};   
+    var json = {};
     jQuery.each(array, function() {
         json[this.name] = this.value || '';
     });

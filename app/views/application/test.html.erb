@@ -1,0 +1,66 @@
+<div id="fb-root"></div>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '372074249602099',
+      status     : true,
+      xfbml      : true
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/all.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<script>
+FB.api('/me/albums', function (response) {
+  for (album in response.data) {
+
+    if (response.data[album].name == "Profile Pictures") {
+
+      FB.api(response.data[album].id + "/photos", function(response) {
+
+        image = response.data[0].images[0].source;
+        console.log(image);
+
+        console.log(response.data[1].images[0].source);
+        console.log(response.data[2].images[0].source);
+        console.log(response.data[3].images[0].source);
+        console.log(response.data[4].images[0].source);
+
+      });
+    }
+  }
+});
+</script>
+
+<%= javascript_include_tag 'vex', 'vex.combined.min' %>
+<script>vex.defaultOptions.className = 'vex-theme-flat-attack';</script>
+
+<script>
+$( document ).ready(function() {
+    $('#avatar_selector').on('click', function(event){
+      event.preventDefault();
+      vex.dialog.confirm({
+  message: 'Are you absolutely sure you want to destroy the alien planet?',
+  callback: function(value) {
+    return console.log(value ? 'Successfully destroyed the planet.' : 'Chicken.');
+  }
+});
+
+    })
+});
+</script>
+
+
+<!-- <button id='avatar_selector'>Click here for modal</button> -->
+<a href="#" id='avatar_selector'>Modal</a>
+
+<!-- <div>
+<%= image_tag 'https://scontent-b.xx.fbcdn.net/hphotos-frc3/t31/1654680_10152180203013398_509278333_o.jpg' %>
+</div> -->
