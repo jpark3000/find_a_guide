@@ -1,7 +1,10 @@
 
-var Tour = function() {
-this.template = $("<div class='tour_desc'>\
-                    <div class='tour_text'></div>\
+var TourBox = function(first_name, tag_line, rating, tourDesc) {
+this.template = $("<div class='tour_box'>\
+                    <span class='ambassador_name_card'>" + first_name + "</span>\
+                    <br><span class='ambassador_tag_line_card'>" + tag_line + "</span>\
+                    <br><span class='ambassador_rating_card'>" + rating + "</span>\
+                    <br><span class='ambassador_tourDesc_card'>" + tourDesc + "</span>\
                   </div>")
 };
 
@@ -39,6 +42,8 @@ var coords = gon.points
 
 var markers = [];
 var marker_id = 0;
+
+var infoWindows = []
 $(document).ready(function() {
 
   // console.log(coords)
@@ -66,28 +71,39 @@ $(document).ready(function() {
       var data = { bounds :  map.getBounds().toString()}
 
       $.post('/search', data, function(response) {
-        // console.log(markers.length)
+        console.log(response)
         $.each(markers, function(i,v) {
           v.setMap(null);
         });
         markers.length = 0
 
         $.each(response.points, function(i,v) {
-          var myLatLng = new google.maps.LatLng(response.points[i][0], response.points[i][1])
+          var myLatLng = new google.maps.LatLng(v[0], v[1])
 
           var tour_marker = new google.maps.Marker({
             position: myLatLng,
             map: map
           }); //end new marker
+          var user = response[v[2]]
+          var tourBox = new TourBox(user.first_name, user.tagline, user.rating)
+          var infoWindow = new google.maps.InfoWindow({ content : tourBox.template[0] })
+          infoWindows.push(infoWindow);
+
+          google.maps.event.addListener(tour_marker, 'click', function() {
+            $.each(infoWindows, function(i, v) { v.close() });
+            // infoWindow.setContent(tourBox.template[0])
+            infoWindow.open(map, tour_marker);
+          });
+
           markers.push(tour_marker);
         }); //end each
 
         $('.amb').remove()
-        $.each(response.users, function(i,v) {
-          // console.log(v.id)
-          var user = new User(v.id, v.first_name, v.tagline, '2 stars')
-          $('#search_results_list').append(user.template)
-        });
+        // $.each(response.users, function(i,v) {
+        //   // console.log(v.id)
+        //   var user = new User(v.id, v.first_name, v.tagline, '2 stars')
+        //   $('#search_results_list').append(user.template)
+        // });
 
       });//end ajax callback
     });//end event listener

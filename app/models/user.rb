@@ -91,8 +91,9 @@ class User < ActiveRecord::Base
     end
   end
 
-
-
+  # def custom_json
+      
+  # end
 
 
 

@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   end
 
   def search
-    gon.points = []
+    points = []
     gon.lat = params[:center_lat]
     gon.lng = params[:center_lng]
 
@@ -25,16 +25,24 @@ class UsersController < ApplicationController
 
         @users = @tours.map { |tour| tour.ambassador }.uniq
         @tours.each do |tour|
-          gon.points << tour.format_coordinates
+          points << tour.format_coordinates
         end
 
         # format.html do 
         #   render
         # end
         format.json do
-          render :json => { points: gon.points, users: @users }
+          hashy = {points: points}
+
+          @users.each do |u|
+            hashy[u.id] = {first_name: u.first_name, tagline: u.tagline, rating: u.rating}
+          end
+
+
+          render :json => hashy
         end
       else
+        gon.points = []
         @tours = Tour.near([params[:center_lat], params[:center_lng]], 500)
         @tours.each do |tour|
           gon.points << tour.format_coordinates

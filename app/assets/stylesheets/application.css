@@ -498,9 +498,12 @@ width: auto;
 height: 400px;
 }
 
-
-
-
+.tour_box {
+  width: 248px;
+  height: 214px;
+  background-color: white;
+  border: 1px solid black;
+}
 
 
 
