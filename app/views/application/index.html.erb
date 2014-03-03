@@ -1,9 +1,8 @@
-
 <div id="main_search">
   <%= form_tag search_results_path do %>
     <%= text_field_tag 'search', nil, :placeholder => 'Where are you going?' %>
-  <input type="text" data-behaviour='datepicker' >
-  <input type="text" data-behaviour='datepicker' >
+  <input type="text" data-behaviour='datepicker' id="starting_date">
+  <input type="text" data-behaviour='datepicker' id="ending_date">
   <% end %>
 </div>
 
