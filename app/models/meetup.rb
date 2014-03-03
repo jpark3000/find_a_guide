@@ -6,6 +6,14 @@ class Meetup < ActiveRecord::Base
 	has_many :reviews
 
 	validates :ambassador_id, :visitor_id, presence: true
+
+  # Makes sure that you cannot meetup with yourself.
+  validate :you_cannot_meet_with_yourself, on: :create
+
+  def you_cannot_meet_with_yourself
+    return false if (self.ambassador == self.visitor || self.ambassador_id == self.visitor_id)
+  end
+
   #TODO: verify that meetups are unique
 
   def self.pending_meetups
