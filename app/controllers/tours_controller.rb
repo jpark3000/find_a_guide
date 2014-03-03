@@ -4,7 +4,13 @@ class ToursController < ApplicationController
   end
 
   def new
+    gon.points = []
     @ambassador = current_user
+    @tours = @ambassador.tours
+
+    @tours.each do |tour|
+      gon.points << tour.format_coordinates
+    end
   end
 
   def create

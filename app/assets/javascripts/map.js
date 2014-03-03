@@ -44,6 +44,17 @@ $(document).ready(function() {
 
 	function initialize() {
 		map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+
+    $.each(gon.points, function(i,v) {
+      var myLatLng = new google.maps.LatLng(v[0], v[1])
+      var tour_marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map
+      });
+      // markers.push(tour_marker)
+    });
+
 	
 		google.maps.event.addListener(map, 'click', function(e) {
       $.each(info_windows, function(i,v) { info_windows[i].close(); });
