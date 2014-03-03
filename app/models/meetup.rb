@@ -26,8 +26,6 @@ class Meetup < ActiveRecord::Base
     end
   end
 
-  #TODO: verify that meetups are unique
-
   def self.pending_meetups
     start_datetime = Time.now.midnight + 1.day
     end_datetime = Time.now.midnight + 2.days
