@@ -6,20 +6,19 @@ $(document).ready(function(){
       autoclose: true,
     });
 }); 
-
 function AjaxSubmit(el){
   this.$el = el;
   this.url = this.$el.attr('action');
   this.httpMethod = this.$el.attr('method');
-  this.data = this.convertFormToJSON(this.$el);
   var self = this;
 
   this.$el.submit(function(e){
     e.preventDefault();
+    data = self.convertFormToJSON(self.$el);
     $.ajax({
           type: self.httpMethod,
           url: self.url,
-          data: self.data,
+          data: data,
           success: self.confirmAction,
           dataType: 'json'
     });
