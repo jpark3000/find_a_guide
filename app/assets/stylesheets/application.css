@@ -298,6 +298,19 @@ nav {
     cursor: pointer;
 }
 
+#sliding_nav{
+  position: fixed;
+  bottom:20px;
+  right:20px;
+  width: 43px;
+}
+
+#sliding_nav a{
+  color: #000;
+  text-decoration: none;
+  width:20px;
+}
+
 .ui-datepicker-prev {  
   float: left;  
 } 
