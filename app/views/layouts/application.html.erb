@@ -15,7 +15,7 @@
 <body>
 
 <%= render 'shared/home_navbar' if request.fullpath == "/" %>
-<%= render 'shared/navbar' %>
+<%= render 'shared/navbar' unless request.fullpath == "/" %>
 <div id="content">
   <%= yield %>
 </div>
