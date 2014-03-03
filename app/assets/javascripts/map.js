@@ -100,8 +100,8 @@ $(document).ready(function() {
 
 
   
-		var input = (document.getElementById('pac-input'));
-  	map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+		var input = (document.getElementById('pac-input-tour'));
+  	// map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
   	var searchBox = new google.maps.places.SearchBox(input);
 
