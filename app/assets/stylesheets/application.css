@@ -478,13 +478,13 @@ nav {
 }
 
 #choose_specialties > h2 {
-  text-align: center;
-  padding: 30px;
+  /*text-align: center;*/
+  padding: 20px 0;
 }
 
 #specialties {
-  margin: auto;
-  padding-left: 58px;
+  /*margin: auto;*/
+  /*padding-left: 58px;*/
   width: 458px;
 }
 
@@ -503,14 +503,14 @@ nav {
 
 /* USER INFO */
 
-.user_info {
+.user_info, .ambassador_info {
   width: 600px;
   margin: auto;
   padding: 30px;
 }
 
 .user_info div {
-  height: 30px;
+  /*height: 30px;*/
   padding: 10px 0;
 }
 

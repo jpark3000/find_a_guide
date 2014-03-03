@@ -9,7 +9,6 @@ class ToursController < ApplicationController
 
   def new
     @ambassador = current_user
-    @specialties = Specialty.all
   end
 
   def create

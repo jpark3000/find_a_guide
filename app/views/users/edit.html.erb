@@ -33,4 +33,28 @@
   <% end %>
 </div>
 <ul id="errors"></ul>
+
+<hr/>
+<div class="ambassador_info">
+  <div id="choose_specialties">
+  <h2>Ambassador</h2>
+    <h2 id="specialties_title">Specialties:</h2>
+    <div id="specialties">
+      <%= form_tag user_specialties_path(@ambassador), :id => 'form_specialty' do %>
+      <% @specialties.each do |s| %>
+        <div class="specialty">
+          <%= check_box_tag "specialty[#{s.id}]", s.id, @ambassador.has_specialty?(s), class: 'pick_specialty'%>
+          <%= label_tag "specialty[#{s.id}]", s.specialty %>
+
+        </div>
+      <% end %>  
+      <div>
+          <%= submit_tag("Update Specialties") %>
+          <ul id="response"></ul>
+      </div>
+      <% end %> 
+    </div>
+  </div>
+</div>
+
 <%= javascript_include_tag 'ajax' %>

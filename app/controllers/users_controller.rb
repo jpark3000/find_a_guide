@@ -58,6 +58,8 @@ class UsersController < ApplicationController
 
   def edit
     @user = current_user
+    @ambassador = current_user  
+    @specialties = Specialty.all
   end
 
   def update
