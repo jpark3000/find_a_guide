@@ -1,10 +1,14 @@
 
 var Tour = function() {
-this.template = $("<div class='tour_desc'>\
-                    <div class='tour_text' contenteditable='true'></div>\
-                    <br><button type='button' id='remove_marker'>Remove</button>\
-                    <br><button type='button' id='new_tour_button'>Save</button>\
-                  </div>")
+  this.template = $("<div class='tour_desc'>\
+                      <div class='tour_text' contenteditable='true'></div>\
+                      <br><button type='button' id='remove_marker'>Remove</button>\
+                      <br><button type='button' id='new_tour_button'>Save</button>\
+                    </div>")
+};
+
+var UserTour = function(description) {
+  this.template = $("<div class='tour_text' contenteditable='true'>" + description + "</div>")
 };
 
 var styleOptions = [
@@ -28,8 +32,8 @@ var markers = [];
 var marker_id = 0
 
 $(document).ready(function() {
-  var userId = $('#availablity_title').data('id')
-  console.log(userId);
+  // var userId = $('#availablity_title').data('id')
+  console.log(gon.id);
 	var map;
 
   var mapOptions = {
@@ -41,18 +45,31 @@ $(document).ready(function() {
 
   var user_markers = [];
   var info_windows = [];
+  var userTourInfoWindows = []
 
 	function initialize() {
 		map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+    var image = "http://mapicons.nicolasmollet.com/wp-content/uploads/mapicons/shape-default/color-c259b5/shapecolor-color/shadow-1/border-dark/symbolstyle-white/symbolshadowstyle-dark/gradient-no/planetarium-2.png"
 
-
-    $.each(gon.points, function(i,v) {
-      var myLatLng = new google.maps.LatLng(v[0], v[1])
+    $.each(gon.points, function(index, tour) {
+      var myLatLng = new google.maps.LatLng(tour.lat, tour.lng);
       var tour_marker = new google.maps.Marker({
         position: myLatLng,
-        map: map
+        map: map,
+        icon: image,
+        animation: google.maps.Animation.DROP
       });
-      // markers.push(tour_marker)
+
+      var userTour = new UserTour(tour.desc)
+      var infoWindow = new google.maps.InfoWindow({ content : userTour.template[0] })
+      userTourInfoWindows.push(infoWindow)
+
+      google.maps.event.addListener(tour_marker, 'click', function() {
+        $.each(userTourInfoWindows, function(index, userTourIW) { userTourIW.close(); });
+        // console.log('sdfsdf')
+        
+        infoWindow.open(map, tour_marker)
+      });
     });
 
 	
@@ -83,7 +100,7 @@ $(document).ready(function() {
                           }
                    }
 
-        $.post('/users/' + userId + '/tours', data, function(response) {
+        $.post('/users/' + gon.id + '/tours', data, function(response) {
           if (response.success) {
             $('body').append('<p>' + response.message + '</p>');
             $(infowindow.content).find('.tour_text').attr('contenteditable', false);

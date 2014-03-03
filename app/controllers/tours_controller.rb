@@ -6,10 +6,11 @@ class ToursController < ApplicationController
   def new
     gon.points = []
     @ambassador = current_user
+    gon.id = @ambassador.id
     @tours = @ambassador.tours
 
     @tours.each do |tour|
-      gon.points << tour.format_coordinates
+      gon.points << tour.format_object
     end
   end
 
