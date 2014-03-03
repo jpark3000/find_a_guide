@@ -49,6 +49,27 @@ table {
   margin: 41px auto 0;
 }
 
+h1 {
+    font-family: 'Dosis', sans-serif;
+    font-weight: 400;
+    line-height: 46px;
+    font-size: 40px;
+    margin: 0 0 23px 0;
+    }
+h2 {
+    font-family: 'Dosis', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 23px;
+    margin: 0 0 23px 0;
+    }
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    line-height: 23px;
+    margin: 0 0 23px 0;
+    }
+
 /* Nav Bar */
 
 nav {
@@ -89,6 +110,17 @@ nav {
   margin-left: 10px;
 }
 
+#right_hand_navbar {
+  float: right;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#right_hand_navbar span {
+  line-height: 41px;
+  vertical-align: middle;
+}
+
 nav {
   height: 40px;
   width: 100%;
@@ -100,12 +132,6 @@ nav {
   text-decoration: none;
   color: #000;
   line-height: 41px;
-}
-
-#right_hand_navbar {
-  float: right;
-  display: inline-block;
-  vertical-align: middle;
 }
 
 .navbar_icon {
@@ -132,9 +158,18 @@ nav {
   cursor: pointer;
 }
 
-#right_hand_navbar span {
-  line-height: 41px;
-  vertical-align: middle;
+.facebook_icon {
+  border: none !important;
+  line-height: 40px;
+  margin-top: 4px !important;
+}
+
+/*HOME NAVBAR */
+
+.home_nav {
+  background: none;
+  border: none;
+  
 }
 
 /* DROPDOWN */
@@ -187,7 +222,7 @@ nav {
 #main_search {
   text-align: center;
   margin: 200px auto 0;
-  width: 880px;
+  max-width: 880px;
   left:0;
 }
 
@@ -277,7 +312,7 @@ nav {
   height: 15px;
   width: 15px;
   position: absolute; 
-  top: -2px;
+  top: 0px;
 } 
 
 .icon_container {
@@ -439,6 +474,11 @@ nav {
   color: red;
 }
 
+/*TOURS VIEW*/
+#more_tours h3{
+  font-weight: bold;
+}
+
 
 /* AMBASSADOR PLACE TOURS */
 
@@ -452,13 +492,13 @@ nav {
 }
 
 #choose_specialties > h2 {
-  text-align: center;
-  padding: 30px;
+  /*text-align: center;*/
+  padding: 20px 0;
 }
 
 #specialties {
-  margin: auto;
-  padding-left: 58px;
+  /*margin: auto;*/
+  /*padding-left: 58px;*/
   width: 458px;
 }
 
@@ -477,14 +517,14 @@ nav {
 
 /* USER INFO */
 
-.user_info {
+.user_info, .ambassador_info {
   width: 600px;
   margin: auto;
   padding: 30px;
 }
 
 .user_info div {
-  height: 30px;
+  /*height: 30px;*/
   padding: 10px 0;
 }
 

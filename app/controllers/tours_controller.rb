@@ -1,15 +1,10 @@
 class ToursController < ApplicationController
-  def show
-    @ambassador = User.find(params[:user_id])
-    @selected_tour = Tour.find(params[:id])
-  end
 
   def edit
   end
 
   def new
     @ambassador = current_user
-    @specialties = Specialty.all
   end
 
   def create
@@ -25,13 +20,10 @@ class ToursController < ApplicationController
         end
       end
     end
-
-
-
-    puts "THIS IS THE TOUR************ #{@tour.ambassador_id}"
   end
 
   def index
+    @ambassador = current_user
   end
 
   private
