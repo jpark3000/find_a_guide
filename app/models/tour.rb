@@ -9,7 +9,7 @@ class Tour < ActiveRecord::Base
 
 
 	def format_coordinates
-		[latitude, longitude, ambassador.id]
+		[latitude, longitude, ambassador.id, description]
 	end
 
 	

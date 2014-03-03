@@ -85,13 +85,14 @@ $(document).ready(function() {
             map: map
           }); //end new marker
           var user = response[v[2]]
-          var tourBox = new TourBox(user.first_name, user.tagline, user.rating)
+          var tourBox = new TourBox(user.first_name, user.tagline, user.rating, v[3])
           var infoWindow = new google.maps.InfoWindow({ content : tourBox.template[0] })
           infoWindows.push(infoWindow);
 
           google.maps.event.addListener(tour_marker, 'click', function() {
             $.each(infoWindows, function(i, v) { v.close() });
             // infoWindow.setContent(tourBox.template[0])
+
             infoWindow.open(map, tour_marker);
           });
 
