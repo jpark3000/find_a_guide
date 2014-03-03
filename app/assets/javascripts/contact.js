@@ -1,5 +1,10 @@
 $(document).ready(function(){
   var ajaxSubmit = new AjaxSubmit($("#contact"));
+
+  $('[data-behaviour~=datepicker]').datepicker({
+      format: "MM dd yyyy",
+      autoclose: true,
+    });
 }); 
 
 function AjaxSubmit(el){
