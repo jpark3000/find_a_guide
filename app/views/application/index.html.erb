@@ -6,6 +6,11 @@
   <div id="walking" class="sliding_images"></div>
 </div>
 
+<div id="sliding_nav">
+  <a href="#" id="back">&#9668;</a>
+  <a href="#" id="forward">&#9658;</a href="#">
+</div>
+
 <div id="main_search">
   <div id="search_container">
     <%= form_tag search_results_path do %>
@@ -23,9 +28,6 @@
       format: "MM dd yyyy",
       autoclose: true,
     });
-    function slide(){
-      $('#home_full_background').delay(5500).animate({left: '-=100%'},2000).delay(1500).then(slide());
-      }
   })
 </script>
 
