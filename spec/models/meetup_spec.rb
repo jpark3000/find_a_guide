@@ -9,6 +9,5 @@ describe Meetup do
   # Validaiton Testing
   it { should validate_presence_of(:ambassador_id) }
   it { should validate_presence_of(:visitor_id) }
-  # Custom Validation Testing
 end
 
