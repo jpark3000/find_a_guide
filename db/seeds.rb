@@ -26,7 +26,7 @@ random_uid = ['511571783', '724578054', '1037742890', '100000287146443', '100001
   User.new(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
                email: Faker::Internet.email, bio: Faker::Lorem.sentences.join(" "),
                gender: gender.sample, phone: Faker::PhoneNumber.cell_phone, age: (18..60).to_a.sample,
-               tagline: Faker::Commerce.product_name, is_ambassador: boolean.sample, uid: random_uid.sample).save(validate: false)
+               tagline: Faker::Commerce.product_name, is_ambassador: true, uid: random_uid.sample).save(validate: false)
 end
 
 user = User.first
@@ -40,14 +40,18 @@ user.languages_spoken.create(language_id:1)
 
 200.times do
   user = User.find((1..50).to_a.sample)
-  user.tours.create!(longitude: Faker::Address.longitude,
-                     latitude: Faker::Address.latitude,
-                     description: Faker::Lorem.paragraphs.join("\n\n"))
+  if user.is_ambassador
+    user.tours.create!(longitude: Faker::Address.longitude,
+                       latitude: Faker::Address.latitude,
+                       description: Faker::Lorem.paragraphs.join("\n\n"))
+  end
 end
+
+ambassadors_ids = User.where('is_ambassador = ?', true).map{|u| u.id}
 
 User.all.each do |u|
   10.times do
-    ambassador_id = (rand(50)+1)
+    ambassador_id = (ambassadors_ids - [u.id]).sample
     meetup = u.visitor_meetups.create!(ambassador_id: ambassador_id,
                                        tour_id: (rand(200)+1),
                                        date_time: [rand(2.months).ago, rand(2.months).from_now].sample,
