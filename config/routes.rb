@@ -18,6 +18,8 @@ FindAGuide::Application.routes.draw do
 
   match '/search', to: 'users#search', via: [:get]
 
+  # match '/specialty_filter', to: 'users#filter_by_specialty', via: [:get]
+
   # match 'auth/:provider/callback', to: 'authentications#create', via: [:get, :post]
   # match 'auth/failure', to: redirect('/'), via: [:get, :post]
 
@@ -37,6 +39,9 @@ FindAGuide::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'application#index'
+
+  #Handle routing errors
+  get '*a', controller: 'application', action: 'error_error_routing_error'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

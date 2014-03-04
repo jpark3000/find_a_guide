@@ -13,6 +13,7 @@
 <%= form_tag(user_meetups_url(@ambassador.id), method: "post") do %>
   <%= hidden_field_tag(:ambassador_id, @ambassador.id) %>
   <%= hidden_field_tag(:visitor_id, @visitor.id) %>
+  <%= hidden_field_tag(:start_date, @start_date) %>
   <%= submit_tag("Accept") %>
 <% end %>
 

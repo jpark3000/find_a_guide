@@ -3,9 +3,9 @@ var Tour = function() {
   this.template = $("<div class='tour_desc'>\
                       <span id='message'></span>\
                       <div class='tour_text' contenteditable='true'></div>\
-                      <a href='#' class='tour_creation_link' id='remove_marker'>Delete</a>\
-                      <a href='#' class='tour_creation_link' id='new_tour_button'>Save</a>\
-                      <a href='#' class='tour_creation_link' id='edit_tour'>Edit</a>\
+                      <span class='tour_creation_link' id='remove_marker'>Delete</span>\
+                      <span class='tour_creation_link' id='new_tour_button'>Save</span>\
+                      <span class='tour_creation_link' id='edit_tour'>Edit</span>\
                     </div>")
 };
 
@@ -89,6 +89,9 @@ $(document).ready(function() {
     center: new google.maps.LatLng(20, 0),
     zoom: 2,
     streetViewControl: false,
+    mapTypeControl: false,
+    panControl: false,
+    zoomControlOptions: {style:google.maps.ZoomControlStyle.SMALL},
     styles: styleOptions
   };
 
@@ -150,8 +153,9 @@ $(document).ready(function() {
 
       $(infowindow.content).find('#remove_marker').on('click', function() { user_marker.setMap(null); user_marker=null });
 
-      $(infowindow.content).find('#new_tour_button').on('click', function() {
+      $(infowindow.content).find('#new_tour_button').on('click', function(e) {
         console.log('burgers')
+        e.preventDefault();
         var data = {tour: {
                             description: $($($(this).parent()[0]).find('.tour_text')[0]).html(),
                             latitude: user_marker.position['d'],
@@ -161,7 +165,7 @@ $(document).ready(function() {
 
         $.post('/users/' + gon.id + '/tours', data, function(response) {
           if (response.success) {
-            $('body').append('<p>' + response.message + '</p>');
+            // $('body').append('<p>' + response.message + '</p>');
             $(infowindow.content).find('.tour_text').attr('contenteditable', false);
             $(infowindow.content).find('.tour_text').css('background-color', 'white');
             $(infowindow.content).find('#new_tour_button').hide(); 
@@ -192,54 +196,18 @@ $(document).ready(function() {
 
 
   
-		var input = (document.getElementById('pac-input-tour'));
-  	// map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
+		var input = (document.getElementById('pac-input-search'));
   	var searchBox = new google.maps.places.SearchBox(input);
-
-    // Listen for the event fired when the user selects an item from the
-    // pick list. Retrieve the matching places for that item.
   	google.maps.event.addListener(searchBox, 'places_changed', function() {
       var places = searchBox.getPlaces();
-
-      for (var i = 0, marker; marker = markers[i]; i++) {
-        marker.setMap(null);
-      }
-
-      // For each place, get the icon, place name, and location.
-      var bounds = new google.maps.LatLngBounds();
+      var bounds;
       for (var i = 0, place; place = places[i]; i++) {
-        var image = {
-          url: place.icon,
-          size: new google.maps.Size(71, 71),
-          origin: new google.maps.Point(0, 0),
-          anchor: new google.maps.Point(17, 34),
-          scaledSize: new google.maps.Size(25, 25)
-        };
-
-        // Create a marker for each place.
-        var marker = new google.maps.Marker({
-          map: map,
-          icon: image,
-          title: place.name,
-          position: place.geometry.location,
-        });
-
-        markers.push(marker);
-
-        bounds.extend(place.geometry.location);
+        bounds = place.geometry.viewport;
       }; //end for loop
-
       map.fitBounds(bounds);
-      map.setZoom(15)
+ 
     }); //end searchBox event listener
 
-    // Bias the SearchBox results towards places that are within the bounds of the
-    // current map's viewport.
-    google.maps.event.addListener(map, 'bounds_changed', function() {
-      var bounds = map.getBounds();
-      searchBox.setBounds(bounds);
-    });
 	}; //end initialize
 
   google.maps.event.addDomListener(window, 'load', initialize);
