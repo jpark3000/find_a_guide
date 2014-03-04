@@ -17,18 +17,8 @@
    }(document, 'script', 'facebook-jssdk'));
 </script>
 
-
 <%= javascript_include_tag 'vex', 'vex.combined.min' %>
 <script>vex.defaultOptions.className = 'vex-theme-flat-attack';</script>
-
-
-<script>
-
-
-
-
-</script>
-
 
 <script>
 $( document ).ready(function() {
@@ -50,11 +40,11 @@ $( document ).ready(function() {
 
           vex.open({
           content: '<h2>Pick a new profile picture!!!</h2>\
-                    <input type="image" id="profile_image1" src="' + image1 + '" height="80" width="80" alt="Submit Form" />\
-                    <input type="image" id="profile_image2" src="' + image2 + '" height="80" width="80" alt="Submit Form" />\
-                    <input type="image" id="profile_image3" src="' + image3 + '" height="80" width="80" alt="Submit Form" />\
-                    <input type="image" id="profile_image4" src="' + image4 + '" height="80" width="80" alt="Submit Form" />\
-                    <input type="image" id="profile_image5" src="' + image5 + '" height="80" width="80" alt="Submit Form" />'
+                    <form action="demo_form.asp" method="post"><input type="image" id="profile_image1" src="' + image1 + '" height="80" width="80" alt="Submit Form" /></form>\
+                    <form action="demo_form.asp" method="post"><input type="image" id="profile_image2" src="' + image2 + '" height="80" width="80" alt="Submit Form" /></form>\
+                    <form action="demo_form.asp" method="post"><input type="image" id="profile_image3" src="' + image3 + '" height="80" width="80" alt="Submit Form" /></form>\
+                    <form action="demo_form.asp" method="post"><input type="image" id="profile_image4" src="' + image4 + '" height="80" width="80" alt="Submit Form" /></form>\
+                    <form action="demo_form.asp" method="post"><input type="image" id="profile_image5" src="' + image5 + '" height="80" width="80" alt="Submit Form" /></form>'
           });
 
           });
@@ -78,9 +68,5 @@ $( document ).ready(function() {
 </script>
 
 
-<!-- <button id='avatar_selector'>Click here for modal</button> -->
 <a href="#" id='avatar_selector'>Modal</a>
 
-<!-- <div>
-<%= image_tag 'https://scontent-b.xx.fbcdn.net/hphotos-frc3/t31/1654680_10152180203013398_509278333_o.jpg' %>
-</div> -->
