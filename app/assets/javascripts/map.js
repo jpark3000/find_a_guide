@@ -3,9 +3,9 @@ var Tour = function() {
   this.template = $("<div class='tour_desc'>\
                       <span id='message'></span>\
                       <div class='tour_text' contenteditable='true'></div>\
-                      <br><button type='button' id='remove_marker'>Remove</button>\
-                      <br><button type='button' id='new_tour_button'>Save</button>\
-                      <br><button type='button' id='edit_tour'>Edit!</button>\
+                      <a href='#' class='tour_creation_link' id='remove_marker'>Delete</a>\
+                      <a href='#' class='tour_creation_link' id='new_tour_button'>Save</a>\
+                      <a href='#' class='tour_creation_link' id='edit_tour'>Edit</a>\
                     </div>")
 };
 
@@ -22,7 +22,6 @@ Tour.prototype.editTour = function(tour_id) {
   var self = this
   this.template.find('#edit_tour').on('click', function() {
     self.template.find('.tour_text').attr('contenteditable', true);
-    self.template.find('.tour_text').css('background-color', 'yellow')
     self.template.find('#new_tour_button').show();
     self.saveTour(tour_id)
   });
@@ -51,7 +50,7 @@ Tour.prototype.saveTour = function(tour_id) {
  
 Tour.prototype.createTour = function() {
   this.template.find('#edit_tour').hide();
-  return this
+  return this.template[0]
 };
 
 // var UserTour = function(description) {
@@ -102,14 +101,14 @@ $(document).ready(function() {
 
 	function initialize() {
 		map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-    var image = "/assets/ambassador.png"
+    var image = "http://mapicons.nicolasmollet.com/wp-content/uploads/mapicons/shape-default/color-c259b5/shapecolor-color/shadow-1/border-dark/symbolstyle-white/symbolshadowstyle-dark/gradient-no/planetarium-2.png"
 
     $.each(gon.points, function(index, tour) {
       var myLatLng = new google.maps.LatLng(tour.lat, tour.lng);
       var tour_marker = new google.maps.Marker({
         position: myLatLng,
         map: map,
-        icon: image,
+        // icon: image,
         animation: google.maps.Animation.DROP,
         tour_id: tour.id
       });
@@ -150,7 +149,7 @@ $(document).ready(function() {
       
       var iw = new Tour().createTour()
     
-      var infowindow = new google.maps.InfoWindow({content : iw.template[0] });
+      var infowindow = new google.maps.InfoWindow({content : iw });
 
       $(infowindow.content).find('#remove_marker').on('click', function() { user_marker.setMap(null); user_marker=null });
 
@@ -171,7 +170,6 @@ $(document).ready(function() {
             $(infowindow.content).find('#new_tour_button').hide(); 
             $(infowindow.content).find('#remove_marker').hide(); 
             $(infowindow.content).find('#edit_tour').show();
-            iw.editTour(response.tour_id)
             user_marker.setIcon(image);
           } else {
             $('body').append('<p>' + response.message + '</p>');

@@ -11,7 +11,6 @@ FindAGuide::Application.routes.draw do
   resources :users, only: [:edit, :update, :show] do
     resources :meetups, only: [:index, :show, :edit, :update, :create]
     resources :reviews, only: [:index, :new, :create]
-    resources :specialties, only: [:create]
     resources :tours
   end
 
@@ -33,13 +32,16 @@ FindAGuide::Application.routes.draw do
   get '/thanks', to: 'marketing#thanks'
 
   # post '/update_profile_pic', to: 'users#update_profile_pic'
-  match '/update_profile_pic/:user_id', to: 'users#update_profile_pic', via: [:post]
+  match '/update_profile_pic/:user_id', to: 'users#update_profile_pic', via: [:patch]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   root 'application#index'
+
+  #Handle routing errors
+  get '*a', controller: 'application', action: 'error_error_routing_error'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

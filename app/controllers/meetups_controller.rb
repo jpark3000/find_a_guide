@@ -35,7 +35,7 @@ class MeetupsController < ApplicationController
   def create
     @ambassador = User.find(params[:ambassador_id])
     @visitor = User.find(params[:visitor_id])
-    meetup = Meetup.create(ambassador_id: @ambassador.id, visitor_id: @visitor.id)
+    meetup = Meetup.create(ambassador_id: @ambassador.id, visitor_id: @visitor.id, date_time: params[:start_date])
     subject = "#{@ambassador.name} will Meet You!"
     email_html = render_to_string "emails/accept", :layout => false
     Email.new_request(@ambassador, @visitor, email_html, subject)

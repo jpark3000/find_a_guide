@@ -82,7 +82,6 @@ gem 'simplecov', :require => false, :group => :test
 
 # Oauth Related
 gem 'omniauth'
-gem 'omniauth-facebook', '1.6.0'
+gem 'omniauth-facebook', '1.4.0'
 
 #adding jquery-ui themes
-gem 'jquery-ui-themes'

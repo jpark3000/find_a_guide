@@ -1,5 +1,5 @@
-# require 'pry'
 class UsersController < ApplicationController
+  skip_before_action :require_login, only: [:search, :update_profile_pic]
 
   def index
     @specialties = Specialty.all
@@ -20,10 +20,13 @@ class UsersController < ApplicationController
 
   def search
     points = []
+    
     if params[:initial_bounds]
       gon.bounds = params[:initial_bounds].gsub!(/\(+|\)+/, '').split(',').map! { |i| i.to_f }
     end
-    # gon.lng = params[:center_lng]
+
+    session[:start_date] = params[:start_date] if params[:start_date]
+    session[:end_date]  = params[:end_date] if params[:end_date]
 
     @specialties = Specialty.all
     @languages = Language.all
@@ -82,6 +85,7 @@ class UsersController < ApplicationController
     @user = current_user
     @ambassador = current_user
     @specialties = Specialty.all
+    gon.user_id = @user.id
   end
 
   def update

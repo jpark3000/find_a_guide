@@ -1,6 +1,4 @@
-require 'pry'
 class ToursController < ApplicationController
-
   def edit
     puts params
   end
@@ -46,7 +44,13 @@ class ToursController < ApplicationController
   end
 
   def index
-    @ambassador = current_user
+    if current_user
+      @ambassador = User.find(params[:user_id])
+      @start_date = session[:start_date]
+      @end_date = session[:end_date]
+    else
+      redirect_to '/auth/facebook/callback'
+    end
   end
 
   private
