@@ -7,10 +7,21 @@
         <span class="meetup_pic" style="background-image: url('<%= @ambassador.profile_pic %>')"></span>
         <div id="right_of_picture">
           <h2><%= @ambassador.name %></h2>
-          <%= @meetup.date_time.to_formatted_s(:upcoming_date) %>
-          <% @ambassador_attributes.each do |a| %>
-            <span class="user_info"><%= a %></span>
+          <p class="user_info"><%= @meetup.date_time.to_formatted_s(:upcoming_date) %> at <%= @meetup.address %></p>
+          <% if @ambassador.email %>
+            <p class="meetup_email user_info"><%= @ambassador.email %></p>
           <% end %>
+          <% if @ambassador.phone %>
+            <p class="meetup_phone user_info"><%= @ambassador.phone %></p>
+          <% end %>
+          <span class="user_info">
+            <% if @ambassador.gender %>
+              <span class="meetup_gender"><%= @ambassador.gender %></span>
+            <% end %>
+            <% if @ambassador.age %>
+              <span class="meetup_age"> - <%= @ambassador.age %></span>
+            <% end %>
+          </span>
         </div>
       </div>
     <% end %>
@@ -20,10 +31,21 @@
         <span class="meetup_pic" style="background-image: url('<%= @visitor.profile_pic %>')"></span>
         <div id="right_of_picture">
           <h2><%= @visitor.name %></h2>
-          <%= @meetup.date_time.to_formatted_s(:upcoming_date) %>
-          <% @visitor_attributes.each do |a| %>
-            <span class="user_info"><%= a %></span>
+          <p class="user_info"><%= @meetup.date_time.to_formatted_s(:upcoming_date) %> at <%= @meetup.address %></p>
+          <% if @visitor.email %>
+            <p class="meetup_email user_info"><%= @visitor.email %></p>
           <% end %>
+          <% if @visitor.phone %>
+            <p class="meetup_phone user_info"><%= @visitor.phone %></p>
+          <% end %>
+          <span class="user_info">
+            <% if @visitor.gender %>
+              <span class="meetup_gender"><%= @visitor.gender %></span>
+            <% end %>
+            <% if @visitor.age %>
+              <span class="meetup_age"> - <%= @visitor.age %></span>
+            <% end %>
+          </span>            
         </div>      
       </div>
     <% end %>

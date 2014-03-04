@@ -508,6 +508,10 @@ height: 34px !important;
   margin-bottom: 4px;
 }
 
+.profile_section .card_info {
+  width: 79% !important;
+}
+
 .card {
   height: 100px;
   padding: 6px;
@@ -771,8 +775,9 @@ height: 34px !important;
 }
 
 .profile_section > h4 {
-  font-weight: bold;
-  padding-bottom: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 20px 0 17px;
 }
 
 
@@ -923,14 +928,15 @@ height: 34px !important;
   padding: 30px;
 }
 
-.meetup_info h3{
-  text-align: center;
-  padding: 30px;
+.meetup_info h3 {
+    font-size: 1.4em;
+    padding: 30px 0 62px;
+    text-align: center;
 }
 
 .user_info {
   display: block;
-  padding: 4px 0;
+  padding: 12px 0;
 }
 
 #meetup_meetup_notes {
