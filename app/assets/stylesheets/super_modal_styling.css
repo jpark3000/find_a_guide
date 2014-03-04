@@ -1,0 +1,11 @@
+.super_modal_form_styling {
+/*  margin: 0;
+  padding: 0;*/
+  display: inline;
+  margin: 5px;
+}
+
+#super_modal_h2 {
+  text-align: center;
+  font-family: 'Abril Fatface';
+}
