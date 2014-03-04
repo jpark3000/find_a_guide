@@ -11,7 +11,6 @@ FindAGuide::Application.routes.draw do
   resources :users, only: [:edit, :update, :show] do
     resources :meetups, only: [:index, :show, :edit, :update, :create]
     resources :reviews, only: [:index, :new, :create]
-    resources :specialties, only: [:create]
     resources :tours
   end
 
