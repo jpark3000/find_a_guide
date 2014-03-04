@@ -28,12 +28,32 @@ var convertFormToJSON = function (form){
 }
 
 var checkError = function (response) {
-  if (response.errors) {
+  if (response.errors.length > 0) {
     $.each(response.errors,function(index,value){
       $("#errors").append("<li>"+value+"</li>");
     });
   }
   else{
-    
+    var dialog = new Dialog($( "#dialog-message" ));
+    dialog.show();
   }
+}
+
+function Dialog(el) {
+  this.$el = el;
+  var self = this;
+  this.$el.dialog({
+    modal: true,
+    dialogClass: "no-close",
+    autoOpen: false,
+    buttons: {
+      Ok: function() {
+        $( this ).dialog( "close" );
+      }
+    }
+  });
+}
+
+Dialog.prototype.show = function(){
+  this.$el.dialog('open');
 }
