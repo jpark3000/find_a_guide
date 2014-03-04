@@ -33,9 +33,9 @@ class User < ActiveRecord::Base
 		"#{rand(5)} stars"
 	end
 
-  def profile_pic(uid = self.uid)
-    return "http://graph.facebook.com/#{uid}/picture?type=large"
-  end
+  # def profile_pic(uid = self.uid)
+  #   return "http://graph.facebook.com/#{uid}/picture?type=large"
+  # end
 
   def open_information
     [email,phone,gender,age]
@@ -86,6 +86,8 @@ class User < ActiveRecord::Base
       user.first_name = auth.info.first_name
       user.last_name = auth.info.last_name
       user.email = auth.extra.raw_info.email
+
+      user.profile_pic = auth.info.image + '?type=large'
 
       user.username = auth.extra.raw_info.username
       # user.gender = auth.extra.raw_info.gender
