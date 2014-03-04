@@ -17,10 +17,10 @@
 //= require turbolinks
 //= require_self
 //
-//= require avatar_change_modal/fb_graph_api_required
-//= require avatar_change_modal/fb_profile_modal
-//= require avatar_change_modal/vex.combined.min
-//= require avatar_change_modal/vex
+//= require fb_graph_api_required
+//= require fb_profile_modal
+//= require vex.combined.min
+//= require vex
 
 
 
