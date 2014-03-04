@@ -4,8 +4,9 @@
     e.preventDefault();
     $("#errors").empty();
     var url = $('form').attr('action');
-    var method = $('form').find("input[name='_method']").val();
+    var method = $('form').attr('method');
     data = convertFormToJSON($('form'));
+    console.log(method);
     $.ajax({
           type: method,
           url: url,
@@ -34,6 +35,6 @@ var checkError = function (response) {
     });
   }
   else{
-    
+    window.location.href = response.new_url;
   }
 }
