@@ -56,6 +56,7 @@ class UsersController < ApplicationController
     @user = current_user
     @ambassador = current_user
     @specialties = Specialty.all
+    gon.user_id = @user.id
   end
 
   def update
