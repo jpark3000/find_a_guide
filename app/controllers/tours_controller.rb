@@ -1,6 +1,4 @@
-require 'pry'
 class ToursController < ApplicationController
-
   def edit
     puts params
   end
