@@ -17,44 +17,64 @@
    }(document, 'script', 'facebook-jssdk'));
 </script>
 
-<script>
-FB.api('/me/albums', function (response) {
-  for (album in response.data) {
-
-    if (response.data[album].name == "Profile Pictures") {
-
-      FB.api(response.data[album].id + "/photos", function(response) {
-
-        image = response.data[0].images[0].source;
-        console.log(image);
-
-        console.log(response.data[1].images[0].source);
-        console.log(response.data[2].images[0].source);
-        console.log(response.data[3].images[0].source);
-        console.log(response.data[4].images[0].source);
-
-      });
-    }
-  }
-});
-</script>
 
 <%= javascript_include_tag 'vex', 'vex.combined.min' %>
 <script>vex.defaultOptions.className = 'vex-theme-flat-attack';</script>
 
+
+<script>
+
+
+
+
+</script>
+
+
 <script>
 $( document ).ready(function() {
+
+  function getImages() {
+
+    FB.api('/me/albums', function (response) {
+      for (album in response.data) {
+
+        if (response.data[album].name == "Profile Pictures") {
+
+          FB.api(response.data[album].id + "/photos", function(response) {
+
+          var image1 = response.data[0].images[0].source;
+          var image2 = response.data[1].images[0].source;
+          var image3 = response.data[2].images[0].source;
+          var image4 = response.data[3].images[0].source;
+          var image5 = response.data[4].images[0].source;
+
+          vex.open({
+          content: '<h2>Pick a new profile picture!!!</h2>\
+                    <input type="image" id="profile_image1" src="' + image1 + '" height="80" width="80" alt="Submit Form" />\
+                    <input type="image" id="profile_image2" src="' + image2 + '" height="80" width="80" alt="Submit Form" />\
+                    <input type="image" id="profile_image3" src="' + image3 + '" height="80" width="80" alt="Submit Form" />\
+                    <input type="image" id="profile_image4" src="' + image4 + '" height="80" width="80" alt="Submit Form" />\
+                    <input type="image" id="profile_image5" src="' + image5 + '" height="80" width="80" alt="Submit Form" />'
+          });
+
+          });
+        }
+      }
+    });
+
+  }; //End getImages function
+
+
+
     $('#avatar_selector').on('click', function(event){
       event.preventDefault();
-      vex.dialog.confirm({
-  message: 'Are you absolutely sure you want to destroy the alien planet?',
-  callback: function(value) {
-    return console.log(value ? 'Successfully destroyed the planet.' : 'Chicken.');
-  }
-});
 
-    })
-});
+      getImages();
+    }) //End Avatar Selector
+
+
+}); //End Doc Ready
+
 </script>
 
 
