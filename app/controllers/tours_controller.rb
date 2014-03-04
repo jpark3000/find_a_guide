@@ -44,7 +44,11 @@ class ToursController < ApplicationController
   end
 
   def index
-    @ambassador = current_user
+    if current_user
+      @ambassador = current_user
+    else
+      redirect_to '/auth/facebook/callback'
+    end
   end
 
   private
