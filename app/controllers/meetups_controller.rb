@@ -39,7 +39,7 @@ class MeetupsController < ApplicationController
     subject = "#{@ambassador.name} will Meet You!"
     email_html = render_to_string "emails/accept", :layout => false
     Email.new_request(@ambassador, @visitor, email_html, subject)
-    redirect_to edit_user_meetup_path(current_user, meetup)
+    redirect_to edit_user_meetup_path(@ambassador, meetup)
   end
 
   private

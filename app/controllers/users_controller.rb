@@ -1,5 +1,5 @@
-require 'pry'
 class UsersController < ApplicationController
+  skip_before_action :require_login, only: [:search]
 
   def index
     @specialties = Specialty.all
@@ -15,12 +15,12 @@ class UsersController < ApplicationController
     @specialties = Specialty.all
     @languages = Language.all
 
-    respond_to do |format| 
+    respond_to do |format|
       if request.xhr?
         params[:bounds] = params[:bounds].gsub!(/\(+|\)+/, '').split(',').map! { |i| i.to_f }
 
         @tours = Tour.where(Geocoder::Sql.within_bounding_box(params[:bounds][0], params[:bounds][1],
-                                                                     params[:bounds][2], params[:bounds][3],  
+                                                                     params[:bounds][2], params[:bounds][3],
                                                                      'latitude', 'longitude'))
 
         @users = @tours.map { |tour| tour.ambassador }.uniq
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
           hashy = {points: points, users: {}}
 
           @users.each do |u|
-            hashy[:users][u.id] = {id: u.id, first_name: u.first_name, tagline: u.tagline, rating: u.rating, photo: u.profile_pic} 
+            hashy[:users][u.id] = {id: u.id, first_name: u.first_name, tagline: u.tagline, rating: u.rating, photo: u.profile_pic}
           end
 
 
@@ -48,15 +48,16 @@ class UsersController < ApplicationController
         format.html do
           render 'index'
         end
-      end 
+      end
     end
 
   end
 
   def edit
     @user = current_user
-    @ambassador = current_user  
+    @ambassador = current_user
     @specialties = Specialty.all
+    gon.user_id = @user.id
   end
 
   def update
@@ -72,6 +73,15 @@ class UsersController < ApplicationController
     end
   end
 
+# ----------------------------------------------------
+  def update_profile_pic
+    quasi_current_user = User.find(params[:user_id])
+    quasi_current_user.update(profile_pic: params[:profile_pic])
+
+    redirect_to :back
+  end
+# ----------------------------------------------------
+
   def show
     @user = User.find(params[:id])
   end
@@ -79,7 +89,7 @@ class UsersController < ApplicationController
   def ambassador_toggle
     current_user.update(is_ambassador: true)
     respond_to do |format|
-        format.json{ render :json => {is_ambassador: current_user.is_ambassador}}
+        format.json{ render :json => {is_ambasssador: current_user.is_ambassador}}
     end
   end
 
@@ -106,6 +116,8 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :phone, :gender, :age, :bio, :tagline)
+    params.require(:user).permit(:email, :phone, :gender, :age, :bio, :tagline, :profile_pic)
   end
+
+
 end

@@ -1,5 +1,3 @@
-# require 'pry'
-
 class User < ActiveRecord::Base
 	# has_one :authentication, dependent: :destroy
 
@@ -33,9 +31,9 @@ class User < ActiveRecord::Base
 		"#{rand(5)} stars"
 	end
 
-  def profile_pic(uid = self.uid)
-    return "http://graph.facebook.com/#{uid}/picture?type=large"
-  end
+  # def profile_pic(uid = self.uid)
+  #   return "http://graph.facebook.com/#{uid}/picture?type=large"
+  # end
 
   def open_information
     [email,phone,gender,age]
@@ -87,11 +85,10 @@ class User < ActiveRecord::Base
       user.last_name = auth.info.last_name
       user.email = auth.extra.raw_info.email
 
-      user.username = auth.extra.raw_info.username
-      # user.gender = auth.extra.raw_info.gender
-      # user.birthday = auth.extra.raw_info.birthday
+      user.profile_pic = user.profile_pic ||= auth.info.image + '?type=large'
 
-      # binding.pry
+      user.username = auth.extra.raw_info.username
+
       user.save!
     end
   end
