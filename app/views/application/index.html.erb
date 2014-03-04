@@ -25,7 +25,7 @@
     </div>
     <% else %>
       <%= link_to "/auth/facebook", id: "sign_in" do %>
-      <span id="home_facebook_icon" class="home_top_right facebook"><%= image_tag 'facebook.png' %></span>
+      <span id="home_facebook_icon" class="home_top_right facebook" style="background-image:url(<%= asset_path 'facebook.png' %>)"></span>
       <% end %>
     <% end %>
 
