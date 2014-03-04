@@ -7,13 +7,28 @@ class UsersController < ApplicationController
     @tours = []
   end
 
+  # def filter_by_specialty(specialty_id)
+  #   if params[:specialty_id]
+  #     @users = User.specialties
+
+
+
+  #   end
+
+
+  # end
+
   def search
     points = []
-    gon.lat = params[:center_lat]
-    gon.lng = params[:center_lng]
+    if params[:initial_bounds]
+      gon.bounds = params[:initial_bounds].gsub!(/\(+|\)+/, '').split(',').map! { |i| i.to_f }
+    end
+    # gon.lng = params[:center_lng]
 
     @specialties = Specialty.all
     @languages = Language.all
+
+
 
     respond_to do |format|
       if request.xhr?
@@ -22,8 +37,18 @@ class UsersController < ApplicationController
         @tours = Tour.where(Geocoder::Sql.within_bounding_box(params[:bounds][0], params[:bounds][1],
                                                                      params[:bounds][2], params[:bounds][3],
                                                                      'latitude', 'longitude'))
-
         @users = @tours.map { |tour| tour.ambassador }.uniq
+        # if params[:specialty_id]
+        #   @users.select( |u| u.specialties.map )
+        #   @users = @users.includes(:users_specialties).where("users_specialties.specialty_id" => params[:specialty_id])
+        # end
+        
+
+
+
+        
+  
+        
         @tours.each do |tour|
           points << tour.format_coordinates
         end
@@ -32,7 +57,7 @@ class UsersController < ApplicationController
           hashy = {points: points, users: {}}
 
           @users.each do |u|
-            hashy[:users][u.id] = {id: u.id, first_name: u.first_name, tagline: u.tagline, rating: u.rating, photo: u.profile_pic}
+            hashy[:users][u.id] = {id: u.id, first_name: u.first_name, tagline: u.tagline, rating: u.rating, photo: u.profile_pic, specialty_ids: u.specialties.map { |s| s.id } }
           end
 
 
