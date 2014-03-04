@@ -124,6 +124,10 @@ nav {
   margin-left: 10px;
 }
 
+#right_hand_navbar > a {
+  margin-right: 20px;
+}
+
 #right_hand_navbar {
   float: right;
   display: inline-block;
@@ -425,17 +429,17 @@ nav {
 }
 
 #refine_search_button {
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-    margin: 4px auto;
-    text-align: center;
-    width: 15%;
-    background-position: center center;
-    background-size: 20px 20px;
-    background-repeat: no-repeat;
-    height: 1em;
-    border: 1.5px solid #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  margin: 4px auto;
+  text-align: center;
+  width: 15%;
+  background-position: center center;
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  height: 1em;
+  border: 1.5px solid #fff;
 }
 
 #refine_search_button:hover {
@@ -479,9 +483,9 @@ nav {
 }
 
 .search_results_card {
-    height: 100px;
-    padding: 6px;
-    border: 1px solid #DDDDDD;
+  height: 100px;
+  padding: 6px;
+  border: 1px solid #DDDDDD;
 }
 
 .search_results_card:hover{
@@ -494,13 +498,13 @@ nav {
 }
 
 .ambassador_photo_card {
-    background-position: top center;
-    background-size: cover;
-    background-repeat: none;
-    height: 100px;
-    width: 100px;
-    display: inline-block;
-    float: left;
+  background-position: top center;
+  background-size: cover;
+  background-repeat: none;
+  height: 100px;
+  width: 100px;
+  display: inline-block;
+  float: left;
 }
 
 .ambassador_name_card {
