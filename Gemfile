@@ -85,4 +85,3 @@ gem 'omniauth'
 gem 'omniauth-facebook', '1.6.0'
 
 #adding jquery-ui themes
-gem 'jquery-ui-themes'

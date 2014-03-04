@@ -10,7 +10,6 @@
  *
  *= require_self
  *= require_tree .
- *= require jquery-ui/smoothness
  */
 
 /* BODY */
@@ -187,7 +186,7 @@ nav {
 
 .home_top_left {
   height: 132px;
-  width: 132px;
+  width: 120px;
   padding: 10px;
   float:left;
   text-align: left;
@@ -208,15 +207,28 @@ nav {
 #header {
   margin-bottom: 95px;
   text-align: right;
+  height: 171px;
 }
 
-#home_logo{
+#home_logo {
   font-size: 3em;
   line-height: 60px;
+  text-align: right;
+  border-right: 3px solid;
+  padding-right: 20px;
 }
 
 #home_dropdown {
   float: right;
+}
+
+#tagline {
+  float: left;
+  width: 52px;
+  text-align: left;
+  margin: 24px 0 0 10px;
+  line-height: 28px;
+  font-weight: bold;
 }
 
 
@@ -226,9 +238,10 @@ nav {
 #dropdown {
   font-size: 0.8em;
   position: absolute;
-  right: 15%;
-  top: 41px;
+  right: 36px;
+  top: 61px;
   width: 10em;
+  z-index: 30;
 }
 
 #landing_dropdown #dropdown {
@@ -281,7 +294,7 @@ nav {
   width: 500%;
   z-index: -10;
   top: 0;
-  left: 0;
+  left: -100%;
 }
 
 .sliding_images{
@@ -300,7 +313,7 @@ nav {
 
 #cafe {
   background: url("cafe.jpg");
-  background-position: center center;
+  background-position: top center;
   background-size: cover;
 }
 
@@ -323,7 +336,7 @@ nav {
 }
 
 #search_container {
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(0, 0, 0, 0.3);
   padding: 10px;
   border-radius: 3px;
 }

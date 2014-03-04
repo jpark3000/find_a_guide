@@ -46,7 +46,7 @@ class ToursController < ApplicationController
   end
 
   def index
-    @ambassador = current_user
+    @ambassador = User.find(params[:user_id])
   end
 
   private
