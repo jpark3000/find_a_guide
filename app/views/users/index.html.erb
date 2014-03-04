@@ -9,7 +9,7 @@
 
 <div id="search_results">
   <div id="search_results_content">
-    <div id="refine_search_button" style="background-image: url('/assets/arrow_down.png')"></div>
+    <div id="refine_search_button" style="background-image: url("<%= image_tag 'arrow_down.png' %>")"></div>
     <div id="refine_search">
       <% @specialties.each do |s| %>
         <% if s.is_available? %>
