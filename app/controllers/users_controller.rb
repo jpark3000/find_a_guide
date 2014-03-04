@@ -63,14 +63,15 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = current_user
-    @user.attributes = user_params
+    current_user.specialties.destroy_all
+    if params['specialty']
+      new_specialties = params['specialty'].keys
+      new_specialties.each{|specialty_id| UsersSpecialty.create(user_id: current_user.id, specialty_id: specialty_id)}
+    end
+    current_user.attributes = user_params
+    current_user.save
     respond_to do |format|
-      if @user.save
-        format.json{ render :json => {new_url: user_url(@user)}}
-      else
-        format.json{ render :json => {errors: @user.errors.full_messages} }
-      end
+        format.json{ render :json => {errors: current_user.errors.full_messages} }
     end
   end
 

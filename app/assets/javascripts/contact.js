@@ -50,7 +50,6 @@ function Dialog(el, form) {
     autoOpen: false,
     buttons: {
       Ok: function() {
-        debugger;
         self.$form.remove();
         $( this ).dialog( "close" );
       }
