@@ -18,6 +18,8 @@ FindAGuide::Application.routes.draw do
 
   match '/search', to: 'users#search', via: [:get]
 
+  # match '/specialty_filter', to: 'users#filter_by_specialty', via: [:get]
+
   # match 'auth/:provider/callback', to: 'authentications#create', via: [:get, :post]
   # match 'auth/failure', to: redirect('/'), via: [:get, :post]
 

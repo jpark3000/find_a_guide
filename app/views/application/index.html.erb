@@ -36,8 +36,8 @@
     <%= form_tag search_path, method: :get, id: 'search_form' do %>
     <input id="pac-input" class="controls" type="text" placeholder="Where are you going?">
 
-    <input id='center_lat' type='hidden' name='center_lat' value=''>
-    <input id='center_lng' type='hidden' name='center_lng' value=''>
+    <input id='initial_bounds' type='hidden' name='initial_bounds' value=''>
+
 
     <input type="text" name="start_date" onfocus="this.blur()" class="date_picker" data-behaviour='datepicker' id="starting_date"><span class="icon_container"><span class="calendar_icon"></span></span>
     <input type="text" name="end_date" onfocus="this.blur()" class="date_picker" data-behaviour='datepicker' id="ending_date"><span class="icon_container"><span class="calendar_icon"></span></span>
