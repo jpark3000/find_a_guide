@@ -32,14 +32,13 @@
     }
   });
 
-  //search bar location here to avoid turbolinks
-  $("#header").css({
-    height: ($(document).height() / 4   ) + 'px',
-    'max-height': '130px'
-  });
-  $("#dropdown").css('right', (($(document).width() - 1010) / 2));
-  var windowHeight = $(document).height();
-
+  $(document).on('click',function(e){
+    if(e.target.id !== 'pac-input-search'){
+      $("#pac-input-search").width(150).blur();
+    } else {
+      $("#pac-input-search").width(384);
+    }
+  })
 </script>
 
 </body>

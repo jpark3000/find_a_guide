@@ -1,6 +1,6 @@
 <nav>
   <div id="nav_container">
-    <h2 id="nav_logo"><%= link_to 'FIND A GUIDE', root_path, data: {no_turbolink: true} %></h2>
+    <h2 id="nav_logo"><%= link_to 'CITYBIRD.co', root_path, data: {no_turbolink: true} %></h2>
     <span id="right_hand_navbar">
       <% if current_user %>
         <%= link_to new_user_tour_path(current_user.id), data: {no_turbolink: true} do %><span id="user_manage_tour_icon"><%= image_tag 'globe.png', :class => 'navbar_icon' %></span><% end %>
@@ -21,7 +21,7 @@
   <ul>
     <% if session[:user_id] %>
       <%= link_to edit_user_path(current_user) do %><li>Edit Profile</li><% end %>
-      <%= link_to signout_path, id: "sign_out" do %><li>Logout</li><% end %>
+      <%= link_to signout_path, id: "sign_out", :data => {no_turbolink: true} do %><li>Logout</li><% end %>
     <% end %>
   </ul>
 
