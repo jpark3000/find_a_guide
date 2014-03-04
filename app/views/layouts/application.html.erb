@@ -32,6 +32,13 @@
     }
   });
 
+  $(document).on('click',function(e){
+    if(e.target.id !== 'pac-input-search'){
+      $("#pac-input-search").width(150).blur();
+    } else {
+      $("#pac-input-search").width(384);
+    }
+  })
 </script>
 
 </body>
