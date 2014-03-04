@@ -28,33 +28,32 @@
       <div class="user_bio">
         <%= f.text_area :bio, :placeholder => 'bio' %>
       </div>
-      <%= f.submit %>
+      <% if @user.is_ambassador %>
+        <hr/>
+        <div class="ambassador_info">
+          <div id="choose_specialties">
+            <h2>Ambassador</h2>
+            <h2 id="specialties_title">Specialties:</h2>
+            <div id="specialties">
+            <% @specialties.each do |s| %>
+              <div class="specialty">
+                <%= check_box_tag "specialty[#{s.id}]", s.id, @ambassador.has_specialty?(s), class: 'pick_specialty'%>
+                <%= label_tag "specialty[#{s.id}]", s.specialty %>
+              </div>
+            <% end %>   
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <div>
+        <%= f.submit %>
+      </div>
+      <ul id="errors"></ul>
     </div>
   <% end %>
 </div>
-<ul id="errors"></ul>
-
-<hr/>
-<div class="ambassador_info">
-  <div id="choose_specialties">
-  <h2>Ambassador</h2>
-    <h2 id="specialties_title">Specialties:</h2>
-    <div id="specialties">
-      <%= form_tag user_specialties_path(@ambassador), :id => 'form_specialty' do %>
-      <% @specialties.each do |s| %>
-        <div class="specialty">
-          <%= check_box_tag "specialty[#{s.id}]", s.id, @ambassador.has_specialty?(s), class: 'pick_specialty'%>
-          <%= label_tag "specialty[#{s.id}]", s.specialty %>
-
-        </div>
-      <% end %>  
-      <div>
-          <%= submit_tag("Update Specialties") %>
-          <ul id="response"></ul>
-      </div>
-      <% end %> 
-    </div>
-  </div>
+<div id="dialog-message">
+  <p>Your changes to your profile have been saved.</p>
 </div>
 
-<%= javascript_include_tag 'ajax' %>
+<%= javascript_include_tag 'profile' %>
