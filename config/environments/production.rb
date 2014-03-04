@@ -59,7 +59,7 @@ FindAGuide::Application.configure do
 
   # Precompile additional assets.
   # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-  config.assets.precompile += %w( ajax.js facebook.js map.js)
+  config.assets.precompile += %w( ajax.js facebook.js map.js search.js contact.js dashboard.js fb_graph_api_required.js profile.js search_results.js)
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
