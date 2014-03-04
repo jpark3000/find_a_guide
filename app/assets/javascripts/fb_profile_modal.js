@@ -2,36 +2,37 @@ $( document ).ready(function() {
 
   function getImages() {
 
+    // Grab all FB albums for user
     FB.api('/me/albums', function (response) {
+      // For each album in the response of all albums...
       for (album in response.data) {
-
+        // If the album name is equal to Profile Pictures
         if (response.data[album].name == "Profile Pictures") {
-
+          // Grab all photo objects from Profile Picture Album
           FB.api(response.data[album].id + "/photos", function(response) {
 
-          var image1 = response.data[0].images[0].source;
-          var image2 = response.data[1].images[0].source;
-          var image3 = response.data[2].images[0].source;
-          var image4 = response.data[3].images[0].source;
-          var image5 = response.data[4].images[0].source;
+          // Limits the number of image results to a maximum of 5
+          var limit5 = response.data.slice(0, 5);
+
+          // Create HTML formString for modal
+          var formString = '<h2 id="super_modal_h2">Pick a new profile picture!!!</h2>'
+
+          // Add to formString
+          $.each( limit5, function ( key, value ){
+            formString = formString + '<form action="/update_profile_pic/' + gon.user_id + '" class="super_modal_form_styling" method="post"><input name="_method" type="hidden" value="patch" /><input type="image" name="profile_pic" value="' + value.images[0].source + '" id="profile_image1" src="' + value.images[0].source + '" height="80" width="80" alt="Submit Form" /></form>';
+          });
 
           vex.open({
-          content: '<h2 id="super_modal_h2">Pick a new profile picture!!!</h2>\
-                    <form action="/update_profile_pic/' + gon.user_id + '" class="super_modal_form_styling" method="post"><input name="_method" type="hidden" value="patch" /><input type="image" name="profile_pic" value="' + image1 + '" id="profile_image1" src="' + image1 + '" height="80" width="80" alt="Submit Form" /></form>\
-                    <form action="/update_profile_pic/' + gon.user_id + '" class="super_modal_form_styling" method="post"><input name="_method" type="hidden" value="patch" /><input type="image" name="profile_pic" value="' + image2 + '" id="profile_image2" src="' + image2 + '" height="80" width="80" alt="Submit Form" /></form>\
-                    <form action="/update_profile_pic/' + gon.user_id + '" class="super_modal_form_styling" method="post"><input name="_method" type="hidden" value="patch" /><input type="image" name="profile_pic" value="' + image3 + '" id="profile_image3" src="' + image3 + '" height="80" width="80" alt="Submit Form" /></form>\
-                    <form action="/update_profile_pic/' + gon.user_id + '" class="super_modal_form_styling" method="post"><input name="_method" type="hidden" value="patch" /><input type="image" name="profile_pic" value="' + image4 + '" id="profile_image4" src="' + image4 + '" height="80" width="80" alt="Submit Form" /></form>\
-                    <form action="/update_profile_pic/' + gon.user_id + '" class="super_modal_form_styling" method="post"><input name="_method" type="hidden" value="patch" /><input type="image" name="profile_pic" value="' + image5 + '" id="profile_image5" src="' + image5 + '" height="80" width="80" alt="Submit Form" /></form>'
+            content: formString
           });
+
 
           });
         }
       }
     });
 
-  }; //End getImages function
-
-
+  };//End getImages function
 
     $('#avatar_selector').on('click', function(event){
       event.preventDefault();
