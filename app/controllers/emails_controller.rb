@@ -1,5 +1,6 @@
 class EmailsController < ApplicationController
    skip_before_filter :verify_authenticity_token
+   skip_before_action :require_login, only: [:reject]
    # include ActionController::Base.helpers
 
   def reply
