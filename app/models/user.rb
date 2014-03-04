@@ -83,7 +83,7 @@ class User < ActiveRecord::Base
 
       user.first_name = auth.info.first_name
       user.last_name = auth.info.last_name
-      user.email = auth.extra.raw_info.email
+      user.email = user.email ||= auth.extra.raw_info.email
 
       user.profile_pic = user.profile_pic ||= auth.info.image + '?type=large'
 
