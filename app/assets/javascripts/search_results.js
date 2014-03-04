@@ -2,8 +2,7 @@
 var TourBox = function(first_name, tag_line, rating, tourDesc) {
 this.template = $("<div class='tour_box'>\
                     <span class='ambassador_name_card'>" + first_name + "</span>\
-                    <br><span class='ambassador_tag_line_card'>" + tag_line + "</span>\
-                    <br><span class='ambassador_rating_card'>" + rating + "</span>\
+                    <br><span class='ambassador_tagline'>" + tag_line + "</span>\
                     <br><span class='ambassador_tourDesc_card'>" + tourDesc + "</span>\
                   </div>")
 };

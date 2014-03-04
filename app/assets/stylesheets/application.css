@@ -527,9 +527,13 @@ nav {
 }
 
 .ambassador_name_card {
-  font-weight: 600;
+  font-weight: 600 !important;
   font-size: 18px;
   line-height: 23px;
+}
+
+.ambassador_tagline {
+  font-style: italic;
 }
 
 .search_contact_button {
@@ -892,10 +896,10 @@ nav {
 }
 
 .tour_box {
-  width: 248px;
-  height: 214px;
-  background-color: white;
-  border: 1px solid black;
+    background-color: #FFFFFF;
+    height: 214px;
+    overflow: scroll;
+    width: 258px;
 }
 
 
