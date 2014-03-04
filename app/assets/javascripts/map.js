@@ -3,9 +3,9 @@ var Tour = function() {
   this.template = $("<div class='tour_desc'>\
                       <span id='message'></span>\
                       <div class='tour_text' contenteditable='true'></div>\
-                      <br><button type='button' id='remove_marker'>Remove</button>\
-                      <br><button type='button' id='new_tour_button'>Save</button>\
-                      <br><button type='button' id='edit_tour'>Edit!</button>\
+                      <a href='#' class='tour_creation_link' id='remove_marker'>Delete</a>\
+                      <a href='#' class='tour_creation_link' id='new_tour_button'>Save</a>\
+                      <a href='#' class='tour_creation_link' id='edit_tour'>Edit</a>\
                     </div>")
 };
 
@@ -22,7 +22,6 @@ Tour.prototype.editTour = function(tour_id) {
   var self = this
   this.template.find('#edit_tour').on('click', function() {
     self.template.find('.tour_text').attr('contenteditable', true);
-    self.template.find('.tour_text').css('background-color', 'yellow')
     self.template.find('#new_tour_button').show();
     self.saveTour(tour_id)
   });
