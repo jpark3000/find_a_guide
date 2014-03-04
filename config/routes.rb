@@ -36,6 +36,9 @@ FindAGuide::Application.routes.draw do
 
   get '/test', to: 'application#test'
 
+  # post '/update_profile_pic', to: 'users#update_profile_pic'
+  match '/update_profile_pic/:user_id', to: 'users#update_profile_pic', via: [:post]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -72,6 +72,15 @@ class UsersController < ApplicationController
     end
   end
 
+# ----------------------------------------------------
+  def update_profile_pic
+    quasi_current_user = User.find(params[:user_id])
+    quasi_current_user.update(profile_pic: params[:profile_pic])
+
+    redirect_to :back
+  end
+# ----------------------------------------------------
+
   def show
     @user = User.find(params[:id])
   end
@@ -106,6 +115,8 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :phone, :gender, :age, :bio, :tagline)
+    params.require(:user).permit(:email, :phone, :gender, :age, :bio, :tagline, :profile_pic)
   end
+
+
 end
