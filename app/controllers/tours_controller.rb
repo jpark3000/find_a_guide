@@ -46,6 +46,8 @@ class ToursController < ApplicationController
   def index
     if current_user
       @ambassador = current_user
+      @start_date = session[:start_date]
+      @end_date = session[:end_date]
     else
       redirect_to '/auth/facebook/callback'
     end
