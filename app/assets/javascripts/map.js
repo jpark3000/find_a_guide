@@ -3,9 +3,9 @@ var Tour = function() {
   this.template = $("<div class='tour_desc'>\
                       <span id='message'></span>\
                       <div class='tour_text' contenteditable='true'></div>\
-                      <a href='#' class='tour_creation_link' id='remove_marker'>Delete</a>\
-                      <a href='#' class='tour_creation_link' id='new_tour_button'>Save</a>\
-                      <a href='#' class='tour_creation_link' id='edit_tour'>Edit</a>\
+                      <span class='tour_creation_link' id='remove_marker'>Delete</span>\
+                      <span class='tour_creation_link' id='new_tour_button'>Save</span>\
+                      <span class='tour_creation_link' id='edit_tour'>Edit</span>\
                     </div>")
 };
 
@@ -153,8 +153,9 @@ $(document).ready(function() {
 
       $(infowindow.content).find('#remove_marker').on('click', function() { user_marker.setMap(null); user_marker=null });
 
-      $(infowindow.content).find('#new_tour_button').on('click', function() {
+      $(infowindow.content).find('#new_tour_button').on('click', function(e) {
         console.log('burgers')
+        e.preventDefault();
         var data = {tour: {
                             description: $($($(this).parent()[0]).find('.tour_text')[0]).html(),
                             latitude: user_marker.position['d'],
@@ -164,7 +165,7 @@ $(document).ready(function() {
 
         $.post('/users/' + gon.id + '/tours', data, function(response) {
           if (response.success) {
-            $('body').append('<p>' + response.message + '</p>');
+            // $('body').append('<p>' + response.message + '</p>');
             $(infowindow.content).find('.tour_text').attr('contenteditable', false);
             $(infowindow.content).find('.tour_text').css('background-color', 'white');
             $(infowindow.content).find('#new_tour_button').hide(); 
@@ -195,7 +196,7 @@ $(document).ready(function() {
 
 
   
-		var input = (document.getElementById('pac-input-tour'));
+		var input = (document.getElementById('pac-input-search'));
   	var searchBox = new google.maps.places.SearchBox(input);
   	google.maps.event.addListener(searchBox, 'places_changed', function() {
       var places = searchBox.getPlaces();

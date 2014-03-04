@@ -88,7 +88,7 @@ $(document).ready(function() {
       var data = { bounds :  map.getBounds().toString()};
 
       $.get('/search', data, function(response) {
-        $('.search_results_card').remove()
+        $('.card').remove()
         $.each(markers, function(i,v) {
           v.setMap(null);
         });
