@@ -293,31 +293,31 @@ nav {
 
 #milan {
   margin-left: 0px;
-  background: url("milan.jpg");
+  background: url(image-path("milan.jpg"));
   background-position: center center;
   background-size: cover;
 }
 
 #cafe {
-  background: url("cafe.jpg");
+  background: url(image-path("cafe.jpg"));
   background-position: center center;
   background-size: cover;
 }
 
 #bike {
-  background: url("bike.jpg");
+  background: url(image-path("bike.jpg"));
   background-position: top center;
   background-size: cover;
 }
 
 #fishing {
-  background: url("fishing.jpg");
+  background: url((image-path("fishing.jpg"));
   background-position: top center;
   background-size: cover;
 }
 
 #walking {
-  background: url("walking.jpg");
+  background: url(image-path("walking.jpg"));
   background-position: top center;
   background-size: cover;
 }
@@ -353,7 +353,7 @@ nav {
 }
 
 .calendar_icon{
-  background: url('glyphicons-halflings.png');
+  background: url(image-path('glyphicons-halflings.png'));
   cursor: pointer;
   width: 30px;
   height: 30px;
@@ -967,7 +967,7 @@ nav {
   height: 30px;
   text-align: center;
   cursor: pointer;
-  background-image: url('glyphicons-halflings.png');
+  background-image: url(image-path('glyphicons-halflings.png'));
   background-repeat: no-repeat;
   line-height: 600%;
   overflow: hidden;
