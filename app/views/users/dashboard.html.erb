@@ -124,16 +124,16 @@
         <h4 class="profile_reviews_title">How was your experience? Review:</h4>
         <% @ambassador_incomplete_reviews.each do |r| %>
           <%= link_to new_user_review_path(r.visitor,r) do %>
-            <p class="card">
-              <span class="card_photo" style="background-image:url('<%= r.visitor.profile_pic %>')">
-              </span>
+            <div class="card review">
+              <span class="card_photo review" style="background-image:url('<%= r.visitor.profile_pic %>')"></span>
               <span class="card_info">
-                <p class="card_name">
-                  <%= r.visitor.name + " - " + distance_of_time_in_words_to_now(r.date_time) + " ago"%>
+                <p class="card_name"><%= r.visitor.name %></p>
+                <p class="card_time">
+                   <%= distance_of_time_in_words_to_now(r.date_time)%> ago - 
+                   <%= r.address %>
                 </p>
-                <p class="card_despcription"><%= r.address %></p>
               </span>
-            </p>
+            </div>
           <% end %>      
         <% end %>
       </div>
