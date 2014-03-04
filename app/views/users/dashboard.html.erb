@@ -10,7 +10,7 @@
       <% @visitor_meetups.each do |m| %>
         <%= link_to user_meetup_path(m.ambassador,m) do %>
           <span class="card">
-            <span class="card_image_container" style="background-image:url('<%= m.ambassador.profile_pic(m.ambassador.uid) %>')">
+            <span class="card_image_container" style="background-image:url('<%= m.ambassador.profile_pic %>')">
             </span>
             <span class="card_info">
               <p class="card_name">
@@ -30,7 +30,7 @@
         <% @visitor_incomplete_reviews.each do |r| %>
           <%= link_to new_user_review_path(r.ambassador) do %>
             <span class="card">
-              <span class="card_image_container" style="background-image:url('<%= r.ambassador.profile_pic(r.ambassador.uid) %>')">
+              <span class="card_image_container" style="background-image:url('<%= r.ambassador.profile_pic %>')">
               </span>
               <span class="card_info">
                 <p class="card_name">
@@ -72,7 +72,7 @@
         <% @ambassador_tours.each do |t| %>
           <%= link_to edit_user_meetup_path(t.ambassador,t) do %>
             <div class="card">
-              <span class="card_image_container" style="background-image:url('<%= t.visitor.profile_pic(t.visitor.uid) %>')">
+              <span class="card_image_container" style="background-image:url('<%= t.visitor.profile_pic %>')">
               </span>
               <span class="card_info">
                 <p class="card_name"><%= t.visitor.name + " - " + t.date_time.to_formatted_s(:upcoming_date) %></p>
@@ -109,7 +109,7 @@
         <% @ambassador_incomplete_reviews.each do |r| %>
           <%= link_to new_user_review_path(r.visitor,r) do %>
             <span class="card">
-              <span class="card_image_container" style="background-image:url('<%= r.visitor.profile_pic(r.visitor.uid) %>')">
+              <span class="card_image_container" style="background-image:url('<%= r.visitor.profile_pic %>')">
               </span>
               <span class="card_info">
                 <p class="card_name">
