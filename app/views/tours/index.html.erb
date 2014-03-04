@@ -33,8 +33,8 @@
 </div>
 
 <%= form_tag({controller: "emails", action: "new_request"}, method: "post", id: 'contact') do %>
-  <input type="text" name='start_date' onfocus="this.blur()" class="date_picker" data-behaviour='datepicker' id="starting_date"><span class="icon_container"><span class="calendar_icon"></span></span>
-  <input type="text" name='end_date' onfocus="this.blur()" class="date_picker" data-behaviour='datepicker' id="ending_date"><span class="icon_container"><span class="calendar_icon"></span></span>
+  <input type="text" name='start_date' onfocus="this.blur()" class="date_picker" data-behaviour='datepicker' id="starting_date" value="<%=@start_date%>"><span class="icon_container"><span class="calendar_icon"></span></span>
+  <input type="text" name='end_date' onfocus="this.blur()" class="date_picker" data-behaviour='datepicker' id="ending_date" value="<%=@end_date%>"><span class="icon_container"><span class="calendar_icon"></span></span>
   <%=hidden_field_tag 'ambassador_id', @ambassador.id%>
   <%= submit_tag("Contact") %>
 <% end %>

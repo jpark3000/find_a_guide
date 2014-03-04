@@ -11,7 +11,8 @@ class UsersController < ApplicationController
     points = []
     gon.lat = params[:center_lat]
     gon.lng = params[:center_lng]
-
+    session[:start_date] = params[:start_date] if params[:start_date]
+    session[:end_date]  = params[:end_date] if params[:end_date]
     @specialties = Specialty.all
     @languages = Language.all
 

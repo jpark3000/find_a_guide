@@ -11,7 +11,6 @@ FindAGuide::Application.routes.draw do
   resources :users, only: [:edit, :update, :show] do
     resources :meetups, only: [:index, :show, :edit, :update, :create]
     resources :reviews, only: [:index, :new, :create]
-    resources :specialties, only: [:create]
     resources :tours
   end
 
@@ -38,6 +37,9 @@ FindAGuide::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'application#index'
+
+  #Handle routing errors
+  get '*a', controller: 'application', action: 'error_error_routing_error'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
