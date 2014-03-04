@@ -1,5 +1,3 @@
-# require 'pry'
-
 class User < ActiveRecord::Base
 	# has_one :authentication, dependent: :destroy
 
@@ -87,13 +85,10 @@ class User < ActiveRecord::Base
       user.last_name = auth.info.last_name
       user.email = auth.extra.raw_info.email
 
-      user.profile_pic = auth.info.image + '?type=large'
+      user.profile_pic = user.profile_pic ||= auth.info.image + '?type=large'
 
       user.username = auth.extra.raw_info.username
-      # user.gender = auth.extra.raw_info.gender
-      # user.birthday = auth.extra.raw_info.birthday
 
-      # binding.pry
       user.save!
     end
   end

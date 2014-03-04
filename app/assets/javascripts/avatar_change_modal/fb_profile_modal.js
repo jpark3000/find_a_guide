@@ -17,11 +17,11 @@ $( document ).ready(function() {
 
           vex.open({
           content: '<h2 id="super_modal_h2">Pick a new profile picture!!!</h2>\
-                    <form action="/update_profile_pic/2" class="super_modal_form_styling" method="post"><input type="image" name="profile_pic" value="' + image1 + '" id="profile_image1" src="' + image1 + '" height="80" width="80" alt="Submit Form" /></form>\
-                    <form action="/update_profile_pic/2" class="super_modal_form_styling" method="post"><input type="image" name="profile_pic" value="' + image2 + '" id="profile_image2" src="' + image2 + '" height="80" width="80" alt="Submit Form" /></form>\
-                    <form action="/update_profile_pic/2" class="super_modal_form_styling" method="post"><input type="image" name="profile_pic" value="' + image3 + '" id="profile_image3" src="' + image3 + '" height="80" width="80" alt="Submit Form" /></form>\
-                    <form action="/update_profile_pic/2" class="super_modal_form_styling" method="post"><input type="image" name="profile_pic" value="' + image4 + '" id="profile_image4" src="' + image4 + '" height="80" width="80" alt="Submit Form" /></form>\
-                    <form action="/update_profile_pic/2" class="super_modal_form_styling" method="post"><input type="image" name="profile_pic" value="' + image5 + '" id="profile_image5" src="' + image5 + '" height="80" width="80" alt="Submit Form" /></form>'
+                    <form action="/update_profile_pic/' + gon.user_id + '" class="super_modal_form_styling" method="post"><input name="_method" type="hidden" value="patch" /><input type="image" name="profile_pic" value="' + image1 + '" id="profile_image1" src="' + image1 + '" height="80" width="80" alt="Submit Form" /></form>\
+                    <form action="/update_profile_pic/' + gon.user_id + '" class="super_modal_form_styling" method="post"><input name="_method" type="hidden" value="patch" /><input type="image" name="profile_pic" value="' + image2 + '" id="profile_image2" src="' + image2 + '" height="80" width="80" alt="Submit Form" /></form>\
+                    <form action="/update_profile_pic/' + gon.user_id + '" class="super_modal_form_styling" method="post"><input name="_method" type="hidden" value="patch" /><input type="image" name="profile_pic" value="' + image3 + '" id="profile_image3" src="' + image3 + '" height="80" width="80" alt="Submit Form" /></form>\
+                    <form action="/update_profile_pic/' + gon.user_id + '" class="super_modal_form_styling" method="post"><input name="_method" type="hidden" value="patch" /><input type="image" name="profile_pic" value="' + image4 + '" id="profile_image4" src="' + image4 + '" height="80" width="80" alt="Submit Form" /></form>\
+                    <form action="/update_profile_pic/' + gon.user_id + '" class="super_modal_form_styling" method="post"><input name="_method" type="hidden" value="patch" /><input type="image" name="profile_pic" value="' + image5 + '" id="profile_image5" src="' + image5 + '" height="80" width="80" alt="Submit Form" /></form>'
           });
 
           });
