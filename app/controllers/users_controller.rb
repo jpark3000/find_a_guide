@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :require_login, only: [:search]
+  skip_before_action :require_login, only: [:search, :update_profile_pic]
 
   def index
     @specialties = Specialty.all
