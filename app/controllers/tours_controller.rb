@@ -37,7 +37,7 @@ class ToursController < ApplicationController
     respond_to do |format|
       format.json do
         if @tour.save
-          render :json => {message: "SUCCESS!", success: true}
+          render :json => {message: "SUCCESS!", success: true, tour_id: @tour.id}
         else
           render :json => {message: "Unable to save post", success: false}
         end
