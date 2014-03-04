@@ -4,7 +4,7 @@
   <title>FindAGuide</title>
 
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <link href="http://fonts.googleapis.com/css?family=Open+Sans|Dosis:400,800" rel="stylesheet" type="text/css" />
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600|Dosis:400,800" rel="stylesheet" type="text/css" />
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 
   <%= include_gon %>
@@ -14,13 +14,14 @@
 </head>
 <body>
 
-<%= render 'shared/home_navbar' if request.fullpath == "/" %>
 <%= render 'shared/navbar' unless request.fullpath == "/" %>
 <div id="content">
   <%= yield %>
 </div>
 
 <script>  //dropdown menu jquery here to avoid turbolinks
+
+  // SITE-WIDE DROPDOWN
   $("#nav_profile_pic").on('click',function(){
     $("#dropdown").toggleClass('hide');
   });
@@ -32,8 +33,13 @@
   });
 
   //search bar location here to avoid turbolinks
-  $("#main_search").css('margin-top', ($(document).height() / 2.5   ) + 'px');
+  $("#header").css({
+    height: ($(document).height() / 4   ) + 'px',
+    'max-height': '130px'
+  });
   $("#dropdown").css('right', (($(document).width() - 1010) / 2));
+  var windowHeight = $(document).height();
+
 </script>
 
 </body>

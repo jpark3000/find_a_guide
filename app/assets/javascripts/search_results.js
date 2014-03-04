@@ -8,14 +8,16 @@ this.template = $("<div class='tour_box'>\
                   </div>")
 };
 
-var User = function(user_id, first_name, tag_line, rating) {
-  this.template = $("<a class='amb' href='/users/" + user_id + "/tours'>\
-                      <div class='ambassador_tour_card'>\
-                        <span class='ambassador_name_card'>" + first_name + "</span>\
-                        <span class='ambassador_tag_line_card'>" + tag_line + "</span>\
-                        <span class='ambassador_rating_card'>" + rating + "</span>\
-                      </div>\
-                    </a>")
+var User = function(user_id, first_name, tag_line, rating, photo) {
+  this.template = $("<div class='search_results_card'>\
+                        <span class='ambassador_photo_card' style='background-image: url(&quot;"+photo+"&quot;)'></span>\
+                        <span class='search_card_info'>\
+                          <p class='ambassador_name_card'>" + first_name + "</p>\
+                          <p class='ambassador_tag_line_card'>" + tag_line + "</p>\
+                          <p class='ambassador_rating_card'>" + rating + "</p>\
+                          <p class='search_contact_button_container'><a href='/users/" + user_id + "/tours' class='search_contact_button'>Contact</a></p>\
+                        </span>\
+                      </div>")
 };
 
 
@@ -72,7 +74,7 @@ $(document).ready(function() {
 
       $.get('/search', data, function(response) {
         // console.log(response)
-        $('.amb').remove()
+        $('.search_results_card').remove()
         $.each(markers, function(i,v) {
           v.setMap(null);
         });
@@ -106,7 +108,7 @@ $(document).ready(function() {
         // console.log(response.users)
         $.each(response.users, function(i,v) {
           // console.log(v)
-            var user = new User(v.id, v.first_name, v.tagline, v.rating)
+            var user = new User(v.id, v.first_name, v.tagline, v.rating, v.photo)
             $('#search_results_list').append(user.template)
         });
 

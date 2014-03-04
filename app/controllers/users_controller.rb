@@ -28,14 +28,11 @@ class UsersController < ApplicationController
           points << tour.format_coordinates
         end
 
-        # format.html do 
-        #   render
-        # end
         format.json do
           hashy = {points: points, users: {}}
 
           @users.each do |u|
-            hashy[:users][u.id] = {id: u.id, first_name: u.first_name, tagline: u.tagline, rating: u.rating} 
+            hashy[:users][u.id] = {id: u.id, first_name: u.first_name, tagline: u.tagline, rating: u.rating, photo: u.profile_pic} 
           end
 
 
@@ -63,14 +60,15 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = current_user
-    @user.attributes = user_params
+    current_user.specialties.destroy_all
+    if params['specialty']
+      new_specialties = params['specialty'].keys
+      new_specialties.each{|specialty_id| UsersSpecialty.create(user_id: current_user.id, specialty_id: specialty_id)}
+    end
+    current_user.attributes = user_params
+    current_user.save
     respond_to do |format|
-      if @user.save
-        format.json{ render :json => {new_url: user_url(@user)}}
-      else
-        format.json{ render :json => {errors: @user.errors.full_messages} }
-      end
+        format.json{ render :json => {errors: current_user.errors.full_messages} }
     end
   end
 
@@ -79,29 +77,20 @@ class UsersController < ApplicationController
   end
 
   def ambassador_toggle
-    @user = current_user
-
-    if @user.is_ambassador
-      @user.update(is_ambassador: false)
-      redirect_to :dashboard
-    else
-      @user.update(is_ambassador: true)
-      redirect_to :dashboard
+    current_user.update(is_ambassador: true)
+    respond_to do |format|
+        format.json{ render :json => {is_ambassador: current_user.is_ambassador}}
     end
-
   end
 
   def ambassador_availability_toggle
-    @user = current_user
-
-    if @user.ambassador_availability
-      @user.update(ambassador_availability: false)
-      redirect_to dashboard_path(@user)
-    else
-      @user.update(ambassador_availability: true)
-      redirect_to dashboard_path(@user)
+    current_user.update(ambassador_availability: params[:availability])
+    current_user.ambassador_availability ? current_status = 'You are currently Available' : current_status = 'You are currently Unavailable'
+    current_user.ambassador_availability ? new_status = 'Set status to Unavailable' : new_status = 'Set status to Available'
+    current_user.ambassador_availability ? new_value = false : new_value = true
+    respond_to do |format|
+        format.json{ render :json => {current_status: current_status, new_status: new_status, new_value: new_value}}
     end
-
   end
 
   def dashboard

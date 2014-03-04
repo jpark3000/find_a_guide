@@ -1,11 +1,16 @@
 <div id="search_results_list">
   <% @users.each do |user| %>
-    <%= link_to user_tours_path(user), {:class => 'amb'} do %>
-      <div class="ambassador_tour_card">
-        <span class="ambassador_name_card"><%= user.first_name %></span>
-        <span class="ambassador_tag_line_card"><%= user.last_name %></span>
-        <span class="ambassador_rating_card"><%= user.rating %></span>
-      </div>
-    <% end %>
+    <div class='search_results_card'>
+      <span class='ambassador_photo_card' style="background-image: url('<%= user.profile_pic %>')"></span>
+      <span class='search_card_info'>
+        <p class='ambassador_name_card'><%= user.first_name %></p>
+        <p class='ambassador_tag_line_card'><%= user.tagline %></p>
+        <p class='ambassador_rating_card'><%= user.rating %></p>
+        <p class='search_contact_button_container'>
+          <%= link_to "Contact", user_tours_path(user), :class => 'search_contact_button' %>
+        </p>
+      </span>
+    </div>
   <% end %>
 </div>
+
