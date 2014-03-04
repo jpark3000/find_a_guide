@@ -15,11 +15,7 @@ FindAGuide::Application.routes.draw do
     resources :tours
   end
 
-
-
-
   get '/dashboard', to: 'users#dashboard'
-
 
   match '/search', to: 'users#search', via: [:get]
 
@@ -33,8 +29,6 @@ FindAGuide::Application.routes.draw do
   get '/be_an_ambassador', to: 'marketing#index'
 
   get '/thanks', to: 'marketing#thanks'
-
-  get '/test', to: 'application#test'
 
   # post '/update_profile_pic', to: 'users#update_profile_pic'
   match '/update_profile_pic/:user_id', to: 'users#update_profile_pic', via: [:post]

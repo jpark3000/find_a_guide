@@ -1,7 +1,14 @@
+<%= javascript_include_tag 'fb_graph_api_required' %>
+
+<%= javascript_include_tag 'vex', 'vex.combined.min' %>
+<script>vex.defaultOptions.className = 'vex-theme-flat-attack';</script>
+
+<%= javascript_include_tag 'fb_profile_modal' %>
+
 <div class="user_info">
   <%= form_for(@user) do |f| %>
     <span class="user_pic" style="background-image: url('<%= @user.profile_pic %>')">
-      <p id="change_picture">Change Picture</p>
+      <p id='avatar_selector' style='color: yellow'>Change Picture</p>
     </span>
     <div id="right_of_picture">
       <div class="user_name">
@@ -40,7 +47,7 @@
                 <%= check_box_tag "specialty[#{s.id}]", s.id, @ambassador.has_specialty?(s), class: 'pick_specialty'%>
                 <%= label_tag "specialty[#{s.id}]", s.specialty %>
               </div>
-            <% end %>   
+            <% end %>
             </div>
           </div>
         </div>
