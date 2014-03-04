@@ -1,4 +1,5 @@
 class MeetupsController < ApplicationController
+  skip_before_action :require_login, only: [:create, :edit]
   def index
     @ambassador = User.find(params[:user_id])
     @tours = @ambassador.ambassador_meetups
