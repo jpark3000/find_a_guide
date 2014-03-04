@@ -36,6 +36,8 @@ var styleOptions = [
                     ]
 
 
+
+
 var map;
 var initialLat = gon.lat
 var initialLng = gon.lng
@@ -53,6 +55,9 @@ $(document).ready(function() {
     center: new google.maps.LatLng(initialLat, initialLng),
     zoom: 7,
     streetViewControl: false,
+    mapTypeControl: false,
+    panControl: false,
+    zoomControlOptions: {style:google.maps.ZoomControlStyle.SMALL},
     styles: styleOptions
   };
 
