@@ -23,7 +23,7 @@ class Tour < ActiveRecord::Base
 	end
 
   def format_object
-    {lat: latitude, lng: longitude, id: ambassador.id, desc: description}
+    {lat: latitude, lng: longitude, id: id, desc: description}
   end
 
 

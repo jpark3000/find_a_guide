@@ -367,7 +367,13 @@ nav {
 
 /*MAPS*/
 
-
+#message {
+  z-index: 5;
+  position: absolute;
+  top: 50px;
+  left: 90px;
+  display: none;
+}
 
 #map-canvas {
   width: 80%;
