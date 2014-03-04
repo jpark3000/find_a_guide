@@ -1,7 +1,11 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_action :require_login
-  skip_before_action :require_login, only: [:index]
+  skip_before_action :require_login, only: [:index, :error_error_routing_error]
+
+  def error_error_routing_error
+    render :error_error_routing_error
+  end
 
   private
   def current_user

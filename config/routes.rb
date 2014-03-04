@@ -38,6 +38,9 @@ FindAGuide::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'application#index'
 
+  #Handle routing errors
+  get '*a', controller: 'application', action: 'error_error_routing_error'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
