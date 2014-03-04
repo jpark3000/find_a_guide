@@ -58,12 +58,14 @@
   $("#home_drop_down_toggle").on('click',function(e){
     e.preventDefault();
     console.log(e.target.id);
-    $("#home_dropdown").removeClass('hide');
+    $("#home_dropdown").toggleClass('hide');
+    $("#home_drop_down_toggle").toggleClass('flip_background_image_h');
   });
 
   $(document).on('click',function(e){
     if(e.target.id !== "home_drop_down_toggle"){
       $("#home_dropdown").addClass('hide');
+      $("#home_drop_down_toggle").removeClass('flip_background_image_h')
     }
   });
 </script>

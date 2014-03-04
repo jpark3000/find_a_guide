@@ -61,36 +61,36 @@ table {
 
 #content {
   max-width: 1000px;
-  margin: 41px auto 0;
+  margin: 60px auto 0;
 }
 
 h1 {
-    font-family: 'Dosis', sans-serif;
-    font-weight: 400;
-    line-height: 46px;
-    font-size: 40px;
-    margin: 0 0 23px 0;
-    }
+  font-family: 'Dosis', sans-serif;
+  font-weight: 400;
+  line-height: 46px;
+  font-size: 40px;
+  margin: 0 0 23px 0;
+  }
 h2 {
-    font-family: 'Dosis', sans-serif;
-    font-weight: 800;
-    font-size: 18px;
-    line-height: 23px;
-    margin: 0 0 23px 0;
-    }
+  font-family: 'Dosis', sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 23px;
+  margin: 0 0 23px 0;
+  }
 body {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 15px;
-    line-height: 23px;
-    margin: 0 0 23px 0;
-    }
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+  line-height: 23px;
+  margin: 0 0 23px 0;
+  }
 
 /* Nav Bar */
 
 nav {
-  background-image: linear-gradient(#F9F9F9, #F3F3F3);
-  border-bottom: 1px solid #DEDEDE;
-  height: 39px;
+  background-image: linear-gradient(#74AFAD, #74AFAD);
+  border-bottom: 1px solid #74AFAD;
+  height: 60px;
   left: 0;
   position: absolute;
   top: 0;
@@ -106,10 +106,9 @@ nav {
 }
 
 #nav_container {
-  margin: auto;
-  max-width: 1000px;
-  text-align: center;
   height: 43px;
+  margin: 0 40px;
+  text-align: center;
 }
 
 .right_hand_navigation {
@@ -132,19 +131,14 @@ nav {
 }
 
 #right_hand_navbar span {
-  line-height: 41px;
+  line-height: 60px;
   vertical-align: middle;
-}
-
-nav {
-  height: 40px;
-  width: 100%;
-  background: #eee;
 }
 
 #nav_logo {
   float: left;
-  line-height: 41px;
+  line-height: 60px;
+  font-size: 2em;
 }
 
 #nav_logo a{  
@@ -197,24 +191,24 @@ nav {
 }
 
 .home_top_right {
-    background-position: center top;
-    background-repeat: no-repeat;
-    background-size: 38px auto;
-    float: right;
-    height: 28px;
-    padding: 3px 20px;
-    width: 28px;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: 38px auto;
+  float: right;
+  height: 28px;
+  padding: 3px 20px;
+  width: 28px;
   margin-top: 11px !important;
 }
 
 #header {
-    margin-bottom: 95px;
-    text-align: right;
+  margin-bottom: 95px;
+  text-align: right;
 }
 
 #home_logo{
   font-size: 3em;
-  line-height: 39px;
+  line-height: 60px;
 }
 
 #home_dropdown {
@@ -331,15 +325,15 @@ nav {
 }
 
 #search_container input {
-    border: 0 none;
-    border-radius: 4px;
-    font-size: 18px;
-    height: 29px;
-    line-height: 30px;
-    margin-top: 2px;
-    padding: 3px 12px;
-    vertical-align: top;
-    width: 386px;
+  border: 0 none;
+  border-radius: 4px;
+  font-size: 18px;
+  height: 29px;
+  line-height: 30px;
+  margin-top: 2px;
+  padding: 3px 12px;
+  vertical-align: top;
+  width: 386px;
 }
 
 #search_container form {
@@ -373,15 +367,15 @@ nav {
 }
 
 #search_button {
-    background-color: #EB5646;
-    border: medium none;
-    border-radius: 4px;
-    color: #FFFFFF;
-    font-size: 1.1em;
-    padding: 8px 28px;
-    height: 40px;
-    margin-left: 12px;
-    cursor: pointer;
+  background-color: #EB5646;
+  border: medium none;
+  border-radius: 4px;
+  color: #FFFFFF;
+  font-size: 1.1em;
+  padding: 8px 28px;
+  height: 40px;
+  margin-left: 12px;
+  cursor: pointer;
 }
 
 #sliding_nav{
@@ -401,9 +395,81 @@ nav {
   float: left;  
 } 
 
+
+
+
+
+
+
+
+
+/*SEARCH RESULTS*/
+
+.search_results_map {
+  width: auto;
+  float: left !important;
+  left:0 !important;
+  position: fixed !important;
+}
+
+#search_results_content {
+  height:30px;
+  overflow: hidden;
+  border-left: none;
+}
+
+#search_results {
+  width: 473px;
+  position:fixed;
+  right:0;
+}
+
+#refine_search_button {
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 4px auto;
+    text-align: center;
+    width: 15%;
+    background-position: center center;
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    height: 1em;
+    border: 1.5px solid #fff;
+}
+
+#refine_search_button:hover {
+}
+
+.auto_height{
+  height:auto !important;
+}
+
+.flip_background_image_v {
+  -moz-transform: scaleY(-1);
+  -o-transform: scaleY(-1);
+  -webkit-transform: scaleY(-1);
+  transform: scaleY(-1);
+  filter: FlipV;
+  -ms-filter: "FlipV";
+}
+
+.flip_background_image_h {
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
+}
+
+
+#search_results_list {
+  overflow: scroll;
+}
+
+
 /*MAPS*/
-
-
 
 #map-canvas {
   width: 80%;
@@ -425,11 +491,20 @@ nav {
 #pac-input-search {
   z-index: 3;
   position: absolute;
-  left: 330px;
-  top: 462px;
+  left: 5px;
+  bottom: 40px;
   width: 215px;
   height: 20px;
   border-radius: 3px;
+  border: 0 none;
+  border-radius: 4px;
+  font-size: 18px;
+  height: 29px;
+  line-height: 30px;
+  margin-top: 2px;
+  padding: 3px 12px;
+  vertical-align: top;
+  width: 150px;
 }
 
 .tour_desc {
@@ -442,6 +517,13 @@ nav {
   height: 110px;
   background-color: yellow;
 }
+
+
+
+
+
+
+
 
 /* DASHBOARD */
 
@@ -718,15 +800,6 @@ nav {
   width: 100%;
   margin: 20px 0;
 }
-
-
-#search_results_list {
-  margin-top: 63px;
-  border: 1px solid black;
-  width: auto;
-  height: 400px;
-}
-
 
 .tour_box {
   width: 248px;

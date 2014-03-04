@@ -63,7 +63,7 @@ class User < ActiveRecord::Base
     if ratings.empty?
       return false
     else
-      ratings.order('created_at').map{|r| r.rating.to_i}.reduce(:+) / ratings.count.to_f.round(2)
+      (ratings.order('created_at').map{|r| r.rating.to_i}.reduce(:+) / ratings.count.to_f).round(2)
     end
   end
 

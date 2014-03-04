@@ -26,7 +26,7 @@ random_uid = ['511571783', '724578054', '1037742890', '100000287146443', '100001
   User.new(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
                email: Faker::Internet.email, bio: Faker::Lorem.sentences.join(" "),
                gender: gender.sample, phone: Faker::PhoneNumber.cell_phone, age: (18..60).to_a.sample,
-               tagline: Faker::Commerce.product_name, is_ambassador: boolean.sample, uid: random_uid.sample).save(validate: false)
+               tagline: Faker::Commerce.product_name, is_ambassador: true, uid: random_uid.sample).save(validate: false)
 end
 
 user = User.first

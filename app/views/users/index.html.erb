@@ -4,28 +4,50 @@
 
 
 
-<input id="pac-input-search" class="controls" type="text" placeholder="Find Ambassadors!">
-<div id="map-canvas"></div>
-<div id="search_results_content">
-  <div id="refine_search">
-    <% @specialties.each do |s| %>
-      <% if s.is_available? %>
-        <%= check_box_tag s.specialty, s.specialty, false, class: 'refine_specialty' %>
-      <% else %>
-        <%= check_box_tag s.specialty, class: 'refine_specialty', disabled: true %>
+<input id="pac-input-search" class="controls" type="text" placeholder="Search">
+<div id="map-canvas" class="search_results_map"></div>
+
+<div id="search_results">
+  <div id="search_results_content">
+    <div id="refine_search_button" style="background-image: url('/assets/arrow_down.png')"></div>
+    <div id="refine_search">
+      <% @specialties.each do |s| %>
+        <% if s.is_available? %>
+          <%= check_box_tag s.specialty, s.specialty, false, class: 'refine_specialty' %>
+        <% else %>
+          <%= check_box_tag s.specialty, class: 'refine_specialty', disabled: true %>
+        <% end %>
+        <%= s.specialty %>
       <% end %>
-      <%= s.specialty %>
-    <% end %>
-    <% options_for_select(@languages) %>
+      <% options_for_select(@languages) %>
+    </div>
   </div>
 
   <%= render partial: "search_results_list" %>
 
-  <div id="home_marketing">
-    
-  </div>
-  
+  <div id="home_marketing"></div>
 </div>
+
+<script>
+  $("#refine_search_button").on('click',function(){
+    $("#search_results_content").toggleClass('auto_height');
+    $("#refine_search_button").toggleClass('flip_background_image_v');
+    $("#search_results_list").height($(document).height() - $("#search_results_content").height() - 60);
+  })
+  $("#search_results_list").on('click',function(){
+    $("#search_results_content").removeClass('auto_height');
+  })
+  $(document).on('click',function(e){
+    if(e.target.id !== 'pac-input-search'){
+      $("#pac-input-search").width(150).blur();
+    } else {
+      $("#pac-input-search").width(384);
+    }
+  })
+  $("#search_results_list").height($(document).height() - $("#search_results_content").height() - 60);
+  $(".search_results_map").height($(document).height() - 60);
+  $(".search_results_map").width($(document).width() - $("#search_results_content").width() - 2);
+</script>
 
 
 
