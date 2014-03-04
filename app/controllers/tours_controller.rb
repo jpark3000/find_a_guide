@@ -1,10 +1,33 @@
+require 'pry'
 class ToursController < ApplicationController
 
   def edit
+    puts params
+  end
+
+  def update
+    respond_to do |format|
+      if Tour.update(params[:tour_id], description: params[:newDesc])
+        format.json do
+          render :json => {message: "SUCCESS!"}
+        end
+      else
+        format.json do
+          render :json =>{message: "FAILURE!"}
+        end
+      end
+    end
   end
 
   def new
+    gon.points = []
     @ambassador = current_user
+    gon.id = @ambassador.id
+    @tours = @ambassador.tours
+
+    @tours.each do |tour|
+      gon.points << tour.format_object
+    end
   end
 
   def create

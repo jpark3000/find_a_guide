@@ -22,5 +22,9 @@ class Tour < ActiveRecord::Base
 		[latitude, longitude, ambassador.id, description]
 	end
 
+  def format_object
+    {lat: latitude, lng: longitude, id: id, desc: description}
+  end
+
 
 end

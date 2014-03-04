@@ -400,7 +400,13 @@ nav {
 } 
 
 
-
+#message {
+  z-index: 5;
+  position: absolute;
+  top: 50px;
+  left: 90px;
+  display: none;
+}
 
 
 
@@ -585,6 +591,7 @@ nav {
   width: 190px;
   height: 110px;
   background-color: yellow;
+  overflow: auto;
 }
 
 
