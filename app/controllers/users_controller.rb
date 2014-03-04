@@ -28,14 +28,11 @@ class UsersController < ApplicationController
           points << tour.format_coordinates
         end
 
-        # format.html do 
-        #   render
-        # end
         format.json do
           hashy = {points: points, users: {}}
 
           @users.each do |u|
-            hashy[:users][u.id] = {id: u.id, first_name: u.first_name, tagline: u.tagline, rating: u.rating} 
+            hashy[:users][u.id] = {id: u.id, first_name: u.first_name, tagline: u.tagline, rating: u.rating, photo: u.profile_pic} 
           end
 
 
