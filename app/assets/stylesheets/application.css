@@ -173,11 +173,16 @@ nav {
   cursor: pointer;
 }
 
-#nav_facebook_icon {
-  border: none !important;
-  line-height: 40px;
-  margin-top: 4px !important;
-  width: 5px !important;
+.nav_facebook_icon {
+border: none !important;
+margin-top: 4px !important;
+width: 34px !important;
+height: 34px !important;
+}
+
+#sign_in {
+  line-height: 52px;
+  vertical-align: middle;
 }
 
 .facebook {
