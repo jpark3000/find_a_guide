@@ -20,7 +20,7 @@
     <% if current_user %>
       <%= link_to '#' do %><span id="open_menu"><%= image_tag 'left_arrow.png', :class => 'home_top_right', :id=> 'home_drop_down_toggle'  %></span><% end %>
     <div id="home_dropdown" class="hide">
-      <%= link_to dashboard_path do %><span id="open_menu"><%= image_tag 'dashboard.png', :class => 'home_top_right', :id=> 'dashboard'  %></span><% end %>
+      <%= link_to dashboard_path, :data => {no_turbolink: true} do %><span id="open_menu"><%= image_tag 'dashboard.png', :class => 'home_top_right', :id=> 'dashboard'  %></span><% end %>
       <%= link_to new_user_tour_path(current_user.id), :data => {no_turbolink: true} do %><span id="open_menu"><%= image_tag 'globe.png', :class => 'home_top_right', :id=> 'world'  %></span><% end %>
     </div>
     <% else %>
