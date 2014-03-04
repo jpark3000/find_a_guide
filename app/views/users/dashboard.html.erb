@@ -1,4 +1,3 @@
-<h2 id="dashboard_title">Dashboard</h2>
 <div id="section_headers">
   <h3 class="profile_title">Visitor</h3>
   <h3 class="profile_title">Ambassador</h3>
@@ -9,17 +8,23 @@
       <h4 class="profile_tours_title">Upcoming Meetups</h4>
       <% @visitor_meetups.each do |m| %>
         <%= link_to user_meetup_path(m.ambassador,m) do %>
-          <span class="card">
-            <span class="card_image_container" style="background-image:url('<%= m.ambassador.profile_pic %>')">
+          <div class="card">
+            <span class="card_photo" style="background-image:url('<%= m.ambassador.profile_pic %>')">
             </span>
             <span class="card_info">
               <p class="card_name">
-                <%= m.ambassador.name + " - " + m.date_time.to_formatted_s(:upcoming_date) %>
+                 <%= m.ambassador.name %>
+                </p>
               </p>
-              <p class="card_tag"><%= m.ambassador.tagline %></p>
-              <p class="card_despcription"><%= m.tour.description.truncate(45) %></p>
+              <p class="card_time">
+                <%= m.date_time.to_formatted_s(:upcoming_date) %> - 
+                <%= m.address %>
+              </p>
+              <p class="card_despcription">
+                <%= m.tour.description.truncate(90) %>
+              </p>
             </span>
-          </span>
+          </div>
         <% end %>
       <% end %>
     </div>
@@ -29,16 +34,18 @@
         <h4 class="profile_reviews_title">How was your experience? Review:</h4>
         <% @visitor_incomplete_reviews.each do |r| %>
           <%= link_to new_user_review_path(r.ambassador) do %>
-            <span class="card">
-              <span class="card_image_container" style="background-image:url('<%= r.ambassador.profile_pic %>')">
-              </span>
+            <div class="card review">
+              <p class="card_photo" style="background-image:url('<%= r.ambassador.profile_pic %>')">
+              </p>
               <span class="card_info">
                 <p class="card_name">
-                  <%= r.ambassador.name + " - " + distance_of_time_in_words_to_now(r.date_time) + " ago"%>
+                  <%= r.ambassador.name %>
                 </p>
-                <p class="card_location"><%= r.address %></p>
+                <p class="card_time">
+                  <%= distance_of_time_in_words_to_now(r.date_time) %> ago - <%= r.address %>
+                </p>
               </span>
-            </span>
+            </div>
           <% end %>      
         <% end %>
       </div>
@@ -70,17 +77,26 @@
       <h4 class="profile_tours_title">Upcoming Meetups</h4>
       <% if @ambassador_tours.size > 0 %>
         <% @ambassador_tours.each do |t| %>
-          <%= link_to edit_user_meetup_path(t.ambassador,t) do %>
+          <%= link_to user_meetup_path(t.ambassador,t) do %>
             <div class="card">
-              <span class="card_image_container" style="background-image:url('<%= t.visitor.profile_pic %>')">
+              <span class="card_photo" style="background-image:url('<%= t.visitor.profile_pic %>')">
               </span>
               <span class="card_info">
-                <p class="card_name"><%= t.visitor.name + " - " + t.date_time.to_formatted_s(:upcoming_date) %></p>
-                <p class="card_location"><%= t.address %></p>
-                <p class="card_tagline"><%= t.visitor.tagline %></p>
+                <p class="card_name">
+                  <%= t.visitor.name %>
+                </p>
+                <p class="card_time">
+                  <%= t.date_time.to_formatted_s(:upcoming_date) %> - <%= t.address %>
+                </p>
+                <p class="tagline">
+                  <%= t.visitor.tagline %>
+                </p>
               </span>
-            </div>
           <% end %>
+              <p class="edit">
+                <%= link_to "Edit", edit_user_meetup_path(t.ambassador,t) %>
+              </p>
+            </div>
         <% end %>
       <% else %>
         <p>You have no upcoming tours</p>
@@ -108,15 +124,16 @@
         <h4 class="profile_reviews_title">How was your experience? Review:</h4>
         <% @ambassador_incomplete_reviews.each do |r| %>
           <%= link_to new_user_review_path(r.visitor,r) do %>
-            <span class="card">
-              <span class="card_image_container" style="background-image:url('<%= r.visitor.profile_pic %>')">
+            <p class="card">
+              <span class="card_photo" style="background-image:url('<%= r.visitor.profile_pic %>')">
               </span>
               <span class="card_info">
                 <p class="card_name">
                   <%= r.visitor.name + " - " + distance_of_time_in_words_to_now(r.date_time) + " ago"%>
+                </p>
                 <p class="card_despcription"><%= r.address %></p>
               </span>
-            </span>
+            </p>
           <% end %>      
         <% end %>
       </div>

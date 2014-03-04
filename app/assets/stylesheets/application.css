@@ -59,7 +59,7 @@ table {
 
 
 #content {
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 60px auto 0;
 }
 
@@ -491,6 +491,7 @@ height: 34px !important;
   -ms-filter: "FlipH";
 }
 
+
 /*RESULTS LIST*/
 
 #search_results_list {
@@ -501,27 +502,27 @@ height: 34px !important;
   text-decoration: none;
 }
 
-.search_card_info {
+.card_info {
   float: left;
-  width: 72%;
+  width: 79%;
 }
 
-.search_results_card {
+.card {
   height: 100px;
   padding: 6px;
   border: 1px solid #DDDDDD;
 }
 
-.search_results_card:hover{
-  /*background: #EAF2F2;  */
+.card:hover{
+  background: #fafafa;  
 }
 
-.search_results_card p{
+.card p{
   color: #000;
   padding-left: 10px;
 }
 
-.ambassador_photo_card {
+.card_photo {
   background-position: top center;
   background-size: cover;
   background-repeat: none;
@@ -531,14 +532,36 @@ height: 34px !important;
   float: left;
 }
 
-.ambassador_name_card {
+.card_name {
   font-weight: 600 !important;
   font-size: 18px;
   line-height: 23px;
 }
 
-.ambassador_tagline {
+.edit {
+  z-index: 20;
+  display: inline;
+}
+
+.card_tagline {
   font-style: italic;
+}
+
+.card_despcription{
+  font-size: 1em;
+}
+
+.card_time {
+  font-size: .9em;
+}
+
+.review .card_photo {
+  height: 66px;
+  width: 66px;
+}
+
+.review {
+  height: 70px;
 }
 
 .search_contact_button {
@@ -563,6 +586,35 @@ height: 34px !important;
   border-radius: 4px;
   width: 100%;
   text-align: right;
+}
+
+/* CARD */
+
+.card_image {
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  vertical-align: middle;
+}
+
+.card_image_container {
+  border: 1px solid #CCCCCC;
+  float: left;
+  height: 50px;
+  display: inline-block;
+  width: 50px;
+  background-position: top center;
+  background-size: cover;
+}
+
+/*.card {
+  display: block;
+  height: 70px;
+  width: 100%;
+}*/
+
+.coming_soon {
+  color: red;
 }
 
 
@@ -663,9 +715,14 @@ height: 34px !important;
 
 .profile_title {
   text-align: center;
-  padding-bottom: 20px;
+  padding: 40px 0 20px 0;
   width: 50%;
   float: left;
+  font-size: 2em;
+}
+
+#section_headers{
+  margin-top: 20px;
 }
 
 .profile_section {
@@ -692,7 +749,6 @@ height: 34px !important;
   display: none;
 }
 
-
 #ambassador_ratings {
   max-height: 176px;
   overflow: auto;
@@ -704,44 +760,10 @@ height: 34px !important;
   padding-bottom: 10px;
 }
 
-/* CARD */
-
-.card_image {
-  width: 50px;
-  height: 50px;
-  line-height: 50px;
-  vertical-align: middle;
-}
-
-.card_image_container {
-  border: 1px solid #CCCCCC;
-  float: left;
-  height: 50px;
-  display: inline-block;
-  width: 50px;
-  background-position: top center;
-  background-size: cover;
-}
-
-.card_info {
-  float: left;
-  width: 80%;
-  color: #000;
-  margin-left: 13px;
-}
-
-.card {
-  display: block;
-  height: 70px;
-  width: 100%;
-}
-
-.coming_soon {
-  color: red;
-}
 
 /*TOURS VIEW*/
-#more_tours h3{
+
+#more_tours h3 {
   font-weight: bold;
 }
 
@@ -780,6 +802,7 @@ height: 34px !important;
 .submit_button {
   padding: 30px;
 }
+
 
 /* USER INFO */
 
@@ -864,8 +887,8 @@ height: 34px !important;
   padding: 20px 0;
 }
 
-/* MEETUPS VIEW */
 
+/* MEETUPS VIEW */
 
 .meetup_pic {
   height: 150px;
@@ -906,6 +929,7 @@ height: 34px !important;
   margin: 20px 0;
 }
 
+
 /* REVIEW VIEW */
 
 .reviewee_pic{
@@ -927,9 +951,6 @@ height: 34px !important;
     overflow: scroll;
     width: 258px;
 }
-
-
-
 
 
 /*DATEPICKER*/
@@ -1044,6 +1065,7 @@ height: 34px !important;
 
 
 /*BACKGROUND IMAGE CHANGER*/
+
 #background_choices {
   position: fixed;
   right: 0;

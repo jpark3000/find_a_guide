@@ -1,19 +1,19 @@
 
 var TourBox = function(first_name, tag_line, rating, tourDesc) {
 this.template = $("<div class='tour_box'>\
-                    <span class='ambassador_name_card'>" + first_name + "</span>\
+                    <span class='card_name'>" + first_name + "</span>\
                     <br><span class='ambassador_tagline'>" + tag_line + "</span>\
                     <br><span class='ambassador_tourDesc_card'>" + tourDesc + "</span>\
                   </div>")
 };
 
 var User = function(user_id, first_name, tag_line, rating, photo) {
-  this.template = $("<div class='search_results_card'>\
-                        <span class='ambassador_photo_card' style='background-image: url(&quot;"+photo+"&quot;)'></span>\
-                        <span class='search_card_info'>\
-                          <p class='ambassador_name_card'>" + first_name + "</p>\
-                          <p class='ambassador_tag_line_card'>" + tag_line + "</p>\
-                          <p class='ambassador_rating_card'>" + rating + "</p>\
+  this.template = $("<div class='card'>\
+                        <span class='card_photo' style='background-image: url(&quot;"+photo+"&quot;)'></span>\
+                        <span class='card_info'>\
+                          <p class='card_name'>" + first_name + "</p>\
+                          <p class='card_tagline'>" + tag_line + "</p>\
+                          <p class='card_rating'>" + rating + "</p>\
                           <p class='search_contact_button_container'><a href='/users/" + user_id + "/tours' class='search_contact_button'>Contact</a></p>\
                         </span>\
                       </div>")
