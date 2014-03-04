@@ -45,7 +45,7 @@ class ToursController < ApplicationController
 
   def index
     if current_user
-      @ambassador = current_user
+      @ambassador = User.find(params[:user_id])
       @start_date = session[:start_date]
       @end_date = session[:end_date]
     else
