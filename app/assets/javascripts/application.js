@@ -16,11 +16,7 @@
 //= require jquery-ui
 //= require turbolinks
 //= require_self
-//
-//= require fb_graph_api_required
-//= require fb_profile_modal
-//= require vex.combined.min
-//= require vex
+
 
 
 
