@@ -62,7 +62,7 @@ input[type=text] {
   border-radius: 4px;
   font-size: 14px;
   height: 19px;
-  line-height: 30px;
+  line-height: 16px;
   margin-top: 2px;
   padding: 3px 12px;
   vertical-align: top;
@@ -126,14 +126,8 @@ nav {
   position: absolute;
   top: 0;
   width: 100%;
-}
-
-#nav_search   > input {
-  display: inline;
-  position: absolute;
-  top: 9px;
-  left: 50%;
-  margin-left: -7em;
+  z-index: 1;
+  box-shadow: 0 0 5px #555;
 }
 
 #nav_container {
@@ -155,8 +149,8 @@ nav {
   margin-left: 10px;
 }
 
-#right_hand_navbar > a {
-  margin-right: 20px;
+#right_hand_navbar a {
+  margin-right: 15px;
 }
 
 #right_hand_navbar {
@@ -267,6 +261,27 @@ height: 34px !important;
   line-height: 28px;
   font-weight: bold;
 }
+
+#nav_search {
+  padding-right: 15px;
+}
+
+.nav_search_input {
+  font-size: 1.1em !important;
+  height: 25px !important;
+  width: 250px !important;
+  margin-top: 15px !important;
+}
+
+#user_manage_tour_icon {
+    padding-top: 3px;
+}
+
+#search_icon {
+  cursor: pointer;
+}
+
+
 
 
 
@@ -639,6 +654,10 @@ height: 34px !important;
   text-align: right;
 }
 
+.contact_ambassador {
+
+}
+
 /* CARD */
 
 .card_image {
@@ -674,7 +693,7 @@ height: 34px !important;
 #map-canvas {
   width: 80%;
   height: 450px;
-  border: 1px solid black;
+  border: 1px solid #CCCCCC;
   left: 120px;
 }
 
@@ -702,7 +721,7 @@ height: 34px !important;
   z-index: 3;
   position: absolute;
   left: 5px;
-  bottom: 40px;
+  top: 67px;
   width: 215px;
   height: 20px;
   border-radius: 3px;
@@ -740,9 +759,6 @@ height: 34px !important;
   text-decoration: none;
   font-family: 'Open Sans',sans-serif;
 }
-
-
-
 
 
 
@@ -818,7 +834,7 @@ input[value="Available"] {
 }
 
 input[value="Unavailable"] {
-  background-color: #ff0000;
+  background-color: #EB5646;
 }
 
 #create_tour_button {
@@ -829,6 +845,10 @@ input[value="Unavailable"] {
   margin-bottom:30px;
 }
 
+.create_tours {
+  padding: 75px 0 0 30px;
+  text-align: center;
+}
 
 /*TOURS VIEW*/
 
@@ -840,7 +860,6 @@ input[value="Unavailable"] {
 /* AMBASSADOR PLACE TOURS */
 
 #ambassador_availability {
-  padding: 30px;
   text-align: center;
 }
 
@@ -964,6 +983,10 @@ input[value="Unavailable"] {
 
 #edit_profile_name {
   margin-bottom: 10px !important;
+}
+
+#ambassador_profile {
+  padding-top: 0 !important;
 }
 
 
@@ -1112,14 +1135,18 @@ input[value="Unavailable"] {
   border-radius: 4px;
   vertical-align: middle;
 }
+.ui-datepicker th{
+  font-weight: bold;
+  background: none !important;
+  cursor: default !important;
+}
 .ui-datepicker td:hover,
 .ui-datepicker-current-day {
   background: #eeeeee;
   cursor: pointer;
 }
-.ui-datepicker-unselectable,
-.ui-datepicker th {
-  font-weight: bold;
+.ui-datepicker-unselectable{
+  color: #AAA;
   background: none !important;
   cursor: default !important;
 }
@@ -1199,4 +1226,5 @@ input[value="Unavailable"] {
 
 #availability_form{
   display: none;
+  padding-left: 30px;
 }

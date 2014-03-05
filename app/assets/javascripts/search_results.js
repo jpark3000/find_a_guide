@@ -24,7 +24,7 @@ var User = function(user_id, first_name, tag_line, rating, photo) {
                           <p class='card_name'>" + first_name + "</p>\
                           <p class='card_tagline'>" + tag_line + "</p>\
                           <p class='card_rating'>" + rating + "</p>\
-                          <p class='search_contact_button_container'><a href='/users/" + user_id + "/tours' class='search_contact_button'>Contact</a></p>\
+                          <p class='search_contact_button_container'><a href='/users/" + user_id + "/tours' class='search_contact_button'>More Info</a></p>\
                         </span>\
                       </div>")
 };
@@ -67,7 +67,10 @@ $(document).ready(function() {
     streetViewControl: false,
     mapTypeControl: false,
     panControl: false,
-    zoomControlOptions: {style:google.maps.ZoomControlStyle.SMALL},
+    zoomControlOptions: {
+      style:google.maps.ZoomControlStyle.SMALL,
+      position:google.maps.ControlPosition.TOP_RIGHT
+    },
     styles: styleOptions
   };
 

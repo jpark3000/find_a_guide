@@ -74,27 +74,26 @@
       <% @user.ambassador_availability? ? new_status = 'Unavailable' : new_status = 'Available' %>
         <%= form_tag({controller: "users", action: "ambassador_availability_toggle"}, method: :put, id: 'availability_form') do %>
           <%=hidden_field_tag 'availability', !@user.ambassador_availability?%>
-          Currently 
           <%= submit_tag status, :class => 'large_button', :id => status.downcase + "_button" %>
         <% end %>
     </div>
-    <% if !current_user.is_ambassador %>
-    <% end %>
     <div id="ambassador_overlay" data-ambassador="<%=@user.is_ambassador%>">
       <%= form_tag({controller: "users", action: "ambassador_toggle"}, method: :put, id: 'become_ambassador') do %>
         <%= submit_tag "Become an Ambassador!", :class => "orange_button" %>
       <% end %>
     </div>
-    <% if current_user.tours %>
-      <div class="profile_section">
+
+    <% if current_user.tours.size == 0 %>
+      <div class="profile_section create_tours <%= "hide" if current_user.ambassador_availability == false %>">
         <p id="no_tours">You don't have any tours.</p>
         <%= link_to "Create a Tour", new_user_tour_path(current_user), :class =>"orange_button", :id => 'create_tour_button', :data => {no_turbolink: true} %>
       </div>
     <% end %>
+
     <% if current_user.is_ambassador %>
-      <div class="profile_section">
-        <h4 class="profile_tours_title">Upcoming Meetups</h4>
-        <% if @ambassador_tours.size > 0 %>
+      <% if @ambassador_tours.size > 0 %>
+        <div class="profile_section">
+          <h4 class="profile_tours_title">Upcoming Meetups</h4>
           <% @ambassador_tours.each do |t| %>
             <%= link_to user_meetup_path(t.ambassador,t) do %>
               <div class="card">
@@ -117,13 +116,11 @@
                 </p>
               </div>
           <% end %>
-        <% else %>
-          <p>You have no upcoming tours</p>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
 
-      <div class="profile_section">
-        <% if @ambassador_overall_rating %>
+      <% if @ambassador_overall_rating %>
+        <div class="profile_section">
           <h4 class="profile_section_title">
             Your rating: <%= @ambassador_overall_rating %>
           </h4>
@@ -132,11 +129,8 @@
               <p><span class="rating"><%= r.rating %> - </span><%= r.comment %></p>
             <% end %>
           </div>
-        <% else %>
-          <h4 class="profile_section_title">Ratings:</h4>
-          <p>You have no ratings</p>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
 
       <% if @ambassador_incomplete_reviews.size > 0 %>
         <div class="profile_section">
