@@ -128,14 +128,6 @@ nav {
   width: 100%;
 }
 
-#nav_search   > input {
-  display: inline;
-  position: absolute;
-  top: 9px;
-  left: 50%;
-  margin-left: -7em;
-}
-
 #nav_container {
   height: 43px;
   margin: 0 40px;
@@ -155,8 +147,8 @@ nav {
   margin-left: 10px;
 }
 
-#right_hand_navbar > a {
-  margin-right: 20px;
+#right_hand_navbar a {
+  margin-right: 15px;
 }
 
 #right_hand_navbar {
@@ -267,6 +259,27 @@ height: 34px !important;
   line-height: 28px;
   font-weight: bold;
 }
+
+#nav_search {
+  padding-right: 15px;
+}
+
+.nav_search_input {
+  font-size: 1.1em !important;
+  height: 25px !important;
+  width: 250px !important;
+  margin-top: 15px !important;
+}
+
+#user_manage_tour_icon {
+    padding-top: 3px;
+}
+
+#search_icon {
+  cursor: pointer;
+}
+
+
 
 
 
@@ -678,7 +691,7 @@ height: 34px !important;
 #map-canvas {
   width: 80%;
   height: 450px;
-  border: 1px solid black;
+  border: 1px solid #CCCCCC;
   left: 120px;
 }
 
@@ -745,7 +758,9 @@ height: 34px !important;
   font-family: 'Open Sans',sans-serif;
 }
 
-
+div[title~='Zoom'] {
+  margin-top: 20px !important;
+}
 
 
 
@@ -822,7 +837,7 @@ input[value="Available"] {
 }
 
 input[value="Unavailable"] {
-  background-color: #ff0000;
+  background-color: #EB5646;
 }
 
 #create_tour_button {

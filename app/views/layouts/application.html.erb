@@ -38,6 +38,16 @@
     } else {
       $("#pac-input-search").width(384);
     }
+    if(e.target.id !== 'pac-input' && e.target.id !== 'globe'){
+      console.log(e.target.id)
+      $(".nav_search_input").addClass('hide').val("");
+      $("#search_icon").removeClass('hide');
+    }
+  })
+
+  $("#search_icon").on('click',function(){
+    $("#search_icon").addClass('hide');
+    $(".nav_search_input").removeClass('hide').focus();
   })
 </script>
 
