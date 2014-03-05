@@ -30,7 +30,8 @@ $( document ).ready(function() {
           });
         }
       }
-    });
+
+    });//End FB API call
 
   };//End getImages function
 
@@ -38,7 +39,7 @@ $( document ).ready(function() {
       event.preventDefault();
 
       getImages();
-    }) //End Avatar Selector
+    }); //End Avatar Selector
 
 
 }); //End Doc Ready
