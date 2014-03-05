@@ -88,6 +88,7 @@ $(document).ready(function() {
   var mapOptions = {
     center: new google.maps.LatLng(20, 0),
     zoom: 2,
+    minZoom: 2,
     streetViewControl: false,
     mapTypeControl: false,
     panControl: false,
@@ -104,14 +105,13 @@ $(document).ready(function() {
 
 	function initialize() {
 		map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-    var image = "http://mapicons.nicolasmollet.com/wp-content/uploads/mapicons/shape-default/color-c259b5/shapecolor-color/shadow-1/border-dark/symbolstyle-white/symbolshadowstyle-dark/gradient-no/planetarium-2.png"
+
 
     $.each(gon.points, function(index, tour) {
       var myLatLng = new google.maps.LatLng(tour.lat, tour.lng);
       var tour_marker = new google.maps.Marker({
         position: myLatLng,
         map: map,
-        // icon: image,
         animation: google.maps.Animation.DROP,
         tour_id: tour.id
       });
