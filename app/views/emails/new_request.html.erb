@@ -1,22 +1,23 @@
+<%= stylesheet_link_tag "email" %>
 <h4>Hi, <%= @ambassador.first_name%> </h4>
 
 <p>A new visitor, <%= @visitor.first_name%>, wants your help to get to know your city!</p>
+<p>You can ask clarifying questions to <%= @visitor.first_name%> at <%= @visitor.anonymous_email%></p>
 <p>Start Date: <%= @start_date%></p>
 <p>End Date: <%= @end_date%></p>
 
 <%= form_tag(reject_request_url, method: "post") do %>
   <%= hidden_field_tag(:ambassador_id, @ambassador.id) %>
   <%= hidden_field_tag(:visitor_id, @visitor.id) %>
-  <%= submit_tag("Reject") %>
+  <%= submit_tag "Reject", style: "background-color:#EB5646;border:medium none;border-radius:4px;color:#FFFFFF;cursor:pointer;"%>
 <% end %>
-
+<br>
 <%= form_tag(user_meetups_url(@ambassador.id), method: "post") do %>
   <%= hidden_field_tag(:ambassador_id, @ambassador.id) %>
   <%= hidden_field_tag(:visitor_id, @visitor.id) %>
   <%= hidden_field_tag(:start_date, @start_date) %>
-  <%= submit_tag("Accept") %>
+  <%= submit_tag "Accept", style: "background-color:#EB5646;border:medium none;border-radius:4px;color:#FFFFFF;cursor:pointer;" %>
 <% end %>
 
-<%= image_tag "http://www.ronsaari.com/stockImages/chicago/chicagoSkyline.jpg", alt: "cityscape" %>
 <p>Tale care,</p>
-<p>Ambassador Program</p>
+<h3 style="font-family:'Dosis',sans-serif;font-weight:800;">City Bird</h3>
