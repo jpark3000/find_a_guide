@@ -43,7 +43,7 @@ class UsersController < ApplicationController
           hashy = {points: points, users: {}}
 
           @users.each do |u|
-            hashy[:users][u.id] = {id: u.id, first_name: u.first_name, tagline: u.tagline, rating: u.rating, photo: u.profile_pic, specialty_ids: u.specialties.map { |s| s.id } }
+            hashy[:users][u.id] = {id: u.id, first_name: u.first_name, tagline: u.tagline, rating: u.average_rating(:ambassador), photo: u.profile_pic, specialty_ids: u.specialties.map { |s| s.id } }
           end
 
 
