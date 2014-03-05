@@ -15,10 +15,16 @@
   </div>
 </div>
 
-<%= form_tag({controller: "emails", action: "new_request"}, method: "post", id: 'contact') do %>
-  <input type="text" name='start_date' onfocus="this.blur()" class="date_picker" data-behaviour='datepicker' id="starting_date" value="<%=@start_date%>"><span class="icon_container"><span class="calendar_icon contact_ambassador"></span></span>
-  <%=hidden_field_tag 'ambassador_id', @ambassador.id%>
-  <%= submit_tag "Contact", :class => "orange_button" %>
+<% if current_user %>
+  <%= form_tag({controller: "emails", action: "new_request"}, method: "post", id: 'contact') do %>
+    <input type="text" name='start_date' onfocus="this.blur()" class="date_picker" data-behaviour='datepicker' id="starting_date" value="<%=@start_date%>"><span class="icon_container"><span class="calendar_icon contact_ambassador"></span></span>
+    <%=hidden_field_tag 'ambassador_id', @ambassador.id%>
+    <%= submit_tag "Contact", :class => "orange_button" %>
+  <% end %>
+<% else %>
+  <%= link_to "/auth/facebook", id: "sign_in", :popup => true do %>
+      <%= submit_tag "Connect with Facebook to Contact", :class => "orange_button" %>
+  <% end %>
 <% end %>
 
 <% if @ambassador.tours.size > 1 %>
