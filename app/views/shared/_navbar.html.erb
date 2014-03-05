@@ -20,7 +20,7 @@
 <div id="dropdown" class="hide">
   <ul>
     <% if session[:user_id] %>
-      <%= link_to edit_user_path(current_user) do %><li>Edit Profile</li><% end %>
+      <%= link_to edit_user_path(current_user), :data => {no_turbolink: true} do %><li>Edit Profile</li><% end %>
       <%= link_to signout_path, id: "sign_out", :data => {no_turbolink: true} do %><li>Logout</li><% end %>
     <% end %>
   </ul>
