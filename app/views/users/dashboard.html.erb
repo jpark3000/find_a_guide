@@ -6,6 +6,7 @@
   <div id="visitor_profile" class="section">
     <div class="profile_section">
       <h4 class="profile_tours_title">Upcoming Meetups</h4>
+      <%= "You have no upcoming meetups" if @visitor_meetups.size < 1 %>
       <% @visitor_meetups.each do |m| %>
         <%= link_to user_meetup_path(m.ambassador,m) do %>
           <div class="card">
@@ -68,85 +69,96 @@
 
 
   <div id="ambassador_profile" class="section">
-    <div id="ambassador_overlay" data-ambassador="<%=@user.is_ambassador%>">
-      <%= form_tag({controller: "users", action: "ambassador_toggle"}, method: :put, id: 'become_ambassador') do %>
-        <%= submit_tag("Become an Ambassador!") %>
-      <% end %>
-    </div>
-    <div class="profile_section">
-      <h4 class="profile_tours_title">Upcoming Meetups</h4>
-      <% if @ambassador_tours.size > 0 %>
-        <% @ambassador_tours.each do |t| %>
-          <%= link_to user_meetup_path(t.ambassador,t) do %>
-            <div class="card">
-              <span class="card_photo" style="background-image:url('<%= t.visitor.profile_pic %>')">
-              </span>
-              <span class="card_info">
-                <p class="card_name">
-                  <%= t.visitor.name %>
-                </p>
-                <p class="card_time">
-                  <%= t.date_time.to_formatted_s(:upcoming_date) %> - <%= t.address %>
-                </p>
-                <p class="tagline">
-                  <%= t.visitor.tagline %>
-                </p>
-              </span>
-          <% end %>
-              <p class="edit">
-                <%= link_to "Edit", edit_user_meetup_path(t.ambassador,t) %>
-              </p>
-            </div>
-        <% end %>
-      <% else %>
-        <p>You have no upcoming tours</p>
-      <% end %>
-    </div>
-
-    <div class="profile_section">
-      <% if @ambassador_overall_rating %>
-        <h4 class="profile_section_title">
-          Your rating: <%= @ambassador_overall_rating %>
-        </h4>
-        <div id="ambassador_ratings">
-          <% @user.all_ratings(:ambassador).each do |r| %>
-            <p><span class="rating"><%= r.rating %> - </span><%= r.comment %></p>
-          <% end %>
-        </div>
-      <% else %>
-        <h3 class="profile_section_title">Ratings:</h3>
-        <p>You have no ratings</p>
-      <% end %>
-    </div>
-
-    <% if @ambassador_incomplete_reviews.size > 0 %>
-      <div class="profile_section">
-        <h4 class="profile_reviews_title">How was your experience? Review:</h4>
-        <% @ambassador_incomplete_reviews.each do |r| %>
-          <%= link_to new_user_review_path(r.visitor,r) do %>
-            <p class="card">
-              <span class="card_photo" style="background-image:url('<%= r.visitor.profile_pic %>')">
-              </span>
-              <span class="card_info">
-                <p class="card_name">
-                  <%= r.visitor.name + " - " + distance_of_time_in_words_to_now(r.date_time) + " ago"%>
-                </p>
-                <p class="card_despcription"><%= r.address %></p>
-              </span>
-            </p>
-          <% end %>
-        <% end %>
-      </div>
-    <% end %>
     <div id="ambassador_availability">
       <% @user.ambassador_availability? ? status = 'Available' : status = 'Unavailable' %>
       <% @user.ambassador_availability? ? new_status = 'Unavailable' : new_status = 'Available' %>
         <%= form_tag({controller: "users", action: "ambassador_availability_toggle"}, method: :put, id: 'availability_form') do %>
-          <span id="availablity_title" data-id="<%= @user.id %>">You are currently <%=status%>.</span>
           <%=hidden_field_tag 'availability', !@user.ambassador_availability?%>
-          <%= submit_tag("Set status to #{new_status}") %>
+          Currently 
+          <%= submit_tag status, :class => 'large_button', :id => status.downcase + "_button" %>
         <% end %>
     </div>
+    <% if !current_user.is_ambassador %>
+    <% end %>
+    <div id="ambassador_overlay" data-ambassador="<%=@user.is_ambassador%>">
+      <%= form_tag({controller: "users", action: "ambassador_toggle"}, method: :put, id: 'become_ambassador') do %>
+        <%= submit_tag "Become an Ambassador!", :class => "orange_button" %>
+      <% end %>
+    </div>
+    <% if current_user.tours %>
+      <div class="profile_section">
+        <p id="no_tours">You don't have any tours.</p>
+        <%= link_to "Create a Tour", new_user_tour_path(current_user), :class =>"orange_button", :id => 'create_tour_button', :data => {no_turbolink: true} %>
+      </div>
+    <% end %>
+    <% if current_user.is_ambassador %>
+      <div class="profile_section">
+        <h4 class="profile_tours_title">Upcoming Meetups</h4>
+        <% if @ambassador_tours.size > 0 %>
+          <% @ambassador_tours.each do |t| %>
+            <%= link_to user_meetup_path(t.ambassador,t) do %>
+              <div class="card">
+                <span class="card_photo" style="background-image:url('<%= t.visitor.profile_pic %>')">
+                </span>
+                <span class="card_info">
+                  <p class="card_name">
+                    <%= t.visitor.name %>
+                  </p>
+                  <p class="card_time">
+                    <%= t.date_time.to_formatted_s(:upcoming_date) %> - <%= t.address %>
+                  </p>
+                  <p class="tagline">
+                    <%= t.visitor.tagline %>
+                  </p>
+                </span>
+            <% end %>
+                <p class="edit">
+                  <%= link_to "Edit", edit_user_meetup_path(t.ambassador,t) %>
+                </p>
+              </div>
+          <% end %>
+        <% else %>
+          <p>You have no upcoming tours</p>
+        <% end %>
+      </div>
+
+      <div class="profile_section">
+        <% if @ambassador_overall_rating %>
+          <h4 class="profile_section_title">
+            Your rating: <%= @ambassador_overall_rating %>
+          </h4>
+          <div id="ambassador_ratings">
+            <% @user.all_ratings(:ambassador).each do |r| %>
+              <p><span class="rating"><%= r.rating %> - </span><%= r.comment %></p>
+            <% end %>
+          </div>
+        <% else %>
+          <h4 class="profile_section_title">Ratings:</h4>
+          <p>You have no ratings</p>
+        <% end %>
+      </div>
+
+      <% if @ambassador_incomplete_reviews.size > 0 %>
+        <div class="profile_section">
+          <h4 class="profile_reviews_title">How was your experience? Review:</h4>
+          <% @ambassador_incomplete_reviews.each do |r| %>
+            <%= link_to new_user_review_path(r.visitor,r) do %>
+              <div class="card review">
+                <span class="card_photo review" style="background-image:url('<%= r.visitor.profile_pic %>')"></span>
+                <span class="card_info">
+                  <p class="card_name"><%= r.visitor.name %></p>
+                  <p class="card_time">
+                     <%= distance_of_time_in_words_to_now(r.date_time)%> ago - 
+                     <%= r.address %>
+                  </p>
+                </span>
+              </div>
+            <% end %>      
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+
   </div>
 </div>
 <%= javascript_include_tag 'dashboard' %>
