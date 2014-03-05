@@ -1,13 +1,13 @@
 class EmailsController < ApplicationController
    skip_before_filter :verify_authenticity_token
-   skip_before_action :require_login, only: [:reject]
+   skip_before_action :require_login, only: [:reject, :reply]
    # include ActionController::Base.helpers
 
   def reply
    @recipient = User.find_by(anonymous_email: params[:recipient])
    @sender = User.find_by(email: params[:sender])
-   @body = params["stripped-text"].split('\n')
-
+   @body = params["stripped-text"].split("\n")
+   @signature = params["stripped-signature"]
    html = render_to_string "reply", :layout => false
    # text = strip_tags(html)
 
@@ -22,9 +22,9 @@ class EmailsController < ApplicationController
     @ambassador = User.find(params[:ambassador_id])
     @start_date = params[:start_date]
     @end_date = params[:end_date]
-    subject = 'A New Visitor Needs Your Help!'
+    subject = 'Message from City Bird: A New Visitor Needs Your Help!'
     email_html = render_to_string "new_request", :layout => false
-    Email.new_request(@visitor, @ambassador, email_html, subject)
+    Email.new_request(@visitor, @ambassador, email_html, subject, @visitor.anonymous_email)
     respond_to do |format|
       format.json{ render :json => {response: 'Email Sent'}}
     end
@@ -33,9 +33,9 @@ class EmailsController < ApplicationController
   def reject
     @ambassador = User.find(params[:ambassador_id])
     @visitor = User.find(params[:visitor_id])
-    subject = 'Ambassador Unavailable'
+    subject = 'Message from City Bird: Ambassador Unavailable'
     email_html = render_to_string "reject", :layout => false
-    Email.new_request(@ambassador, @visitor, email_html, subject)
+    Email.new_request(@ambassador, @visitor, email_html, subject, 'postmaster@sandbox57336.mailgun.org')
     render 'reject_acknowledge'
   end
 end
