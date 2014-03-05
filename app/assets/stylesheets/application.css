@@ -57,6 +57,36 @@ table {
   border-spacing: 0;
 }
 
+input[type=text] {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  height: 19px;
+  line-height: 30px;
+  margin-top: 2px;
+  padding: 3px 12px;
+  vertical-align: top;
+}
+
+textarea {
+  border: 1px solid #CCCCCC;
+  border-radius: 9px;
+  margin: 20px 0;
+  padding: 10px;
+  width: 100%;
+  font-family: 'Open Sans',sans-serif;
+  font-size: .9em;
+  resize: none;
+}
+
+hr {
+  background-color: #AAAAAA;
+  border: 0 none;
+  color: #AAAAAA;
+  height: 1.3px;
+  width: 90%;
+}
+
 
 #content {
   max-width: 1200px;
@@ -69,20 +99,22 @@ h1 {
   line-height: 46px;
   font-size: 40px;
   margin: 0 0 23px 0;
-  }
+}
+
 h2 {
   font-family: 'Dosis', sans-serif;
   font-weight: 800;
   font-size: 18px;
   line-height: 23px;
   margin: 0 0 23px 0;
-  }
+}
+
 body {
   font-family: 'Open Sans', sans-serif;
   font-size: 15px;
   line-height: 23px;
   margin: 0 0 23px 0;
-  }
+}
 
 /* Nav Bar */
 
@@ -553,14 +585,14 @@ height: 34px !important;
 }
 
 .edit a {
-    background-color: #EB5646;
-    border-radius: 4px;
-    color: #FFFFFF;
-    cursor: pointer;
-    font-size: 1.1em;
-    height: 40px;
-    padding: 3px 12px;
-    text-decoration: none;
+  background-color: #EB5646;
+  border-radius: 4px;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-size: 1.1em;
+  height: 40px;
+  padding: 3px 12px;
+  text-decoration: none;
 }
 .card_tagline {
   font-style: italic;
@@ -647,13 +679,13 @@ height: 34px !important;
 }
 
 .place_tours_map {
-    bottom: 0 !important;
-    height: auto !important;
-    left: 0 !important;
-    position: fixed !important;
-    right: 0 !important;
-    top: 60px;
-    width: auto !important;
+  bottom: 0 !important;
+  height: auto !important;
+  left: 0 !important;
+  position: fixed !important;
+  right: 0 !important;
+  top: 60px;
+  width: auto !important;
 }
 
 #pac-input-tour {
@@ -687,24 +719,26 @@ height: 34px !important;
 
 .tour_desc {
   width: 350px;
-  height: 128px;
+  height: 150px;
+  /*background: #74AFAD;*/
 }
 
 .tour_text {
-    border: 1px solid #DDDDDD;
-    height: 110px;
-    overflow: auto;
-    width: 350px;
-    font-family: 'Open Sans',sans-serif;
+  border: 1px solid #DDDDDD;
+  height: 110px;
+  overflow: auto;
+  width: 350px;
+  padding: 11px;
+  font-family: 'Open Sans',sans-serif;
 }
 
 .tour_creation_link {
-    color: #666666;
-    display: inline-block;
-    font-weight: bold !important;
-    padding: 0 8px;
-    text-decoration: none;
-    font-family: 'Open Sans',sans-serif;
+  color: #666666;
+  display: inline-block;
+  font-weight: bold !important;
+  padding: 0 8px;
+  text-decoration: none;
+  font-family: 'Open Sans',sans-serif;
 }
 
 
@@ -775,9 +809,9 @@ height: 34px !important;
 }
 
 .profile_section > h4 {
-    font-size: 1.2em;
-    font-weight: bold;
-    padding: 20px 0 17px;
+  font-size: 1.2em;
+  font-weight: bold;
+  padding: 20px 0 17px;
 }
 
 
@@ -799,9 +833,10 @@ height: 34px !important;
   text-align: center;
 }
 
-#choose_specialties > h2 {
-  /*text-align: center;*/
+#specialties_title {
   padding: 20px 0;
+  /*font-weight: bold;*/
+  font-size: 1.5em;
 }
 
 #specialties {
@@ -845,7 +880,7 @@ height: 34px !important;
   background-size: cover;
 }
 
-#change_picture{
+#avatar_selector{
   margin-top: 120px;
   text-align: center;
   vertical-align: bottom;
@@ -853,12 +888,13 @@ height: 34px !important;
   padding: 3px;
   border: 1px solid #ddd;
   background: rgba(255, 255, 255, 0.5);
+  color: #000;
 }
 
 #right_of_picture {
   display: inline-block;
   vertical-align: top;
-  width: 50%;
+  width: 65%;
   padding-left:20px;
 }
 
@@ -882,7 +918,11 @@ height: 34px !important;
 }
 
 .user_bio {
-  height: 100px !important;
+  margin: 0!important;
+}
+
+#user_bio {
+  margin-top: 0!important;
 }
 
 .user_bio textarea {
@@ -894,8 +934,8 @@ height: 34px !important;
   margin: 13px;
 }
 
-#under_picture {
-  padding-top: 20px;
+.user_gender {
+  padding-top:0 !important;
 }
 
 #private_info div {
@@ -906,6 +946,12 @@ height: 34px !important;
   font-weight: bold;
   padding: 20px 0;
 }
+
+#edit_profile_name {
+  margin-bottom: 10px !important;
+}
+
+
 
 
 /* MEETUPS VIEW */
@@ -929,9 +975,9 @@ height: 34px !important;
 }
 
 .meetup_info h3 {
-    font-size: 1.4em;
-    padding: 30px 0 62px;
-    text-align: center;
+  font-size: 1.4em;
+  padding: 30px 0 62px;
+  text-align: center;
 }
 
 .user_info {
@@ -940,14 +986,40 @@ height: 34px !important;
 }
 
 #meetup_meetup_notes {
+  height: 120px;
   width: 100%;
-  height: 60px;
-  margin: 20px 0;
 }
 
 #meetup_notes {
   display: block;
   margin: 20px 0;
+}
+
+#meetup_date {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 18px;
+  height: 19px;
+  line-height: 30px;
+  margin-top: 2px;
+  padding: 3px 12px;
+  vertical-align: top;
+  width: 386px;
+}
+
+.meetup_icon {
+  top: 5px !important;
+}
+
+.orange_button {
+  background-color: #EB5646;
+    border: medium none;
+    border-radius: 4px;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 1.1em;
+    height: 40px;
+    padding: 8px 28px;
 }
 
 
@@ -967,10 +1039,10 @@ height: 34px !important;
 }
 
 .tour_box {
-    background-color: #FFFFFF;
-    height: 214px;
-    overflow: scroll;
-    width: 258px;
+  background-color: #FFFFFF;
+  height: 214px;
+  overflow: scroll;
+  width: 258px;
 }
 
 

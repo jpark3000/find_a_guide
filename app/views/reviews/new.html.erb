@@ -5,8 +5,7 @@
     <span class="reviewee_pic" style="background-image: url('<%= @reviewee.profile_pic %>')"></span>
     <div id="right_of_picture">
       <h2><%= @reviewee.name %></h2>
-      <span class="user_info"><%= @meetup.address %></span>
-      <span class="user_info"><%= @meetup.date_time.to_formatted_s(:short) %></span>
+      <span class="user_info"><%= @meetup.date_time.to_formatted_s(:short) %> - <%= @meetup.address %></span>
       <%= f.select :rating, options_for_select(@rating_options) %>
     </div>
 
