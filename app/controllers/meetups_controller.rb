@@ -1,4 +1,5 @@
 class MeetupsController < ApplicationController
+  skip_before_action :require_login, only: [:create]
   def index
     @ambassador = User.find(params[:user_id])
     @tours = @ambassador.ambassador_meetups
@@ -35,7 +36,8 @@ class MeetupsController < ApplicationController
   def create
     @ambassador = User.find(params[:ambassador_id])
     @visitor = User.find(params[:visitor_id])
-    meetup = Meetup.create(ambassador_id: @ambassador.id, visitor_id: @visitor.id, date_time: params[:start_date])
+    date = params[:start_date].split("/").map(&:to_i)
+    meetup = Meetup.create(ambassador_id: @ambassador.id, visitor_id: @visitor.id, date_time: DateTime.new(date[2], date[0], date[1]))
     subject = "#{@ambassador.name} will Meet You!"
     email_html = render_to_string "emails/accept", :layout => false
     Email.new_request(@ambassador, @visitor, email_html, subject)

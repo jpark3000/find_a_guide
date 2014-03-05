@@ -1,5 +1,6 @@
 class EmailsController < ApplicationController
    skip_before_filter :verify_authenticity_token
+   skip_before_action :require_login, only: [:reject]
    # include ActionController::Base.helpers
 
   def reply
@@ -30,7 +31,7 @@ class EmailsController < ApplicationController
   end
 
   def reject
-    @ambassador = current_user
+    @ambassador = User.find(params[:ambassador_id])
     @visitor = User.find(params[:visitor_id])
     subject = 'Ambassador Unavailable'
     email_html = render_to_string "reject", :layout => false
