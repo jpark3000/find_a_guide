@@ -27,10 +27,6 @@ class User < ActiveRecord::Base
  		"#{first_name} #{last_name}"
 	end
 
-	def rating
-		"#{rand(5)} stars"
-	end
-
   def open_information
     [email,phone,gender,age]
   end
@@ -81,10 +77,9 @@ class User < ActiveRecord::Base
       user.last_name = auth.info.last_name
       user.email = user.email ||= auth.extra.raw_info.email
 
-      user.profile_pic = user.profile_pic ||= auth.info.image + '?type=large'
+      user.profile_pic = user.profile_pic ||= "http://graph.facebook.com/#{auth.extra.raw_info.id}/picture?type=large"
 
       user.username = auth.extra.raw_info.username
-
       user.save!
     end
   end

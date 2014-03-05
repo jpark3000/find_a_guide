@@ -29,12 +29,12 @@ class UsersController < ApplicationController
     respond_to do |format|
       if request.xhr?
         bounds = format_bounds(params[:bounds])
-        
+
         @tours = Tour.where(Geocoder::Sql.within_bounding_box(bounds[0], bounds[1],
                                                               bounds[2], bounds[3],
                                                               'latitude', 'longitude'))
         @users = get_unique_users_from_tours(@tours)
- 
+
         @tours.each do |tour|
           points << tour.format_coordinates
         end
