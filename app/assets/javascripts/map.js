@@ -4,9 +4,10 @@ var Tour = function() {
                       <span id='message'></span>\
                       <textarea class='tour_text'></textarea>\
                       <div id='controls'>\
-                      <span class='tour_creation_link' id='remove_marker'>Remove Marker</span>\
-                      <span class='tour_creation_link' id='new_tour_button'>Save</span>\
-                      <span class='tour_creation_link' id='edit_tour'>Edit</span>\
+                        <span class='tour_creation_link' id='remove_marker'>Remove Marker</span>\
+                        <span class='tour_creation_link' id='new_tour_button'>Save</span>\
+                        <span class='tour_creation_link' id='edit_tour'>Edit</span>\
+                        <span class='tour_creation_link' id='delete_tour'>Delete Tour</span>\
                       </div>\
                     </div>")
 };
@@ -14,6 +15,7 @@ var Tour = function() {
 Tour.prototype.createdTour = function(description) {
   this.template.find('.tour_text').val(description);
   this.template.find('.tour_text').attr('readonly', true);
+  this.template.find('#delete_tour').hide();
   this.template.find('#remove_marker').hide();
   this.template.find('#new_tour_button').hide();
   this.template.find('.tour_text').css('background-color', 'white')
@@ -24,13 +26,31 @@ Tour.prototype.editTour = function(tour_id) {
   var self = this;
   this.template.find('#edit_tour').on('click', function() {
     console.log('asdfas')
+    self.template.find('#delete_tour').show();
+    self.template.find('#edit_tour').hide();
     self.template.find('.tour_text').attr('readonly', false);
     self.template.find('#new_tour_button').show();
-    self.saveTour(tour_id);
+    self.updateTour(tour_id);
+    self.deleteTour(tour_id);
   });
 };
 
-Tour.prototype.saveTour = function(tour_id) {
+Tour.prototype.deleteTour = function(tour_id) {
+  var self = this;
+  this.template.find('#delete_tour').on('click', function() {
+    $.ajax({
+      url: '/users/' + gon.id + '/tours/' + tour_id,
+      type: 'DELETE',
+      data: {tour_id : tour_id},
+      dataType: 'json'
+    })
+      .done(function(response) {
+        console.log(response.message);
+      });
+  });
+};
+
+Tour.prototype.updateTour = function(tour_id) {
   var self = this;
   this.template.find('#new_tour_button').on('click', function() {
 
@@ -54,6 +74,7 @@ Tour.prototype.saveTour = function(tour_id) {
 
 Tour.prototype.createTour = function() {
   this.template.find('#edit_tour').hide();
+  this.template.find('#delete_tour').hide();
   return this
 };
 
@@ -176,6 +197,7 @@ $(document).ready(function() {
             iw.template.find('#new_tour_button').hide();
             iw.template.find('#remove_marker').hide();
             iw.template.find('#edit_tour').show();
+            iw.template.find('#delete_tour').show();
             iw.editTour(response.tour_id)
           } else {
             $('body').append('<p>' + response.message + '</p>');
