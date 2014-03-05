@@ -4,6 +4,8 @@ $(document).ready(function(){
   $('[data-behaviour~=datepicker]').datepicker({
       format: "MM dd yyyy",
       autoclose: true,
+      minDate: 0,
+      maxDate: '+3m',
     });
 });
 function AjaxSubmit(el){

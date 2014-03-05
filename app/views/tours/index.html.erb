@@ -3,10 +3,9 @@
   <div id="ambassador_last_name"><%= @ambassador.last_name %></div>
   <div id="ambassador_tag_line"><%= @ambassador.tagline %></div>
   <div id="ambassador_rating"><%= @ambassador.average_rating(:ambassador) %></div>
-    <% @ambassador.specialties.each do |s| %>
-      <span class="specialty"><%= s.specialty %></span>
-    <% end %>
-  </div>
+  <% @ambassador.specialties.each do |s| %>
+    <span class="specialty"><%= s.specialty %></span>
+  <% end %>
 </div>
 
 <div id="ambassador_info">
@@ -15,6 +14,12 @@
     <%= @ambassador.bio %>
   </div>
 </div>
+
+<%= form_tag({controller: "emails", action: "new_request"}, method: "post", id: 'contact') do %>
+  <input type="text" name='start_date' onfocus="this.blur()" class="date_picker" data-behaviour='datepicker' id="starting_date" value="<%=@start_date%>"><span class="icon_container"><span class="calendar_icon contact_ambassador"></span></span>
+  <%=hidden_field_tag 'ambassador_id', @ambassador.id%>
+  <%= submit_tag "Contact", :class => "orange_button" %>
+<% end %>
 
 <% if @ambassador.tours.size > 1 %>
   <div id="more_tours">
@@ -32,10 +37,4 @@
   <p>An email has been sent to the ambassador.  You should receive a response shortly.</p>
 </div>
 
-<%= form_tag({controller: "emails", action: "new_request"}, method: "post", id: 'contact') do %>
-  <input type="text" name='start_date' onfocus="this.blur()" class="date_picker" data-behaviour='datepicker' id="starting_date" value="<%=@start_date%>"><span class="icon_container"><span class="calendar_icon"></span></span>
-  <input type="text" name='end_date' onfocus="this.blur()" class="date_picker" data-behaviour='datepicker' id="ending_date" value="<%=@end_date%>"><span class="icon_container"><span class="calendar_icon"></span></span>
-  <%=hidden_field_tag 'ambassador_id', @ambassador.id%>
-  <%= submit_tag("Contact") %>
-<% end %>
 <%= javascript_include_tag 'contact' %>
