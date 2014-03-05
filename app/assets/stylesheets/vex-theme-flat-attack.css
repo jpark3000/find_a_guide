@@ -294,8 +294,7 @@
   text-align: center;
   top: 0;
   right: 0;
-  color: white;
-  background: #666666;
+  color: 000;
 }
 /* line 85, ../sass/vex-theme-flat-attack.sass */
 .vex.vex-theme-flat-attack .vex-dialog-form .vex-dialog-message {
