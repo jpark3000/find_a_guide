@@ -1,5 +1,6 @@
 <%= javascript_include_tag "search_results" %>
 <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places" %>
+<%= javascript_include_tag 'facebook' %>
 
 
 
@@ -43,7 +44,7 @@
     $(".search_results_map").width($(document).width() - $("#search_results_content").width() - 2);
   }
   adjustHeight();
-  
+
   $(window).bind("resize", function(){
     adjustHeight();
   });

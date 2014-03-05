@@ -16,7 +16,6 @@
 //= require jquery-ui
 //= require turbolinks
 //= require_self
-//= require facebook
 
 
 
