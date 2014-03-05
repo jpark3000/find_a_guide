@@ -22,7 +22,7 @@ class EmailsController < ApplicationController
     @ambassador = User.find(params[:ambassador_id])
     @start_date = params[:start_date]
     @end_date = params[:end_date]
-    subject = 'A New Visitor Needs Your Help!'
+    subject = 'Message from City Bird: A New Visitor Needs Your Help!'
     email_html = render_to_string "new_request", :layout => false
     Email.new_request(@visitor, @ambassador, email_html, subject)
     respond_to do |format|
@@ -33,7 +33,7 @@ class EmailsController < ApplicationController
   def reject
     @ambassador = User.find(params[:ambassador_id])
     @visitor = User.find(params[:visitor_id])
-    subject = 'Ambassador Unavailable'
+    subject = 'Message from City Bird: Ambassador Unavailable'
     email_html = render_to_string "reject", :layout => false
     Email.new_request(@ambassador, @visitor, email_html, subject)
     render 'reject_acknowledge'
