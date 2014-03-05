@@ -67,6 +67,7 @@ $(document).ready(function() {
     streetViewControl: false,
     mapTypeControl: false,
     panControl: false,
+    minZoom: 2,
     zoomControlOptions: {
       style:google.maps.ZoomControlStyle.SMALL,
       position:google.maps.ControlPosition.TOP_RIGHT
@@ -117,7 +118,7 @@ $(document).ready(function() {
 
           markers.push(tour_marker);
 
-          
+
 
         }); //end each
 
@@ -125,7 +126,7 @@ $(document).ready(function() {
 
           var user = new User(v.id, v.first_name, v.tagline, v.rating, v.photo);
           $('#search_results_list').append(user.template);
-    
+
         });
 
       });//end ajax callback
@@ -148,7 +149,13 @@ $(document).ready(function() {
     }); //end searchBox event listener
 
   }; //end initialize
-  
+
 	google.maps.event.addDomListener(window, 'load', initialize);
+
+  google.maps.event.addDomListener(window, "resize", function() {
+   var center = map.getCenter();
+   google.maps.event.trigger(map, "resize");
+   map.setCenter(center);
+  });
 
 });
