@@ -17,7 +17,8 @@
        }(document, 'script', 'facebook-jssdk'));
     </script>
 
-<%= javascript_include_tag 'vex', 'vex.combined.min' %>
+<%= javascript_include_tag 'vex' %>
+<%= javascript_include_tag 'vex.combined.min' %>
 <script>vex.defaultOptions.className = 'vex-theme-flat-attack';</script>
 
 <%= javascript_include_tag 'fb_profile_modal' %>
@@ -69,14 +70,11 @@
         </div>
       <% end %>
       <div>
-        <%= f.submit "Update", :class => 'orange_button'  %>
+        <%= f.submit "Update", :class => 'orange_button'  %> <span id="saving_success"></span>
       </div>
       <ul id="errors"></ul>
     </div>
   <% end %>
-</div>
-<div id="dialog-message">
-  <p>Your changes to your profile have been saved.</p>
 </div>
 
 <%= javascript_include_tag 'profile' %>

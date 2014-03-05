@@ -1,0 +1,84 @@
+<%= javascript_include_tag "search" %>
+<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places" %>
+<div id="home_full_background">
+  <div id="milan" class="sliding_images"></div>
+  <div id="cafe" class="sliding_images"></div>
+  <div id="bike" class="sliding_images"></div>
+  <div id="fishing" class="sliding_images"></div>
+  <div id="walking" class="sliding_images"></div>
+</div>
+
+<div id="main_search">
+  <div id="header">
+    <div class="home_top_left">
+      <h2 id="home_logo">
+        CITY BIRD<br>
+        .co
+      </h2>
+    </div>
+      <div id="tagline">a friend in every city</div>
+
+      <% if current_user %>
+        <% if current_user.is_ambassador == false %>
+          <%= link_to dashboard_path, :data => {no_turbolink: true} do %><span id="open_menu"><%= image_tag 'dashboard.png', :class => 'home_top_right', :id=> 'dashboard'  %></span><% end %>
+        <% else %>
+          <%= link_to '#' do %><span id="open_menu"><%= image_tag 'left_arrow.png', :class => 'home_top_right', :id=> 'home_drop_down_toggle'  %></span><% end %>
+          <div id="home_dropdown" class="hide">
+            <%= link_to dashboard_path, :data => {no_turbolink: true} do %><span id="open_menu"><%= image_tag 'dashboard.png', :class => 'home_top_right', :id=> 'dashboard'  %></span><% end %>
+            <%= link_to new_user_tour_path(current_user.id), :data => {no_turbolink: true} do %><span id="open_menu"><%= image_tag 'pin.png', :class => 'home_top_right', :id=> 'world'  %></span><% end %>
+          </div>
+        <% end %>
+        <% else %>
+          <%= link_to "/auth/facebook", id: "sign_in" do %>
+          <span id="home_facebook_icon" class="home_top_right facebook" style="background-image:url(<%= asset_path 'facebook.png' %>)"></span>
+          <% end %>
+        <% end %>
+
+  </div>
+
+  <div id="search_container">
+
+
+    <%= form_tag search_path, method: :get, id: 'search_form' do %>
+
+
+      <input id="pac-input" class="controls" type="text" placeholder="Where are you going?">
+
+      <input id='initial_bounds' type='hidden' name='initial_bounds' value=''>
+
+
+      <input type="text" name="start_date" onfocus="this.blur()" class="date_picker" data-behaviour='datepicker' id="starting_date"><span class="icon_container"><span class="calendar_icon"></span></span>
+      <input type="text" name="end_date" onfocus="this.blur()" class="date_picker" data-behaviour='datepicker' id="ending_date"><span class="icon_container"><span class="calendar_icon"></span></span>
+      <button id="search_button">Search</button>
+    <% end %>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('[data-behaviour~=datepicker]').datepicker({
+      format: "MM dd yyyy",
+      autoclose: true,
+      minDate: 0,
+      maxDate: '+3m',
+    });
+  })
+
+  // HOME DROPDOWN
+  $("#home_drop_down_toggle").on('click',function(e){
+    e.preventDefault();
+    console.log(e.target.id);
+    $("#home_dropdown").toggleClass('hide');
+    $("#home_drop_down_toggle").toggleClass('flip_background_image_h');
+  });
+
+  $(document).on('click',function(e){
+    if(e.target.id !== "home_drop_down_toggle"){
+      $("#home_dropdown").addClass('hide');
+      $("#home_drop_down_toggle").removeClass('flip_background_image_h')
+    }
+  });
+</script>
+
+<%= javascript_include_tag 'facebook' %>
+

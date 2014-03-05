@@ -8,9 +8,15 @@ require 'faker'
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-s1 = Specialty.create!(specialty: "History")
+s1 = Specialty.create!(specialty: "Culture")
 s2 = Specialty.create!(specialty: "Nightlife")
-s3 = Specialty.create!(specialty: "Food")
+s3 = Specialty.create!(specialty: "Food and Drink")
+
+Specialty.create!(specialty: "Special Events")
+Specialty.create!(specialty: "Art"
+Specialty.create!(specialty: "Adventure")
+Specialty.create!(specialty: "Navigator")
+Specialty.create!(specialty: "Music")
 
 l1 = Language.create!(language: "English")
 l2 = Language.create!(language: "Spainish")

@@ -1,4 +1,6 @@
 class ToursController < ApplicationController
+  skip_before_action :require_login, only: [:index]
+
   def edit
     puts params
   end
@@ -51,13 +53,9 @@ class ToursController < ApplicationController
   end
 
   def index
-    if current_user
-      @ambassador = User.find(params[:user_id])
-      @start_date = session[:start_date]
-      @end_date = session[:end_date]
-    else
-      redirect_to '/auth/facebook/callback'
-    end
+    @ambassador = User.find(params[:user_id])
+    @start_date = session[:start_date]
+    @end_date = session[:end_date]
   end
 
   private

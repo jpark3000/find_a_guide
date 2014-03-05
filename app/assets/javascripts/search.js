@@ -11,6 +11,12 @@ $(document).ready(function() {
     $('#initial_bounds').val(bounds.toString());
   });
 
+  // google.maps.event.addDomListener(window, "resize", function() {
+  //  var center = map.getCenter();
+  //  google.maps.event.trigger(map, "resize");
+  //  map.setCenter(center);
+  // });
+
 
   //   if (!place.geometry) return;
 
@@ -53,7 +59,7 @@ $(document).ready(function() {
 //     // map.setCenter(place.geometry.location);
 //     // map.setZoom(16);
 //   };
-  
+
 // });
 
 //     }
@@ -72,10 +78,10 @@ $(document).ready(function() {
   // });
 
 
-  
 
 
-  
+
+
 
 
 

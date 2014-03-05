@@ -15,7 +15,7 @@ $( document ).ready(function() {
           var limit5 = response.data.slice(0, 5);
 
           // Create HTML formString for modal
-          var formString = '<h2 id="super_modal_h2">Pick a new profile picture!!!</h2>'
+          var formString = '<h2 id="super_modal_h2">Pick a new profile picture</h2>'
 
           // Add to formString
           $.each( limit5, function ( key, value ){

@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
   end
 
   def return_point
-    session[:return_point] ? session[:return_point] : root_path
+    session[:return_point] ? session[:return_point] : :back
   end
 
   def set_return_point(path, overwrite = false)
