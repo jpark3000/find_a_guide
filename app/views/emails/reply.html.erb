@@ -1,3 +1,8 @@
 <% @body.each do |line| %>
 <p><%= line %></p>
 <% end %>
+<p><%=@signature%><p>
+<%=link_to(root_url) do %>
+  <h3 style="font-family:'Dosis',sans-serif;font-weight:800;">Sent by City Bird</h3>
+<% end %>
+
