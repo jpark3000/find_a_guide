@@ -2,7 +2,12 @@
   <div id="nav_container">
     <h2 id="nav_logo"><%= link_to 'CITYBIRD.co', root_path, data: {no_turbolink: true} %></h2>
     <span id="right_hand_navbar">
-      <% if current_user %>
+      <% if current_user.is_ambassador == false %>
+        <%= link_to dashboard_path, :data => {no_turbolink: true} do %><span id="user_dashboard_icon"><%= image_tag 'dashboard.png', :class => 'navbar_icon' %></span><% end %>
+        <div id="nav_image_container">
+          <span id="nav_profile_pic" style="background-image:url('<%= current_user.profile_pic %>')"></span>
+        </div>
+      <% elsif %>
         <%= link_to new_user_tour_path(current_user.id), data: {no_turbolink: true} do %><span id="user_manage_tour_icon"><%= image_tag 'globe.png', :class => 'navbar_icon' %></span><% end %>
         <%= link_to dashboard_path, :data => {no_turbolink: true} do %><span id="user_dashboard_icon"><%= image_tag 'dashboard.png', :class => 'navbar_icon' %></span><% end %>
         <div id="nav_image_container">
@@ -10,7 +15,7 @@
         </div>
       <% else %>
         <%= link_to "/auth/facebook", id: "sign_in" do %>
-        <span id="nav_profile_pic" class="nav_facebook_icon" style="background-image:url('<%= '/assets/facebook.png' %>')"></span>
+        <span id="nav_profile_pic" class="nav_facebook_icon" style="background-image:url(<%= asset_path 'facebook.png' %>)"></span>
         <% end %>
       <% end %>
     </span>
@@ -20,7 +25,7 @@
 <div id="dropdown" class="hide">
   <ul>
     <% if session[:user_id] %>
-      <%= link_to edit_user_path(current_user) do %><li>Edit Profile</li><% end %>
+      <%= link_to edit_user_path(current_user), :data => {no_turbolink: true} do %><li>Edit Profile</li><% end %>
       <%= link_to signout_path, id: "sign_out", :data => {no_turbolink: true} do %><li>Logout</li><% end %>
     <% end %>
   </ul>

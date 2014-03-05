@@ -17,17 +17,22 @@
       </h2>
     </div>
       <div id="tagline">a friend in every city</div>
-    <% if current_user %>
-      <%= link_to '#' do %><span id="open_menu"><%= image_tag 'left_arrow.png', :class => 'home_top_right', :id=> 'home_drop_down_toggle'  %></span><% end %>
-    <div id="home_dropdown" class="hide">
-      <%= link_to dashboard_path, :data => {no_turbolink: true} do %><span id="open_menu"><%= image_tag 'dashboard.png', :class => 'home_top_right', :id=> 'dashboard'  %></span><% end %>
-      <%= link_to new_user_tour_path(current_user.id), :data => {no_turbolink: true} do %><span id="open_menu"><%= image_tag 'globe.png', :class => 'home_top_right', :id=> 'world'  %></span><% end %>
-    </div>
-    <% else %>
-      <%= link_to "/auth/facebook", id: "sign_in" do %>
-      <span id="home_facebook_icon" class="home_top_right facebook" style="background-image:url('<%= '/assets/facebook.png' %>')"></span>
-      <% end %>
-    <% end %>
+
+      <% if current_user %>
+        <% if current_user.is_ambassador == false %>
+          <%= link_to dashboard_path, :data => {no_turbolink: true} do %><span id="open_menu"><%= image_tag 'dashboard.png', :class => 'home_top_right', :id=> 'dashboard'  %></span><% end %>
+        <% else %>
+          <%= link_to '#' do %><span id="open_menu"><%= image_tag 'left_arrow.png', :class => 'home_top_right', :id=> 'home_drop_down_toggle'  %></span><% end %>
+          <div id="home_dropdown" class="hide">
+            <%= link_to dashboard_path, :data => {no_turbolink: true} do %><span id="open_menu"><%= image_tag 'dashboard.png', :class => 'home_top_right', :id=> 'dashboard'  %></span><% end %>
+            <%= link_to new_user_tour_path(current_user.id), :data => {no_turbolink: true} do %><span id="open_menu"><%= image_tag 'globe.png', :class => 'home_top_right', :id=> 'world'  %></span><% end %>
+          </div>
+        <% end %>
+        <% else %>
+          <%= link_to "/auth/facebook", id: "sign_in" do %>
+          <span id="home_facebook_icon" class="home_top_right facebook" style="background-image:url(<%= asset_path 'facebook.png' %>)"></span>
+          <% end %>
+        <% end %>
 
   </div>
 

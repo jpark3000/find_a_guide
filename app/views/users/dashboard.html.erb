@@ -17,7 +17,7 @@
                 </p>
               </p>
               <p class="card_time">
-                <%= m.date_time.to_formatted_s(:upcoming_date) %> - 
+                <%= m.date_time.to_formatted_s(:upcoming_date) %> -
                 <%= m.address %>
               </p>
               <p class="card_despcription">
@@ -46,7 +46,7 @@
                 </p>
               </span>
             </div>
-          <% end %>      
+          <% end %>
         <% end %>
       </div>
     <% end %>
@@ -58,7 +58,7 @@
           Your profile still needs some information
         </span>
         <% @user.incomplete_information.each do |i| %>
-          <%= link_to edit_user_path(@user) do %>
+          <%= link_to edit_user_path(@user), :data => {no_turbolink: true} do %>
             <p>Add your <%= i %></p>
           <% end %>
         <% end %>
@@ -149,4 +149,4 @@
     </div>
   </div>
 </div>
-<%= javascript_include_tag 'dashboard' %>  
+<%= javascript_include_tag 'dashboard' %>
