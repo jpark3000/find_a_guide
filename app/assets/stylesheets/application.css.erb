@@ -62,7 +62,7 @@ input[type=text] {
   border-radius: 4px;
   font-size: 14px;
   height: 19px;
-  line-height: 30px;
+  line-height: 16px;
   margin-top: 2px;
   padding: 3px 12px;
   vertical-align: top;
@@ -126,6 +126,8 @@ nav {
   position: absolute;
   top: 0;
   width: 100%;
+  z-index: 1;
+  box-shadow: 0 0 5px #555;
 }
 
 #nav_container {
@@ -848,6 +850,10 @@ input[value="Unavailable"] {
   margin-bottom:30px;
 }
 
+.create_tours {
+  padding: 75px 0 0 30px;
+  text-align: center;
+}
 
 /*TOURS VIEW*/
 
@@ -859,7 +865,6 @@ input[value="Unavailable"] {
 /* AMBASSADOR PLACE TOURS */
 
 #ambassador_availability {
-  padding: 30px;
   text-align: center;
 }
 
@@ -983,6 +988,10 @@ input[value="Unavailable"] {
 
 #edit_profile_name {
   margin-bottom: 10px !important;
+}
+
+#ambassador_profile {
+  padding-top: 0 !important;
 }
 
 
@@ -1222,4 +1231,5 @@ input[value="Unavailable"] {
 
 #availability_form{
   display: none;
+  padding-left: 30px;
 }

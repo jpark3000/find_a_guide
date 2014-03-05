@@ -92,6 +92,8 @@ AjaxSubmit.prototype.saveData = function (data) {
             self.$el.find("span").html(response.current_status);
             self.$el.find("input[type='submit']").val(response.new_status);
             self.$el.find("#availability").val(response.new_value);
+            console.log(response.new_value);
+            $(".create_tours").toggleClass('hide');; 
           },
           dataType: 'json'
     });

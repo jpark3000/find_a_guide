@@ -10,11 +10,12 @@
             <span id="nav_profile_pic" style="background-image:url('<%= current_user.profile_pic %>')"></span>
           </div>
         <% else %>
-          <span id="nav_search" class="navbar_icon">
+<!--           <span id="nav_search" class="navbar_icon">
             <span id="search_icon"><%= image_tag 'globe.png', :class => 'navbar_icon', :id => 'globe' %></span>
             <input id="pac-input" class="controls nav_search_input hide" type="text" placeholder="Search...">
             <input id='initial_bounds' type='hidden' name='initial_bounds' value=''>
-          </span>
+          </span> -->
+          <%= link_to search_path, data: {no_turbolink: true} do %><span id="search_icon"><%= image_tag 'globe.png', :class => 'navbar_icon' %></span><% end %>
           <%= link_to new_user_tour_path(current_user.id), data: {no_turbolink: true} do %><span id="user_manage_tour_icon"><%= image_tag 'pin.png', :class => 'navbar_icon' %></span><% end %>
           <%= link_to dashboard_path, :data => {no_turbolink: true} do %><span id="user_dashboard_icon"><%= image_tag 'dashboard.png', :class => 'navbar_icon' %></span><% end %>
           <div id="nav_image_container">
