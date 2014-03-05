@@ -80,7 +80,6 @@ class User < ActiveRecord::Base
       user.profile_pic = user.profile_pic ||= "http://graph.facebook.com/#{auth.extra.raw_info.id}/picture?type=large"
 
       user.username = auth.extra.raw_info.username
-      binding.pry
       user.save!
     end
   end
