@@ -123,8 +123,8 @@ class UsersController < ApplicationController
 
   def ambassador_availability_toggle
     current_user.update(ambassador_availability: params[:availability])
-    current_user.ambassador_availability ? current_status = 'You are currently Available' : current_status = 'You are currently Unavailable'
-    current_user.ambassador_availability ? new_status = 'Set status to Unavailable' : new_status = 'Set status to Available'
+    current_user.ambassador_availability ? current_status = 'Unavailable' : current_status = 'Available'
+    current_user.ambassador_availability ? new_status = 'Available' : new_status = 'Unavailable'
     current_user.ambassador_availability ? new_value = false : new_value = true
     respond_to do |format|
         format.json{ render :json => {current_status: current_status, new_status: new_status, new_value: new_value}}
