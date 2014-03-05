@@ -172,7 +172,6 @@
         return $('.vex-loading-spinner').remove();
       },
       showLoading: function() {
-        vex.hideLoading();
         return $('body').append("<div class=\"vex-loading-spinner " + vex.defaultOptions.className + "\"></div>");
       }
     };

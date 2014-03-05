@@ -1,46 +1,53 @@
-<div id="ambassador">
-  <div id="ambassador_first_name"><%= @ambassador.first_name %></div>
-  <div id="ambassador_last_name"><%= @ambassador.last_name %></div>
-  <div id="ambassador_tag_line"><%= @ambassador.tagline %></div>
-  <div id="ambassador_rating"><%= @ambassador.average_rating(:ambassador) %></div>
-  <% @ambassador.specialties.each do |s| %>
-    <span class="specialty"><%= s.specialty %></span>
-  <% end %>
-</div>
-
-<div id="ambassador_info">
-  <h2 id="ambassador_bio_title">Bio:</h2>
-  <div id="ambassador_bio">
-    <%= @ambassador.bio %>
-  </div>
-</div>
-
-<% if current_user %>
-  <%= form_tag({controller: "emails", action: "new_request"}, method: "post", id: 'contact') do %>
-    <input type="text" name='start_date' onfocus="this.blur()" class="date_picker" data-behaviour='datepicker' id="starting_date" value="<%=@start_date%>"><span class="icon_container"><span class="calendar_icon contact_ambassador"></span></span>
-    <%=hidden_field_tag 'ambassador_id', @ambassador.id%>
-    <%= submit_tag "Contact", :class => "orange_button" %>
-  <% end %>
-<% else %>
-  <%= link_to "/auth/facebook", id: "sign_in", :popup => true do %>
-      <%= submit_tag "Connect with Facebook to Contact", :class => "orange_button" %>
-  <% end %>
-<% end %>
-
-<% if @ambassador.tours.size > 1 %>
-  <div id="more_tours">
-    <h3>See <%= @ambassador.first_name %>'s tours:</h3>
-    <% @ambassador.tours.each do |t| %>
-      <h2 id="tour_info_title">This tour's info:</h2>
-      <div id="tour_description">
-        <%= t.description %>
-      </div>
+<div id="ambassador_container">
+  <div id="ambassador">
+    <span id="ambassador_photo" style="background:url(<%= @ambassador.profile_pic %>)"></span>
+    <span id="ambassador_info">
+      <h2 id="ambassador_name"><%= @ambassador.name %></h2>
+      <p id="ambassador_tag_line"><%= @ambassador.tagline %></p>
+      <p id="ambassador_rating"><%= @ambassador.average_rating(:ambassador) %><br></p>
+    </span>
+    <% @ambassador.specialties.each do |s| %>
+      <span class="specialty"><%= s.specialty %></span>
     <% end %>
   </div>
-<% end %>
 
-<div id="dialog-message" title="Ambassador Contacted">
-  <p>An email has been sent to the ambassador.  You should receive a response shortly.</p>
+    <h2 id="ambassador_bio_title">Bio:</h2>
+    <div id="ambassador_bio">
+      <%= @ambassador.bio %>
+    </div>
+
+  <% if current_user %>
+    <%= form_tag({controller: "emails", action: "new_request"}, method: "post", id: 'contact') do %>
+      <div id="date_indicator"></div>
+      <input type="text" name='start_date' onfocus="this.blur()" class="date_picker" data-behaviour='datepicker' id="contact_starting_date" value="<%=@start_date%>"><span class="icon_container"><span class="calendar_icon contact_ambassador"></span></span>
+      <%=hidden_field_tag 'ambassador_id', @ambassador.id%><br>
+      <%= submit_tag "Contact", :class => "orange_button", :id => 'contact_ambassador_button' %>
+    <% end %>
+  <% else %>
+    <%= link_to "/auth/facebook", id: "sign_in", :popup => true do %>
+        <%= submit_tag "Connect with Facebook to Contact", :class => "orange_button" %>
+    <% end %>
+  <% end %>
+
+  <% if @ambassador.tours.size > 1 %>
+  <div class="divider"></div>
+  <hr>
+    <div id="more_tours">
+      <h3>See <%= @ambassador.first_name %>'s tours:</h3>
+      <% @ambassador.tours.each do |t| %>
+        <h2 id="tour_info_title">This tour's info:</h2>
+        <div id="tour_description">
+          <%= t.description %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div id="dialog-message" title="Ambassador Contacted">
+    <p>An email has been sent to the ambassador.  You should receive a response shortly.</p>
+  </div>
 </div>
 
 <%= javascript_include_tag 'contact' %>
+<%= javascript_include_tag 'facebook' %>
+
