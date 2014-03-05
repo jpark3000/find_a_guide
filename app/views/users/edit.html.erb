@@ -2,7 +2,7 @@
 <script>
   window.fbAsyncInit = function() {
     FB.init({
-      appId      : '<%=ENV['FACEBOOK_APP_ID']%>',
+      appId      : '372074249602099',
       status     : true,
       xfbml      : true
     });
@@ -25,12 +25,12 @@
 <div class="user_info">
   <%= form_for(@user) do |f| %>
     <span class="user_pic" style="background-image: url('<%= @user.profile_pic %>')">
-      <p id='avatar_selector' style='color: yellow'>Change Picture</p>
+      <p id='avatar_selector'>Change Picture</p>
     </span>
     <div id="right_of_picture">
-      <div class="user_name">
+      <h2 class="user_name" id="edit_profile_name">
         <%= @user.name %>
-      </div>
+      </h2>
       <div class="user_email">
         <%= f.text_field :email, :placeholder => 'email' %>
       </div>
@@ -56,8 +56,7 @@
         <hr/>
         <div class="ambassador_info">
           <div id="choose_specialties">
-            <h2>Ambassador</h2>
-            <h2 id="specialties_title">Specialties:</h2>
+            <p id="specialties_title">Ambassador Specialties:</p>
             <div id="specialties">
             <% @specialties.each do |s| %>
               <div class="specialty">
@@ -70,7 +69,7 @@
         </div>
       <% end %>
       <div>
-        <%= f.submit %>
+        <%= f.submit "Update", :class => 'orange_button'  %>
       </div>
       <ul id="errors"></ul>
     </div>

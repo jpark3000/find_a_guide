@@ -1,23 +1,40 @@
 <div id="meetup_header_stretch_map_canvas"></div>
-  <%= form_for [@ambassador, @meetup] do |f| %>
+  <%= form_for [current_user, @meetup] do |f| %>
   <div class="meetup_info">
     <h3>Your meetup with:</h3>
-    <% s = 'ambassador' %>
     <div id="meetup_participants">
       <div class="meetup_card">
         <span class="meetup_pic" style="background-image: url('<%= @visitor.profile_pic %>')"></span>
         <div id="right_of_picture">
           <h2><%= @visitor.name %></h2>
-          <% @visitor_attributes.each do |a| %>
-            <span class="user_info"><%= a %></span>
+          <% if @visitor.email %>
+            <p class="meetup_email user_info"><%= @visitor.email %></p>
           <% end %>
-          <%= f.date_select :date_time %>
-          <%= f.text_area :meetup_notes %>
-          <%= f.submit %>
+          <% if @visitor.phone %>
+            <p class="meetup_phone user_info"><%= @visitor.phone %></p>
+          <% end %>
+          <span class="user_info">
+            <% if @visitor.gender %>
+              <span class="meetup_gender"><%= @visitor.gender %></span>
+            <% end %>
+            <% if @visitor.age %>
+              <span class="meetup_age"> - <%= @visitor.age %></span>
+            <% end %>
+          </span>           
         </div>
-
+        <input type="text" name="start_date" onfocus="this.blur()" class="date_picker" data-behaviour='datepicker' id="meetup_date"><span class="icon_container"><span class="calendar_icon meetup_icon"></span></span>
+        <%= f.text_area :meetup_notes %>
+        <%= f.submit 'Update', :id => 'update_meetup', :class => 'orange_button' %>
+      </div>
     </div>
   <% end %>
 </div>
 <ul id="errors"></ul>
 <%= javascript_include_tag 'ajax' %>
+
+<script type="text/javascript">
+    $('[data-behaviour~=datepicker]').datepicker({
+      format: "MM dd yyyy",
+      autoclose: true,
+    });
+</script>

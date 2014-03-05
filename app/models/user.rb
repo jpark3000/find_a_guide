@@ -31,10 +31,6 @@ class User < ActiveRecord::Base
 		"#{rand(5)} stars"
 	end
 
-  # def profile_pic(uid = self.uid)
-  #   return "http://graph.facebook.com/#{uid}/picture?type=large"
-  # end
-
   def open_information
     [email,phone,gender,age]
   end
