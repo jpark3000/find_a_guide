@@ -51,7 +51,7 @@ class User < ActiveRecord::Base
   def average_rating(type)
     ratings = all_ratings(type)
     if ratings.empty?
-      return false
+      return 'No Ratings Yet!'
     else
       (ratings.order('created_at').map{|r| r.rating.to_i}.reduce(:+) / ratings.count.to_f).round(2)
     end
