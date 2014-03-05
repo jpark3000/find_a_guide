@@ -6,6 +6,7 @@
   <div id="visitor_profile" class="section">
     <div class="profile_section">
       <h4 class="profile_tours_title">Upcoming Meetups</h4>
+      <%= "You have no upcoming meetups" if @visitor_meetups.size < 1 %>
       <% @visitor_meetups.each do |m| %>
         <%= link_to user_meetup_path(m.ambassador,m) do %>
           <div class="card">
@@ -114,7 +115,7 @@
           <% end %>
         </div>
       <% else %>
-        <h3 class="profile_section_title">Ratings:</h3>
+        <h4 class="profile_section_title">Ratings:</h4>
         <p>You have no ratings</p>
       <% end %>
     </div>

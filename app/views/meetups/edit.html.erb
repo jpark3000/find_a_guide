@@ -1,5 +1,5 @@
 <div id="meetup_header_stretch_map_canvas"></div>
-  <%= form_for [@ambassador, @meetup] do |f| %>
+  <%= form_for [current_user, @meetup] do |f| %>
   <div class="meetup_info">
     <h3>Your meetup with:</h3>
     <div id="meetup_participants">
