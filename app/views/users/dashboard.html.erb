@@ -83,7 +83,7 @@
       <% end %>
     </div>
 
-    <% if current_user.tours.size == 0 %>
+    <% if current_user.is_ambassador && current_user.tours.size == 0 %>
       <div class="profile_section create_tours <%= "hide" if current_user.ambassador_availability == false %>">
         <p id="no_tours">You don't have any tours.</p>
         <%= link_to "Create a Tour", new_user_tour_path(current_user), :class =>"orange_button", :id => 'create_tour_button', :data => {no_turbolink: true} %>
