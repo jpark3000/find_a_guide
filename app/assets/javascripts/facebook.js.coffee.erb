@@ -13,7 +13,7 @@ window.fbAsyncInit = ->
   $('#sign_in').click (e) ->
     e.preventDefault()
     FB.login ((response) ->
-      self.location = '/auth/facebook/callback' if response.authResponse), scope: "email,user_photos,user_birthday"
+      self.location = '/auth/facebook/callback' if response.authResponse), scope: "email,user_photos"
 
   $('#sign_in_guide_profile').click (e) ->
     e.preventDefault()

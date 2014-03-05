@@ -49,6 +49,14 @@ class User < ActiveRecord::Base
     hash = self.attributes.select{|k,v| v.nil? && possible_incomplete_attributes.include?(k)}.keys
   end
 
+  def safe_tagline
+    if tagline.nil?
+      ""
+    else
+      tagline
+    end
+  end
+
   def average_rating(type)
     ratings = all_ratings(type)
     if ratings.empty?

@@ -1,7 +1,20 @@
  $(document).ready(function(){
 
+  $("#dialog-message").dialog({
+      modal: true,
+      dialogClass: "no-close",
+      autoOpen: false,
+      buttons: {
+        Ok: function() {
+          $( this ).dialog( "close" );
+          window.location.href = '/dashboard';
+        }
+      }
+    });
+
   $("form").submit(function(e){
     e.preventDefault();
+
     $("#errors").empty();
     var url = $('form').attr('action');
     var method = $('form').attr('method');
@@ -35,6 +48,6 @@ var checkError = function (response) {
     });
   }
   else{
-    window.location.href = response.new_url;
+    $("#dialog-message").dialog('open');
   }
 }
