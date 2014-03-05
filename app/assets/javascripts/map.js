@@ -2,36 +2,40 @@
 var Tour = function() {
   this.template = $("<div class='tour_desc'>\
                       <span id='message'></span>\
-                      <div class='tour_text' contenteditable='true'></div>\
-                      <span class='tour_creation_link' id='remove_marker'>Delete</span>\
+                      <textarea class='tour_text'></textarea>\
+                      <div id='controls'>\
+                      <span class='tour_creation_link' id='remove_marker'>Remove Marker</span>\
                       <span class='tour_creation_link' id='new_tour_button'>Save</span>\
                       <span class='tour_creation_link' id='edit_tour'>Edit</span>\
+                      </div>\
                     </div>")
 };
 
 Tour.prototype.createdTour = function(description) {
-  this.template.find('.tour_text').html(description);
-  this.template.find('.tour_text').attr('contenteditable', false);
+  this.template.find('.tour_text').val(description);
+  this.template.find('.tour_text').attr('readonly', true);
   this.template.find('#remove_marker').hide();
   this.template.find('#new_tour_button').hide();
   this.template.find('.tour_text').css('background-color', 'white')
-  return this
+  return this;
 };
 
 Tour.prototype.editTour = function(tour_id) {
-  var self = this
+  var self = this;
   this.template.find('#edit_tour').on('click', function() {
-    self.template.find('.tour_text').attr('contenteditable', true);
+    console.log('asdfas')
+    self.template.find('.tour_text').attr('readonly', false);
     self.template.find('#new_tour_button').show();
-    self.saveTour(tour_id)
+    self.saveTour(tour_id);
   });
 };
 
 Tour.prototype.saveTour = function(tour_id) {
-  var self = this
+  var self = this;
   this.template.find('#new_tour_button').on('click', function() {
-    var newDesc = self.template.find('.tour_text').html()
-    console.log(newDesc);
+
+    var newDesc = self.template.find('.tour_text').val();
+
     $.ajax({
       url: '/users/' + gon.id + '/tours/' + tour_id,
       type: 'PATCH',
@@ -42,7 +46,7 @@ Tour.prototype.saveTour = function(tour_id) {
         self.template.find('#message').html(response.message);
         self.template.find('#message').show();
         self.template.find('#message').fadeOut(1500);
-        self.template.find('.tour_text').html(newDesc);
+        self.template.find('.tour_text').val(newDesc);
         self.createdTour(newDesc);
       });
   });
@@ -50,7 +54,7 @@ Tour.prototype.saveTour = function(tour_id) {
 
 Tour.prototype.createTour = function() {
   this.template.find('#edit_tour').hide();
-  return this.template[0]
+  return this
 };
 
 // var UserTour = function(description) {
@@ -82,7 +86,6 @@ var marker_id = 0
 
 $(document).ready(function() {
   // var userId = $('#availablity_title').data('id')
-  console.log(gon.id);
 	var map;
 
   var mapOptions = {
@@ -150,17 +153,17 @@ $(document).ready(function() {
       var m_index = user_marker.get("id");
       user_markers.push(user_marker);
 
-      var iw = new Tour().createTour()
+      var iw = new Tour()
 
-      var infowindow = new google.maps.InfoWindow({content : iw });
+      var infowindow = new google.maps.InfoWindow({content : iw.createTour().template[0] });
 
       $(infowindow.content).find('#remove_marker').on('click', function() { user_marker.setMap(null); user_marker=null });
 
       $(infowindow.content).find('#new_tour_button').on('click', function(e) {
-        console.log('burgers')
-        e.preventDefault();
+        // e.preventDefault();
+        console.log('sadfsdfds')
         var data = {tour: {
-                            description: $($($(this).parent()[0]).find('.tour_text')[0]).html(),
+                            description: iw.template.find('.tour_text').val(),
                             latitude: user_marker.position['d'],
                             longitude: user_marker.position['e']
                           }
@@ -168,13 +171,12 @@ $(document).ready(function() {
 
         $.post('/users/' + gon.id + '/tours', data, function(response) {
           if (response.success) {
-            // $('body').append('<p>' + response.message + '</p>');
-            $(infowindow.content).find('.tour_text').attr('contenteditable', false);
-            $(infowindow.content).find('.tour_text').css('background-color', 'white');
-            $(infowindow.content).find('#new_tour_button').hide();
-            $(infowindow.content).find('#remove_marker').hide();
-            $(infowindow.content).find('#edit_tour').show();
-            user_marker.setIcon(image);
+            iw.template.find('.tour_text').attr('readonly', true);
+            iw.template.find('.tour_text').css('background-color', 'white');
+            iw.template.find('#new_tour_button').hide();
+            iw.template.find('#remove_marker').hide();
+            iw.template.find('#edit_tour').show();
+            iw.editTour(response.tour_id)
           } else {
             $('body').append('<p>' + response.message + '</p>');
           };
