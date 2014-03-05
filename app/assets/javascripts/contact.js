@@ -37,13 +37,8 @@ AjaxSubmit.prototype.convertFormToJSON = function (){
 }
 
 AjaxSubmit.prototype.confirmAction = function () {
-  $("#saving_success").hide().fadeIn().html(" Your changes were saved successfully")
-
-  var fade_out = function() {
-    $("#saving_success").fadeOut().empty();
-  }
-
-  setTimeout(fade_out, 5000);
+  var dialog = new Dialog($( "#dialog-message" ), $("#contact"));
+  dialog.show();
 }
 
 
