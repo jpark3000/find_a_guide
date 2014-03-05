@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
   validates :email, :uid, uniqueness: true
 
   after_create :create_alias_email
+  before_create :set_default_availability
 
 	def name
  		"#{first_name} #{last_name}"
@@ -46,6 +47,14 @@ class User < ActiveRecord::Base
   def incomplete_information
     possible_incomplete_attributes = ['tagline','bio','email','phone','gender','age']
     hash = self.attributes.select{|k,v| v.nil? && possible_incomplete_attributes.include?(k)}.keys
+  end
+
+  def safe_tagline
+    if tagline.nil?
+      ""
+    else
+      tagline
+    end
   end
 
   def average_rating(type)
@@ -84,12 +93,15 @@ class User < ActiveRecord::Base
     end
   end
 
+  private
 
   def create_alias_email
     self.anonymous_email = 'user' + self.id.to_s + Time.now.to_i.to_s + '@sandbox57336.mailgun.org'
     self.save
   end
 
-
+  def set_default_availability
+    self.ambassador_availability = true;
+  end
 end
 

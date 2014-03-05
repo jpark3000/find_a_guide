@@ -45,6 +45,13 @@ class ToursController < ApplicationController
     end
   end
 
+  def destroy
+    Tour.destroy(params[:tour_id])
+    respond_to do |format|
+      render :json => {message: "Tour Deleted"}
+    end
+  end
+
   def index
     @ambassador = User.find(params[:user_id])
     @start_date = session[:start_date]
