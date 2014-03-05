@@ -1,4 +1,4 @@
-<%= javascript_include_tag "search_results" %>
+  <%= javascript_include_tag "search_results" %>
 <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places" %>
 <%= javascript_include_tag 'facebook' %>
 
@@ -22,7 +22,7 @@
       <% end %>
     </div>
   </div>
-
+  <div id="no_ambassadors"></div>
   <%= render partial: "search_results_list" %>
 
   <div id="home_marketing"></div>

@@ -1,11 +1,13 @@
 .super_modal_form_styling {
-/*  margin: 0;
-  padding: 0;*/
   display: inline;
   margin: 5px;
 }
 
 #super_modal_h2 {
-  text-align: center;
-  font-family: 'Abril Fatface';
+	font-family: 'Open Sans',sans-serif;
+	font-size: 15px;
+	line-height: 23px;
+	font-size: 1.25em;
+    padding: 20px 0;
+    font-weight: normal;
 }

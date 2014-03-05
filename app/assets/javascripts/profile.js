@@ -34,8 +34,12 @@ var checkError = function (response) {
     });
   }
   else{
-    var dialog = new Dialog($( "#dialog-message" ));
-    dialog.show();
+    $("#saving_success").hide().fadeIn().html(" Your changes were saved successfully");
+    var fade_out = function() {
+      $("#saving_success").fadeOut();
+    }
+
+    setTimeout(fade_out, 3000);
   }
 }
 
