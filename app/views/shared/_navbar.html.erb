@@ -15,7 +15,7 @@
             <input id="pac-input" class="controls nav_search_input hide" type="text" placeholder="Search...">
             <input id='initial_bounds' type='hidden' name='initial_bounds' value=''>
           </span> -->
-          <%= link_to search_path, data: {no_turbolink: true} do %><span id="search_icon"><%= image_tag 'globe.png', :class => 'navbar_icon' %></span><% end %>
+          <%= link_to '/search?utf8=✓&initial_bounds=%28%2818%2C+-120%29%2C+%2837%2C+141%29%29', data: {no_turbolink: true} do %><span id="search_icon"><%= image_tag 'globe.png', :class => 'navbar_icon' %></span><% end %>
           <%= link_to new_user_tour_path(current_user.id), data: {no_turbolink: true} do %><span id="user_manage_tour_icon"><%= image_tag 'pin.png', :class => 'navbar_icon' %></span><% end %>
           <%= link_to dashboard_path, :data => {no_turbolink: true} do %><span id="user_dashboard_icon"><%= image_tag 'dashboard.png', :class => 'navbar_icon' %></span><% end %>
           <div id="nav_image_container">
