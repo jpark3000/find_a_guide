@@ -20,38 +20,21 @@ class UsersController < ApplicationController
 
   def search
     points = []
-    
-    if params[:initial_bounds]
-      gon.bounds = params[:initial_bounds].gsub!(/\(+|\)+/, '').split(',').map! { |i| i.to_f }
-    end
-
+    gon.bounds = format_bounds(params[:initial_bounds]) if params[:initial_bounds]
     session[:start_date] = params[:start_date] if params[:start_date]
     session[:end_date]  = params[:end_date] if params[:end_date]
 
     @specialties = Specialty.all
-    @languages = Language.all
-
-
-
+    # @languages = Language.all
     respond_to do |format|
       if request.xhr?
-        params[:bounds] = params[:bounds].gsub!(/\(+|\)+/, '').split(',').map! { |i| i.to_f }
-
-        @tours = Tour.where(Geocoder::Sql.within_bounding_box(params[:bounds][0], params[:bounds][1],
-                                                                     params[:bounds][2], params[:bounds][3],
-                                                                     'latitude', 'longitude'))
-        @users = @tours.map { |tour| tour.ambassador }.uniq
-        # if params[:specialty_id]
-        #   @users.select( |u| u.specialties.map )
-        #   @users = @users.includes(:users_specialties).where("users_specialties.specialty_id" => params[:specialty_id])
-        # end
+        bounds = format_bounds(params[:bounds])
         
-
-
-
-        
-  
-        
+        @tours = Tour.where(Geocoder::Sql.within_bounding_box(bounds[0], bounds[1],
+                                                              bounds[2], bounds[3],
+                                                              'latitude', 'longitude'))
+        @users = get_unique_users_from_tours(@tours)
+ 
         @tours.each do |tour|
           points << tour.format_coordinates
         end
@@ -147,5 +130,11 @@ class UsersController < ApplicationController
     params.require(:user).permit(:email, :phone, :gender, :age, :bio, :tagline, :profile_pic)
   end
 
+  def format_bounds(bounds)
+    bounds.gsub!(/\(+|\)+/, '').split(',').map! { |i| i.to_f }
+  end
 
+  def get_unique_users_from_tours(tours)
+    tours.map { |tour| tour.ambassador }.uniq
+  end
 end

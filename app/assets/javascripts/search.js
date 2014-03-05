@@ -1,18 +1,15 @@
 
-$(document).ready(function() { 
+$(document).ready(function() {
+	var bounds;
   var input = (document.getElementById('pac-input'));
-  var searchBox = new google.maps.places.Autocomplete(input);
-  google.maps.event.addListener(searchBox, 'place_changed', function() {
-    var place = searchBox.getPlace();
-    var bounds = place.geometry.viewport;
+  var searchBox = new google.maps.places.SearchBox(input);
 
-    
-
-    $('#initial_bounds').val(bounds.toString());
-
-
+  google.maps.event.addListener(searchBox, 'places_changed', function() {
+  	var places = searchBox.getPlaces();
+  	$.each(places, function(i, place) {
+  		bounds = place.geometry.viewport;
+  	});
+  	$('#initial_bounds').val(bounds.toString());
   });
 
-  
-  
 });
