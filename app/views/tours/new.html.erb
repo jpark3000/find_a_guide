@@ -1,4 +1,3 @@
-
 <div id="how_to_tours" title="Thanks for being an Ambassador!">
   <p>To set up a tour, just place a pin where you want to show people around.</p>
   <p>Give the tour a small description so people know what to expect.</p>
@@ -10,6 +9,7 @@
 
 <div id="where_guide_title">Where can you be a guide?</div>
 <input id="pac-input-search" class="controls" type="text" placeholder="Search">
+<div id="help_to_modal">?</div>
 <div id="map-canvas" class="place_tours_map"></div>
 
 
@@ -38,5 +38,12 @@
       }
     });
   }
+
+  $('#help_to_modal').on('click',function(){
+    Dialog.prototype.show = function(){
+      this.$el.dialog('open');
+    }
+    dialog.show();
+  })
 
 </script>
