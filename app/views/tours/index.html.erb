@@ -24,9 +24,9 @@
       <%= submit_tag "Contact", :class => "orange_button", :id => 'contact_ambassador_button' %>
     <% end %>
   <% else %>
-    <%= link_to "/auth/facebook", id: "sign_in", :popup => true do %>
-        <%= submit_tag "Connect with Facebook to Contact", :class => "orange_button" %>
-    <% end %>
+    
+  <button class = "orange_button" id= "sign_in_guide_profile">Connect with Facebook to Contact</button>
+    
   <% end %>
 
   <% if @ambassador.tours.size > 1 %>
