@@ -1,4 +1,9 @@
 
+<div id="how_to_tours" title="Thanks for being an Ambassador!">
+  <p>To set up a tour, just place a pin where you want to show people around.</p>
+  <p>Give the tour a small description so people know what to expect.</p>
+  <p>Feel free to place more than one!</p>
+</div>
 
 
 
@@ -14,3 +19,24 @@
 
 <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places" %>
 <%= javascript_include_tag "map" %>
+
+<script>
+
+  var dialog = new Dialog($( "#how_to_tours" ));
+
+  function Dialog(el) {
+    this.$el = el;
+    var self = this;
+    this.$el.dialog({
+      modal: true,
+      dialogClass: "no-close",
+      autoOpen: <%= @ambassador.rusty? ? 'false' : 'true' %>,
+      buttons: {
+        Ok: function() {
+          $( this ).dialog( "close" );
+        }
+      }
+    });
+  }
+
+</script>

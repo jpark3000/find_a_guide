@@ -120,7 +120,7 @@
       <% end %>
 
       <% if current_user.is_ambassador %>
-        <% if @ambassador_overall_rating %>
+        <% if @ambassador_overall_rating != "No ratings" %>
           <div class="profile_section">
             <h4 class="profile_section_title">
               Your rating: <%= @ambassador_overall_rating %>
