@@ -7,11 +7,11 @@ class Email
   end
 
 
-  def self.new_request(sender, recipient, html, subject)
+  def self.new_request(sender, recipient, html, subject, reply_to)
     # text = strip_tags(html) 
 
     message = {:to => recipient.email, :html => html, :from => 'postmaster@sandbox57336.mailgun.org', 
-      :subject => subject, "h:Reply-To" => sender.anonymous_email}
+      :subject => subject, "h:Reply-To" => reply_to}
     self.send_message(message)
   end
 
