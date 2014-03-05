@@ -1,7 +1,7 @@
 $(document).ready(function(){
   var forms = new AmbassadorFormView($("#ambassador_overlay"),$("#availability_form"));
   forms.displayForms();
-}); 
+});
 
 function AmbassadorFormView (el1, el2){
   this.$el1 = el1;
@@ -30,6 +30,7 @@ function BeAmbassador(el1, el2){
 
   $("#become_ambassador").submit(function(e){
     e.preventDefault();
+    $('#user_manage_tour_icon').show();
     data = self.convertFormToJSON(this.$el);
     self.updateStatus(data);
   });
@@ -37,7 +38,7 @@ function BeAmbassador(el1, el2){
 
 BeAmbassador.prototype.convertFormToJSON = function (){
     var array = this.$el.serializeArray();
-    var json = {};   
+    var json = {};
     jQuery.each(array, function() {
         json[this.name] = this.value || '';
     });
@@ -74,7 +75,7 @@ function AjaxSubmit(el){
 
 AjaxSubmit.prototype.convertFormToJSON = function (){
     var array = this.$el.serializeArray();
-    var json = {};   
+    var json = {};
     jQuery.each(array, function() {
         json[this.name] = this.value || '';
     });
