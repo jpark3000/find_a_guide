@@ -39,7 +39,7 @@ class ToursController < ApplicationController
         if @tour.save
           render :json => {message: "SUCCESS!", success: true, tour_id: @tour.id}
         else
-          render :json => {message: "Unable to save post", success: false}
+          render :json => {message: "Unable to save post. Try entering a description!", success: false}
         end
       end
     end
@@ -48,7 +48,9 @@ class ToursController < ApplicationController
   def destroy
     Tour.destroy(params[:tour_id])
     respond_to do |format|
-      render :json => {message: "Tour Deleted"}
+      format.json do
+        render :json => {message: "Tour Deleted"}
+      end
     end
   end
 

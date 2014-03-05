@@ -1,10 +1,11 @@
-
+var tour_markers = {};
 var Tour = function() {
   this.template = $("<div class='tour_desc'>\
                       <span id='message'></span>\
-                      <textarea class='tour_text'></textarea>\
+                      <textarea class='tour_text' placeholder='Enter a description!'></textarea>\
                       <div id='controls'>\
                         <span class='tour_creation_link' id='remove_marker'>Remove Marker</span>\
+                        <span class='tour_creation_link' id='update_tour'>Update</span>\
                         <span class='tour_creation_link' id='new_tour_button'>Save</span>\
                         <span class='tour_creation_link' id='edit_tour'>Edit</span>\
                         <span class='tour_creation_link' id='delete_tour'>Delete Tour</span>\
@@ -18,6 +19,8 @@ Tour.prototype.createdTour = function(description) {
   this.template.find('#delete_tour').hide();
   this.template.find('#remove_marker').hide();
   this.template.find('#new_tour_button').hide();
+  this.template.find('#update_tour').hide();
+  this.template.find('#edit_tour').show();
   this.template.find('.tour_text').css('background-color', 'white')
   return this;
 };
@@ -29,7 +32,7 @@ Tour.prototype.editTour = function(tour_id) {
     self.template.find('#delete_tour').show();
     self.template.find('#edit_tour').hide();
     self.template.find('.tour_text').attr('readonly', false);
-    self.template.find('#new_tour_button').show();
+    self.template.find('#update_tour').show();
     self.updateTour(tour_id);
     self.deleteTour(tour_id);
   });
@@ -38,6 +41,8 @@ Tour.prototype.editTour = function(tour_id) {
 Tour.prototype.deleteTour = function(tour_id) {
   var self = this;
   this.template.find('#delete_tour').on('click', function() {
+    var confirmDelete = confirm('Are you sure you want to delete this tour?')
+    if (confirmDelete == true) {
     $.ajax({
       url: '/users/' + gon.id + '/tours/' + tour_id,
       type: 'DELETE',
@@ -45,14 +50,17 @@ Tour.prototype.deleteTour = function(tour_id) {
       dataType: 'json'
     })
       .done(function(response) {
-        console.log(response.message);
+        tour_markers[tour_id].setMap(null);
       });
+    } else {
+      return;
+    };
   });
 };
 
 Tour.prototype.updateTour = function(tour_id) {
   var self = this;
-  this.template.find('#new_tour_button').on('click', function() {
+  this.template.find('#update_tour').on('click', function() {
 
     var newDesc = self.template.find('.tour_text').val();
 
@@ -75,6 +83,7 @@ Tour.prototype.updateTour = function(tour_id) {
 Tour.prototype.createTour = function() {
   this.template.find('#edit_tour').hide();
   this.template.find('#delete_tour').hide();
+  this.template.find('#update_tour').hide();
   return this
 };
 
@@ -123,6 +132,7 @@ $(document).ready(function() {
     styles: styleOptions
   };
 
+  
   var user_markers = [];
   var info_windows = [];
   var userTourInfoWindows = []
@@ -139,7 +149,8 @@ $(document).ready(function() {
         animation: google.maps.Animation.DROP,
         tour_id: tour.id
       });
-
+      tour_markers[tour_marker.tour_id] = tour_marker
+      console.log(tour_markers)
       var userTour = new Tour()
 
       var infoWindow = new google.maps.InfoWindow({ content : userTour.createdTour(tour.desc).template[0] })
@@ -192,15 +203,18 @@ $(document).ready(function() {
 
         $.post('/users/' + gon.id + '/tours', data, function(response) {
           if (response.success) {
+            tour_markers[response.tour_id] = user_marker;
             iw.template.find('.tour_text').attr('readonly', true);
             iw.template.find('.tour_text').css('background-color', 'white');
             iw.template.find('#new_tour_button').hide();
             iw.template.find('#remove_marker').hide();
             iw.template.find('#edit_tour').show();
-            iw.template.find('#delete_tour').show();
+            iw.template.find('#delete_tour').hide();
             iw.editTour(response.tour_id)
           } else {
-            $('body').append('<p>' + response.message + '</p>');
+            $('#message').html(response.message);
+            $('#message').show();
+            $('#message').fadeOut(5000);
           };
         });
       });
