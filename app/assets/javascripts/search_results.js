@@ -67,7 +67,10 @@ $(document).ready(function() {
     streetViewControl: false,
     mapTypeControl: false,
     panControl: false,
-    zoomControlOptions: {style:google.maps.ZoomControlStyle.SMALL},
+    zoomControlOptions: {
+      style:google.maps.ZoomControlStyle.SMALL,
+      position:google.maps.ControlPosition.TOP_RIGHT
+    },
     styles: styleOptions
   };
 
