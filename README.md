@@ -3,7 +3,7 @@
 _Description:_
   - Make meaningful connections. Be an ambassador to your city. Make new memories with a new friend._
 _Deployed Test Site:_
-  - <a href='http://find-a-guide.herokuapp.comm'>City Bird</a>
+  - <a href='http://city-bird.herokuapp.com/'>City Bird</a>
   - Login: public_pnjzbca_tester@tfbnw.net
   - Password: 123456
 
@@ -36,6 +36,12 @@ _How do I, as a developer, start working on the project?_
   - Production - Gon, Geocoder, Dotenv-rails, Rest-client, Postgres
   - Development/Test - Shoulda-Matchers, FactoryGirl, Faker, Capybara
   - Those are the gems required, besides what Rails 4 comes with.
+  - The project uses the Mailgun and Facebook API, so you will need to obtain your own keys and place them in a .env.local file in your root directory:
+    - MAILGUN_API_KEY
+    - FACEBOOK_APP_ID
+    - FACEBOOK_SECRET
+    - DOMAIN (your domain for the site.  For local development it would be localhost of course.)
+  -Additionally, if using your own email, replace the citybird email with your own in the emails controller, meetups controller, and emails model.
 
 2. _How can I see the project working before I change anything?_
   - The usual way...
@@ -55,11 +61,9 @@ _How do I run the project's automated tests?_
 
 ### _How to setup the deployment environment_
 
-- Ask  <a href="https://github.com/CharlieTruong">Charlie</a>. jajaja ;)
-
-### _How to deploy_
-
-- Ask  <a href="https://github.com/CharlieTruong">Charlie</a>. jajaja ;)
+- Make sure to set your envioronment variables on the server (the variables identified in the .env.local file described previously)
+- The app also makes use of rake tasks to send email notifications.  On Heroku, at least, you can use Heroku Scheduler.
+- The javascript tree is not being required in application.js.  Any new, unique javascript files will need to be referenced for config/environments/production.rb
 
 
 ## <a name="troubleshooting"></a>Troubleshooting & Useful Tools
