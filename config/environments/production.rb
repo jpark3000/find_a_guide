@@ -77,4 +77,7 @@ FindAGuide::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  #adding CDN 
+  config.action_controller.asset_host = "d3kz1zck03dw1h.cloudfront.net"
 end
