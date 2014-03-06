@@ -1,6 +1,11 @@
 # gingerSpice
 
-_Description: Make meaningful connections. Be an ambassador to your city. Make new memories with a new friend._
+_Description:
+  -Make meaningful connections. Be an ambassador to your city. Make new memories with a new friend._
+_Deployed Test Site:
+  -<a href='??????'>HEROKUUUUUUUUU</a>
+  -Login: public_pnjzbca_tester@tfbnw.net
+  -Password: 123456
 
 ## Table of Contents
 
