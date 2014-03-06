@@ -20,10 +20,12 @@ class ToursController < ApplicationController
   end
 
   def new
+    gon.lat = request.location.latitude
+    gon.lng = request.location.longitude
     gon.points = []
-    @ambassador = current_user
-    gon.id = @ambassador.id
-    @tours = @ambassador.tours
+    
+    gon.id = current_user.id
+    @tours = current_user.tours
 
     @tours.each do |tour|
       gon.points << tour.format_object
