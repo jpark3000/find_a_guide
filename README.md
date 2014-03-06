@@ -54,6 +54,9 @@ _How do I run the project's automated tests?_
 
 ### _How to deploy_
 
+- Ask  <a href="https://github.com/CharlieTruong">Charlie</a>. jajaja ;)
+
+
 ## <a name="troubleshooting"></a>Troubleshooting & Useful Tools
 
 _Weird Stuff_
