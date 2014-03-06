@@ -1,9 +1,9 @@
-# gingerSpice
+# City Bird
 
 _Description:_
   - Make meaningful connections. Be an ambassador to your city. Make new memories with a new friend._
 _Deployed Test Site:_
-  - <a href='??????'>HEROKUUUUUUUUU</a>
+  - <a href='find-a-guide.herokuapp.comm'>City Bird</a>
   - Login: public_pnjzbca_tester@tfbnw.net
   - Password: 123456
 
@@ -18,8 +18,8 @@ _Deployed Test Site:_
 * [Team Members](#team-members)
 
 ## <a name="initial-whiteboarding"></a>Initial White-Boarding
-![Features](http://i.minus.com/iGABsn7Bg2Hf0.jpg)
-![UserStory](http://i.minus.com/i4dlGntnpFvev.JPG)
+![Features](http://i.imgur.com/DxJF3yf.jpg?1)
+![UserStory](http://i.imgur.com/2xXNr6e)
 
 ## <a name="schema"></a>Schema
 ![Schema](http://i.minus.com/ibikqHkEtJ9HQb.png)
