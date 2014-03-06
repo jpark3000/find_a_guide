@@ -24,11 +24,12 @@ class ToursController < ApplicationController
     gon.lng = request.location.longitude
     gon.points = []
     
+
     gon.id = current_user.id
     @tours = current_user.tours
 
     @tours.each do |tour|
-      gon.points << tour.format_object
+      gon.points << tour.tour_to_json
     end
   end
 
