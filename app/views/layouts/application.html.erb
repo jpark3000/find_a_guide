@@ -30,7 +30,15 @@
     if(e.target.id !== "nav_profile_pic"){
       $("#dropdown").addClass('hide');
     }
+    if(e.target.id !== 'pac-input-search'){
+      $("#pac-input-search").width(150);
+    }
   });
+
+  $("#pac-input-search").on('click',function(){
+    $("#pac-input-search").width(286);
+  });
+
 
 
   $("#search_icon").on('click',function(){

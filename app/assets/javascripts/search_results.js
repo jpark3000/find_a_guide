@@ -75,8 +75,8 @@ $(document).ready(function() {
     styles: styleOptions
   };
 
-	function initialize() {
-		map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+  function initialize() {
+    map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
     map.fitBounds(initialMapBounds);
     $.each(coords, function(i,v) {
       var myLatLng = new google.maps.LatLng(coords[i][0], coords[i][1])
@@ -158,7 +158,7 @@ $(document).ready(function() {
 
   }; //end initialize
 
-	google.maps.event.addDomListener(window, 'load', initialize);
+  google.maps.event.addDomListener(window, 'load', initialize);
 
   google.maps.event.addDomListener(window, "resize", function() {
    var center = map.getCenter();
