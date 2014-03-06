@@ -22,21 +22,21 @@ _Description: Make meaningful connections. Be an ambassador to your city. Make n
 ## <a name="project-setup"></a>Project Setup
 
 _How do I, as a developer, start working on the project?_
-Start by cloning the project!
-Git clone https://github.com/jpark3000/find_a_guide folder_to_be_createds_name
+  - Start by cloning the project!
+  - $git clone https://github.com/jpark3000/find_a_guide folder_to_be_createds_name
+  - *** The $ symbol at the start of the line denotes the command/terminal line.
 
 1. _What dependencies does it have (where are they expressed) and how do I install them?_
-They are all listed in the Gemfile, but...
-Production - Gon, Geocoder, Dotenv-rails, Rest-client, Postgres
-Development/Test - Shoulda-Matchers, FactoryGirl, Faker, Capybara
-Those are the gems required, besides what Rails 4 comes with.
+  - They are all listed in the Gemfile, but...
+  - Production - Gon, Geocoder, Dotenv-rails, Rest-client, Postgres
+  - Development/Test - Shoulda-Matchers, FactoryGirl, Faker, Capybara
+  - Those are the gems required, besides what Rails 4 comes with.
 
 2. _How can I see the project working before I change anything?_
-The usual way...
-Clone the repo.
-$bundle, $rake db:create db:migrate, $rake db:seed (optional), $rails s
-The $ symbol denotes the command/terminal line.
-Open a browser and type localhost:3000 in the URL.
+  - The usual way...
+  - Clone the repo.
+  - $bundle, $rake db:create db:migrate, $rake db:seed (optional), $rails s
+  - Open a browser and type localhost:3000 in the URL.
 
 ## <a name="testing"></a>Testing
 
