@@ -5,7 +5,7 @@
       dialogClass: "no-close",
       autoOpen: false,
       buttons: {
-        Ok: function() {
+        OK: function() {
           $( this ).dialog( "close" );
           window.location.href = '/dashboard';
         }
