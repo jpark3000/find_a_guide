@@ -2,7 +2,7 @@
   <div id="ambassador">
     <span id="ambassador_photo" style="background:url(<%= @ambassador.profile_pic %>)"></span>
     <span id="ambassador_info">
-      <h2 id="ambassador_name"><%= @ambassador.name %></h2>
+      <h2 id="ambassador_name"><%= @ambassador.first_name %></h2>
       <p id="ambassador_tag_line"><%= @ambassador.tagline %></p>
       <p id="ambassador_rating"><%= @ambassador.average_rating(:ambassador) %><br></p>
     </span>
