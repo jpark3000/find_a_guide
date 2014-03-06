@@ -153,7 +153,7 @@ $(document).ready(function() {
       console.log(tour_markers)
       var userTour = new Tour()
 
-      var infoWindow = new google.maps.InfoWindow({ content : userTour.createdTour(tour.desc).template[0] })
+      var infoWindow = new google.maps.InfoWindow({ content : userTour.createdTour(tour.description).template[0] })
 
       userTour.editTour(tour_marker.tour_id)
 
@@ -205,6 +205,7 @@ $(document).ready(function() {
           if (response.success) {
             tour_markers[response.tour_id] = user_marker;
             iw.template.find('.tour_text').attr('readonly', true);
+            iw.template.find('.tour_text').val()
             iw.template.find('.tour_text').css('background-color', 'white');
             iw.template.find('#new_tour_button').hide();
             iw.template.find('#remove_marker').hide();
