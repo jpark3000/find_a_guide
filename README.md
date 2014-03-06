@@ -19,7 +19,7 @@ _Deployed Test Site:_
 
 ## <a name="initial-whiteboarding"></a>Initial White-Boarding
 ![Features](http://i.imgur.com/DxJF3yf.jpg?1)
-![UserStory](http://i.imgur.com/2xXNr6e)
+![UserStory](http://i.imgur.com/2xXNr6e.jpg?1)
 
 ## <a name="schema"></a>Schema
 ![Schema](http://i.minus.com/ibikqHkEtJ9HQb.png)
