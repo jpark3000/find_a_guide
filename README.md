@@ -1,6 +1,11 @@
-# gingerSpice
+# City Bird
 
-_Description: Make meaningful connections. Be an ambassador to your city. Make new memories with a new friend._
+_Description:_
+  - Make meaningful connections. Be an ambassador to your city. Make new memories with a new friend._
+_Deployed Test Site:_
+  - <a href='http://find-a-guide.herokuapp.comm'>City Bird</a>
+  - Login: public_pnjzbca_tester@tfbnw.net
+  - Password: 123456
 
 ## Table of Contents
 
@@ -13,8 +18,8 @@ _Description: Make meaningful connections. Be an ambassador to your city. Make n
 * [Team Members](#team-members)
 
 ## <a name="initial-whiteboarding"></a>Initial White-Boarding
-![Features](http://i.minus.com/iGABsn7Bg2Hf0.jpg)
-![UserStory](http://i.minus.com/i4dlGntnpFvev.JPG)
+![Features](http://i.imgur.com/DxJF3yf.jpg?1)
+![UserStory](http://i.imgur.com/2xXNr6e.jpg?1)
 
 ## <a name="schema"></a>Schema
 ![Schema](http://i.minus.com/ibikqHkEtJ9HQb.png)
@@ -23,7 +28,7 @@ _Description: Make meaningful connections. Be an ambassador to your city. Make n
 
 _How do I, as a developer, start working on the project?_
   - Start by cloning the project!
-  - $git clone https://github.com/jpark3000/find_a_guide folder_to_be_createds_name
+  - `$git clone https://github.com/jpark3000/find_a_guide folder_to_be_createds_name`
   - *** The $ symbol at the start of the line denotes the command/terminal line.
 
 1. _What dependencies does it have (where are they expressed) and how do I install them?_
@@ -35,15 +40,15 @@ _How do I, as a developer, start working on the project?_
 2. _How can I see the project working before I change anything?_
   - The usual way...
   - Clone the repo.
-  - $bundle, $rake db:create db:migrate, $rake db:seed (optional), $rails s
-  - Open a browser and type localhost:3000 in the URL.
+  - `$bundle, $rake db:create db:migrate, $rake db:seed (optional), $rails s`
+  - Open a browser and type `localhost:3000` in the URL.
 
 ## <a name="testing"></a>Testing
 
 _How do I run the project's automated tests?_
 
 #### Below is the command to run all model/controller/integration tests using RSpec
-1. $rake spec
+1. `$rake spec`
 
 
 ## <a name="deploying"></a>Deploying
@@ -61,12 +66,12 @@ _How do I run the project's automated tests?_
 
 _Weird Stuff_
 1. _You may have to..._
-  - remove the '<%=ENV['FACEBOOK_APP_ID']%>' line from /app/assets/javascripts/facebook.
+  - remove the `<%=ENV['FACEBOOK_APP_ID']%>` line from /app/assets/javascripts/facebook.
   - Save the file
-  - $rails s
+  - `$rails s`
   - stop the rails server
-  - replace the <%=ENV['FACEBOOK_APP_ID']%> line in /app/assets/javascripts/facebook.
-  - $rails s
+  - replace the `<%=ENV['FACEBOOK_APP_ID']%>` line in /app/assets/javascripts/facebook.
+  - `$rails s`
   - Then you're good to go!!!
 
 
