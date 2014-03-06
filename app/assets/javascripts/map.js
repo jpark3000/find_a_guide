@@ -119,8 +119,8 @@ $(document).ready(function() {
 	var map;
 
   var mapOptions = {
-    center: new google.maps.LatLng(20, 0),
-    zoom: 2,
+    center: new google.maps.LatLng(41.8876, -87.6368),
+    zoom: 12,
     minZoom: 2,
     streetViewControl: false,
     mapTypeControl: false,

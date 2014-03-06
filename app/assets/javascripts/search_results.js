@@ -75,47 +75,37 @@ $(document).ready(function() {
     styles: styleOptions
   };
 
-	function initialize() {
-		map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+  function initialize() {
+    map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
     map.fitBounds(initialMapBounds);
-    $.each(coords, function(i,v) {
-      var myLatLng = new google.maps.LatLng(coords[i][0], coords[i][1])
-      var tour_marker = new google.maps.Marker({
-        position: myLatLng,
-        map: map
-      });
-      markers.push(tour_marker)
-    });
 
-    google.maps.event.addListener(map, 'idle', function() {
-
+    var idleListener = google.maps.event.addListener(map, 'idle', function() {
+      console.log(idleListener)
+      console.log('blah')
       var data = { bounds :  map.getBounds().toString()};
 
       $.get('/search', data, function(response) {
-        $('.card').remove()
-        $.each(markers, function(i,v) {
-          v.setMap(null);
-        });
-        markers.length = 0
+        $('.card').remove();
+        $.each(markers, function(i, marker) { marker.setMap(null); });
+        markers.length = 0;
 
-        $.each(response.points, function(i,v) {
-          var myLatLng = new google.maps.LatLng(v[0], v[1])
+        $.each(response.tours, function(i, tour) {
+          var myLatLng = new google.maps.LatLng(tour.lat, tour.lng)
 
           var tour_marker = new google.maps.Marker({
             position: myLatLng,
             map: map
           }); //end new marker
-          var user = response['users'][v[2]]
-          var tourBox = new TourBox(user.first_name, user.tagline, user.rating, v[3])
+          var user = response['users'][tour.ambassador_id]
+          var tourBox = new TourBox(user.first_name, user.tagline, user.rating, tour.description)
           var infoWindow = new google.maps.InfoWindow({ content : tourBox.template[0] })
           infoWindows.push(infoWindow);
 
           google.maps.event.addListener(tour_marker, 'click', function() {
+            // google.maps.event.removeListener(idleListener)
             $.each(infoWindows, function(i, v) { v.close() });
-
             infoWindow.open(map, tour_marker);
           });
-
           markers.push(tour_marker);
 
 
@@ -138,6 +128,7 @@ $(document).ready(function() {
       });//end ajax callback
     });//end event listener
 
+   
 
 
     var input = (document.getElementById('pac-input-search'));
@@ -156,7 +147,7 @@ $(document).ready(function() {
 
   }; //end initialize
 
-	google.maps.event.addDomListener(window, 'load', initialize);
+  google.maps.event.addDomListener(window, 'load', initialize);
 
   google.maps.event.addDomListener(window, "resize", function() {
    var center = map.getCenter();

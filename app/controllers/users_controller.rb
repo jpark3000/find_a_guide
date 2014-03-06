@@ -7,40 +7,28 @@ class UsersController < ApplicationController
     @tours = []
   end
 
-  # def filter_by_specialty(specialty_id)
-  #   if params[:specialty_id]
-  #     @users = User.specialties
-
-
-
-  #   end
-
-
-  # end
-
   def search
-    points = []
+    tours = []
     gon.bounds = format_bounds(params[:initial_bounds]) if params[:initial_bounds]
     session[:start_date] = params[:start_date] if params[:start_date]
     session[:end_date]  = params[:end_date] if params[:end_date]
 
     @specialties = Specialty.all
-    # @languages = Language.all
+
     respond_to do |format|
       if request.xhr?
         bounds = format_bounds(params[:bounds])
-
         @tours = Tour.where(Geocoder::Sql.within_bounding_box(bounds[0], bounds[1],
                                                               bounds[2], bounds[3],
                                                               'latitude', 'longitude'))
         @users = get_unique_users_from_tours(@tours)
 
         @tours.each do |tour|
-          points << tour.format_coordinates
+          tours << tour.tour_to_json
         end
 
         format.json do
-          hashy = {points: points, users: {}}
+          hashy = {tours: tours, users: {}}
 
           @users.each do |u|
             hashy[:users][u.id] = {id: u.id, first_name: u.first_name, tagline: u.safe_tagline, rating: u.average_rating(:ambassador), photo: u.profile_pic, specialty_ids: u.specialties.map { |s| s.id } }
@@ -50,12 +38,6 @@ class UsersController < ApplicationController
           render :json => hashy
         end
       else
-        gon.points = []
-        @tours = Tour.near([params[:center_lat], params[:center_lng]], 500)
-        @tours.each do |tour|
-          gon.points << tour.format_coordinates
-        end
-        @users = @tours.map { |tour| tour.ambassador }
         format.html do
           render 'index'
         end
