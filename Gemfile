@@ -69,7 +69,7 @@ gem 'jquery-turbolinks'
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
@@ -84,4 +84,4 @@ gem 'simplecov', :require => false, :group => :test
 gem 'omniauth'
 gem 'omniauth-facebook', '1.4.0'
 
-#adding jquery-ui themes
+
