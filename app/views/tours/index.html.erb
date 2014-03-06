@@ -6,8 +6,11 @@
       <p id="ambassador_tag_line"><%= @ambassador.tagline %></p>
       <p id="ambassador_rating"><%= @ambassador.average_rating(:ambassador) %><br></p>
     </span>
-    <% @ambassador.specialties.each do |s| %>
-      <span class="specialty"><%= s.specialty %></span>
+    <% if @ambassador.specialties.count > 0 %>
+      <div id="display_specialties">
+        Specialties: 
+        <%= @ambassador.specialties.map{|s| s.specialty}.join(", ") %>
+      </div>
     <% end %>
   </div>
 

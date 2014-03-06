@@ -23,6 +23,7 @@
     </div>
   </div>
   <div id="no_ambassadors"></div>
+
   <%= render partial: "search_results_list" %>
 
   <div id="home_marketing"></div>
@@ -33,6 +34,7 @@
     $("#search_results_content").toggleClass('auto_height');
     $("#search_results_list").height($(document).height() - $("#search_results_content").height() - 60);
   })
+  
   $("#search_results_list").on('click',function(){
     $("#search_results_content").removeClass('auto_height');
   })
