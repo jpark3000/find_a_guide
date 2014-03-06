@@ -42,8 +42,7 @@ _How do I, as a developer, start working on the project?_
 
 _How do I run the project's automated tests?_
 
-### Unit Tests
-
+## Below is the command to run all model/controller/integration tests using RSpec
 1. $rake spec
 
 
@@ -58,7 +57,7 @@ _How do I run the project's automated tests?_
 ## <a name="troubleshooting"></a>Troubleshooting & Useful Tools
 
 _Weird Stuff_
-1. You may have to...
+1. _You may have to..._
   - remove the '<%=ENV['FACEBOOK_APP_ID']%>' line from /app/assets/javascripts/facebook.
   - Save the file
   - $rails s
