@@ -30,7 +30,7 @@ function BeAmbassador(el1, el2){
 
   $("#become_ambassador").submit(function(e){
     e.preventDefault();
-    $('#user_manage_tour_icon').show();
+    $('#hidden_for_non_ambassadors').show();
     data = self.convertFormToJSON(this.$el);
     self.updateStatus(data);
   });

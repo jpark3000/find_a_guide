@@ -119,17 +119,19 @@
         </div>
       <% end %>
 
-      <% if @ambassador_overall_rating %>
-        <div class="profile_section">
-          <h4 class="profile_section_title">
-            Your rating: <%= @ambassador_overall_rating %>
-          </h4>
-          <div id="ambassador_ratings">
-            <% @user.all_ratings(:ambassador).each do |r| %>
-              <p><span class="rating"><%= r.rating %> - </span><%= r.comment %></p>
-            <% end %>
+      <% if current_user.is_ambassador %>
+        <% if @ambassador_overall_rating != "No ratings" %>
+          <div class="profile_section">
+            <h4 class="profile_section_title">
+              Your rating: <%= @ambassador_overall_rating %>
+            </h4>
+            <div id="ambassador_ratings">
+              <% @user.all_ratings(:ambassador).each do |r| %>
+                <p><span class="rating"><%= r.rating %> - </span><%= r.comment %></p>
+              <% end %>
+            </div>
           </div>
-        </div>
+        <% end %>
       <% end %>
 
       <% if @ambassador_incomplete_reviews.size > 0 %>

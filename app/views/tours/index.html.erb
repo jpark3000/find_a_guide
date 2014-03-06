@@ -33,10 +33,9 @@
   <div class="divider"></div>
   <hr>
     <div id="more_tours">
-      <h3>See <%= @ambassador.first_name %>'s tours:</h3>
+      <h2>See <%= @ambassador.first_name %>'s tours:</h2>
       <% @ambassador.tours.each do |t| %>
-        <h2 id="tour_info_title">This tour's info:</h2>
-        <div id="tour_description">
+        <div class="tour_description">
           <%= t.description %>
         </div>
       <% end %>
