@@ -30,7 +30,7 @@
     this.$el.dialog({
       modal: true,
       dialogClass: "no-close",
-      autoOpen: <%= current_user.rusty? ? 'false' : 'true' %>,
+      autoOpen: <%= current_user.rusty? ? 'true' : 'false' %>,
       buttons: {
         Ok: function() {
           $( this ).dialog( "close" );
