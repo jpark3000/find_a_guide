@@ -11,7 +11,7 @@ class EmailsController < ApplicationController
    html = render_to_string "reply", :layout => false
    # text = strip_tags(html)
 
-   message = {:to => @recipient.email, :html => html, :from => 'postmaster@sandbox57336.mailgun.org', :subject => params[:subject], "h:Reply-To" => @sender.anonymous_email}
+   message = {:to => @recipient.email, :html => html, :from => 'citybird@sandbox57336.mailgun.org', :subject => params[:subject], "h:Reply-To" => @sender.anonymous_email}
    Email.send_message(message)
 
    render :text => "OK"
@@ -35,7 +35,7 @@ class EmailsController < ApplicationController
     @visitor = User.find(params[:visitor_id])
     subject = 'Message from City Bird: Ambassador Unavailable'
     email_html = render_to_string "reject", :layout => false
-    Email.new_request(@ambassador, @visitor, email_html, subject, 'postmaster@sandbox57336.mailgun.org')
+    Email.new_request(@ambassador, @visitor, email_html, subject, 'citybird@sandbox57336.mailgun.org')
     render 'reject_acknowledge'
   end
 end
