@@ -114,6 +114,8 @@ $(document).ready(function() {
 
         $.each(response.users, function(i,v) {
 
+          if(v.rating !== "No ratings"){v.rating = v.rating + ' / 5'}
+
           var user = new User(v.id, v.first_name, v.tagline, v.rating, v.photo);
           $('#search_results_list').append(user.template);
 

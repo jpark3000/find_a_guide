@@ -6,7 +6,8 @@
         <span class='card_info'>
           <p class='card_name'><%= user.first_name %></p>
           <p class='card_tagline'><%= user.tagline %></p>
-          <p class='card_rating'><%= user.rating %></p>
+          <p class='card_rating'><%= user.rating %><%= "/5" unless user.rating == "No ratings"%></p>
+          <p class='card_tours_number'><%= user.tours.count.to_s %> tour<%= "s" unless user.tours.count == 1%></p>
           <p class='search_contact_button_container'>
             <%= link_to "More Info", user_tours_path(user), :class => 'search_contact_button' %>
           </p>
