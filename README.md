@@ -42,7 +42,7 @@ _How do I, as a developer, start working on the project?_
 
 _How do I run the project's automated tests?_
 
-## Below is the command to run all model/controller/integration tests using RSpec
+#### Below is the command to run all model/controller/integration tests using RSpec
 1. $rake spec
 
 
