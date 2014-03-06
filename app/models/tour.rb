@@ -22,8 +22,8 @@ class Tour < ActiveRecord::Base
 		[latitude, longitude, ambassador.id, description]
 	end
 
-  def format_object
-    {lat: latitude, lng: longitude, id: id, desc: description}
+  def tour_to_json
+    {lat: latitude, lng: longitude, ambassador_id: ambassador.id, id: id, description: description}
   end
 
 

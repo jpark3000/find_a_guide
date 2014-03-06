@@ -1,11 +1,8 @@
 <%= javascript_include_tag "search" %>
 <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places" %>
 <div id="home_full_background">
-  <div id="milan" class="sliding_images"></div>
-  <div id="cafe" class="sliding_images"></div>
+  <% random_image = ['cafe','bike'].sample %>
   <div id="bike" class="sliding_images"></div>
-  <div id="fishing" class="sliding_images"></div>
-  <div id="walking" class="sliding_images"></div>
 </div>
 
 <div id="main_search">
@@ -41,8 +38,8 @@
     
     <%= form_tag search_path, method: :get, id: 'search_form' do %>
     
-      
       <input id="pac-input" class="controls" type="text" placeholder="Where are you going?">
+      
       
       <input id='initial_bounds' type='hidden' name='initial_bounds' value=''>
 

@@ -10,7 +10,7 @@
 
 <div id="search_results">
   <div id="search_results_content">
-    <div id="refine_search_button" style="background-image: url(<%= asset_path 'arrow_down.png' %>)"></div>
+    <div id="refine_search_button">Refine</div>
     <div id="refine_search">
       <% @specialties.each do |s| %>
         <% if s.is_available? %>
@@ -23,6 +23,7 @@
     </div>
   </div>
   <div id="no_ambassadors"></div>
+
   <%= render partial: "search_results_list" %>
 
   <div id="home_marketing"></div>
@@ -31,9 +32,9 @@
 <script>
   $("#refine_search_button").on('click',function(){
     $("#search_results_content").toggleClass('auto_height');
-    $("#refine_search_button").toggleClass('flip_background_image_v');
     $("#search_results_list").height($(document).height() - $("#search_results_content").height() - 60);
   })
+  
   $("#search_results_list").on('click',function(){
     $("#search_results_content").removeClass('auto_height');
   })

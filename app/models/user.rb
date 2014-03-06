@@ -93,6 +93,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def rusty?
+    tours.size < 1 || Time.now - tours.last.created_at > 3.month
+  end
+
   private
 
   def create_alias_email
