@@ -51,7 +51,7 @@ function Dialog(el, form) {
     dialogClass: "no-close",
     autoOpen: false,
     buttons: {
-      Ok: function() {
+      OK: function() {
         self.$form.remove();
         $( this ).dialog( "close" );
       }

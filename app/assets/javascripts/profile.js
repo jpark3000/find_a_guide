@@ -51,7 +51,7 @@ function Dialog(el) {
     dialogClass: "no-close",
     autoOpen: false,
     buttons: {
-      Ok: function() {
+      OK: function() {
         $( this ).dialog( "close" );
       }
     }
