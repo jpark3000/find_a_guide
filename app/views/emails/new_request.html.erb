@@ -3,6 +3,7 @@
 
 <p>A new visitor, <%= @visitor.first_name%>, wants your help to get to know your city!</p>
 <p>You can ask clarifying questions to <%= @visitor.first_name%> at <%= @visitor.anonymous_email%></p>
+<p><%= @visitor.first_name%>'s <a href="<%=user_url(@visitor)%>">Profile </a></p>
 <p>Start Date: <%= @start_date%></p>
 <p>End Date: <%= @end_date%></p>
 
