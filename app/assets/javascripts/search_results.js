@@ -123,8 +123,10 @@ $(document).ready(function() {
 
         if(markers.length < 1 ){
           $('#no_ambassadors').html("No ambassadors found in this area.");
+          $("#search_results_content").hide()
         } else {
           $('#no_ambassadors').html("");
+          $("#search_results_content").show()
         }
 
       });//end ajax callback

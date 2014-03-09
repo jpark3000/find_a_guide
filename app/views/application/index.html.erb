@@ -57,13 +57,31 @@
 
 <script type="text/javascript">
   $(document).ready(function(){
-    $('[data-behaviour~=datepicker]').datepicker({
+    $("input[name='start_date']").datepicker({
       format: "MM dd yyyy",
       autoclose: true,
       minDate: 0,
       maxDate: '+3m',
     });
-  })
+
+    function getStartingDate(){
+      var startDate = $("input[name='start_date']").datepicker('getDate');
+      if (startDate != null) {
+        $(this).datepicker('option', 'minDate', startDate);
+        $(this).datepicker('option', 'maxDate', startDate.getDate() + 6);
+      } else {
+        $(this).datepicker('option', 'minDate',0);
+      }
+    }
+
+    $("input[name='end_date']").datepicker({
+      format: "MM dd yyyy",
+      beforeShow: getStartingDate,
+      autoclose: true,
+    });
+  });
+
+
 
   //FULL WIDTH IMAGE ON HOMEPAGE
   // $("#home_full_background").height($(window).height())
