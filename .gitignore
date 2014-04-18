@@ -15,8 +15,11 @@
 /log/*.log
 /tmp
 
-#Ignore api keys in env local file
+# Ignore api keys in env local file
 .env.local
 
 # Ignore the test coverage folder
 /coverage
+
+# Ignore cookbooks folder
+/cookbooks
