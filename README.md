@@ -18,7 +18,28 @@ _Languages_
   - Sass
   - HTML
 
+_Frameworks_
+  - Rails
+  - AngularJS(Planned)
+
+_Testing_
+  - RSpec
+  - Capybara(Planned)
+  - Jasmine(Planned)
+
 _Configuration Management_
- - Chef
+  - Chef Solo
 
+_Continuous Integration_
+  - Jenkins(Planned)
 
+_Monitoring_
+  -
+
+_Hosts/Servers_
+  - Heroku(Original)
+  - AWS/EC2(Current)
+  - Vagrant VM(Local)
+    - Ubuntu 12.04(local)
+
+_Gem Dependencies_
