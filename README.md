@@ -4,7 +4,7 @@
 
 This is a fork of a project that I was working on with a couple friends that died out, at least for the time being.
 
-This is a ![link](https://github.com/jpark3000/find_a_guide) to the original repository.
+This is a [link](https://github.com/jpark3000/find_a_guide) to the original repository.
 
 The purpose of this fork is to expand on this project through my own efforts, and to explore exciting new technologies.
 
@@ -24,14 +24,15 @@ _Frameworks_
 
 _Testing_
   - RSpec
-  - Capybara(Planned)
+  - Capybara
   - Jasmine(Planned)
 
 _Configuration Management_
   - Chef Solo
 
 _Continuous Integration_
-  - Jenkins(Planned)
+  - Travis CI(Current)
+  - Jenkins (Planned)
 
 _Monitoring_
   -
@@ -43,3 +44,4 @@ _Hosts/Servers_
     - Ubuntu 12.04(local)
 
 _Gem Dependencies_
+  -
