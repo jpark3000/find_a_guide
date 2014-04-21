@@ -25,8 +25,4 @@ class Tour < ActiveRecord::Base
   def tour_to_json
     {lat: latitude, lng: longitude, ambassador_id: ambassador.id, id: id, description: description}
   end
-
-
-
-
 end
