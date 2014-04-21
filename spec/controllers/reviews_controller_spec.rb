@@ -28,14 +28,14 @@ describe ReviewsController do
     end
   end
 
-  describe "POST reviews#create" do
-    it "redirects to ______ after review creation" do
-      # login_user(@user.id)
-      # set_omniauth_environment
-      post :create, user_id: @user.id, review: attributes_for(:review), format: :json
-      expect(response).to be_success #Hope this is correct. Haha.
-    end
-  end
+  # describe "POST reviews#create" do
+  #   it "redirects to ______ after review creation" do
+  #     # login_user(@user.id)
+  #     # set_omniauth_environment
+  #     post :create, user_id: @user.id, review: attributes_for(:review), format: :json
+  #     expect(response).to be_success #Hope this is correct. Haha.
+  #   end
+  # end
 
   #Object Creation Testing
 

@@ -26,24 +26,24 @@ describe MeetupsController do
     end
   end
 
-  describe "GET tours#edit" do
-    it "renders the :edit template for the tour" do
-      user = FactoryGirl.create(:user)
-      user.visitor_meetups.create(FactoryGirl.attributes_for(:meetup, ambassador_id: user.id))
+  # describe "GET tours#edit" do
+  #   it "renders the :edit template for the tour" do
+  #     user = FactoryGirl.create(:user)
+  #     user.visitor_meetups.create(FactoryGirl.attributes_for(:meetup, ambassador_id: user.id))
 
-      get :edit, {user_id: user.id, id: user.visitor_meetups.last.id}
-      expect(response).to render_template :edit
-    end
-  end
+  #     get :edit, {user_id: user.id, id: user.visitor_meetups.last.id}
+  #     expect(response).to render_template :edit
+  #   end
+  # end
 
-  describe "GET tours#show" do
-    user = FactoryGirl.create(:user)
-    user.visitor_meetups.create(FactoryGirl.attributes_for(:meetup, ambassador_id: user.id))
-    it "renders the :show template for the tour" do
-      get :show, user_id: user.id, id: user.visitor_meetups.last.id
-      expect(response).to render_template :show
-    end
-  end
+  # describe "GET tours#show" do
+  #   user = FactoryGirl.create(:user)
+  #   user.visitor_meetups.create(FactoryGirl.attributes_for(:meetup, ambassador_id: user.id))
+  #   it "renders the :show template for the tour" do
+  #     get :show, user_id: user.id, id: user.visitor_meetups.last.id
+  #     expect(response).to render_template :show
+  #   end
+  # end
 
   #Object Creation Testing
 

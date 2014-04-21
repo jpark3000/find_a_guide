@@ -17,12 +17,12 @@ describe UsersController do
 
   describe 'Routing & Rendering' do
 
-    describe 'GET#Index' do
-      it 'should render user index template' do
-        get :index
-        expect(response).to render_template :index
-      end
-    end
+    # describe 'GET#Index' do
+    #   it 'should render user index template' do
+    #     get :index
+    #     expect(response).to render_template :index
+    #   end
+    # end
 
     describe 'GET#Dashboard' do
       it 'should render user dashboard template' do

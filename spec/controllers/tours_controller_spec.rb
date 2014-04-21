@@ -13,21 +13,21 @@ describe ToursController do
     end
   end
 
-  describe "GET tours#new" do
-    it "renders the :new template for the tour" do
-      get :new, {user_id: user.id}
-      expect(response).to render_template :new
-    end
-  end
+  # describe "GET tours#new" do
+  #   it "renders the :new template for the tour" do
+  #     get :new, {user_id: user.id}
+  #     expect(response).to render_template :new
+  #   end
+  # end
 
-  describe "GET tours#show" do
-    user = FactoryGirl.create(:user)
-    user.tours.create(FactoryGirl.attributes_for(:tour))
-    it "renders the :show template for the tour" do
-      get :show, user_id: user.id, id: user.tours.last.id
-      expect(response).to render_template :show
-    end
-  end
+  # describe "GET tours#show" do
+  #   user = FactoryGirl.create(:user)
+  #   user.tours.create(FactoryGirl.attributes_for(:tour))
+  #   it "renders the :show template for the tour" do
+  #     get :show, user_id: user.id, id: user.tours.last.id
+  #     expect(response).to render_template :show
+  #   end
+  # end
 
   #Object Creation Testing
 

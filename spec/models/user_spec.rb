@@ -80,12 +80,6 @@ describe 'user methods:' do
     end
   end
 
-  describe 'profile_pic method:' do
-    it 'returns a string with the users uid interpolated into a url' do
-      expect(user.profile_pic).to eq "http://graph.facebook.com/#{user.uid}/picture?type=large"
-    end
-  end
-
   describe 'has_specialty method:' do
 
     user = FactoryGirl.build(:user)
